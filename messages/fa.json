@@ -1,0 +1,132 @@
+{
+  "nav": {
+    "home": "Home",
+    "personalities": "Personality Types",
+    "test": "Take Test",
+    "people": "Meet People",
+    "blog": "Articles",
+    "about": "About",
+    "login": "Sign In",
+    "signup": "Sign Up"
+  },
+  "personalities": {
+    "analysts": "Analysts",
+    "diplomats": "Diplomats", 
+    "sentinels": "Sentinels",
+    "explorers": "Explorers",
+    "intj": {
+      "name": "Architect",
+      "description": "Imaginative and strategic thinkers, with a plan for everything."
+    },
+    "intp": {
+      "name": "Thinker", 
+      "description": "Innovative inventors with an unquenchable thirst for knowledge."
+    },
+    "entj": {
+      "name": "Commander",
+      "description": "Bold, imaginative and strong-willed leaders, always finding a way – or making one."
+    },
+    "entp": {
+      "name": "Debater",
+      "description": "Smart and curious thinkers who cannot resist an intellectual challenge."
+    },
+    "infj": {
+      "name": "Advocate",
+      "description": "Quiet and mystical, yet very inspiring and tireless idealists."
+    },
+    "infp": {
+      "name": "Mediator",
+      "description": "Poetic, kind and altruistic people, always eager to help a good cause."
+    },
+    "enfj": {
+      "name": "Protagonist",
+      "description": "Charismatic and inspiring leaders, able to mesmerize their listeners."
+    },
+    "enfp": {
+      "name": "Campaigner",
+      "description": "Enthusiastic, creative and sociable free spirits, who can always find a reason to smile."
+    },
+    "istj": {
+      "name": "Logistician",
+      "description": "Practical and fact-minded, reliable and responsible."
+    },
+    "isfj": {
+      "name": "Protector",
+      "description": "Warm-hearted and dedicated, always ready to protect their loved ones."
+    },
+    "estj": {
+      "name": "Executive",
+      "description": "Excellent administrators, unsurpassed at managing things – or people."
+    },
+    "esfj": {
+      "name": "Consul",
+      "description": "Extraordinarily caring, social and popular people, always eager to help."
+    },
+    "istp": {
+      "name": "Virtuoso",
+      "description": "Bold and practical experimenters, masters of all kinds of tools."
+    },
+    "isfp": {
+      "name": "Adventurer",
+      "description": "Flexible and charming artists, always ready to explore new possibilities."
+    },
+    "estp": {
+      "name": "Entrepreneur",
+      "description": "Smart, energetic and very perceptive people, who truly enjoy living on the edge."
+    },
+    "esfp": {
+      "name": "Entertainer",
+      "description": "Spontaneous, energetic and enthusiastic people – life is never boring around them."
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Discover Your True Self",
+      "subtitle": "Connect with millions worldwide through personality insights",
+      "cta": "Take the Free Test",
+      "secondary_cta": "Meet Like-Minded People"
+    },
+    "features": {
+      "accurate": {
+        "title": "Scientifically Accurate",
+        "description": "Based on decades of psychological research and validated methodologies"
+      },
+      "social": {
+        "title": "Global Community", 
+        "description": "Connect with people who share your personality type from around the world"
+      },
+      "insights": {
+        "title": "Deep Insights",
+        "description": "Comprehensive reports covering career, relationships, and personal growth"
+      }
+    },
+    "test": {
+      "start": {
+        "title": "Discover Your Personality Type",
+        "description": "Answer questions about how you typically think, feel, and behave. Be honest – there are no right or wrong answers.",
+        "time": "Takes less than 12 minutes",
+        "privacy": "Your responses are completely private and secure",
+        "start_button": "Start Test"
+      },
+      "progress": "Question {current} of {total}",
+      "navigation": {
+        "back": "Back",
+        "next": "Next",
+        "finish": "Finish Test"
+      },
+      "options": {
+        "agree_strongly": "Agree Strongly",
+        "agree": "Agree",
+        "neutral": "Neutral", 
+        "disagree": "Disagree",
+        "disagree_strongly": "Disagree Strongly"
+      }
+    },
+    "footer": {
+      "company": "© 2024 MBTITEST. All rights reserved.",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "contact": "Contact Us"
+    }
+  }
+} 
