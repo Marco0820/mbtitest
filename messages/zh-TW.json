@@ -7,14 +7,16 @@
     "blog": "部落格",
     "about": "關於",
     "login": "登入",
-    "language": "語言"
+    "signup": "註冊",
+    "language": "語言",
+    "secondary_cta": "同城的人"
   },
   "home": {
     "hero": {
       "title": "發現您真實的個性",
       "subtitle": "參加我們的免費性格測試，獲取詳細的性格類型報告。",
       "cta": "參加測試",
-      "secondary_cta": "查看所有類型"
+      "secondary_cta": "同城的人"
     }
   },
   "test": {

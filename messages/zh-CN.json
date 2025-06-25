@@ -7,15 +7,16 @@
     "blog": "博客",
     "about": "关于",
     "login": "登录",
+    "signup": "注册",
     "language": "语言",
-    "secondary_cta": "查看所有类型"
+    "secondary_cta": "同城的人"
   },
   "home": {
     "hero": {
-      "title": "发现你真实的个性",
-      "subtitle": "参加我们的免费性格测试，获取关于你类型的详细报告。",
+      "title": "免费性格测试",
+      "subtitle": "在几分钟内发现你的性格类型，更多地了解自己。",
       "cta": "参加测试",
-      "secondary_cta": "查看所有类型"
+      "secondary_cta": "同城的人"
     }
   },
   "test": {

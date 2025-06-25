@@ -102,10 +102,10 @@ export function PersonalityTypes() {
                         href={`/${locale}/personalities/${type.code}`}
                         className={`block p-4 rounded-xl text-center transition-colors duration-200 ${styles.buttonBg}`}
                       >
-                        <span className={`font-bold text-sm ${styles.buttonText}`}>
-                          {type.name}
+                        <span className={`font-bold text-sm ${styles.buttonText} block`}>
+                          {type.name.replace(`(${type.code.toUpperCase()})`, '').trim()}
                         </span>
-                        <span className="text-xs text-gray-500 ml-1">
+                        <span className="text-xs text-gray-500">
                           ({type.code.toUpperCase()})
                         </span>
                       </Link>

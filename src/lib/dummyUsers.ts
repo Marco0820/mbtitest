@@ -1,48 +1,40 @@
-import { StaticImageData } from 'next/image';
-import avatar1 from '../../public/avatars/avatar1.jpg';
-import avatar2 from '../../public/avatars/avatar2.jpg';
-import avatar3 from '../../public/avatars/avatar3.jpg';
-import avatar4 from '../../public/avatars/avatar4.jpg';
-import avatar5 from '../../public/avatars/avatar5.jpg';
-import avatar6 from '../../public/avatars/avatar6.jpg';
-import avatar7 from '../../public/avatars/avatar7.jpg';
-import avatar8 from '../../public/avatars/avatar8.jpg';
-import avatar9 from '../../public/avatars/avatar9.jpg';
-import avatar10 from '../../public/avatars/avatar10.jpg';
-import avatar11 from '../../public/avatars/avatar11.jpg';
-import avatar12 from '../../public/avatars/avatar12.jpg';
-
 export interface User {
   id: number;
   name: string;
+  email: string;
+  password?: string; // Should be handled securely on a server
   mbti: string;
-  avatar: StaticImageData;
+  avatar: string;
   bio: string;
+  gender: 'male' | 'female' | 'other';
+  country: string;
+  state: string;
+  city: string;
 }
 
-export const users: User[] = [
-  { id: 1, name: 'Alex', mbti: 'INTJ-A', avatar: avatar1, bio: 'Architect. Problem solver. Loves a good challenge.' },
-  { id: 2, name: 'Beatrice', mbti: 'INFP-T', avatar: avatar2, bio: 'Mediator. Dreamer. Always looking for the good in people.' },
-  { id: 3, name: 'Charles', mbti: 'ENTP-A', avatar: avatar3, bio: 'Debater. Can\'t resist an intellectual challenge.' },
-  { id: 4, name: 'Diana', mbti: 'ISFJ-A', avatar: avatar4, bio: 'Defender. Very dedicated and warm protector.' },
-  { id: 5, name: 'Ethan', mbti: 'ESTP-T', avatar: avatar5, bio: 'Entrepreneur. Smart, energetic and very perceptive.' },
-  { id: 6, name: 'Fiona', mbti: 'ENFJ-A', avatar: avatar6, bio: 'Protagonist. Inspiring and tireless idealist.' },
-  { id: 7, name: 'George', mbti: 'ISTP-T', avatar: avatar7, bio: 'Virtuoso. Bold and practical experimenter.' },
-  { id: 8, name: 'Hannah', mbti: 'ESFP-A', avatar: avatar8, bio: 'Entertainer. Spontaneous, energetic and enthusiastic.' },
-  { id: 9, name: 'Ian', mbti: 'INTP-T', avatar: avatar9, bio: 'Logician. Innovative inventor with an unquenchable thirst for knowledge.' },
-  { id: 10, name: 'Julia', mbti: 'ESFJ-A', avatar: avatar10, bio: 'Consul. Extraordinarily caring, social and popular.' },
-  { id: 11, name: 'Kevin', mbti: 'ESTJ-T', avatar: avatar11, bio: 'Executive. Excellent administrator, unsurpassed at managing things or people.' },
-  { id: 12, name: 'Laura', mbti: 'ISFP-A', avatar: avatar12, bio: 'Adventurer. Flexible and charming artist, always ready to explore.' },
-  { id: 13, name: 'Mike', mbti: 'ISTJ-A', avatar: avatar1, bio: 'Logistician. Practical and fact-minded individual.' },
-  { id: 14, name: 'Nina', mbti: 'ENFP-T', avatar: avatar2, bio: 'Campaigner. Enthusiastic, creative and sociable free spirit.' },
-  { id: 15, name: 'Oscar', mbti: 'INTJ-T', avatar: avatar3, bio: 'Architect. Strategic thinker with a plan for everything.' },
-  { id: 16, name: 'Penny', mbti: 'INFJ-A', avatar: avatar4, bio: 'Advocate. Quiet and mystical, yet very inspiring and tireless idealist.' },
-  { id: 17, name: 'Quentin', mbti: 'ENTJ-A', avatar: avatar5, bio: 'Commander. Bold, imaginative and strong-willed leader.' },
-  { id: 18, name: 'Rachel', mbti: 'ISFP-T', avatar: avatar6, bio: 'Adventurer. Always ready to explore and experience something new.' },
-  { id: 19, name: 'Sam', mbti: 'ESTP-A', avatar: avatar7, bio: 'Entrepreneur. Energetic and perceptive, loves to live on the edge.' },
-  { id: 20, name: 'Tina', mbti: 'INFP-A', avatar: avatar8, bio: 'Mediator. Poetic, kind and altruistic, always eager to help a good cause.' },
-  { id: 21, name: 'Uma', mbti: 'ESFJ-T', avatar: avatar9, bio: 'Consul. Caring, social and popular people, always eager to help.' },
-  { id: 22, name: 'Victor', mbti: 'ISTP-A', avatar: avatar10, bio: 'Virtuoso. Daring and practical, with a mastery of all kinds of tools.' },
-  { id: 23, name: 'Wendy', mbti: 'ENFJ-T', avatar: avatar11, bio: 'Protagonist. Charismatic and inspiring leader, able to mesmerize their listeners.' },
-  { id: 24, name: 'Xavier', mbti: 'INTP-A', avatar: avatar12, bio: 'Logician. Pensive and creative, with a love for complex systems.' }
+export let users: User[] = [
+  { id: 1, name: 'Alex', email: 'alex@example.com', password: 'password123', mbti: 'INTJ-A', avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80', bio: 'Architect. Problem solver. Loves a good challenge.', gender: 'male', country: 'USA', state: 'California', city: 'San Francisco' },
+  { id: 2, name: 'Beatrice', email: 'beatrice@example.com', password: 'password123', mbti: 'INFP-T', avatar: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80', bio: 'Mediator. Dreamer. Always looking for the good in people.', gender: 'female', country: 'Canada', state: 'Ontario', city: 'Toronto' },
+  { id: 3, name: 'Charles', email: 'charles@example.com', password: 'password123', mbti: 'ENTP-A', avatar: 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', bio: 'Debater. Can\'t resist an intellectual challenge.', gender: 'male', country: 'UK', state: 'England', city: 'London' },
+  { id: 4, name: 'Diana', email: 'diana@example.com', password: 'password123', mbti: 'ISFJ-A', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80', bio: 'Defender. Very dedicated and warm protector.', gender: 'female', country: 'Australia', state: 'New South Wales', city: 'Sydney' },
+  { id: 5, name: 'Ethan', email: 'ethan@example.com', password: 'password123', mbti: 'ESTP-T', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80', bio: 'Entrepreneur. Smart, energetic and very perceptive.', gender: 'male', country: 'USA', state: 'New York', city: 'New York City' },
+  { id: 6, name: 'Fiona', email: 'fiona@example.com', password: 'password123', mbti: 'ENFJ-A', avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80', bio: 'Protagonist. Inspiring and tireless idealist.', gender: 'female', country: 'USA', state: 'Illinois', city: 'Chicago' },
+  { id: 7, name: 'George', email: 'george@example.com', password: 'password123', mbti: 'ISTP-T', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80', bio: 'Virtuoso. Bold and practical experimenter.', gender: 'male', country: 'Germany', state: 'Berlin', city: 'Berlin' },
+  { id: 8, name: 'Hannah', email: 'hannah@example.com', password: 'password123', mbti: 'ESFP-A', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80', bio: 'Entertainer. Spontaneous, energetic and enthusiastic.', gender: 'female', country: 'Brazil', state: 'Rio de Janeiro', city: 'Rio de Janeiro' },
+  { id: 9, name: 'Ian', email: 'ian@example.com', password: 'password123', mbti: 'INTP-T', avatar: 'https://images.unsplash.com/photo-1521119989659-a83eee488004?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80', bio: 'Logician. Innovative inventor with an unquenchable thirst for knowledge.', gender: 'male', country: 'India', state: 'Maharashtra', city: 'Mumbai' },
+  { id: 10, name: 'Julia', email: 'julia@example.com', password: 'password123', mbti: 'ESFJ-A', avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80', bio: 'Consul. Extraordinarily caring, social and popular.', gender: 'female', country: 'Japan', state: 'Tokyo', city: 'Tokyo' },
+  { id: 11, name: 'Kevin', email: 'kevin@example.com', password: 'password123', mbti: 'ESTJ-T', avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80', bio: 'Executive. Excellent administrator, unsurpassed at managing things or people.', gender: 'male', country: 'USA', state: 'Texas', city: 'Houston' },
+  { id: 12, name: 'Laura', email: 'laura@example.com', password: 'password123', mbti: 'ISFP-A', avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80', bio: 'Adventurer. Flexible and charming artist, always ready to explore.', gender: 'female', country: 'France', state: 'Île-de-France', city: 'Paris' },
+  { id: 13, name: 'Mike', email: 'mike@example.com', password: 'password123', mbti: 'ISTJ-A', avatar: 'https://images.unsplash.com/photo-1566753323558-f4e0952af115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1622&q=80', bio: 'Logistician. Practical and fact-minded individual.', gender: 'male', country: 'Canada', state: 'British Columbia', city: 'Vancouver' },
+  { id: 14, name: 'Nina', email: 'nina@example.com', password: 'password123', mbti: 'ENFP-T', avatar: 'https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=772&q=80', bio: 'Campaigner. Enthusiastic, creative and sociable free spirit.', gender: 'female', country: 'USA', state: 'Florida', city: 'Miami' },
+  { id: 15, name: 'Oscar', email: 'oscar@example.com', password: 'password123', mbti: 'INTJ-T', avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80', bio: 'Architect. Strategic thinker with a plan for everything.', gender: 'male', country: 'UK', state: 'Scotland', city: 'Edinburgh' },
+  { id: 16, name: 'Penny', email: 'penny@example.com', password: 'password123', mbti: 'INFJ-A', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=776&q=80', bio: 'Advocate. Quiet and mystical, yet very inspiring and tireless idealist.', gender: 'female', country: 'New Zealand', state: 'Auckland', city: 'Auckland' },
+  { id: 17, name: 'Quentin', email: 'quentin@example.com', password: 'password123', mbti: 'ENTJ-A', avatar: 'https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80', bio: 'Commander. Bold, imaginative and strong-willed leader.', gender: 'male', country: 'USA', state: 'California', city: 'Los Angeles' },
+  { id: 18, name: 'Rachel', email: 'rachel@example.com', password: 'password123', mbti: 'ISFP-T', avatar: 'https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80', bio: 'Adventurer. Always ready to explore and experience something new.', gender: 'female', country: 'Ireland', state: 'Dublin', city: 'Dublin' },
+  { id: 19, name: 'Sam', email: 'sam@example.com', password: 'password123', mbti: 'ESTP-A', avatar: 'https://images.unsplash.com/photo-1488161628813-04466f872d24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80', bio: 'Entrepreneur. Energetic and perceptive, loves to live on the edge.', gender: 'male', country: 'Australia', state: 'Victoria', city: 'Melbourne' },
+  { id: 20, name: 'Tina', email: 'tina@example.com', password: 'password123', mbti: 'INFP-A', avatar: 'https://images.unsplash.com/photo-1593104547489-5cfb3839a3b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80', bio: 'Mediator. Poetic, kind and altruistic, always eager to help a good cause.', gender: 'female', country: 'USA', state: 'Washington', city: 'Seattle' },
+  { id: 21, name: 'Uma', email: 'uma@example.com', password: 'password123', mbti: 'ESFJ-T', avatar: 'https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=778&q=80', bio: 'Consul. Caring, social and popular people, always eager to help.', gender: 'female', country: 'South Africa', state: 'Gauteng', city: 'Johannesburg' },
+  { id: 22, name: 'Victor', email: 'victor@example.com', password: 'password123', mbti: 'ISTP-A', avatar: 'https://images.unsplash.com/photo-1557862921-37829c790f19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80', bio: 'Virtuoso. Daring and practical, with a mastery of all kinds of tools.', gender: 'male', country: 'Argentina', state: 'Buenos Aires', city: 'Buenos Aires' },
+  { id: 23, name: 'Wendy', email: 'wendy@example.com', password: 'password123', mbti: 'ENFJ-T', avatar: 'https://images.unsplash.com/photo-1531123414780-f74242c2b052?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80', bio: 'Protagonist. Charismatic and inspiring leader, able to mesmerize their listeners.', gender: 'female', country: 'USA', state: 'Colorado', city: 'Denver' },
+  { id: 24, name: 'Xavier', email: 'xavier@example.com', password: 'password123', mbti: 'INTP-A', avatar: 'https://images.unsplash.com/photo-1530268729831-4b0b9e170218?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80', bio: 'Logician. Pensive and creative, with a love for complex systems.', gender: 'male', country: 'Singapore', state: 'Singapore', city: 'Singapore' }
 ]; 

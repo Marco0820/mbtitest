@@ -7,15 +7,16 @@
     "blog": "Blog",
     "about": "About",
     "login": "Login",
+    "signup": "Sign Up",
     "language": "Language",
-    "secondary_cta": "See all types"
+    "secondary_cta": "Same City People"
   },
   "home": {
     "hero": {
       "title": "Discover Your True Personality",
       "subtitle": "Take our free personality test and get a detailed report on your type.",
       "cta": "Take the Test",
-      "secondary_cta": "See all types"
+      "secondary_cta": "Same City People"
     },
     "features": {
       "title": "Why Choose MBTITEST?",
