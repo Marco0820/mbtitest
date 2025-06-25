@@ -75,6 +75,14 @@ var map = {
 		"(rsc)/./messages/pt.json",
 		"_rsc_messages_pt_json"
 	],
+	"./results.en.json": [
+		"(rsc)/./messages/results.en.json",
+		"_rsc_messages_results_en_json"
+	],
+	"./results.zh-CN.json": [
+		"(rsc)/./messages/results.zh-CN.json",
+		"_rsc_messages_results_zh-CN_json"
+	],
 	"./ru.json": [
 		"(rsc)/./messages/ru.json",
 		"_rsc_messages_ru_json"
@@ -120,6 +128,42 @@ function webpackAsyncContext(req) {
 }
 webpackAsyncContext.keys = () => (Object.keys(map));
 webpackAsyncContext.id = "(rsc)/./messages lazy recursive ^\\.\\/.*\\.json$";
+module.exports = webpackAsyncContext;
+
+/***/ }),
+
+/***/ "(rsc)/./messages lazy recursive ^\\.\\/results\\..*\\.json$":
+/*!*****************************************************************!*\
+  !*** ./messages/ lazy ^\.\/results\..*\.json$ namespace object ***!
+  \*****************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var map = {
+	"./results.en.json": [
+		"(rsc)/./messages/results.en.json",
+		"_rsc_messages_results_en_json"
+	],
+	"./results.zh-CN.json": [
+		"(rsc)/./messages/results.zh-CN.json",
+		"_rsc_messages_results_zh-CN_json"
+	]
+};
+function webpackAsyncContext(req) {
+	if(!__webpack_require__.o(map, req)) {
+		return Promise.resolve().then(() => {
+			var e = new Error("Cannot find module '" + req + "'");
+			e.code = 'MODULE_NOT_FOUND';
+			throw e;
+		});
+	}
+
+	var ids = map[req], id = ids[0];
+	return __webpack_require__.e(ids[1]).then(() => {
+		return __webpack_require__.t(id, 3 | 16);
+	});
+}
+webpackAsyncContext.keys = () => (Object.keys(map));
+webpackAsyncContext.id = "(rsc)/./messages lazy recursive ^\\.\\/results\\..*\\.json$";
 module.exports = webpackAsyncContext;
 
 /***/ }),
@@ -432,7 +476,7 @@ const e0 = (0,next_dist_build_webpack_loaders_next_flight_loader_module_proxy__W
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var next_intl_server__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next-intl/server */ \"(rsc)/./node_modules/next-intl/dist/esm/server/react-server/getRequestConfig.js\");\n/* harmony import */ var _i18n_config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../i18n.config */ \"(rsc)/./i18n.config.ts\");\n/* harmony import */ var next_navigation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/navigation */ \"(rsc)/./node_modules/next/dist/api/navigation.react-server.js\");\n\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,next_intl_server__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(async ({ locale })=>{\n    if (!_i18n_config__WEBPACK_IMPORTED_MODULE_0__.locales.includes(locale)) {\n        (0,next_navigation__WEBPACK_IMPORTED_MODULE_1__.notFound)();\n    }\n    return {\n        messages: (await __webpack_require__(\"(rsc)/./messages lazy recursive ^\\\\.\\\\/.*\\\\.json$\")(`./${locale}.json`)).default\n    };\n}));\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9zcmMvaTE4bi50cyIsIm1hcHBpbmdzIjoiOzs7Ozs7O0FBQWtEO0FBQ1g7QUFDRTtBQUV6QyxpRUFBZUEsNERBQWdCQSxDQUFDLE9BQU8sRUFBQ0csTUFBTSxFQUFDO0lBQzdDLElBQUksQ0FBQ0YsaURBQU9BLENBQUNHLFFBQVEsQ0FBQ0QsU0FBZ0I7UUFDcENELHlEQUFRQTtJQUNWO0lBRUEsT0FBTztRQUNMRyxVQUFVLENBQUMsTUFBTSx5RUFBTyxHQUFhLEVBQUVGLE9BQU8sTUFBTSxHQUFHRyxPQUFPO0lBQ2hFO0FBQ0YsRUFBRSxFQUFDIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vbWJ0aXRlc3QtcGxhdGZvcm0vLi9zcmMvaTE4bi50cz9iY2Q5Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7Z2V0UmVxdWVzdENvbmZpZ30gZnJvbSAnbmV4dC1pbnRsL3NlcnZlcic7XHJcbmltcG9ydCB7bG9jYWxlc30gZnJvbSAnLi4vaTE4bi5jb25maWcnO1xyXG5pbXBvcnQge25vdEZvdW5kfSBmcm9tICduZXh0L25hdmlnYXRpb24nO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgZ2V0UmVxdWVzdENvbmZpZyhhc3luYyAoe2xvY2FsZX0pID0+IHtcclxuICBpZiAoIWxvY2FsZXMuaW5jbHVkZXMobG9jYWxlIGFzIGFueSkpIHtcclxuICAgIG5vdEZvdW5kKCk7XHJcbiAgfVxyXG5cclxuICByZXR1cm4ge1xyXG4gICAgbWVzc2FnZXM6IChhd2FpdCBpbXBvcnQoYC4uL21lc3NhZ2VzLyR7bG9jYWxlfS5qc29uYCkpLmRlZmF1bHRcclxuICB9O1xyXG59KTsiXSwibmFtZXMiOlsiZ2V0UmVxdWVzdENvbmZpZyIsImxvY2FsZXMiLCJub3RGb3VuZCIsImxvY2FsZSIsImluY2x1ZGVzIiwibWVzc2FnZXMiLCJkZWZhdWx0Il0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(rsc)/./src/i18n.ts\n");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var next_intl_server__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next-intl/server */ \"(rsc)/./node_modules/next-intl/dist/esm/server/react-server/getRequestConfig.js\");\n/* harmony import */ var _i18n_config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../i18n.config */ \"(rsc)/./i18n.config.ts\");\n/* harmony import */ var next_navigation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/navigation */ \"(rsc)/./node_modules/next/dist/api/navigation.react-server.js\");\n\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,next_intl_server__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(async ({ locale })=>{\n    if (!_i18n_config__WEBPACK_IMPORTED_MODULE_0__.locales.includes(locale)) {\n        (0,next_navigation__WEBPACK_IMPORTED_MODULE_1__.notFound)();\n    }\n    return {\n        messages: {\n            ...(await __webpack_require__(\"(rsc)/./messages lazy recursive ^\\\\.\\\\/.*\\\\.json$\")(`./${locale}.json`)).default,\n            ...(await __webpack_require__(\"(rsc)/./messages lazy recursive ^\\\\.\\\\/results\\\\..*\\\\.json$\")(`./results.${locale}.json`)).default\n        }\n    };\n}));\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9zcmMvaTE4bi50cyIsIm1hcHBpbmdzIjoiOzs7Ozs7O0FBQWtEO0FBQ1g7QUFDRTtBQUV6QyxpRUFBZUEsNERBQWdCQSxDQUFDLE9BQU8sRUFBQ0csTUFBTSxFQUFDO0lBQzdDLElBQUksQ0FBQ0YsaURBQU9BLENBQUNHLFFBQVEsQ0FBQ0QsU0FBZ0I7UUFDcENELHlEQUFRQTtJQUNWO0lBRUEsT0FBTztRQUNMRyxVQUFVO1lBQ1IsR0FBRyxDQUFDLE1BQU0seUVBQU8sR0FBYSxFQUFFRixPQUFPLE1BQU0sR0FBR0csT0FBTztZQUN2RCxHQUFHLENBQUMsTUFBTSxtRkFBTyxXQUFxQixFQUFFSCxPQUFPLE1BQU0sR0FBR0csT0FBTztRQUNqRTtJQUNGO0FBQ0YsRUFBRSxFQUFDIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vbWJ0aXRlc3QtcGxhdGZvcm0vLi9zcmMvaTE4bi50cz9iY2Q5Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7Z2V0UmVxdWVzdENvbmZpZ30gZnJvbSAnbmV4dC1pbnRsL3NlcnZlcic7XHJcbmltcG9ydCB7bG9jYWxlc30gZnJvbSAnLi4vaTE4bi5jb25maWcnO1xyXG5pbXBvcnQge25vdEZvdW5kfSBmcm9tICduZXh0L25hdmlnYXRpb24nO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgZ2V0UmVxdWVzdENvbmZpZyhhc3luYyAoe2xvY2FsZX0pID0+IHtcclxuICBpZiAoIWxvY2FsZXMuaW5jbHVkZXMobG9jYWxlIGFzIGFueSkpIHtcclxuICAgIG5vdEZvdW5kKCk7XHJcbiAgfVxyXG5cclxuICByZXR1cm4ge1xyXG4gICAgbWVzc2FnZXM6IHtcclxuICAgICAgLi4uKGF3YWl0IGltcG9ydChgLi4vbWVzc2FnZXMvJHtsb2NhbGV9Lmpzb25gKSkuZGVmYXVsdCxcclxuICAgICAgLi4uKGF3YWl0IGltcG9ydChgLi4vbWVzc2FnZXMvcmVzdWx0cy4ke2xvY2FsZX0uanNvbmApKS5kZWZhdWx0LFxyXG4gICAgfSxcclxuICB9O1xyXG59KTsiXSwibmFtZXMiOlsiZ2V0UmVxdWVzdENvbmZpZyIsImxvY2FsZXMiLCJub3RGb3VuZCIsImxvY2FsZSIsImluY2x1ZGVzIiwibWVzc2FnZXMiLCJkZWZhdWx0Il0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(rsc)/./src/i18n.ts\n");
 
 /***/ })
 

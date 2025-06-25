@@ -1,0 +1,28 @@
+{
+  "results": {
+    "your_personality_type": "你的人格类型是",
+    "breakdown_title": "分数明细",
+    "confidence_title": "结果置信度",
+    "confidence_description": "我们对这个结果有 {confidence}% 的信心。",
+    "consistency_title": "答题一致性",
+    "consistency_description": "你的答案有 {consistency}% 的一致性。",
+    "anomalies_title": "潜在问题",
+    "view_full_profile_button": "查看 {type} 的完整档案",
+    "no_result_title": "未找到结果",
+    "no_result_description": "我们找不到您的测试结果。请先完成测试以发现您的人格类型。",
+    "take_test_button": "参加测试",
+    "extraversion_low": "内向",
+    "extraversion_high": "外向",
+    "intuition_low": "感觉",
+    "intuition_high": "直觉",
+    "feeling_low": "思考",
+    "feeling_high": "情感",
+    "judging_low": "感知",
+    "judging_high": "判断",
+    "assertive_low": "Turbulent (T)",
+    "assertive_high": "Assertive (A)",
+    "extreme_response_pattern": "倾向于只选择极端答案。",
+    "excessive_neutral_responses": "中性答案过多。",
+    "too_fast_completion": "测试完成速度异常快。"
+  }
+} 

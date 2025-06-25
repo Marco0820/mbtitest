@@ -1,0 +1,28 @@
+{
+  "results": {
+    "your_personality_type": "Your Personality Type is",
+    "breakdown_title": "Score Breakdown",
+    "confidence_title": "Result Confidence",
+    "confidence_description": "We are {confidence}% confident in this result.",
+    "consistency_title": "Response Consistency",
+    "consistency_description": "Your answers were {consistency}% consistent.",
+    "anomalies_title": "Potential Issues",
+    "view_full_profile_button": "View Full {type} Profile",
+    "no_result_title": "No Result Found",
+    "no_result_description": "We couldn't find your test results. Please take the test to discover your personality type.",
+    "take_test_button": "Take the Test",
+    "extraversion_low": "Introversion",
+    "extraversion_high": "Extraversion",
+    "intuition_low": "Sensing",
+    "intuition_high": "Intuition",
+    "feeling_low": "Thinking",
+    "feeling_high": "Feeling",
+    "judging_low": "Perceiving",
+    "judging_high": "Judging",
+    "assertive_low": "Turbulent",
+    "assertive_high": "Assertive",
+    "extreme_response_pattern": "Tendency to choose only extreme answers.",
+    "excessive_neutral_responses": "High number of neutral answers.",
+    "too_fast_completion": "Test completed unusually fast."
+  }
+} 

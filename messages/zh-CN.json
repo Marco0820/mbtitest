@@ -28,7 +28,8 @@
     "feature_accurate_title": "高度准确",
     "accuracy": "基于最新研究",
     "start_button": "开始测试",
-    "tagline": "无需注册。"
+    "tagline": "无需注册。",
+    "calculating": "计算中..."
   },
   "footer": {
     "rights_reserved": "版权所有。",
