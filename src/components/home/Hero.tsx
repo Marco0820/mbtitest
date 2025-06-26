@@ -9,29 +9,18 @@ export function Hero() {
   const locale = useLocale();
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative h-[110vh] flex items-center justify-center overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <video
           autoPlay
-          muted
           loop
+          muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          poster="https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
+          className="w-full h-full object-cover scale-125"
         >
-          <source
-            src="https://player.vimeo.com/external/434045526.sd.mp4?s=c27eecc69acadf12c26a2a9a3f7a0b7ab6b5c87e&profile_id=164&oauth2_token_id=57447761"
-            type="video/mp4"
-          />
-          {/* Fallback image */}
-          <img
-            src="https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
-            alt="Global diversity"
-            className="w-full h-full object-cover"
-          />
+          <source src="/videos/background.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 video-overlay" />
       </div>
 
       {/* Content */}

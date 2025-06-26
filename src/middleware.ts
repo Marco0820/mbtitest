@@ -11,5 +11,5 @@ export default createMiddleware({
 
 export const config = {
   // Match all requests except API routes, static files, and Next.js internals
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)']
+  matcher: ['/((?!api|_next/static|_next/image|.*\\..*).*)']
 };

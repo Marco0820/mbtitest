@@ -34,7 +34,7 @@ const Logo = () => {
 
   return (
     <Link href={`/${locale}`} className="flex items-center space-x-2">
-      <Image src="/logo.png" alt="MBTITEST Logo" width={32} height={32} />
+      <img src="/logo.png" alt="MBTITEST Logo" width={32} height={32} />
       <span className="text-xl font-bold">
         {text.split('').map((char, index) => (
           <span key={index} style={{ color: colors[index % colors.length] }}>

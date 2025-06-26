@@ -28,14 +28,16 @@ function UserCard({ user }: { user: User }) {
   return (
     <Card className="overflow-hidden transform hover:-translate-y-1 transition-transform duration-300 ease-in-out">
       <CardContent className="p-4 flex items-start space-x-4">
-        <Image
-          src={user.avatar}
-          alt={user.name}
-          width={80}
-          height={80}
-          className="rounded-full border-2 border-gray-200"
-          unoptimized
-        />
+        <div className="w-20 h-20 flex-shrink-0">
+          <Image
+            src={user.avatar}
+            alt={user.name}
+            width={80}
+            height={80}
+            className="rounded-full border-2 border-gray-200 object-cover w-full h-full"
+            unoptimized
+          />
+        </div>
         <div className="flex-1">
           <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">{user.name}</h3>
           <p className="text-sm font-semibold text-purple-600 dark:text-purple-400">{user.mbti}</p>
@@ -133,10 +135,10 @@ export default function PeoplePage() {
                 placeholder={t('search_by_name')}
                 value={filters.searchTerm}
                 onChange={(e) => handleFilterChange('searchTerm', e.target.value)}
-                className="lg:col-span-2 focus:ring-blue-500 hover:bg-blue-100 transition-colors"
+                className="lg:col-span-2 focus:ring-blue-500 hover:bg-blue-200 transition-colors"
               />
               <Select value={filters.mbti} onValueChange={(v) => handleFilterChange('mbti', v)}>
-                <SelectTrigger className="focus:ring-blue-500 hover:bg-blue-100 transition-colors">
+                <SelectTrigger className="focus:ring-blue-500 hover:bg-blue-200 transition-colors">
                   <SelectValue placeholder={t('filter_by_mbti')} />
                 </SelectTrigger>
                 <SelectContent className="bg-white dark:bg-gray-700">
@@ -148,7 +150,7 @@ export default function PeoplePage() {
               </Select>
 
               <Select value={filters.gender} onValueChange={(v) => handleFilterChange('gender', v)}>
-                <SelectTrigger className="focus:ring-blue-500 hover:bg-blue-100 transition-colors">
+                <SelectTrigger className="focus:ring-blue-500 hover:bg-blue-200 transition-colors">
                   <SelectValue placeholder={t('filter_by_gender')} />
                 </SelectTrigger>
                 <SelectContent className="bg-white dark:bg-gray-700">
@@ -159,7 +161,7 @@ export default function PeoplePage() {
               </Select>
 
               <Select value={filters.country} onValueChange={(v) => handleFilterChange('country', v)}>
-                <SelectTrigger className="focus:ring-blue-500 hover:bg-blue-100 transition-colors">
+                <SelectTrigger className="focus:ring-blue-500 hover:bg-blue-200 transition-colors">
                   <SelectValue placeholder={t('filter_by_country')} />
                 </SelectTrigger>
                 <SelectContent className="bg-white dark:bg-gray-700">
@@ -171,7 +173,7 @@ export default function PeoplePage() {
               </Select>
 
               <Select value={filters.state} onValueChange={(v) => handleFilterChange('state', v)} disabled={filters.country === 'all'}>
-                <SelectTrigger className="focus:ring-blue-500 hover:bg-blue-100 transition-colors">
+                <SelectTrigger className="focus:ring-blue-500 hover:bg-blue-200 transition-colors">
                   <SelectValue placeholder={t('filter_by_state')} />
                 </SelectTrigger>
                 <SelectContent className="bg-white dark:bg-gray-700">
@@ -183,7 +185,7 @@ export default function PeoplePage() {
               </Select>
 
               <Select value={filters.city} onValueChange={(v) => handleFilterChange('city', v)} disabled={filters.state === 'all'}>
-                <SelectTrigger className="focus:ring-blue-500 hover:bg-blue-100 transition-colors">
+                <SelectTrigger className="focus:ring-blue-500 hover:bg-blue-200 transition-colors">
                   <SelectValue placeholder={t('filter_by_city')} />
                 </SelectTrigger>
                 <SelectContent className="bg-white dark:bg-gray-700">
@@ -195,7 +197,7 @@ export default function PeoplePage() {
               </Select>
             </div>
             <div className="flex justify-end gap-2 mt-4">
-              <Button variant="outline" onClick={handleClear} className="hover:bg-blue-100 transition-colors">{t('clear')}</Button>
+              <Button variant="outline" onClick={handleClear} className="hover:bg-blue-200 transition-colors">{t('clear')}</Button>
               <Button onClick={handleSearch} className="bg-blue-600 hover:bg-blue-700">{t('search')}</Button>
             </div>
           </div>
