@@ -30,7 +30,7 @@ const Logo = () => {
     '#4285F4', // Blue
     '#DB4437', // Red
   ];
-  const text = "MBTITEST";
+  const text = "MBTI TEST";
 
   return (
     <Link href={`/${locale}`} className="flex items-center space-x-2">

@@ -198,7 +198,7 @@ export default function PeoplePage() {
             </div>
             <div className="flex justify-end gap-2 mt-4">
               <Button variant="outline" onClick={handleClear} className="hover:bg-blue-200 transition-colors">{t('clear')}</Button>
-              <Button onClick={handleSearch} className="bg-blue-600 hover:bg-blue-700">{t('search')}</Button>
+              <Button onClick={handleSearch} className="bg-blue-600 text-white hover:bg-blue-700">{t('search')}</Button>
             </div>
           </div>
 
