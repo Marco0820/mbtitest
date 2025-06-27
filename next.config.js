@@ -14,7 +14,11 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'www.pexels.com',
-      }
+      },
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
     ]
   },
   experimental: {

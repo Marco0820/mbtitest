@@ -3,8 +3,9 @@
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 import { Play, Users, ArrowRight } from 'lucide-react';
+import React from 'react';
 
-export function Hero() {
+const HeroComponent = () => {
   const t = useTranslations('home');
   const locale = useLocale();
 
@@ -76,4 +77,6 @@ export function Hero() {
       </div>
     </section>
   );
-}
+};
+
+export const Hero = React.memo(HeroComponent);

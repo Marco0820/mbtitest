@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, ChangeEvent, useMemo, MouseEvent } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { users, User } from '@/lib/dummyUsers';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -23,7 +23,7 @@ import {
 const ITEMS_PER_PAGE = 6;
 
 function UserCard({ user }: { user: User }) {
-  const { t } = useTranslation();
+  const t = useTranslations('people');
 
   return (
     <Card className="overflow-hidden transform hover:-translate-y-1 transition-transform duration-300 ease-in-out">
@@ -65,7 +65,7 @@ const initialFilters = {
 };
 
 export default function PeoplePage() {
-  const { t } = useTranslation();
+  const t = useTranslations('people');
   const [filters, setFilters] = useState(initialFilters);
   const [appliedFilters, setAppliedFilters] = useState(initialFilters);
   const [currentPage, setCurrentPage] = useState(1);

@@ -11,15 +11,10 @@
       "static/css/app/[locale]/layout.css",
       "static/chunks/app/[locale]/layout.js"
     ],
-    "/[locale]/people/page": [
+    "/[locale]/profile/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/[locale]/people/page.js"
-    ],
-    "/[locale]/test/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/[locale]/test/page.js"
+      "static/chunks/app/[locale]/profile/page.js"
     ]
   }
 }

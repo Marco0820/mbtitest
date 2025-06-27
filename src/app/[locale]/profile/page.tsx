@@ -1,164 +1,111 @@
 'use client';
 
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import Image from 'next/image';
-import { users, User } from '@/lib/dummyUsers';
+import { useState, ChangeEvent } from 'react';
+import { useSession, signOut } from 'next-auth/react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
-
-// Let's assume we're editing the first user for simplicity
-const USER_ID_TO_EDIT = 1;
-
-const profileFormSchema = z.object({
-  country: z.string().min(1, "Country is required."),
-  state: z.string().min(1, "State is required."),
-  city: z.string().min(1, "City is required."),
-  gender: z.enum(['male', 'female', 'other'], { required_error: "Gender is required." }),
-});
-
-type ProfileFormValues = z.infer<typeof profileFormSchema>;
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 export default function ProfilePage() {
-  const { t } = useTranslation();
-  const [isEditing, setIsEditing] = useState(false);
-  // Find the user to edit. In a real app, this would come from session or a route param.
-  const [user, setUser] = useState<User | undefined>(users.find(u => u.id === USER_ID_TO_EDIT));
+  const { data: session, status, update } = useSession();
+  const router = useRouter();
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
+  const [isUploading, setIsUploading] = useState(false);
 
-  const form = useForm<ProfileFormValues>({
-    resolver: zodResolver(profileFormSchema),
-    defaultValues: {
-      country: user?.country || '',
-      state: user?.state || '',
-      city: user?.city || '',
-      gender: user?.gender,
-    },
-    mode: 'onChange'
-  });
+  const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files?.[0]) return;
 
-  if (!user) {
-    return <div>User not found</div>;
-  }
-  
-  const uniqueCountries = Array.from(new Set(users.map(user => user.country)));
-  const uniqueStates = Array.from(new Set(users.map(user => user.state)));
-  const uniqueCities = Array.from(new Set(users.map(user => user.city)));
+    const file = e.target.files[0];
+    
+    setError(null);
+    setSuccess(null);
+    setIsUploading(true);
 
-  const onSubmit = (data: ProfileFormValues) => {
-    // In a real app, you'd send this to your server.
-    // For now, we'll just update the local state.
-    const updatedUser = { ...user, ...data };
-    setUser(updatedUser);
-    console.log("Profile updated:", updatedUser);
-    setIsEditing(false);
+    try {
+      // Step 1: Upload file to our own API route
+      const uploadResponse = await fetch(`/api/avatar/upload?filename=${file.name}`, {
+        method: 'POST',
+        body: file,
+      });
 
-    // This part is just to show the data has "persisted" in our dummy data.
-    const userIndex = users.findIndex(u => u.id === USER_ID_TO_EDIT);
-    if(userIndex !== -1) {
-      users[userIndex] = updatedUser;
+      if (!uploadResponse.ok) {
+        const errorData = await uploadResponse.json();
+        throw new Error(`Upload failed: ${errorData.message}`);
+      }
+      
+      const { url } = await uploadResponse.json();
+      
+      // Step 2: Update the user profile with the new Vercel Blob URL
+      const profileResponse = await fetch('/api/user/profile', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ image: url }),
+      });
+      
+      if (!profileResponse.ok) {
+          const errorResult = await profileResponse.json();
+          const errorMessage = typeof errorResult === 'object' ? JSON.stringify(errorResult) : 'Failed to update profile.';
+          throw new Error(errorMessage);
+      }
+      
+      const { user: updatedUser } = await profileResponse.json();
+
+      // Step 3: Update the session to reflect changes immediately
+      await update({ image: updatedUser.image });
+
+      setSuccess('Avatar updated successfully!');
+
+    } catch (err: any) {
+      setError(err.message || 'An error occurred.');
+    } finally {
+      setIsUploading(false);
     }
   };
-
+  
+  if (status === 'loading' || !session) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-4 sm:p-6 md:p-8">
-      <div className="max-w-2xl mx-auto">
-        <Card>
-          <CardHeader>
-            <div className="flex items-center space-x-4">
-              <Image
-                src={user.avatar}
-                alt={user.name}
-                width={100}
-                height={100}
+    <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900 p-4">
+      <Card className="w-full max-w-md">
+        <CardHeader>
+          <div className="flex flex-col items-center space-y-4">
+            <div className='relative'>
+              <Image 
+                src={session.user?.image || 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'} 
+                alt={session.user?.name || 'User'} 
+                width={120} 
+                height={120} 
                 className="rounded-full border-4 border-white shadow-lg"
-                unoptimized
+                key={session.user?.image} // Force re-render on image change
               />
-              <div>
-                <CardTitle className="text-3xl font-bold">{user.name}</CardTitle>
-                <p className="text-lg text-purple-600">{user.mbti}</p>
-              </div>
+               <label htmlFor="avatar-upload" className="absolute bottom-0 right-0 bg-blue-600 text-white rounded-full p-2 cursor-pointer hover:bg-blue-700 transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <input id="avatar-upload" type="file" className="hidden" accept="image/*" onChange={handleFileChange} disabled={isUploading} />
+               </label>
             </div>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-6">
-              <div>
-                <h4 className="font-semibold text-lg mb-2">Bio</h4>
-                <p className="text-gray-700 dark:text-gray-300">{user.bio}</p>
-              </div>
-
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                <div>
-                  <h4 className="font-semibold text-lg mb-2">Details</h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="font-medium">Gender</label>
-                      {isEditing ? (
-                         <Select onValueChange={(value) => form.setValue('gender', value as 'male'|'female'|'other')} defaultValue={form.getValues('gender')}>
-                           <SelectTrigger>
-                             <SelectValue placeholder="Select gender" />
-                           </SelectTrigger>
-                           <SelectContent>
-                             <SelectItem value="male">Male</SelectItem>
-                             <SelectItem value="female">Female</SelectItem>
-                             <SelectItem value="other">Other</SelectItem>
-                           </SelectContent>
-                         </Select>
-                      ) : (
-                        <p className="p-2 bg-gray-100 dark:bg-gray-800 rounded-md capitalize">{user.gender}</p>
-                      )}
-                      {form.formState.errors.gender && <p className="text-red-500 text-xs mt-1">{form.formState.errors.gender.message}</p>}
-                    </div>
-                     <div>
-                      <label className="font-medium">Country</label>
-                      {isEditing ? (
-                        <Input {...form.register('country')} placeholder="Country" />
-                      ) : (
-                        <p className="p-2 bg-gray-100 dark:bg-gray-800 rounded-md">{user.country}</p>
-                      )}
-                      {form.formState.errors.country && <p className="text-red-500 text-xs mt-1">{form.formState.errors.country.message}</p>}
-                    </div>
-                     <div>
-                      <label className="font-medium">State/Province</label>
-                      {isEditing ? (
-                        <Input {...form.register('state')} placeholder="State" />
-                      ) : (
-                        <p className="p-2 bg-gray-100 dark:bg-gray-800 rounded-md">{user.state}</p>
-                      )}
-                      {form.formState.errors.state && <p className="text-red-500 text-xs mt-1">{form.formState.errors.state.message}</p>}
-                    </div>
-                     <div>
-                      <label className="font-medium">City</label>
-                      {isEditing ? (
-                        <Input {...form.register('city')} placeholder="City" />
-                      ) : (
-                        <p className="p-2 bg-gray-100 dark:bg-gray-800 rounded-md">{user.city}</p>
-                      )}
-                      {form.formState.errors.city && <p className="text-red-500 text-xs mt-1">{form.formState.errors.city.message}</p>}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex justify-end space-x-2">
-                  {isEditing ? (
-                    <>
-                      <Button type="button" variant="ghost" onClick={() => setIsEditing(false)}>Cancel</Button>
-                      <Button type="submit">Save Changes</Button>
-                    </>
-                  ) : (
-                    <Button type="button" onClick={() => setIsEditing(true)}>Edit Profile</Button>
-                  )}
-                </div>
-              </form>
+            
+            <div>
+              <CardTitle className="text-2xl text-center">{session.user?.name}</CardTitle>
+              <CardDescription className="text-center">{session.user?.email}</CardDescription>
             </div>
-          </CardContent>
-        </Card>
-      </div>
+          </div>
+        </CardHeader>
+        <CardContent className="text-center">
+            {isUploading && <p className="text-blue-500">Uploading to Vercel...</p>}
+            {error && <p className="text-red-500 text-sm">{error}</p>}
+            {success && <p className="text-green-500 text-sm">{success}</p>}
+            <div className="mt-6">
+              <Button variant="ghost" onClick={() => signOut({ callbackUrl: '/' })}>Sign Out</Button>
+            </div>
+        </CardContent>
+      </Card>
     </div>
   );
 } 

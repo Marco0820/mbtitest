@@ -11,6 +11,20 @@
     "language": "语言",
     "secondary_cta": "同城的人"
   },
+  "auth": {
+    "login": "登录",
+    "login_description": "登录您的帐户以继续。",
+    "signup": "注册",
+    "signup_description": "创建一个帐户开始。",
+    "email": "邮箱",
+    "password": "密码",
+    "no_account": "没有帐户？",
+    "have_account": "已经有帐户了？",
+    "logging_in": "登录中...",
+    "signing_up": "注册中...",
+    "login_failed": "登录失败。请检查您的凭据。",
+    "signup_failed": "注册失败。请再试一次。"
+  },
   "home": {
     "hero": {
       "title": "免费性格测试",

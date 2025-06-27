@@ -8,8 +8,25 @@
     "about": "About",
     "login": "Login",
     "signup": "Sign Up",
+    "logout": "Logout",
+    "profile": "Profile",
+    "settings": "Settings",
     "language": "Language",
     "secondary_cta": "Same City People"
+  },
+  "auth": {
+    "login": "Login",
+    "login_description": "Login to your account to continue.",
+    "signup": "Sign Up",
+    "signup_description": "Create an account to get started.",
+    "email": "Email",
+    "password": "Password",
+    "no_account": "Don't have an account?",
+    "have_account": "Already have an account?",
+    "logging_in": "Logging in...",
+    "signing_up": "Signing up...",
+    "login_failed": "Login failed. Please check your credentials.",
+    "signup_failed": "Sign up failed. Please try again."
   },
   "home": {
     "hero": {
