@@ -18,12 +18,15 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination"
+import Link from 'next/link';
+import { useLocale } from 'next-intl';
 
 
 const ITEMS_PER_PAGE = 6;
 
 function UserCard({ user }: { user: User }) {
   const t = useTranslations('people');
+  const locale = useLocale();
 
   return (
     <Card className="overflow-hidden transform hover:-translate-y-1 transition-transform duration-300 ease-in-out">
@@ -45,10 +48,12 @@ function UserCard({ user }: { user: User }) {
           <div className="text-xs text-gray-500 dark:text-gray-400 mt-2">
             {user.city}, {user.state}, {user.country}
           </div>
-          <Button size="sm" className="mt-2">
-            <MessageSquare className="w-4 h-4 mr-2" />
-            {t('message')}
-          </Button>
+          <Link href={`/${locale}/messages?receiverId=${user.id}`} passHref>
+            <Button size="sm" className="mt-2">
+              <MessageSquare className="w-4 h-4 mr-2" />
+              {t('message')}
+            </Button>
+          </Link>
         </div>
       </CardContent>
     </Card>

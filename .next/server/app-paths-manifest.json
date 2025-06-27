@@ -1,7 +1,7 @@
 {
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
-  "/api/avatar/upload/route": "app/api/avatar/upload/route.js",
-  "/api/user/profile/route": "app/api/user/profile/route.js",
-  "/[locale]/profile/page": "app/[locale]/profile/page.js",
-  "/[locale]/page": "app/[locale]/page.js"
+  "/api/user/history/route": "app/api/user/history/route.js",
+  "/[locale]/people/page": "app/[locale]/people/page.js",
+  "/[locale]/page": "app/[locale]/page.js",
+  "/[locale]/profile/page": "app/[locale]/profile/page.js"
 }

@@ -3,6 +3,7 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 import { calculateMbtiResult } from '@/lib/mbtiCalculator';
 import { UserResponse } from '@/types/mbti';
 
@@ -18,6 +19,7 @@ export function Questionnaire({ questions }: Props) {
   const t_test = useTranslations('test');
   const router = useRouter();
   const locale = useLocale();
+  const { data: session } = useSession();
   const [currentPage, setCurrentPage] = useState(1);
   const [answers, setAnswers] = useState<
     Record<string, { answer: number; timestamp: Date }>
@@ -73,6 +75,18 @@ export function Questionnaire({ questions }: Props) {
 
       // Store result in sessionStorage to pass it to the result page
       sessionStorage.setItem('mbtiResult', JSON.stringify(result));
+
+      if (session?.user) {
+        try {
+          await fetch('/api/user/profile', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ mbti: result.type }),
+          });
+        } catch (error) {
+          console.error('Failed to save MBTI result to profile', error);
+        }
+      }
 
       router.push(`/${locale}/results/${result.type}`);
     }

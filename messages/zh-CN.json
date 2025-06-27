@@ -8,6 +8,9 @@
     "about": "关于",
     "login": "登录",
     "signup": "注册",
+    "logout": "退出登录",
+    "profile": "个人中心",
+    "settings": "设置",
     "language": "语言",
     "secondary_cta": "同城的人"
   },

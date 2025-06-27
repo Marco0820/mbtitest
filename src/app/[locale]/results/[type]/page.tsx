@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { PersonalityResult } from '@/types/mbti';
 import { BarChart, CheckCircle, AlertTriangle, Home } from 'lucide-react';
@@ -41,24 +41,60 @@ export default function ResultPage() {
   const locale = useLocale();
   const t_results = useTranslations('results');
   const t_personalities = useTranslations('personalities');
+  const searchParams = useSearchParams();
 
   const [result, setResult] = useState<PersonalityResult | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const storedResult = sessionStorage.getItem('mbtiResult');
-    if (storedResult) {
-      const parsedResult = JSON.parse(storedResult);
-      // Validate that the stored result matches the URL type
-      if (parsedResult.type === params.type) {
-        setResult(parsedResult);
-      } else {
-        // If not, maybe redirect to the correct result page or show an error
-        router.replace(`/${locale}/results/${parsedResult.type}`);
+    if (!params) return; // Wait for params to be available
+    
+    const historyId = searchParams?.get('historyId');
+
+    const fetchResult = async () => {
+      // 1. Try sessionStorage first
+      const storedResult = sessionStorage.getItem('mbtiResult');
+      if (storedResult) {
+        const parsedResult = JSON.parse(storedResult);
+        if (parsedResult.type === params.type) {
+          setResult(parsedResult);
+          setIsLoading(false);
+          // Clear it so it doesn't get used for other history items by mistake
+          sessionStorage.removeItem('mbtiResult');
+          return;
+        }
       }
-    }
-    setIsLoading(false);
-  }, [params.type, locale, router]);
+
+      // 2. If historyId is present, fetch from API
+      if (historyId) {
+        try {
+          const response = await fetch(`/api/user/history/${historyId}`);
+          if (!response.ok) {
+            throw new Error('Failed to fetch test result');
+          }
+          const data = await response.json();
+          // Validate that the fetched result matches the URL type
+          if (data.type === params.type) {
+            setResult(data);
+          } else {
+            // If type doesn't match, redirect to the correct page for that result
+            router.replace(`/${locale}/results/${data.type}?historyId=${historyId}`);
+          }
+        } catch (error) {
+          console.error(error);
+          // Handle error, e.g., show a notification to the user
+        } finally {
+          setIsLoading(false);
+        }
+        return;
+      }
+      
+      // 3. If no data, set loading to false to show the 'no result' message
+      setIsLoading(false);
+    };
+
+    fetchResult();
+  }, [params, locale, router, searchParams]);
 
   if (isLoading) {
     return (

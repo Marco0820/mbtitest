@@ -8,6 +8,7 @@ const profileSchema = z.object({
   name: z.string().min(3, 'Name must be at least 3 characters').optional(),
   bio: z.string().max(200, 'Bio must be less than 200 characters').optional(),
   image: z.string().optional(),
+  mbti: z.string().optional(),
 });
 
 export async function PUT(req: Request) {
@@ -19,20 +20,37 @@ export async function PUT(req: Request) {
 
   try {
     const body = await req.json();
-    const { name, bio, image } = profileSchema.parse(body);
+    const { name, bio, image, mbti } = profileSchema.parse(body);
 
-    const user = await prisma.user.update({
-      where: { id: session.user.id },
-      data: {
-        name: name || undefined,
-        bio: bio || undefined,
-        image: image || undefined,
-      },
+    const updatedUser = await prisma.$transaction(async (tx) => {
+      if (mbti) {
+        const user = await tx.user.findUnique({
+          where: { id: session.user!.id! },
+          select: { country: true },
+        });
+        await tx.resultHistory.create({
+          data: {
+            userId: session.user!.id!,
+            mbti,
+            country: user?.country || 'unknown',
+          },
+        });
+      }
+
+      return tx.user.update({
+        where: { id: session.user!.id! },
+        data: {
+          name,
+          bio,
+          image,
+          mbti,
+        },
+      });
     });
 
-    const { password: _, ...updatedUser } = user;
+    const { password: _, ...userWithoutPassword } = updatedUser;
 
-    return NextResponse.json({ user: updatedUser, message: 'Profile updated successfully' }, { status: 200 });
+    return NextResponse.json({ user: userWithoutPassword, message: 'Profile updated successfully' }, { status: 200 });
 
   } catch (error) {
     if (error instanceof z.ZodError) {
