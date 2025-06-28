@@ -191,6 +191,12 @@ exports.Prisma.MessageScalarFieldEnum = {
   conversationId: 'conversationId'
 };
 
+exports.Prisma.PersonalityDetailsScalarFieldEnum = {
+  type: 'type',
+  locale: 'locale',
+  details: 'details'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -225,7 +231,8 @@ exports.Prisma.ModelName = {
   ResultHistory: 'ResultHistory',
   Conversation: 'Conversation',
   ConversationParticipant: 'ConversationParticipant',
-  Message: 'Message'
+  Message: 'Message',
+  PersonalityDetails: 'PersonalityDetails'
 };
 
 /**

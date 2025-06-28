@@ -1,17 +1,24 @@
 import { UserResponse } from '@/types/mbti';
 
-// This is a placeholder for the actual weights.
-// In a real-world scenario, these would be carefully calibrated.
-const weights = Array.from({ length: 12 }, () => 1.0);
+// Weights determine the direction of scoring. 
+// 1.0 for direct questions (e.g., agree -> a trait)
+// -1.0 for reverse-scored questions (e.g., agree -> opposite trait)
+// These weights are based on a standard interpretation of MBTI questions.
+
+const weights_E_I = [1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, 1]; // E vs I
+const weights_S_N = [-1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1]; // S vs N
+const weights_T_F = [1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, -1]; // T vs F
+const weights_J_P = [1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1]; // J vs P
+const weights_A_T = [-1, -1, 1, 1, -1, -1, 1, 1, -1, 1, 1, -1]; // A vs T
 
 export const DimensionWeights = {
-  E_I: { questions: [1, 5, 9, 13, 17, 21, 25, 29, 33, 37, 41, 45], weights },
-  S_N: { questions: [2, 6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46], weights },
-  T_F: { questions: [3, 7, 11, 15, 19, 23, 27, 31, 35, 39, 43, 47], weights },
-  J_P: { questions: [4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48], weights },
+  E_I: { questions: [1, 5, 9, 13, 17, 21, 25, 29, 33, 37, 41, 45], weights: weights_E_I },
+  S_N: { questions: [2, 6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46], weights: weights_S_N },
+  T_F: { questions: [3, 7, 11, 15, 19, 23, 27, 31, 35, 39, 43, 47], weights: weights_T_F },
+  J_P: { questions: [4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48], weights: weights_J_P },
   A_T: {
     questions: [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60],
-    weights,
+    weights: weights_A_T,
   },
 };
 

@@ -109,3 +109,12 @@ model Message {
 
   @@index([conversationId])
 }
+
+model PersonalityDetails {
+  type    String
+  locale  String
+  details Json
+
+  @@id([type, locale])
+  @@map("personality_details")
+}

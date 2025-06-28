@@ -1,40 +1,34 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+// Removed Image and React imports as they are no longer needed
 
 interface PersonalityHeaderProps {
   type: string;
+  title: string;
+  subtitle: string;
+  name: string;
 }
 
+// This mapping is kept for potential future use but is not currently used for the background.
 const typeColorMapping: { [key: string]: string } = {
   intj: 'purple', intp: 'purple', entj: 'purple', entp: 'purple',
   infj: 'green', infp: 'green', enfj: 'green', enfp: 'green',
   istj: 'blue', isfj: 'blue', estj: 'blue', esfj: 'blue',
-  istp: 'orange', isfp: 'orange', estp: 'orange', esfp: 'orange',
+  istp: 'yellow', isfp: 'yellow', estp: 'yellow', esfp: 'yellow',
 };
 
-const colorStyles: { [key: string]: { bg: string; text: string } } = {
-  purple: { bg: 'bg-purple-600', text: 'text-purple-100' },
-  green: { bg: 'bg-green-600', text: 'text-green-100' },
-  blue: { bg: 'bg-blue-600', text: 'text-blue-100' },
-  orange: { bg: 'bg-orange-600', text: 'text-orange-100' },
-};
-
-export const PersonalityHeader: React.FC<PersonalityHeaderProps> = ({ type }) => {
-  const t = useTranslations('personalities');
-  const colorKey = typeColorMapping[type] || 'purple';
-  const styles = colorStyles[colorKey];
-
+export const PersonalityHeader: React.FC<PersonalityHeaderProps> = ({ name, title, subtitle }) => {
   return (
-    <div className="bg-gradient-to-r from-purple-600 to-blue-500 text-white py-12 sm:py-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight">
-          {t(`${type}.title`)}
-        </h1>
-        <p className="mt-4 text-xl sm:text-2xl text-purple-100 max-w-3xl mx-auto">
-          {t(`${type}.subtitle`)}
-        </p>
-      </div>
-    </div>
+    <header className="bg-gray-800 text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+            <p className="font-bold text-xl text-white opacity-70 uppercase tracking-widest">{name}</p>
+            <h1 className="text-5xl md:text-7xl font-extrabold my-3">
+                {title.split(' Personality')[0]}
+            </h1>
+            <p className="mt-4 text-xl md:text-2xl text-white opacity-90 max-w-3xl mx-auto">
+                {subtitle}
+            </p>
+        </div>
+    </header>
   );
 }; 

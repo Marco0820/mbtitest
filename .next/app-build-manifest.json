@@ -11,15 +11,15 @@
       "static/css/app/[locale]/layout.css",
       "static/chunks/app/[locale]/layout.js"
     ],
-    "/[locale]/people/page": [
+    "/[locale]/personalities/[type]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/[locale]/people/page.js"
+      "static/chunks/app/[locale]/personalities/[type]/page.js"
     ],
-    "/[locale]/profile/page": [
+    "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/[locale]/profile/page.js"
+      "static/chunks/app/_not-found/page.js"
     ]
   }
 }

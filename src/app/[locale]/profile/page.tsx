@@ -19,6 +19,7 @@ export default function ProfilePage() {
   const { data: session, status, update } = useSession();
   const router = useRouter();
   const locale = useLocale();
+  const t = useTranslations('profile');
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
   const [isUploading, setIsUploading] = useState(false);
@@ -108,7 +109,7 @@ export default function ProfilePage() {
 
   return (
     <div className="container mx-auto py-10 px-4 sm:px-6 lg:px-8">
-      <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">个人中心</h1>
+      <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">{t('title')}</h1>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         
         {/* Left Column: Profile Card */}
@@ -136,10 +137,10 @@ export default function ProfilePage() {
               <div className="flex-1">
                 <h2 className="text-2xl font-bold">{session.user?.name}</h2>
                 <p className="text-gray-500 dark:text-gray-400">{session.user?.email}</p>
-                {isUploading && <p className="text-sm text-blue-500 mt-2">Uploading...</p>}
+                {isUploading && <p className="text-sm text-blue-500 mt-2">{t('uploading')}</p>}
                 {error && <p className="text-sm text-red-500 mt-2">{error}</p>}
                 {success && <p className="text-sm text-green-500 mt-2">{success}</p>}
-                <Button variant="ghost" onClick={() => signOut({ callbackUrl: '/' })} className="mt-2">Sign Out</Button>
+                <Button variant="ghost" onClick={() => signOut({ callbackUrl: '/' })} className="mt-2">{t('signOut')}</Button>
               </div>
             </CardContent>
           </Card>
@@ -149,12 +150,12 @@ export default function ProfilePage() {
         <div className="lg:col-span-2 space-y-8">
           <Card>
             <CardHeader>
-              <CardTitle>测试历史记录</CardTitle>
-              <CardDescription>这里是您过往的MBTI测试结果。</CardDescription>
+              <CardTitle>{t('historyTitle')}</CardTitle>
+              <CardDescription>{t('historyDescription')}</CardDescription>
             </CardHeader>
             <CardContent>
               {isLoadingHistory ? (
-                <p>加载历史记录中...</p>
+                <p>{t('loadingHistory')}</p>
               ) : history.length > 0 ? (
                 <ul className="space-y-3">
                   {history.map((item) => (
@@ -167,20 +168,20 @@ export default function ProfilePage() {
                   ))}
                 </ul>
               ) : (
-                <p>暂无测试记录。</p>
+                <p>{t('noHistory')}</p>
               )}
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader>
-              <CardTitle>我的私信</CardTitle>
-              <CardDescription>查看并管理您的站内信。</CardDescription>
+              <CardTitle>{t('messagesTitle')}</CardTitle>
+              <CardDescription>{t('messagesDescription')}</CardDescription>
             </CardHeader>
             <CardContent>
-              <p>与其他用户进行交流，分享您的见解。</p>
+              <p>{t('messagesContent')}</p>
               <Button asChild className="mt-4">
-                <a href={`/${locale}/messages`}>进入私信</a>
+                <a href={`/${locale}/messages`}>{t('goToMessages')}</a>
               </Button>
             </CardContent>
           </Card>

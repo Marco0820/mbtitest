@@ -53,6 +53,11 @@ export type ConversationParticipant = $Result.DefaultSelection<Prisma.$Conversat
  * 
  */
 export type Message = $Result.DefaultSelection<Prisma.$MessagePayload>
+/**
+ * Model PersonalityDetails
+ * 
+ */
+export type PersonalityDetails = $Result.DefaultSelection<Prisma.$PersonalityDetailsPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -258,6 +263,16 @@ export class PrismaClient<
     * ```
     */
   get message(): Prisma.MessageDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.personalityDetails`: Exposes CRUD operations for the **PersonalityDetails** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PersonalityDetails
+    * const personalityDetails = await prisma.personalityDetails.findMany()
+    * ```
+    */
+  get personalityDetails(): Prisma.PersonalityDetailsDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -705,7 +720,8 @@ export namespace Prisma {
     ResultHistory: 'ResultHistory',
     Conversation: 'Conversation',
     ConversationParticipant: 'ConversationParticipant',
-    Message: 'Message'
+    Message: 'Message',
+    PersonalityDetails: 'PersonalityDetails'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -724,7 +740,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "account" | "session" | "verificationToken" | "resultHistory" | "conversation" | "conversationParticipant" | "message"
+      modelProps: "user" | "account" | "session" | "verificationToken" | "resultHistory" | "conversation" | "conversationParticipant" | "message" | "personalityDetails"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1320,6 +1336,80 @@ export namespace Prisma {
           }
         }
       }
+      PersonalityDetails: {
+        payload: Prisma.$PersonalityDetailsPayload<ExtArgs>
+        fields: Prisma.PersonalityDetailsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PersonalityDetailsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonalityDetailsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PersonalityDetailsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonalityDetailsPayload>
+          }
+          findFirst: {
+            args: Prisma.PersonalityDetailsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonalityDetailsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PersonalityDetailsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonalityDetailsPayload>
+          }
+          findMany: {
+            args: Prisma.PersonalityDetailsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonalityDetailsPayload>[]
+          }
+          create: {
+            args: Prisma.PersonalityDetailsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonalityDetailsPayload>
+          }
+          createMany: {
+            args: Prisma.PersonalityDetailsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PersonalityDetailsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonalityDetailsPayload>[]
+          }
+          delete: {
+            args: Prisma.PersonalityDetailsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonalityDetailsPayload>
+          }
+          update: {
+            args: Prisma.PersonalityDetailsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonalityDetailsPayload>
+          }
+          deleteMany: {
+            args: Prisma.PersonalityDetailsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PersonalityDetailsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PersonalityDetailsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonalityDetailsPayload>[]
+          }
+          upsert: {
+            args: Prisma.PersonalityDetailsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonalityDetailsPayload>
+          }
+          aggregate: {
+            args: Prisma.PersonalityDetailsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePersonalityDetails>
+          }
+          groupBy: {
+            args: Prisma.PersonalityDetailsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PersonalityDetailsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PersonalityDetailsCountArgs<ExtArgs>
+            result: $Utils.Optional<PersonalityDetailsCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1412,6 +1502,7 @@ export namespace Prisma {
     conversation?: ConversationOmit
     conversationParticipant?: ConversationParticipantOmit
     message?: MessageOmit
+    personalityDetails?: PersonalityDetailsOmit
   }
 
   /* Types for Logging */
@@ -10315,6 +10406,971 @@ export namespace Prisma {
 
 
   /**
+   * Model PersonalityDetails
+   */
+
+  export type AggregatePersonalityDetails = {
+    _count: PersonalityDetailsCountAggregateOutputType | null
+    _min: PersonalityDetailsMinAggregateOutputType | null
+    _max: PersonalityDetailsMaxAggregateOutputType | null
+  }
+
+  export type PersonalityDetailsMinAggregateOutputType = {
+    type: string | null
+    locale: string | null
+  }
+
+  export type PersonalityDetailsMaxAggregateOutputType = {
+    type: string | null
+    locale: string | null
+  }
+
+  export type PersonalityDetailsCountAggregateOutputType = {
+    type: number
+    locale: number
+    details: number
+    _all: number
+  }
+
+
+  export type PersonalityDetailsMinAggregateInputType = {
+    type?: true
+    locale?: true
+  }
+
+  export type PersonalityDetailsMaxAggregateInputType = {
+    type?: true
+    locale?: true
+  }
+
+  export type PersonalityDetailsCountAggregateInputType = {
+    type?: true
+    locale?: true
+    details?: true
+    _all?: true
+  }
+
+  export type PersonalityDetailsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PersonalityDetails to aggregate.
+     */
+    where?: PersonalityDetailsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PersonalityDetails to fetch.
+     */
+    orderBy?: PersonalityDetailsOrderByWithRelationInput | PersonalityDetailsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PersonalityDetailsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PersonalityDetails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PersonalityDetails.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PersonalityDetails
+    **/
+    _count?: true | PersonalityDetailsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PersonalityDetailsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PersonalityDetailsMaxAggregateInputType
+  }
+
+  export type GetPersonalityDetailsAggregateType<T extends PersonalityDetailsAggregateArgs> = {
+        [P in keyof T & keyof AggregatePersonalityDetails]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePersonalityDetails[P]>
+      : GetScalarType<T[P], AggregatePersonalityDetails[P]>
+  }
+
+
+
+
+  export type PersonalityDetailsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PersonalityDetailsWhereInput
+    orderBy?: PersonalityDetailsOrderByWithAggregationInput | PersonalityDetailsOrderByWithAggregationInput[]
+    by: PersonalityDetailsScalarFieldEnum[] | PersonalityDetailsScalarFieldEnum
+    having?: PersonalityDetailsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PersonalityDetailsCountAggregateInputType | true
+    _min?: PersonalityDetailsMinAggregateInputType
+    _max?: PersonalityDetailsMaxAggregateInputType
+  }
+
+  export type PersonalityDetailsGroupByOutputType = {
+    type: string
+    locale: string
+    details: JsonValue
+    _count: PersonalityDetailsCountAggregateOutputType | null
+    _min: PersonalityDetailsMinAggregateOutputType | null
+    _max: PersonalityDetailsMaxAggregateOutputType | null
+  }
+
+  type GetPersonalityDetailsGroupByPayload<T extends PersonalityDetailsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PersonalityDetailsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PersonalityDetailsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PersonalityDetailsGroupByOutputType[P]>
+            : GetScalarType<T[P], PersonalityDetailsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PersonalityDetailsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    type?: boolean
+    locale?: boolean
+    details?: boolean
+  }, ExtArgs["result"]["personalityDetails"]>
+
+  export type PersonalityDetailsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    type?: boolean
+    locale?: boolean
+    details?: boolean
+  }, ExtArgs["result"]["personalityDetails"]>
+
+  export type PersonalityDetailsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    type?: boolean
+    locale?: boolean
+    details?: boolean
+  }, ExtArgs["result"]["personalityDetails"]>
+
+  export type PersonalityDetailsSelectScalar = {
+    type?: boolean
+    locale?: boolean
+    details?: boolean
+  }
+
+  export type PersonalityDetailsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"type" | "locale" | "details", ExtArgs["result"]["personalityDetails"]>
+
+  export type $PersonalityDetailsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PersonalityDetails"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      type: string
+      locale: string
+      details: Prisma.JsonValue
+    }, ExtArgs["result"]["personalityDetails"]>
+    composites: {}
+  }
+
+  type PersonalityDetailsGetPayload<S extends boolean | null | undefined | PersonalityDetailsDefaultArgs> = $Result.GetResult<Prisma.$PersonalityDetailsPayload, S>
+
+  type PersonalityDetailsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PersonalityDetailsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PersonalityDetailsCountAggregateInputType | true
+    }
+
+  export interface PersonalityDetailsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PersonalityDetails'], meta: { name: 'PersonalityDetails' } }
+    /**
+     * Find zero or one PersonalityDetails that matches the filter.
+     * @param {PersonalityDetailsFindUniqueArgs} args - Arguments to find a PersonalityDetails
+     * @example
+     * // Get one PersonalityDetails
+     * const personalityDetails = await prisma.personalityDetails.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PersonalityDetailsFindUniqueArgs>(args: SelectSubset<T, PersonalityDetailsFindUniqueArgs<ExtArgs>>): Prisma__PersonalityDetailsClient<$Result.GetResult<Prisma.$PersonalityDetailsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PersonalityDetails that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PersonalityDetailsFindUniqueOrThrowArgs} args - Arguments to find a PersonalityDetails
+     * @example
+     * // Get one PersonalityDetails
+     * const personalityDetails = await prisma.personalityDetails.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PersonalityDetailsFindUniqueOrThrowArgs>(args: SelectSubset<T, PersonalityDetailsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PersonalityDetailsClient<$Result.GetResult<Prisma.$PersonalityDetailsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PersonalityDetails that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PersonalityDetailsFindFirstArgs} args - Arguments to find a PersonalityDetails
+     * @example
+     * // Get one PersonalityDetails
+     * const personalityDetails = await prisma.personalityDetails.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PersonalityDetailsFindFirstArgs>(args?: SelectSubset<T, PersonalityDetailsFindFirstArgs<ExtArgs>>): Prisma__PersonalityDetailsClient<$Result.GetResult<Prisma.$PersonalityDetailsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PersonalityDetails that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PersonalityDetailsFindFirstOrThrowArgs} args - Arguments to find a PersonalityDetails
+     * @example
+     * // Get one PersonalityDetails
+     * const personalityDetails = await prisma.personalityDetails.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PersonalityDetailsFindFirstOrThrowArgs>(args?: SelectSubset<T, PersonalityDetailsFindFirstOrThrowArgs<ExtArgs>>): Prisma__PersonalityDetailsClient<$Result.GetResult<Prisma.$PersonalityDetailsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PersonalityDetails that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PersonalityDetailsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PersonalityDetails
+     * const personalityDetails = await prisma.personalityDetails.findMany()
+     * 
+     * // Get first 10 PersonalityDetails
+     * const personalityDetails = await prisma.personalityDetails.findMany({ take: 10 })
+     * 
+     * // Only select the `type`
+     * const personalityDetailsWithTypeOnly = await prisma.personalityDetails.findMany({ select: { type: true } })
+     * 
+     */
+    findMany<T extends PersonalityDetailsFindManyArgs>(args?: SelectSubset<T, PersonalityDetailsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PersonalityDetailsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PersonalityDetails.
+     * @param {PersonalityDetailsCreateArgs} args - Arguments to create a PersonalityDetails.
+     * @example
+     * // Create one PersonalityDetails
+     * const PersonalityDetails = await prisma.personalityDetails.create({
+     *   data: {
+     *     // ... data to create a PersonalityDetails
+     *   }
+     * })
+     * 
+     */
+    create<T extends PersonalityDetailsCreateArgs>(args: SelectSubset<T, PersonalityDetailsCreateArgs<ExtArgs>>): Prisma__PersonalityDetailsClient<$Result.GetResult<Prisma.$PersonalityDetailsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PersonalityDetails.
+     * @param {PersonalityDetailsCreateManyArgs} args - Arguments to create many PersonalityDetails.
+     * @example
+     * // Create many PersonalityDetails
+     * const personalityDetails = await prisma.personalityDetails.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PersonalityDetailsCreateManyArgs>(args?: SelectSubset<T, PersonalityDetailsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many PersonalityDetails and returns the data saved in the database.
+     * @param {PersonalityDetailsCreateManyAndReturnArgs} args - Arguments to create many PersonalityDetails.
+     * @example
+     * // Create many PersonalityDetails
+     * const personalityDetails = await prisma.personalityDetails.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many PersonalityDetails and only return the `type`
+     * const personalityDetailsWithTypeOnly = await prisma.personalityDetails.createManyAndReturn({
+     *   select: { type: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PersonalityDetailsCreateManyAndReturnArgs>(args?: SelectSubset<T, PersonalityDetailsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PersonalityDetailsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a PersonalityDetails.
+     * @param {PersonalityDetailsDeleteArgs} args - Arguments to delete one PersonalityDetails.
+     * @example
+     * // Delete one PersonalityDetails
+     * const PersonalityDetails = await prisma.personalityDetails.delete({
+     *   where: {
+     *     // ... filter to delete one PersonalityDetails
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PersonalityDetailsDeleteArgs>(args: SelectSubset<T, PersonalityDetailsDeleteArgs<ExtArgs>>): Prisma__PersonalityDetailsClient<$Result.GetResult<Prisma.$PersonalityDetailsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PersonalityDetails.
+     * @param {PersonalityDetailsUpdateArgs} args - Arguments to update one PersonalityDetails.
+     * @example
+     * // Update one PersonalityDetails
+     * const personalityDetails = await prisma.personalityDetails.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PersonalityDetailsUpdateArgs>(args: SelectSubset<T, PersonalityDetailsUpdateArgs<ExtArgs>>): Prisma__PersonalityDetailsClient<$Result.GetResult<Prisma.$PersonalityDetailsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PersonalityDetails.
+     * @param {PersonalityDetailsDeleteManyArgs} args - Arguments to filter PersonalityDetails to delete.
+     * @example
+     * // Delete a few PersonalityDetails
+     * const { count } = await prisma.personalityDetails.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PersonalityDetailsDeleteManyArgs>(args?: SelectSubset<T, PersonalityDetailsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PersonalityDetails.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PersonalityDetailsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PersonalityDetails
+     * const personalityDetails = await prisma.personalityDetails.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PersonalityDetailsUpdateManyArgs>(args: SelectSubset<T, PersonalityDetailsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PersonalityDetails and returns the data updated in the database.
+     * @param {PersonalityDetailsUpdateManyAndReturnArgs} args - Arguments to update many PersonalityDetails.
+     * @example
+     * // Update many PersonalityDetails
+     * const personalityDetails = await prisma.personalityDetails.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more PersonalityDetails and only return the `type`
+     * const personalityDetailsWithTypeOnly = await prisma.personalityDetails.updateManyAndReturn({
+     *   select: { type: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PersonalityDetailsUpdateManyAndReturnArgs>(args: SelectSubset<T, PersonalityDetailsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PersonalityDetailsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one PersonalityDetails.
+     * @param {PersonalityDetailsUpsertArgs} args - Arguments to update or create a PersonalityDetails.
+     * @example
+     * // Update or create a PersonalityDetails
+     * const personalityDetails = await prisma.personalityDetails.upsert({
+     *   create: {
+     *     // ... data to create a PersonalityDetails
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PersonalityDetails we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PersonalityDetailsUpsertArgs>(args: SelectSubset<T, PersonalityDetailsUpsertArgs<ExtArgs>>): Prisma__PersonalityDetailsClient<$Result.GetResult<Prisma.$PersonalityDetailsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PersonalityDetails.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PersonalityDetailsCountArgs} args - Arguments to filter PersonalityDetails to count.
+     * @example
+     * // Count the number of PersonalityDetails
+     * const count = await prisma.personalityDetails.count({
+     *   where: {
+     *     // ... the filter for the PersonalityDetails we want to count
+     *   }
+     * })
+    **/
+    count<T extends PersonalityDetailsCountArgs>(
+      args?: Subset<T, PersonalityDetailsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PersonalityDetailsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PersonalityDetails.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PersonalityDetailsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PersonalityDetailsAggregateArgs>(args: Subset<T, PersonalityDetailsAggregateArgs>): Prisma.PrismaPromise<GetPersonalityDetailsAggregateType<T>>
+
+    /**
+     * Group by PersonalityDetails.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PersonalityDetailsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PersonalityDetailsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PersonalityDetailsGroupByArgs['orderBy'] }
+        : { orderBy?: PersonalityDetailsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PersonalityDetailsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPersonalityDetailsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PersonalityDetails model
+   */
+  readonly fields: PersonalityDetailsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PersonalityDetails.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PersonalityDetailsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PersonalityDetails model
+   */
+  interface PersonalityDetailsFieldRefs {
+    readonly type: FieldRef<"PersonalityDetails", 'String'>
+    readonly locale: FieldRef<"PersonalityDetails", 'String'>
+    readonly details: FieldRef<"PersonalityDetails", 'Json'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PersonalityDetails findUnique
+   */
+  export type PersonalityDetailsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PersonalityDetails
+     */
+    select?: PersonalityDetailsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PersonalityDetails
+     */
+    omit?: PersonalityDetailsOmit<ExtArgs> | null
+    /**
+     * Filter, which PersonalityDetails to fetch.
+     */
+    where: PersonalityDetailsWhereUniqueInput
+  }
+
+  /**
+   * PersonalityDetails findUniqueOrThrow
+   */
+  export type PersonalityDetailsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PersonalityDetails
+     */
+    select?: PersonalityDetailsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PersonalityDetails
+     */
+    omit?: PersonalityDetailsOmit<ExtArgs> | null
+    /**
+     * Filter, which PersonalityDetails to fetch.
+     */
+    where: PersonalityDetailsWhereUniqueInput
+  }
+
+  /**
+   * PersonalityDetails findFirst
+   */
+  export type PersonalityDetailsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PersonalityDetails
+     */
+    select?: PersonalityDetailsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PersonalityDetails
+     */
+    omit?: PersonalityDetailsOmit<ExtArgs> | null
+    /**
+     * Filter, which PersonalityDetails to fetch.
+     */
+    where?: PersonalityDetailsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PersonalityDetails to fetch.
+     */
+    orderBy?: PersonalityDetailsOrderByWithRelationInput | PersonalityDetailsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PersonalityDetails.
+     */
+    cursor?: PersonalityDetailsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PersonalityDetails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PersonalityDetails.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PersonalityDetails.
+     */
+    distinct?: PersonalityDetailsScalarFieldEnum | PersonalityDetailsScalarFieldEnum[]
+  }
+
+  /**
+   * PersonalityDetails findFirstOrThrow
+   */
+  export type PersonalityDetailsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PersonalityDetails
+     */
+    select?: PersonalityDetailsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PersonalityDetails
+     */
+    omit?: PersonalityDetailsOmit<ExtArgs> | null
+    /**
+     * Filter, which PersonalityDetails to fetch.
+     */
+    where?: PersonalityDetailsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PersonalityDetails to fetch.
+     */
+    orderBy?: PersonalityDetailsOrderByWithRelationInput | PersonalityDetailsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PersonalityDetails.
+     */
+    cursor?: PersonalityDetailsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PersonalityDetails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PersonalityDetails.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PersonalityDetails.
+     */
+    distinct?: PersonalityDetailsScalarFieldEnum | PersonalityDetailsScalarFieldEnum[]
+  }
+
+  /**
+   * PersonalityDetails findMany
+   */
+  export type PersonalityDetailsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PersonalityDetails
+     */
+    select?: PersonalityDetailsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PersonalityDetails
+     */
+    omit?: PersonalityDetailsOmit<ExtArgs> | null
+    /**
+     * Filter, which PersonalityDetails to fetch.
+     */
+    where?: PersonalityDetailsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PersonalityDetails to fetch.
+     */
+    orderBy?: PersonalityDetailsOrderByWithRelationInput | PersonalityDetailsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PersonalityDetails.
+     */
+    cursor?: PersonalityDetailsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PersonalityDetails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PersonalityDetails.
+     */
+    skip?: number
+    distinct?: PersonalityDetailsScalarFieldEnum | PersonalityDetailsScalarFieldEnum[]
+  }
+
+  /**
+   * PersonalityDetails create
+   */
+  export type PersonalityDetailsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PersonalityDetails
+     */
+    select?: PersonalityDetailsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PersonalityDetails
+     */
+    omit?: PersonalityDetailsOmit<ExtArgs> | null
+    /**
+     * The data needed to create a PersonalityDetails.
+     */
+    data: XOR<PersonalityDetailsCreateInput, PersonalityDetailsUncheckedCreateInput>
+  }
+
+  /**
+   * PersonalityDetails createMany
+   */
+  export type PersonalityDetailsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PersonalityDetails.
+     */
+    data: PersonalityDetailsCreateManyInput | PersonalityDetailsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PersonalityDetails createManyAndReturn
+   */
+  export type PersonalityDetailsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PersonalityDetails
+     */
+    select?: PersonalityDetailsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PersonalityDetails
+     */
+    omit?: PersonalityDetailsOmit<ExtArgs> | null
+    /**
+     * The data used to create many PersonalityDetails.
+     */
+    data: PersonalityDetailsCreateManyInput | PersonalityDetailsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PersonalityDetails update
+   */
+  export type PersonalityDetailsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PersonalityDetails
+     */
+    select?: PersonalityDetailsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PersonalityDetails
+     */
+    omit?: PersonalityDetailsOmit<ExtArgs> | null
+    /**
+     * The data needed to update a PersonalityDetails.
+     */
+    data: XOR<PersonalityDetailsUpdateInput, PersonalityDetailsUncheckedUpdateInput>
+    /**
+     * Choose, which PersonalityDetails to update.
+     */
+    where: PersonalityDetailsWhereUniqueInput
+  }
+
+  /**
+   * PersonalityDetails updateMany
+   */
+  export type PersonalityDetailsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PersonalityDetails.
+     */
+    data: XOR<PersonalityDetailsUpdateManyMutationInput, PersonalityDetailsUncheckedUpdateManyInput>
+    /**
+     * Filter which PersonalityDetails to update
+     */
+    where?: PersonalityDetailsWhereInput
+    /**
+     * Limit how many PersonalityDetails to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PersonalityDetails updateManyAndReturn
+   */
+  export type PersonalityDetailsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PersonalityDetails
+     */
+    select?: PersonalityDetailsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PersonalityDetails
+     */
+    omit?: PersonalityDetailsOmit<ExtArgs> | null
+    /**
+     * The data used to update PersonalityDetails.
+     */
+    data: XOR<PersonalityDetailsUpdateManyMutationInput, PersonalityDetailsUncheckedUpdateManyInput>
+    /**
+     * Filter which PersonalityDetails to update
+     */
+    where?: PersonalityDetailsWhereInput
+    /**
+     * Limit how many PersonalityDetails to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PersonalityDetails upsert
+   */
+  export type PersonalityDetailsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PersonalityDetails
+     */
+    select?: PersonalityDetailsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PersonalityDetails
+     */
+    omit?: PersonalityDetailsOmit<ExtArgs> | null
+    /**
+     * The filter to search for the PersonalityDetails to update in case it exists.
+     */
+    where: PersonalityDetailsWhereUniqueInput
+    /**
+     * In case the PersonalityDetails found by the `where` argument doesn't exist, create a new PersonalityDetails with this data.
+     */
+    create: XOR<PersonalityDetailsCreateInput, PersonalityDetailsUncheckedCreateInput>
+    /**
+     * In case the PersonalityDetails was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PersonalityDetailsUpdateInput, PersonalityDetailsUncheckedUpdateInput>
+  }
+
+  /**
+   * PersonalityDetails delete
+   */
+  export type PersonalityDetailsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PersonalityDetails
+     */
+    select?: PersonalityDetailsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PersonalityDetails
+     */
+    omit?: PersonalityDetailsOmit<ExtArgs> | null
+    /**
+     * Filter which PersonalityDetails to delete.
+     */
+    where: PersonalityDetailsWhereUniqueInput
+  }
+
+  /**
+   * PersonalityDetails deleteMany
+   */
+  export type PersonalityDetailsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PersonalityDetails to delete
+     */
+    where?: PersonalityDetailsWhereInput
+    /**
+     * Limit how many PersonalityDetails to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PersonalityDetails without action
+   */
+  export type PersonalityDetailsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PersonalityDetails
+     */
+    select?: PersonalityDetailsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PersonalityDetails
+     */
+    omit?: PersonalityDetailsOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -10421,6 +11477,15 @@ export namespace Prisma {
   };
 
   export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
+
+
+  export const PersonalityDetailsScalarFieldEnum: {
+    type: 'type',
+    locale: 'locale',
+    details: 'details'
+  };
+
+  export type PersonalityDetailsScalarFieldEnum = (typeof PersonalityDetailsScalarFieldEnum)[keyof typeof PersonalityDetailsScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -11039,6 +12104,49 @@ export namespace Prisma {
     conversationId?: StringWithAggregatesFilter<"Message"> | string
   }
 
+  export type PersonalityDetailsWhereInput = {
+    AND?: PersonalityDetailsWhereInput | PersonalityDetailsWhereInput[]
+    OR?: PersonalityDetailsWhereInput[]
+    NOT?: PersonalityDetailsWhereInput | PersonalityDetailsWhereInput[]
+    type?: StringFilter<"PersonalityDetails"> | string
+    locale?: StringFilter<"PersonalityDetails"> | string
+    details?: JsonFilter<"PersonalityDetails">
+  }
+
+  export type PersonalityDetailsOrderByWithRelationInput = {
+    type?: SortOrder
+    locale?: SortOrder
+    details?: SortOrder
+  }
+
+  export type PersonalityDetailsWhereUniqueInput = Prisma.AtLeast<{
+    type_locale?: PersonalityDetailsTypeLocaleCompoundUniqueInput
+    AND?: PersonalityDetailsWhereInput | PersonalityDetailsWhereInput[]
+    OR?: PersonalityDetailsWhereInput[]
+    NOT?: PersonalityDetailsWhereInput | PersonalityDetailsWhereInput[]
+    type?: StringFilter<"PersonalityDetails"> | string
+    locale?: StringFilter<"PersonalityDetails"> | string
+    details?: JsonFilter<"PersonalityDetails">
+  }, "type_locale">
+
+  export type PersonalityDetailsOrderByWithAggregationInput = {
+    type?: SortOrder
+    locale?: SortOrder
+    details?: SortOrder
+    _count?: PersonalityDetailsCountOrderByAggregateInput
+    _max?: PersonalityDetailsMaxOrderByAggregateInput
+    _min?: PersonalityDetailsMinOrderByAggregateInput
+  }
+
+  export type PersonalityDetailsScalarWhereWithAggregatesInput = {
+    AND?: PersonalityDetailsScalarWhereWithAggregatesInput | PersonalityDetailsScalarWhereWithAggregatesInput[]
+    OR?: PersonalityDetailsScalarWhereWithAggregatesInput[]
+    NOT?: PersonalityDetailsScalarWhereWithAggregatesInput | PersonalityDetailsScalarWhereWithAggregatesInput[]
+    type?: StringWithAggregatesFilter<"PersonalityDetails"> | string
+    locale?: StringWithAggregatesFilter<"PersonalityDetails"> | string
+    details?: JsonWithAggregatesFilter<"PersonalityDetails">
+  }
+
   export type UserCreateInput = {
     id?: string
     name?: string | null
@@ -11557,6 +12665,48 @@ export namespace Prisma {
     conversationId?: StringFieldUpdateOperationsInput | string
   }
 
+  export type PersonalityDetailsCreateInput = {
+    type: string
+    locale: string
+    details: JsonNullValueInput | InputJsonValue
+  }
+
+  export type PersonalityDetailsUncheckedCreateInput = {
+    type: string
+    locale: string
+    details: JsonNullValueInput | InputJsonValue
+  }
+
+  export type PersonalityDetailsUpdateInput = {
+    type?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    details?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type PersonalityDetailsUncheckedUpdateInput = {
+    type?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    details?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type PersonalityDetailsCreateManyInput = {
+    type: string
+    locale: string
+    details: JsonNullValueInput | InputJsonValue
+  }
+
+  export type PersonalityDetailsUpdateManyMutationInput = {
+    type?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    details?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type PersonalityDetailsUncheckedUpdateManyInput = {
+    type?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    details?: JsonNullValueInput | InputJsonValue
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -12046,6 +13196,27 @@ export namespace Prisma {
     content?: SortOrder
     senderId?: SortOrder
     conversationId?: SortOrder
+  }
+
+  export type PersonalityDetailsTypeLocaleCompoundUniqueInput = {
+    type: string
+    locale: string
+  }
+
+  export type PersonalityDetailsCountOrderByAggregateInput = {
+    type?: SortOrder
+    locale?: SortOrder
+    details?: SortOrder
+  }
+
+  export type PersonalityDetailsMaxOrderByAggregateInput = {
+    type?: SortOrder
+    locale?: SortOrder
+  }
+
+  export type PersonalityDetailsMinOrderByAggregateInput = {
+    type?: SortOrder
+    locale?: SortOrder
   }
 
   export type AccountCreateNestedManyWithoutUserInput = {
