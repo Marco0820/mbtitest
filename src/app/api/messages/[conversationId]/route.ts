@@ -1,9 +1,10 @@
 import { NextResponse } from 'next/server';
-import { prisma } from '@/lib/db';
-import { getServerSession } from 'next-auth/next';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "../../auth/[...nextauth]/route";
+import { users } from '@/lib/dummyUsers';
+import { store } from '@/lib/mockStore';
 
-// GET /api/messages/[conversationId] - Fetches messages for a specific conversation
+// GET /api/messages/[conversationId] - Fetches all messages for a specific conversation
 export async function GET(
   request: Request,
   { params }: { params: { conversationId: string } }
@@ -12,48 +13,30 @@ export async function GET(
   if (!session?.user?.id) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
-  const userId = session.user.id;
-  const conversationId = params.conversationId;
+  const userId = parseInt(session.user.id, 10);
+  const conversationId = parseInt(params.conversationId, 10);
 
-  try {
-    // First, verify the user is part of the conversation
-    const conversation = await prisma.conversation.findFirst({
-      where: {
-        id: conversationId,
-        participants: {
-          some: {
-            userId: userId,
-          },
-        },
-      },
-    });
+  const conversation = store.conversations.find(c => c.id === conversationId);
 
-    if (!conversation) {
-      return NextResponse.json({ error: 'Conversation not found or access denied' }, { status: 404 });
-    }
-
-    // If verification passes, fetch the messages
-    const messages = await prisma.message.findMany({
-      where: {
-        conversationId: conversationId,
-      },
-      include: {
-        sender: {
-          select: {
-            id: true,
-            name: true,
-            image: true,
-          },
-        },
-      },
-      orderBy: {
-        createdAt: 'asc',
-      },
-    });
-
-    return NextResponse.json(messages);
-  } catch (error) {
-    console.error(`Failed to fetch messages for conversation ${conversationId}:`, error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+  // Security check: ensure the logged-in user is part of this conversation
+  if (!conversation || !conversation.participants.includes(userId)) {
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
   }
+
+  const conversationMessages = store.messages
+    .filter(m => m.conversationId === conversationId)
+    .map(message => {
+      const sender = users.find(u => u.id === message.senderId);
+      return {
+        ...message,
+        sender: {
+          id: sender?.id,
+          name: sender?.name,
+          image: sender?.avatar
+        }
+      };
+    })
+    .sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
+
+  return NextResponse.json(conversationMessages);
 } 

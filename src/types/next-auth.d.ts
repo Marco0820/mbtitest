@@ -10,11 +10,19 @@ declare module 'next-auth' {
     user: {
       id: string;
       mbti?: string | null;
+      gender?: string | null;
+      country?: string | null;
+      state?: string | null;
+      city?: string | null;
     } & DefaultSession['user'];
   }
 
   interface User {
     mbti?: string | null;
+    gender?: string | null;
+    country?: string | null;
+    state?: string | null;
+    city?: string | null;
   }
 }
 
@@ -24,5 +32,9 @@ declare module 'next-auth/jwt' {
     id: string;
     mbti?: string | null;
     picture?: string | null;
+    gender?: string | null;
+    country?: string | null;
+    state?: string | null;
+    city?: string | null;
   }
 } 

@@ -1,9 +1,9 @@
 {
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
-  "/[locale]/personalities/[type]/page": "app/[locale]/personalities/[type]/page.js",
-  "/[locale]/people/page": "app/[locale]/people/page.js",
+  "/api/user/history/route": "app/api/user/history/route.js",
+  "/api/ip-lookup/route": "app/api/ip-lookup/route.js",
+  "/api/user/profile/route": "app/api/user/profile/route.js",
+  "/[locale]/page": "app/[locale]/page.js",
   "/[locale]/profile/page": "app/[locale]/profile/page.js",
-  "/[locale]/messages/page": "app/[locale]/messages/page.js",
-  "/[locale]/about/page": "app/[locale]/about/page.js",
-  "/[locale]/test/page": "app/[locale]/test/page.js"
+  "/[locale]/personalities/[type]/page": "app/[locale]/personalities/[type]/page.js"
 }

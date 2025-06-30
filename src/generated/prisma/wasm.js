@@ -132,7 +132,11 @@ exports.Prisma.UserScalarFieldEnum = {
   gender: 'gender',
   country: 'country',
   state: 'state',
-  city: 'city'
+  city: 'city',
+  passwordResetToken: 'passwordResetToken',
+  passwordResetExpires: 'passwordResetExpires',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.AccountScalarFieldEnum = {
@@ -197,6 +201,17 @@ exports.Prisma.PersonalityDetailsScalarFieldEnum = {
   details: 'details'
 };
 
+exports.Prisma.BlogScalarFieldEnum = {
+  id: 'id',
+  trendingKeyword: 'trendingKeyword',
+  title: 'title',
+  content: 'content',
+  sourceUrl: 'sourceUrl',
+  imageUrl: 'imageUrl',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -232,7 +247,8 @@ exports.Prisma.ModelName = {
   Conversation: 'Conversation',
   ConversationParticipant: 'ConversationParticipant',
   Message: 'Message',
-  PersonalityDetails: 'PersonalityDetails'
+  PersonalityDetails: 'PersonalityDetails',
+  Blog: 'Blog'
 };
 
 /**

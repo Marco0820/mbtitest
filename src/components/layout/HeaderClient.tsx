@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
 import { Menu, X, ChevronDown, User, LogOut } from 'lucide-react';
 import { LanguageSwitcher } from './LanguageSwitcher';
@@ -111,6 +112,7 @@ export function HeaderClient() {
   const user = session?.user;
   const t = useTranslations('nav');
   const locale = useLocale();
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isPersonalityOpen, setIsPersonalityOpen] = useState(false);
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -135,6 +137,20 @@ export function HeaderClient() {
     setIsPersonalityOpen(false);
   };
 
+  const navLinkClasses = (path: string) => {
+    const isActive = pathname ? (path === `/${locale}` ? pathname === path : pathname.startsWith(path)) : false;
+    return `px-4 py-2 text-sm font-medium hover:bg-blue-600 hover:text-white rounded-full dark:hover:bg-blue-700 transition-colors ${
+      isActive ? 'bg-blue-600 text-white' : 'text-gray-700 dark:text-gray-300'
+    }`;
+  };
+
+  const buttonClasses = (path: string) => {
+    const isActive = pathname ? pathname.startsWith(path) : false;
+    return `flex items-center px-4 py-2 text-sm font-medium hover:bg-blue-600 hover:text-white rounded-full dark:hover:bg-blue-700 transition-colors ${
+      isActive ? 'bg-blue-600 text-white' : 'text-gray-700 dark:text-gray-300'
+    }`;
+  }
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 dark:bg-gray-900/80">
       <div className="container flex h-16 items-center justify-between px-8">
@@ -144,12 +160,12 @@ export function HeaderClient() {
         
         <div className="flex-1 flex items-center justify-center">
           <nav className="hidden md:flex items-center space-x-1 p-1">
-            <Link href={`/${locale}`} className="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-blue-600 hover:text-white rounded-full dark:text-gray-300 dark:hover:bg-blue-700 transition-colors">{t('home')}</Link>
+            <Link href={`/${locale}`} className={navLinkClasses(`/${locale}`)}>{t('home')}</Link>
             
             <div className="relative" onMouseLeave={handleDropdownLeave}>
               <button
                 onMouseEnter={handleDropdownEnter}
-                className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 hover:bg-blue-600 hover:text-white rounded-full dark:text-gray-300 dark:hover:bg-blue-700 transition-colors"
+                className={buttonClasses(`/${locale}/personalities`)}
               >
                 <span>{t('personalities')}</span>
                 <ChevronDown className="w-4 h-4 ml-1" />
@@ -157,10 +173,10 @@ export function HeaderClient() {
               <PersonalityDropdown isOpen={isPersonalityOpen} onMouseEnter={handleDropdownEnter} onClose={handleCloseDropdown} />
             </div>
 
-            <Link href={`/${locale}/people`} className="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-blue-600 hover:text-white rounded-full dark:text-gray-300 dark:hover:bg-blue-700 transition-colors">{t('people')}</Link>
-            <Link href={`/${locale}/test`} className="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-blue-600 hover:text-white rounded-full dark:text-gray-300 dark:hover:bg-blue-700 transition-colors">{t('test')}</Link>
-            <Link href={`/${locale}/blog`} className="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-blue-600 hover:text-white rounded-full dark:text-gray-300 dark:hover:bg-blue-700 transition-colors">{t('blog')}</Link>
-            <Link href={`/${locale}/about`} className="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-blue-600 hover:text-white rounded-full dark:text-gray-300 dark:hover:bg-blue-700 transition-colors">{t('about')}</Link>
+            <Link href={`/${locale}/people`} className={navLinkClasses(`/${locale}/people`)}>{t('people')}</Link>
+            <Link href={`/${locale}/test`} className={navLinkClasses(`/${locale}/test`)}>{t('test')}</Link>
+            <Link href={`/${locale}/blog`} className={navLinkClasses(`/${locale}/blog`)}>{t('blog')}</Link>
+            <Link href={`/${locale}/about`} className={navLinkClasses(`/${locale}/about`)}>{t('about')}</Link>
           </nav>
         </div>
 

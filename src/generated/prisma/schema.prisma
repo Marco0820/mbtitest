@@ -15,23 +15,27 @@ datasource db {
 }
 
 model User {
-  id            String                    @id @default(cuid())
-  name          String?
-  email         String?                   @unique
-  emailVerified DateTime?
-  image         String?
-  password      String?
-  mbti          String?
-  bio           String?
-  gender        String?
-  country       String?
-  state         String?
-  city          String?
-  accounts      Account[]
-  sessions      Session[]
-  history       ResultHistory[]
-  conversations ConversationParticipant[]
-  sentMessages  Message[]
+  id                   String                    @id @default(cuid())
+  name                 String?
+  email                String?                   @unique
+  emailVerified        DateTime?
+  image                String?
+  password             String?
+  mbti                 String?
+  bio                  String?
+  gender               String?
+  country              String?
+  state                String?
+  city                 String?
+  passwordResetToken   String?                   @unique
+  passwordResetExpires DateTime?
+  accounts             Account[]
+  sessions             Session[]
+  history              ResultHistory[]
+  conversations        ConversationParticipant[]
+  sentMessages         Message[]
+  createdAt            DateTime                  @default(now())
+  updatedAt            DateTime                  @updatedAt
 }
 
 model Account {

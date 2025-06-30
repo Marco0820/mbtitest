@@ -1,118 +1,91 @@
 import { NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth/next';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
-import { prisma } from '@/lib/db';
-import * as z from 'zod';
+import { getServerSession } from "next-auth/next"
+import { authOptions } from "../auth/[...nextauth]/route"
+import { users } from '@/lib/dummyUsers';
+import { store } from '@/lib/mockStore';
 
-const sendMessageSchema = z.object({
-  receiverId: z.string(),
-  content: z.string().min(1, 'Message content cannot be empty.'),
-});
+// GET /api/messages - Fetches all conversations for the logged-in user
+export async function GET(request: Request) {
+    const session = await getServerSession(authOptions);
+    if (!session?.user?.id) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+    const userId = parseInt(session.user.id, 10);
 
-export async function POST(req: Request) {
-  const session = await getServerSession(authOptions);
+    const userConversations = store.conversations.filter(c => c.participants.includes(userId));
 
-  if (!session?.user?.id) {
-    return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
-  }
+    const response = userConversations.map(convo => {
+        const otherUserId = convo.participants.find((p: number) => p !== userId);
+        const otherUser = users.find(u => u.id === otherUserId);
+        const lastMessage = store.messages
+            .filter(m => m.conversationId === convo.id)
+            .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())[0];
 
-  try {
-    const body = await req.json();
-    const { receiverId, content } = sendMessageSchema.parse(body);
-
-    const sender = await prisma.user.findUnique({
-        where: { id: session.user.id },
-        select: { country: true }
-    });
+        return {
+            id: convo.id,
+            lastMessage: lastMessage ? lastMessage.content : "No messages yet.",
+            lastMessageTimestamp: lastMessage ? lastMessage.createdAt : convo.createdAt,
+            otherUser: {
+                id: otherUser?.id,
+                name: otherUser?.name,
+                avatar: otherUser?.avatar,
+                mbti: otherUser?.mbti,
+            }
+        };
+    }).sort((a,b) => new Date(b.lastMessageTimestamp).getTime() - new Date(a.lastMessageTimestamp).getTime());
     
-    const receiver = await prisma.user.findUnique({
-        where: { id: receiverId },
-        select: { country: true }
-    });
-
-    if (!receiver) {
-      return NextResponse.json({ message: 'Receiver not found' }, { status: 404 });
-    }
-
-    const message = await prisma.userMessage.create({
-      data: {
-        senderId: session.user.id,
-        receiverId,
-        content,
-        senderCountry: sender?.country,
-        receiverCountry: receiver.country,
-      },
-    });
-
-    return NextResponse.json(message, { status: 201 });
-  } catch (error) {
-    if (error instanceof z.ZodError) {
-      return NextResponse.json({ message: error.message }, { status: 400 });
-    }
-    return NextResponse.json({ message: 'Something went wrong' }, { status: 500 });
-  }
+    return NextResponse.json(response);
 }
 
-export async function GET(req: Request) {
+// POST /api/messages - Creates a new message and potentially a new conversation
+export async function POST(request: Request) {
     const session = await getServerSession(authOptions);
-  
     if (!session?.user?.id) {
-      return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
-  
-    try {
-      const userId = session.user.id;
-  
-      const conversations = await prisma.conversation.findMany({
-        where: {
-          participants: {
-            some: {
-              userId: userId,
-            },
-          },
-        },
-        include: {
-          participants: {
-            include: {
-              user: {
-                select: {
-                  id: true,
-                  name: true,
-                  image: true,
-                },
-              },
-            },
-          },
-          messages: {
-            orderBy: {
-              createdAt: 'desc',
-            },
-            take: 1,
-          },
-        },
-        orderBy: {
-          updatedAt: 'desc',
-        }
-      });
-  
-      const formattedConversations = conversations.map((convo) => {
-        const otherParticipant = convo.participants.find(
-          (p) => p.userId !== userId
-        );
-        return {
-          id: convo.id,
-          name: otherParticipant?.user.name || 'Unknown User',
-          image: otherParticipant?.user.image || '',
-          lastMessage: convo.messages[0]?.content || 'No messages yet.',
-          lastMessageTimestamp: convo.messages[0]?.createdAt || convo.updatedAt,
-          otherUserId: otherParticipant?.user.id,
+    const senderId = parseInt(session.user.id, 10);
+
+    const { receiverId, content } = await request.json();
+
+    if (!receiverId || !content) {
+        return NextResponse.json({ error: 'Receiver ID and content are required' }, { status: 400 });
+    }
+
+    const participants = [senderId, parseInt(receiverId, 10)].sort();
+
+    let conversation = store.conversations.find(c => 
+        c.participants.length === participants.length && 
+        c.participants.every((p: number) => participants.includes(p))
+    );
+
+    if (!conversation) {
+        conversation = { 
+            id: store.nextConversationId++, 
+            participants, 
+            createdAt: new Date().toISOString() 
         };
-      });
-  
-      return NextResponse.json(formattedConversations);
-  
-    } catch (error) {
-      console.error('Failed to fetch conversations:', error);
-      return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
+        store.conversations.push(conversation);
     }
+
+    const sender = users.find(u => u.id === senderId);
+    const newMessage = {
+        id: store.nextMessageId++,
+        conversationId: conversation.id,
+        senderId: senderId,
+        content,
+        createdAt: new Date().toISOString(),
+    };
+    store.messages.push(newMessage);
+
+    return NextResponse.json({
+      message: {
+        ...newMessage,
+        sender: {
+          id: sender?.id,
+          name: sender?.name,
+          image: sender?.avatar,
+        }
+      },
+      conversationId: conversation.id
+    });
 } 

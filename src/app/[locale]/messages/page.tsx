@@ -1,20 +1,34 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Send, UserPlus } from 'lucide-react';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
+import { ChatWindow } from '@/components/chat/ChatWindow';
 
+interface BaseUser {
+  id: string;
+  name: string | null;
+  image: string | null;
+  mbti: string | null;
+  bio?: string | null;
+  country?: string | null;
+  state?: string | null;
+  city?: string | null;
+  gender?: string | null;
+}
+
+// Type for the object returned by /api/messages
 interface Conversation {
-  id: string; // conversationId
-  name: string;
-  image: string;
-  lastMessage: string;
-  lastMessageTimestamp: string;
-  otherUserId: string;
+    id: string;
+    lastMessage: string | null;
+    lastMessageTimestamp: string | null;
+    otherUser: BaseUser;
+}
+
+// Flattened type for the selected user state
+interface ConversationView extends BaseUser {
+  conversationId: string | null;
 }
 
 interface Message {
@@ -34,14 +48,17 @@ export default function MessagesPage() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+
+  // State
   const [conversations, setConversations] = useState<Conversation[]>([]);
-  const [selectedConversation, setSelectedConversation] = useState<Conversation | null>(null);
+  const [selectedUser, setSelectedUser] = useState<ConversationView | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
-  const [newMessage, setNewMessage] = useState('');
+  
+  // Loading states
   const [isLoadingConversations, setIsLoadingConversations] = useState(true);
   const [isLoadingMessages, setIsLoadingMessages] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  // Effect to fetch initial conversations
   useEffect(() => {
     const fetchConversations = async () => {
       setIsLoadingConversations(true);
@@ -50,68 +67,92 @@ export default function MessagesPage() {
         if (!res.ok) throw new Error('Failed to fetch conversations');
         const data = await res.json();
         setConversations(data);
-        
-        // After fetching, check if we need to auto-select a conversation
-        const receiverId = searchParams?.get('receiverId');
-        if (receiverId) {
-          const existingConvo = data.find((c: Conversation) => c.otherUserId === receiverId);
-          if (existingConvo) {
-            setSelectedConversation(existingConvo);
-          } else {
-            // This is a new chat. We can't know the user's details without another API call.
-            // For now, we'll show a placeholder and the first message will create the conversation.
-            // A better implementation might fetch the user's details here.
-            setSelectedConversation({
-              id: `new-${receiverId}`, // Temporary ID
-              name: 'New Conversation',
-              image: '', // Placeholder image
-              lastMessage: 'Start the conversation!',
-              lastMessageTimestamp: new Date().toISOString(),
-              otherUserId: receiverId,
-            });
-            setMessages([]); // Clear messages for new convo
-          }
-           // Clean the URL
-           router.replace(pathname, { scroll: false });
-        }
-
       } catch (error) {
         console.error(error);
       } finally {
         setIsLoadingConversations(false);
       }
     };
-    if (session) fetchConversations();
-  }, [session, searchParams, pathname, router]);
+    if (session) {
+      fetchConversations();
+    }
+  }, [session]);
 
+  // Effect to handle selecting a user from URL
+  useEffect(() => {
+    const receiverId = searchParams?.get('receiverId');
+
+    const handleNewChat = async (id: string) => {
+      const existingConvo = conversations.find(c => c.otherUser.id.toString() === id);
+      if (existingConvo) {
+        setSelectedUser({
+          ...existingConvo.otherUser,
+          conversationId: existingConvo.id
+        });
+        return;
+      }
+
+      try {
+        const res = await fetch(`/api/users/${id}`);
+        if (!res.ok) throw new Error('User not found');
+        const userData: BaseUser = await res.json();
+        setSelectedUser({
+          ...userData,
+          conversationId: null,
+        });
+        setMessages([]);
+      } catch (error) {
+        console.error("Failed to fetch user for new chat:", error);
+        router.replace(pathname, { scroll: false });
+      }
+    };
+
+    if (receiverId) {
+      handleNewChat(receiverId);
+      router.replace(pathname, { scroll: false });
+    }
+  }, [searchParams, conversations, router, pathname]);
+
+  // Effect to fetch messages for the selected conversation
   useEffect(() => {
     const fetchMessages = async () => {
-      if (selectedConversation && !selectedConversation.id.startsWith('new-')) {
+      if (selectedUser?.conversationId) {
         setIsLoadingMessages(true);
         try {
-          const res = await fetch(`/api/messages/${selectedConversation.id}`);
-           if (!res.ok) throw new Error('Failed to fetch messages');
+          const res = await fetch(`/api/messages/${selectedUser.conversationId}`);
+          if (!res.ok) throw new Error('Failed to fetch messages');
           const data = await res.json();
           setMessages(data);
         } catch (error) {
-            console.error(error);
+          console.error(error);
         } finally {
-            setIsLoadingMessages(false);
+          setIsLoadingMessages(false);
         }
       }
     };
-    fetchMessages();
-  }, [selectedConversation]);
+    if (selectedUser) {
+      fetchMessages();
+    }
+  }, [selectedUser]);
+  
+  const handleSendMessage = async (content: string) => {
+    if (!content.trim() || !selectedUser || !session?.user?.id) return;
 
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages]);
+    const receiverId = selectedUser.id;
+    const tempMessageId = `temp-${Date.now()}`;
 
-  const handleSendMessage = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newMessage.trim() || !selectedConversation) return;
-    
-    const receiverId = selectedConversation.otherUserId;
+    const optimisticMessage: Message = {
+      id: tempMessageId,
+      content: content,
+      createdAt: new Date().toISOString(),
+      senderId: session.user.id,
+      sender: {
+        id: session.user.id,
+        name: session.user.name || 'Me',
+        image: session.user.image || '/logo.png',
+      },
+    };
+    setMessages(prev => [...prev, optimisticMessage]);
 
     try {
       const res = await fetch('/api/messages', {
@@ -119,50 +160,69 @@ export default function MessagesPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           receiverId: receiverId,
-          content: newMessage,
+          content: content,
         }),
       });
 
-      if (res.ok) {
-        const sentMessage = await res.json();
-        
-        // If it was a new conversation, we need to refresh the conversation list
-        // and select the newly created one.
-        if(selectedConversation.id.startsWith('new-')) {
-            const newConvoResponse = await fetch('/api/messages');
-            const updatedConversations = await newConvoResponse.json();
-            setConversations(updatedConversations);
-            const newConvo = updatedConversations.find((c: Conversation) => c.otherUserId === receiverId);
-            setSelectedConversation(newConvo);
-        } else {
-             setMessages((prev) => [...prev, { ...sentMessage, sender: { id: session!.user!.id!, name: session!.user!.name!, image: session!.user!.image! } }]);
-        }
-        setNewMessage('');
+      if (!res.ok) {
+        const errorBody = await res.text();
+        throw new Error(`Failed to send message: ${errorBody}`);
       }
-    } catch(error) {
-        console.error("Failed to send message", error);
+      
+      const sentMessage = await res.json();
+      
+      setMessages(prev => prev.map(msg => (msg.id === tempMessageId ? sentMessage.message : msg)));
+
+      if (!selectedUser.conversationId) {
+        const newConversationId = sentMessage.conversationId;
+        setSelectedUser(prev => ({ ...prev!, conversationId: newConversationId }));
+        
+        const newConvoForList: Conversation = {
+          id: newConversationId,
+          otherUser: {
+            id: selectedUser.id,
+            name: selectedUser.name || 'User',
+            image: selectedUser.image || '/logo.png',
+            mbti: selectedUser.mbti,
+          },
+          lastMessage: sentMessage.message.content,
+          lastMessageTimestamp: sentMessage.message.createdAt,
+        };
+        setConversations(prev => [newConvoForList, ...prev.filter(c => c.otherUser.id !== selectedUser.id)]);
+      }
+
+    } catch (error) {
+      console.error("Failed to send message", error);
+      setMessages(prev => prev.filter(msg => msg.id !== tempMessageId));
     }
   };
 
+  const handleConversationSelect = (convo: Conversation) => {
+    setSelectedUser({
+      ...convo.otherUser,
+      conversationId: convo.id,
+    });
+  }
+
   if (!session) {
-      return <div className="flex items-center justify-center h-full"><p>Please log in to view your messages.</p></div>
+    return <div className="flex items-center justify-center h-full"><p>Please log in to view your messages.</p></div>
   }
 
   return (
     <div className="flex h-[calc(100vh-80px)] border-t">
       {/* Conversations List */}
-      <div className="w-1/3 border-r overflow-y-auto">
+      <div className={`w-full md:w-1/3 border-r overflow-y-auto ${selectedUser ? 'hidden md:block' : 'block'}`}>
         <h2 className="text-xl font-bold p-4 border-b">Conversations</h2>
         {isLoadingConversations ? <div className="p-4">Loading...</div> : conversations.map((convo) => (
           <div
             key={convo.id}
-            className={`p-4 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 ${selectedConversation?.id === convo.id ? 'bg-gray-200 dark:bg-gray-600' : ''}`}
-            onClick={() => setSelectedConversation(convo)}
+            className={`p-4 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 ${selectedUser?.conversationId === convo.id ? 'bg-gray-200 dark:bg-gray-600' : ''}`}
+            onClick={() => handleConversationSelect(convo)}
           >
             <div className="flex items-center space-x-3">
-              <Image src={convo.image || '/default-avatar.png'} alt={convo.name} width={40} height={40} className="rounded-full" />
+              <Image src={convo.otherUser.image || '/logo.png'} alt={convo.otherUser.name || 'User'} width={40} height={40} className="rounded-full" unoptimized />
               <div>
-                <h3 className="font-semibold">{convo.name}</h3>
+                <h3 className="font-semibold">{convo.otherUser.name}</h3>
                 <p className="text-sm text-gray-500 truncate">{convo.lastMessage}</p>
               </div>
             </div>
@@ -170,47 +230,24 @@ export default function MessagesPage() {
         ))}
       </div>
 
-      {/* Chat Area */}
-      <div className="w-2/3 flex flex-col bg-white dark:bg-gray-800">
-        {selectedConversation ? (
-          <>
-            <div className="p-4 border-b flex items-center space-x-3">
-              <Image src={selectedConversation.image || '/default-avatar.png'} alt={selectedConversation.name} width={40} height={40} className="rounded-full" />
-              <h2 className="text-xl font-bold">{selectedConversation.name}</h2>
-            </div>
-            <div className="flex-1 p-4 overflow-y-auto bg-gray-50 dark:bg-gray-700">
-              {isLoadingMessages ? <div className="text-center">Loading messages...</div> : messages.map((msg) => (
-                <div key={msg.id} className={`flex my-2 ${msg.senderId === session?.user?.id ? 'justify-end' : 'justify-start'}`}>
-                  <div className={`flex items-end gap-2 ${msg.senderId === session?.user?.id ? 'flex-row-reverse' : 'flex-row'}`}>
-                     <Image src={msg.sender.image || '/default-avatar.png'} alt={msg.sender.name} width={24} height={24} className="rounded-full" />
-                    <div className={`p-3 rounded-lg max-w-lg ${msg.senderId === session?.user?.id ? 'bg-blue-600 text-white' : 'bg-gray-200 dark:bg-gray-600'}`}>
-                      <p>{msg.content}</p>
-                      <p className="text-xs mt-1 opacity-75 text-right">{new Date(msg.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-              <div ref={messagesEndRef} />
-            </div>
-            <form onSubmit={handleSendMessage} className="p-4 border-t flex items-center bg-white dark:bg-gray-800">
-              <Input
-                type="text"
-                value={newMessage}
-                onChange={(e) => setNewMessage(e.target.value)}
-                placeholder="Type a message..."
-                className="flex-1"
-                disabled={isLoadingMessages}
-              />
-              <Button type="submit" className="ml-2" disabled={!newMessage.trim()}>
-                <Send className="w-5 h-5" />
-              </Button>
-            </form>
-          </>
+      {/* Chat Area Container */}
+      <div className={`w-full md:w-2/3 flex-col bg-gray-100 dark:bg-gray-900 ${selectedUser ? 'flex' : 'hidden md:flex'}`}>
+        {selectedUser ? (
+          <div className="w-full h-full max-w-4xl mx-auto flex flex-col">
+             <ChatWindow
+              selectedUser={selectedUser}
+              messages={messages}
+              isLoadingMessages={isLoadingMessages}
+              onSendMessage={handleSendMessage}
+              onBack={() => setSelectedUser(null)}
+            />
+          </div>
         ) : (
-          <div className="flex flex-col items-center justify-center h-full text-center">
-            <UserPlus className="w-16 h-16 text-gray-400 mb-4" />
-            <h2 className="text-2xl font-semibold">Welcome to your messages</h2>
-            <p className="text-gray-500">Select a conversation or start a new one by messaging someone from the People page.</p>
+          <div className="flex-1 flex items-center justify-center">
+            <div className="text-center">
+              <h2 className="text-2xl font-semibold">Select a conversation</h2>
+              <p className="text-gray-500">Choose from your existing conversations or start a new one.</p>
+            </div>
           </div>
         )}
       </div>

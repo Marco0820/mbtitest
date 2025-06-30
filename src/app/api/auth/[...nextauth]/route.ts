@@ -77,15 +77,14 @@ export const authOptions: NextAuthOptions = {
         token.name = customUser.name;
         token.email = customUser.email;
         token.picture = customUser.image;
+        token.gender = customUser.gender;
+        token.country = customUser.country;
+        token.state = customUser.state;
+        token.city = customUser.city;
       }
 
       if (trigger === "update" && session) {
-        if (session.image) {
-            token.picture = session.image;
-        }
-        if (session.name) {
-            token.name = session.name;
-        }
+        return { ...token, ...session };
       }
       return token;
     },
@@ -96,6 +95,10 @@ export const authOptions: NextAuthOptions = {
         session.user.name = token.name;
         session.user.email = token.email;
         session.user.image = token.picture;
+        session.user.gender = token.gender;
+        session.user.country = token.country;
+        session.user.state = token.state;
+        session.user.city = token.city;
       }
       return session;
     },

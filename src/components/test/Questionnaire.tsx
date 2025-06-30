@@ -81,7 +81,7 @@ export function Questionnaire({ questions }: Props) {
           await fetch('/api/user/profile', {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ mbti: result.type }),
+            body: JSON.stringify({ mbti: result.type, result: result }),
           });
         } catch (error) {
           console.error('Failed to save MBTI result to profile', error);
