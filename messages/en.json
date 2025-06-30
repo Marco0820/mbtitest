@@ -297,5 +297,9 @@
     "messagesDescription": "View and manage your direct messages.",
     "messagesContent": "Communicate with other users and share your insights.",
     "goToMessages": "Go to Messages"
+  },
+  "about": {
+    "seo_title": "About Us | Accurate MBTI Test & 16 Personalities Community",
+    "seo_description": "Learn about MBTITEST, your destination for an accurate, free 16 personalities test. Discover our mission and unique social features to connect with others based on your MBTI type."
   }
 }

@@ -128,6 +128,13 @@ export function HeaderClient() {
     }, 200);
   };
 
+  const handleCloseDropdown = () => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+    }
+    setIsPersonalityOpen(false);
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 dark:bg-gray-900/80">
       <div className="container flex h-16 items-center justify-between px-8">
@@ -147,7 +154,7 @@ export function HeaderClient() {
                 <span>{t('personalities')}</span>
                 <ChevronDown className="w-4 h-4 ml-1" />
               </button>
-              <PersonalityDropdown isOpen={isPersonalityOpen} onMouseEnter={handleDropdownEnter} />
+              <PersonalityDropdown isOpen={isPersonalityOpen} onMouseEnter={handleDropdownEnter} onClose={handleCloseDropdown} />
             </div>
 
             <Link href={`/${locale}/people`} className="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-blue-600 hover:text-white rounded-full dark:text-gray-300 dark:hover:bg-blue-700 transition-colors">{t('people')}</Link>

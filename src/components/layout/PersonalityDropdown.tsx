@@ -6,6 +6,7 @@ import { useTranslations, useLocale, useMessages } from 'next-intl';
 interface PersonalityDropdownProps {
   isOpen: boolean;
   onMouseEnter: () => void;
+  onClose: () => void;
 }
 
 const categoryStyles = {
@@ -31,7 +32,7 @@ const categoryStyles = {
   },
 };
 
-export function PersonalityDropdown({ isOpen, onMouseEnter }: PersonalityDropdownProps) {
+export function PersonalityDropdown({ isOpen, onMouseEnter, onClose }: PersonalityDropdownProps) {
   const t = useTranslations('personalities');
   const locale = useLocale();
   const messages = useMessages();
@@ -68,6 +69,7 @@ export function PersonalityDropdown({ isOpen, onMouseEnter }: PersonalityDropdow
                   <Link
                     key={type}
                     href={`/${locale}/personalities/${type}`}
+                    onClick={onClose}
                     className={`min-h-16 px-2 py-4 text-sm font-medium rounded-xl transition-colors text-center flex items-center justify-center ${categoryStyles[category as keyof typeof categoryStyles].buttonBg}`}
                   >
                     {t(`${type}.name`)} ({type.toUpperCase()})
