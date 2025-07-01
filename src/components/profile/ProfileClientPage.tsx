@@ -225,7 +225,6 @@ function ProfileContent() {
       const { user: updatedUser } = await profileResponse.json();
       await update({ image: updatedUser.image });
       setSuccess('Avatar updated successfully!');
-      window.location.reload();
     } catch (err: any) {
       setError(err.message || 'An error occurred.');
     } finally {
@@ -357,7 +356,7 @@ function ProfileContent() {
                   </div>
                   <div className="flex justify-end space-x-2">
                     <Button variant="ghost" onClick={() => setIsEditingDetails(false)}>{t('cancel')}</Button>
-                    <Button onClick={handleSaveDetails} disabled={isUpdatingDetails}>
+                    <Button onClick={handleSaveDetails} disabled={isUpdatingDetails} className="bg-blue-600 hover:bg-blue-700">
                       {isUpdatingDetails && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                       {t('save')}
                     </Button>
@@ -366,7 +365,9 @@ function ProfileContent() {
               ) : (
                 <div className="space-y-2 text-sm">
                   <p><strong>{t('gender')}:</strong> {details.gender ? t(details.gender) : t('not_set')}</p>
-                  <p><strong>{t('location')}:</strong> {details.city || t('not_set')}, {details.state || t('not_set')}, {details.country || t('not_set')}</p>
+                  <p><strong>{t('country')}:</strong> {details.country || t('not_set')}</p>
+                  <p><strong>{t('state')}:</strong> {details.state || t('not_set')}</p>
+                  <p><strong>{t('city')}:</strong> {details.city || t('not_set')}</p>
                 </div>
               )}
             </CardContent>
@@ -395,7 +396,7 @@ function ProfileContent() {
                   />
                   <div className="flex justify-end space-x-2">
                     <Button variant="ghost" onClick={() => setIsEditingBio(false)}>{t('cancel')}</Button>
-                    <Button onClick={handleSaveBio} disabled={isUpdatingBio}>
+                    <Button onClick={handleSaveBio} disabled={isUpdatingBio} className="bg-blue-600 hover:bg-blue-700">
                       {isUpdatingBio && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                       {t('save')}
                     </Button>

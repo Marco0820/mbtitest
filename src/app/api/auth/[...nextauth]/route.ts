@@ -28,6 +28,9 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      httpOptions: {
+        timeout: 20000,
+      },
     }),
     CredentialsProvider({
       name: 'Credentials',
@@ -86,6 +89,7 @@ export const authOptions: NextAuthOptions = {
         token.country = customUser.country;
         token.state = customUser.state;
         token.city = customUser.city;
+        token.bio = customUser.bio;
       }
 
       if (trigger === "update" && session) {
@@ -104,6 +108,7 @@ export const authOptions: NextAuthOptions = {
         session.user.country = token.country;
         session.user.state = token.state;
         session.user.city = token.city;
+        session.user.bio = token.bio;
       }
       return session;
     },

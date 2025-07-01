@@ -882,6 +882,12 @@ video {
 .mt-auto {
   margin-top: auto;
 }
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
 .line-clamp-3 {
   overflow: hidden;
   display: -webkit-box;
@@ -983,6 +989,9 @@ video {
 }
 .h-screen {
   height: 100vh;
+}
+.max-h-60 {
+  max-height: 15rem;
 }
 .max-h-96 {
   max-height: 24rem;

@@ -14,6 +14,9 @@
     "language": "Language",
     "secondary_cta": "Same City People"
   },
+  "blog": {
+    "title": "What the 16 personality types in the world are doing"
+  },
   "auth": {
     "login": "Login",
     "login_description": "Login to your account to continue.",
@@ -227,6 +230,21 @@
     "company": "© 2024 MBTITEST. All rights reserved.",
     "faq": "FAQ",
     "contact": "Contact"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "q1_title": "What is the MBTI test?",
+    "q1_text": "The Myers-Briggs Type Indicator (MBTI) is an introspective self-report questionnaire indicating differing psychological preferences in how people perceive the world and make decisions. Our test is designed to give you a clear understanding of your personality type based on this model.",
+    "q2_title": "How accurate is the test?",
+    "q2_text": "While no personality test is 100% accurate, our assessment is built on extensive research and designed to be a highly reliable tool for self-discovery. It provides a solid framework for understanding your preferences and how you interact with the world.",
+    "q3_title": "How long does it take to complete?",
+    "q3_text": "The test typically takes about 10-15 minutes to complete. We recommend you answer the questions honestly and spontaneously for the most accurate results.",
+    "q4_title": "Are my test results and profile information private?",
+    "q4_text": "Yes. Your individual test results are private. Your public profile (name, MBTI, bio, location) is visible to other users on the 'People' page to facilitate community interaction. You can control what information you share on your profile page.",
+    "q5_title": "What is the 'People' page for?",
+    "q5_text": "The 'People' page is a feature that allows you to connect with other users. You can filter by personality type, location, and other criteria to find and interact with like-minded individuals from around the world.",
+    "q6_title": "How do I update my profile information?",
+    "q6_text": "You can update your name, bio, location, and profile picture directly on your profile page. Simply navigate to your profile and click the edit icons next to the information you wish to change."
   },
   "personalities": {
     "title": "16 Personality Types",

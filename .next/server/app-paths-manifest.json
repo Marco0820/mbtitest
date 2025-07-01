@@ -1,12 +1,5 @@
 {
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
-  "/api/users/route": "app/api/users/route.js",
-  "/api/messages/unread-count/route": "app/api/messages/unread-count/route.js",
-  "/api/user/history/route": "app/api/user/history/route.js",
-  "/api/user/profile/route": "app/api/user/profile/route.js",
   "/[locale]/page": "app/[locale]/page.js",
-  "/[locale]/auth/login/page": "app/[locale]/auth/login/page.js",
-  "/[locale]/people/page": "app/[locale]/people/page.js",
-  "/[locale]/auth/signup/page": "app/[locale]/auth/signup/page.js",
-  "/[locale]/profile/page": "app/[locale]/profile/page.js"
+  "/[locale]/auth/login/page": "app/[locale]/auth/login/page.js"
 }

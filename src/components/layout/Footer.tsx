@@ -54,11 +54,11 @@ export function Footer() {
                 {t('nav.about')}
               </Link>
               <Link href={`/${locale}/faq`} className="text-gray-400 hover:text-white transition-colors">
-                FAQ
+                {t('footer.faq')}
               </Link>
-              <Link href={`/${locale}/support`} className="text-gray-400 hover:text-white transition-colors">
-                Contact
-              </Link>
+              <a href="mailto:lvyuzhen0820@gmail.com" className="text-gray-400 hover:text-white transition-colors">
+                {t('footer.contact')}
+              </a>
             </div>
           </div>
 
