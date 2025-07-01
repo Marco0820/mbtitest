@@ -2,15 +2,14 @@ import { notFound } from 'next/navigation';
 import { getRequestConfig } from 'next-intl/server';
 import { locales } from './i18n.config';
 
+// Can be imported from a shared config
+const allLocales = locales;
+
 export default getRequestConfig(async ({ locale }) => {
-  if (!locales.includes(locale as any)) {
-    notFound();
-  }
+  // Validate that the incoming `locale` parameter is valid
+  if (!allLocales.includes(locale as any)) notFound();
 
   return {
-    messages: {
-      ...(await import(`./messages/${locale}.json`)).default,
-      ...(await import(`./messages/results.${locale}.json`)).default,
-    }
+    messages: (await import(`./messages/${locale}.json`)).default
   };
 }); 

@@ -13,6 +13,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { useLocale } from 'next-intl';
 import { signIn } from 'next-auth/react';
 import { Turnstile } from '@marsidev/react-turnstile';
+import { FcGoogle } from 'react-icons/fc';
 
 const loginSchema = z.object({
   email: z.string().email('Invalid email address'),
@@ -89,6 +90,26 @@ export default function LoginPage() {
               {form.formState.isSubmitting ? t('logging_in') : t('login')}
             </Button>
           </form>
+
+          <div className="relative my-4">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-white px-2 text-muted-foreground dark:bg-gray-800">
+                Or continue with
+              </span>
+            </div>
+          </div>
+
+          <Button
+            variant="outline"
+            className="w-full"
+            onClick={() => signIn('google', { callbackUrl: `/${locale}/profile` })}
+          >
+            <FcGoogle className="mr-2 h-4 w-4" />
+            Google
+          </Button>
 
           <div className="mt-4 text-center text-sm">
             {t('no_account')} <Link href={`/${locale}/auth/signup`} className="underline">{t('signup')}</Link>

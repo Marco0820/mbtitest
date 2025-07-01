@@ -16,8 +16,14 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 import Image from 'next/image';
-import { useSession } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
 
 const Logo = () => {
   const locale = useLocale();
@@ -47,56 +53,74 @@ const Logo = () => {
   );
 }
 
-function AuthNav() {
+function AuthNav({ unreadCount }: { unreadCount: number }) {
   const { data: session } = useSession();
   const user = session?.user;
   const locale = useLocale();
   const t = useTranslations('nav');
   
   const handleLogout = () => {
-    // For server-side logout, we will use a link to the signout endpoint
-    // This avoids needing client-side specific logic here
+    signOut({ callbackUrl: `/${locale}` });
   };
 
   return (
     <div className="flex items-center space-x-4">
       <LanguageSwitcher />
       {user ? (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="relative h-10 w-10 rounded-full">
-              <Image
-                src={user.image || 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'}
-                alt={user.name || 'User avatar'}
-                fill
-                className="rounded-full object-cover"
-              />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-56 bg-white" align="end" forceMount>
-            <DropdownMenuLabel className="font-normal">
-              <div className="flex flex-col space-y-1">
-                <p className="text-sm font-medium leading-none">{user.name}</p>
-                <p className="text-xs leading-none text-muted-foreground">
-                  {user.email}
-                </p>
-              </div>
-            </DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem asChild className="focus:bg-blue-100 focus:text-blue-900">
-              <Link href={`/${locale}/profile`}>
-                <User className="mr-2 h-4 w-4" />
-                <span>{t('profile')}</span>
-              </Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem asChild className="focus:bg-blue-100 focus:text-blue-900">
-               <Link href={`/api/auth/signout`}>
-                <LogOut className="mr-2 h-4 w-4" />
-                <span>{t('logout')}</span>
-              </Link>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <>
+        <Link href={`/${locale}/messages`} className="relative">
+          <Button variant="ghost" size="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+            {unreadCount > 0 && (
+              <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs text-white">
+                {unreadCount}
+              </span>
+            )}
+          </Button>
+        </Link>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="relative h-10 w-10 rounded-full">
+                    <Image
+                      src={user.image || 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'}
+                      alt={user.name || 'User avatar'}
+                      fill
+                      className="rounded-full object-cover"
+                    />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56 bg-white" align="end" forceMount>
+                  <DropdownMenuLabel className="font-normal">
+                    <div className="flex flex-col space-y-1">
+                      <p className="text-sm font-medium leading-none">{user.name}</p>
+                      <p className="text-xs leading-none text-muted-foreground">
+                        {user.email}
+                      </p>
+                    </div>
+                  </DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem asChild className="focus:bg-blue-100 focus:text-blue-900">
+                    <Link href={`/${locale}/profile`}>
+                      <User className="mr-2 h-4 w-4" />
+                      <span>{t('profile')}</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={handleLogout} className="focus:bg-blue-100 focus:text-blue-900 cursor-pointer">
+                     <LogOut className="mr-2 h-4 w-4" />
+                     <span>{t('logout')}</span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{user.name}</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+        </>
       ) : (
         <>
           <Link href={`/${locale}/auth/login`} className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium">{t('login')}</Link>
@@ -108,15 +132,39 @@ function AuthNav() {
 }
 
 export function HeaderClient() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const user = session?.user;
   const t = useTranslations('nav');
   const locale = useLocale();
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isPersonalityOpen, setIsPersonalityOpen] = useState(false);
+  const [unreadCount, setUnreadCount] = useState(0);
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   
+  useEffect(() => {
+    if (status !== 'authenticated') {
+      return;
+    }
+
+    const fetchUnreadCount = async () => {
+      try {
+        const res = await fetch('/api/messages/unread-count');
+        if (res.ok) {
+          const data = await res.json();
+          setUnreadCount(data.count);
+        }
+      } catch (error) {
+        console.error("Failed to fetch unread count", error);
+      }
+    };
+    
+    fetchUnreadCount(); // Fetch on initial load
+    const intervalId = setInterval(fetchUnreadCount, 15000); // Poll every 15 seconds
+
+    return () => clearInterval(intervalId); // Cleanup on component unmount
+  }, [status]);
+
   const handleDropdownEnter = () => {
     if (dropdownTimeoutRef.current) {
       clearTimeout(dropdownTimeoutRef.current);
@@ -181,7 +229,7 @@ export function HeaderClient() {
         </div>
 
         <div className="hidden md:flex items-center justify-end">
-          <AuthNav />
+          <AuthNav unreadCount={unreadCount} />
         </div>
 
         <div className="md:hidden flex flex-1 items-center justify-between">
@@ -202,28 +250,9 @@ export function HeaderClient() {
             <Link href={`/${locale}/test`} className="block" onClick={() => setIsMenuOpen(false)}>{t('test')}</Link>
             <Link href={`/${locale}/blog`} className="block" onClick={() => setIsMenuOpen(false)}>{t('blog')}</Link>
             <Link href={`/${locale}/about`} className="block" onClick={() => setIsMenuOpen(false)}>{t('about')}</Link>
-            <div className="border-t pt-2">
-              {user ? (
-                <>
-                  <Link href={`/${locale}/profile`} className="block mb-2" onClick={() => setIsMenuOpen(false)}>
-                    {t('profile')}
-                  </Link>
-                   <Link href={`/api/auth/signout`} className="w-full">
-                     <Button className="w-full">{t('logout')}</Button>
-                   </Link>
-                </>
-              ) : (
-                <>
-                  <Link href={`/${locale}/auth/login`} className="block mb-2" onClick={() => setIsMenuOpen(false)}>{t('login')}</Link>
-                  <Link href={`/${locale}/auth/signup`} className="block" onClick={() => setIsMenuOpen(false)}>
-                    <Button className="w-full">{t('signup')}</Button>
-                  </Link>
-                </>
-              )}
+            <div className="pt-4 border-t">
+              <AuthNav unreadCount={unreadCount} />
             </div>
-             <div className="border-t pt-2">
-               <LanguageSwitcher />
-             </div>
         </div>
       )}
     </header>

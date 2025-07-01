@@ -192,7 +192,8 @@ exports.Prisma.MessageScalarFieldEnum = {
   createdAt: 'createdAt',
   content: 'content',
   senderId: 'senderId',
-  conversationId: 'conversationId'
+  conversationId: 'conversationId',
+  isRead: 'isRead'
 };
 
 exports.Prisma.PersonalityDetailsScalarFieldEnum = {
@@ -208,6 +209,7 @@ exports.Prisma.BlogScalarFieldEnum = {
   content: 'content',
   sourceUrl: 'sourceUrl',
   imageUrl: 'imageUrl',
+  locale: 'locale',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

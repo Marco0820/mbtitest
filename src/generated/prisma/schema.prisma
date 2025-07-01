@@ -122,3 +122,17 @@ model PersonalityDetails {
   @@id([type, locale])
   @@map("personality_details")
 }
+
+model Blog {
+  id              String   @id @default(cuid())
+  trendingKeyword String
+  title           String   @db.Text
+  content         String   @db.Text
+  sourceUrl       String   @unique
+  imageUrl        String?  @db.Text
+  locale          String   @default("en")
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([trendingKeyword])
+}

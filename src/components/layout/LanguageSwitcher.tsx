@@ -37,11 +37,11 @@ export function LanguageSwitcher() {
 
   const currentLanguage = languages.find(lang => lang.code === locale);
 
-  const handleLanguageChange = (langCode: string) => {
+  const handleLanguageChange = (newLocale: string) => {
+    if (!pathname) return;
     const segments = pathname.split('/');
-    segments[1] = langCode;
-    const newPath = segments.join('/');
-    router.push(newPath);
+    segments[1] = newLocale;
+    router.push(segments.join('/'));
     setIsOpen(false);
   };
 

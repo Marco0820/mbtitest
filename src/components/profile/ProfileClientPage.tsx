@@ -10,6 +10,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Pencil, Loader2, Info } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Textarea } from '@/components/ui/textarea';
 
 interface HistoryItem {
   id: string;
@@ -32,15 +35,19 @@ function ProfileContent() {
   const [isUpdatingName, setIsUpdatingName] = useState(false);
   const [isEditingDetails, setIsEditingDetails] = useState(false);
   const [isUpdatingDetails, setIsUpdatingDetails] = useState(false);
+  const [isEditingBio, setIsEditingBio] = useState(false);
+  const [isUpdatingBio, setIsUpdatingBio] = useState(false);
+  const [bio, setBio] = useState('');
   const [details, setDetails] = useState({
     gender: '',
     country: '',
     state: '',
     city: '',
   });
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const searchParams = useSearchParams();
-  const from = searchParams.get('from');
+  const from = searchParams?.get('from');
 
   useEffect(() => {
     if (session?.user) {
@@ -51,6 +58,7 @@ function ProfileContent() {
         state: session.user.state || '',
         city: session.user.city || '',
       });
+      setBio(session.user.bio || '');
     }
   }, [session]);
 
@@ -78,6 +86,12 @@ function ProfileContent() {
       fetchHistory();
     }
   }, [session, status]);
+
+  useEffect(() => {
+    if (from === 'test') {
+      setShowSuccess(true);
+    }
+  }, [from]);
 
   const handleSaveName = async () => {
     if (!name.trim()) {
@@ -116,6 +130,34 @@ function ProfileContent() {
     }
   };
 
+  const handleSaveBio = async () => {
+    setError(null);
+    setSuccess(null);
+    setIsUpdatingBio(true);
+    try {
+      const response = await fetch('/api/user/profile', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ bio }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to update bio.');
+      }
+
+      const { user: updatedUser } = await response.json();
+      await update({ bio: updatedUser.bio });
+      setBio(updatedUser.bio || '');
+      setSuccess('Bio updated successfully!');
+      setIsEditingBio(false);
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setIsUpdatingBio(false);
+    }
+  };
+
   const handleSaveDetails = async () => {
     setError(null);
     setSuccess(null);
@@ -138,6 +180,12 @@ function ProfileContent() {
         country: updatedUser.country,
         state: updatedUser.state,
         city: updatedUser.city,
+      });
+      setDetails({
+        gender: updatedUser.gender || '',
+        country: updatedUser.country || '',
+        state: updatedUser.state || '',
+        city: updatedUser.city || '',
       });
       setSuccess('Details updated successfully!');
       setIsEditingDetails(false);
@@ -177,6 +225,7 @@ function ProfileContent() {
       const { user: updatedUser } = await profileResponse.json();
       await update({ image: updatedUser.image });
       setSuccess('Avatar updated successfully!');
+      window.location.reload();
     } catch (err: any) {
       setError(err.message || 'An error occurred.');
     } finally {
@@ -260,10 +309,8 @@ function ProfileContent() {
                     </div>
                   </div>
                 )}
-                <p className="text-gray-500 dark:text-gray-400">{session.user?.email}</p>
-                {isUploading && <p className="text-sm text-blue-500 mt-2">{t('uploading')}</p>}
-                {error && <p className="text-sm text-red-500 mt-2">{error}</p>}
-                {success && <p className="text-sm text-green-500 mt-2">{success}</p>}
+                <p className="text-gray-600 dark:text-gray-400">{session.user?.email}</p>
+                <p className="text-sm text-gray-500 mt-1">MBTI: {session.user?.mbti || t('not_set')}</p>
                 <Button variant="ghost" onClick={() => signOut({ callbackUrl: '/' })} className="mt-2">{t('signOut')}</Button>
               </div>
             </CardContent>
@@ -271,8 +318,8 @@ function ProfileContent() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between">
               <div>
-                <CardTitle>{t('detailsTitle')}</CardTitle>
-                <CardDescription>{t('detailsDescription')}</CardDescription>
+                <CardTitle>{t('details')}</CardTitle>
+                <CardDescription>{t('details_description')}</CardDescription>
               </div>
               {!isEditingDetails && (
                 <Button variant="ghost" size="icon" onClick={() => setIsEditingDetails(true)}>
@@ -284,66 +331,80 @@ function ProfileContent() {
               {isEditingDetails ? (
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">{t('gender')}</label>
-                    <select
-                      value={details.gender}
-                      onChange={(e) => setDetails({ ...details, gender: e.target.value })}
-                      className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md"
-                    >
-                      <option value="">{t('selectGender')}</option>
-                      <option value="male">{t('male')}</option>
-                      <option value="female">{t('female')}</option>
-                      <option value="other">{t('other')}</option>
-                    </select>
+                    <label htmlFor="gender" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('gender')}</label>
+                    <Select value={details.gender} onValueChange={(value) => setDetails(d => ({ ...d, gender: value }))}>
+                      <SelectTrigger id="gender">
+                        <SelectValue placeholder={t('select_gender')} />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="male">{t('male')}</SelectItem>
+                        <SelectItem value="female">{t('female')}</SelectItem>
+                        <SelectItem value="other">{t('other')}</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">{t('country')}</label>
-                    <input
-                      type="text"
-                      value={details.country}
-                      onChange={(e) => setDetails({ ...details, country: e.target.value })}
-                      className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                    />
+                    <label htmlFor="country" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('country')}</label>
+                    <Input id="country" value={details.country} onChange={(e) => setDetails(d => ({ ...d, country: e.target.value }))} placeholder={t('country_placeholder')} />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">{t('state')}</label>
-                    <input
-                      type="text"
-                      value={details.state}
-                      onChange={(e) => setDetails({ ...details, state: e.target.value })}
-                      className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                    />
+                    <label htmlFor="state" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('state')}</label>
+                    <Input id="state" value={details.state} onChange={(e) => setDetails(d => ({ ...d, state: e.target.value }))} placeholder={t('state_placeholder')} />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">{t('city')}</label>
-                    <input
-                      type="text"
-                      value={details.city}
-                      onChange={(e) => setDetails({ ...details, city: e.target.value })}
-                      className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                    />
+                    <label htmlFor="city" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('city')}</label>
+                    <Input id="city" value={details.city} onChange={(e) => setDetails(d => ({ ...d, city: e.target.value }))} placeholder={t('city_placeholder')} />
                   </div>
-                  <div className="flex space-x-2">
+                  <div className="flex justify-end space-x-2">
+                    <Button variant="ghost" onClick={() => setIsEditingDetails(false)}>{t('cancel')}</Button>
                     <Button onClick={handleSaveDetails} disabled={isUpdatingDetails}>
                       {isUpdatingDetails && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                       {t('save')}
                     </Button>
-                    <Button
-                      variant="ghost"
-                      onClick={() => setIsEditingDetails(false)}
-                      disabled={isUpdatingDetails}
-                    >
-                      {t('cancel')}
+                  </div>
+                </div>
+              ) : (
+                <div className="space-y-2 text-sm">
+                  <p><strong>{t('gender')}:</strong> {details.gender ? t(details.gender) : t('not_set')}</p>
+                  <p><strong>{t('location')}:</strong> {details.city || t('not_set')}, {details.state || t('not_set')}, {details.country || t('not_set')}</p>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between">
+              <div>
+                <CardTitle>{t('bio')}</CardTitle>
+                <CardDescription>{t('bio_description')}</CardDescription>
+              </div>
+              {!isEditingBio && (
+                <Button variant="ghost" size="icon" onClick={() => setIsEditingBio(true)}>
+                  <Pencil className="h-4 w-4" />
+                </Button>
+              )}
+            </CardHeader>
+            <CardContent>
+              {isEditingBio ? (
+                <div className="space-y-4">
+                  <Textarea
+                    value={bio}
+                    onChange={(e) => setBio(e.target.value)}
+                    placeholder={t('bio_placeholder')}
+                    className="min-h-[100px]"
+                  />
+                  <div className="flex justify-end space-x-2">
+                    <Button variant="ghost" onClick={() => setIsEditingBio(false)}>{t('cancel')}</Button>
+                    <Button onClick={handleSaveBio} disabled={isUpdatingBio}>
+                      {isUpdatingBio && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                      {t('save')}
                     </Button>
                   </div>
                 </div>
               ) : (
-                <div className="space-y-2 text-sm text-gray-600">
-                  <p><strong>{t('gender')}:</strong> {details.gender || t('notSet')}</p>
-                  <p><strong>{t('country')}:</strong> {details.country || t('notSet')}</p>
-                  <p><strong>{t('state')}:</strong> {details.state || t('notSet')}</p>
-                  <p><strong>{t('city')}:</strong> {details.city || t('notSet')}</p>
-                </div>
+                <p className="text-sm text-gray-600 dark:text-gray-300">
+                  {bio || t('bio_not_set')}
+                </p>
               )}
             </CardContent>
           </Card>

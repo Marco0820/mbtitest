@@ -65,7 +65,7 @@ function UserCard({ user }: { user: User }) {
         <div className="flex-1">
           <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">{user.name || 'Anonymous User'}</h3>
           {user.mbti && <p className="text-sm font-semibold text-purple-600 dark:text-purple-400">{user.mbti}</p>}
-          <p className="text-sm text-gray-600 dark:text-gray-300 mt-1 h-12 overflow-hidden">{user.bio || 'No bio available.'}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-300 mt-1 h-12 overflow-hidden">{user.bio}</p>
           <div className="text-xs text-gray-500 dark:text-gray-400 mt-2">
             {[user.city, user.state, user.country].filter(Boolean).join(', ')}
           </div>

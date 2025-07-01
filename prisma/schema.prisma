@@ -110,6 +110,7 @@ model Message {
   sender         User         @relation(fields: [senderId], references: [id], onDelete: Cascade)
   conversationId String
   conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  isRead         Boolean      @default(false)
 
   @@index([conversationId])
 }
@@ -130,6 +131,7 @@ model Blog {
   content         String   @db.Text
   sourceUrl       String   @unique
   imageUrl        String?  @db.Text
+  locale          String   @default("en")
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 

@@ -53,6 +53,7 @@ function ProfileContent() {
   const [isUpdatingDetails, setIsUpdatingDetails] = useState(false);
   const [isFetchingLocation, setIsFetchingLocation] = useState(false);
   const [details, setDetails] = useState({
+    bio: '',
     gender: '',
     country: '',
     state: '',
@@ -66,6 +67,7 @@ function ProfileContent() {
     if (session?.user) {
       setName(session.user.name || '');
       setDetails({
+        bio: session.user.bio || '',
         gender: session.user.gender || '',
         country: session.user.country || '',
         state: session.user.state || '',
@@ -236,9 +238,9 @@ function ProfileContent() {
   return (
     <div className="container mx-auto py-10 px-4 sm:px-6 lg:px-8">
       {from === 'messaging' && (
-        <Alert className="mb-8 border-blue-500 bg-blue-50 text-blue-800">
-          <Info className="h-4 w-4 !text-blue-800" />
-          <AlertTitle>{t('infoRequiredTitle')}</AlertTitle>
+        <Alert className="mb-8 border-red-500 bg-red-50 text-red-800">
+          <Info className="h-4 w-4 !text-red-800" />
+          <AlertTitle className="text-red-800 font-bold">{t('infoRequiredTitle')}</AlertTitle>
           <AlertDescription>{t('infoRequiredDescription')}</AlertDescription>
         </Alert>
       )}
@@ -309,80 +311,84 @@ function ProfileContent() {
             </CardContent>
           </Card>
           <Card>
-            <CardHeader className="flex flex-row items-center justify-between">
-              <div>
-                <CardTitle>{t('detailsTitle')}</CardTitle>
-                <CardDescription>{t('detailsDescription')}</CardDescription>
-              </div>
-              {!isEditingDetails && (
-                <Button variant="ghost" size="icon" onClick={handleEditDetailsClick}>
-                  <Pencil className="h-4 w-4" />
-                </Button>
-              )}
+            <CardHeader>
+              <CardTitle>{t('detailsTitle')}</CardTitle>
             </CardHeader>
             <CardContent>
               {isEditingDetails ? (
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">{t('gender')}</label>
-                    <select
+                    <label htmlFor="bio" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('bio')}</label>
+                    <textarea
+                      id="bio"
+                      name="bio"
+                      rows={3}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                      value={details.bio}
+                      onChange={(e) => setDetails({ ...details, bio: e.target.value })}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="gender" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('gender')}</label>
+                    <input
+                      type="text"
+                      name="gender"
+                      id="gender"
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                       value={details.gender}
                       onChange={(e) => setDetails({ ...details, gender: e.target.value })}
-                      className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md"
-                    >
-                      <option value="">{t('selectGender')}</option>
-                      <option value="male">{t('male')}</option>
-                      <option value="female">{t('female')}</option>
-                      <option value="other">{t('other')}</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700">{t('country')}</label>
-                    <input
-                      type="text"
-                      value={details.country}
-                      onChange={(e) => setDetails({ ...details, country: e.target.value })}
-                      className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">{t('state')}</label>
+                    <label htmlFor="country" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('country')}</label>
+                    <div className="relative">
+                      <input
+                        type="text"
+                        name="country"
+                        id="country"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                        value={details.country}
+                        onChange={(e) => setDetails({ ...details, country: e.target.value })}
+                      />
+                      {isFetchingLocation && <Loader2 className="animate-spin h-5 w-5 text-gray-500 absolute right-3 top-2.5" />}
+                    </div>
+                  </div>
+                  <div>
+                    <label htmlFor="state" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('state')}</label>
                     <input
                       type="text"
+                      name="state"
+                      id="state"
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                       value={details.state}
                       onChange={(e) => setDetails({ ...details, state: e.target.value })}
-                      className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">{t('city')}</label>
+                    <label htmlFor="city" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('city')}</label>
                     <input
                       type="text"
+                      name="city"
+                      id="city"
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                       value={details.city}
                       onChange={(e) => setDetails({ ...details, city: e.target.value })}
-                      className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
-                  <div className="flex space-x-2">
+                  <div className="flex justify-end space-x-2">
+                    <Button variant="outline" onClick={() => setIsEditingDetails(false)}>{t('cancel')}</Button>
                     <Button onClick={handleSaveDetails} disabled={isUpdatingDetails}>
                       {isUpdatingDetails && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                       {t('save')}
                     </Button>
-                    <Button
-                      variant="ghost"
-                      onClick={() => setIsEditingDetails(false)}
-                      disabled={isUpdatingDetails}
-                    >
-                      {t('cancel')}
-                    </Button>
                   </div>
                 </div>
               ) : (
-                <div className="space-y-2 text-sm text-gray-600">
-                  <p><strong>{t('gender')}:</strong> {details.gender || t('notSet')}</p>
-                  <p><strong>{t('country')}:</strong> {details.country || t('notSet')}</p>
-                  <p><strong>{t('state')}:</strong> {details.state || t('notSet')}</p>
-                  <p><strong>{t('city')}:</strong> {details.city || t('notSet')}</p>
+                <div className="space-y-2">
+                  <p><strong>{t('bio')}:</strong> {session?.user.bio || t('notSet')}</p>
+                  <p><strong>{t('gender')}:</strong> {session?.user.gender || t('notSet')}</p>
+                  <p><strong>{t('location')}:</strong> {`${session?.user.city || ''}, ${session?.user.state || ''}, ${session?.user.country || ''}`.replace(/^, |, $/g, '') || t('notSet')}</p>
+                  <Button variant="outline" onClick={handleEditDetailsClick} className="mt-2">{t('editDetails')}</Button>
                 </div>
               )}
             </CardContent>

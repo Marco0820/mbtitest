@@ -20,7 +20,7 @@ export async function GET(
   }
 
   try {
-    const testResult = await prisma.testResult.findUnique({
+    const testResult = await prisma.resultHistory.findUnique({
       where: {
         id: testId,
         userId: session.user.id,

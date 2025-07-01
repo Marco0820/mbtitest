@@ -79,7 +79,7 @@ export default function BlogPage() {
                   </p>
                 </CardContent>
                 <CardFooter>
-                   <p className="text-xs text-gray-500">{new Date(blog.createdAt).toLocaleDateString()}</p>
+                   {/* <p className="text-xs text-gray-500">{new Date(blog.createdAt).toLocaleDateString()}</p> */}
                 </CardFooter>
               </Card>
             </Link>

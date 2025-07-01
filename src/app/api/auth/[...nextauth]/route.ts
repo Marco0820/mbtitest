@@ -1,5 +1,6 @@
 import NextAuth, { NextAuthOptions, User } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import GoogleProvider from 'next-auth/providers/google';
 import { compare } from 'bcryptjs';
 import { prisma } from '@/lib/db';
 
@@ -24,6 +25,10 @@ async function verifyTurnstile(token: string) {
 
 export const authOptions: NextAuthOptions = {
   providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    }),
     CredentialsProvider({
       name: 'Credentials',
       credentials: {

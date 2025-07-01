@@ -17,6 +17,15 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination"
 
+const ALL_MBTI_TYPES = [
+  'INTJ', 'INTP', 'ENTJ', 'ENTP',
+  'INFJ', 'INFP', 'ENFJ', 'ENFP',
+  'ISTJ', 'ISFJ', 'ESTJ', 'ESFJ',
+  'ISTP', 'ISFP', 'ESTP', 'ESFP'
+];
+
+const ALL_GENDERS = ['male', 'female', 'other'];
+
 // Manually define User type based on schema.prisma
 // This avoids issues with Prisma client generation paths
 export type User = {
@@ -106,7 +115,6 @@ export default function PeoplePageClient({ initialUsers }: PeoplePageClientProps
     currentPage * ITEMS_PER_PAGE
   );
   
-  const uniqueMbti = Array.from(new Set(initialUsers.map(u => u.mbti).filter(Boolean) as string[]));
   const uniqueCountries = Array.from(new Set(initialUsers.map(user => user.country).filter(Boolean) as string[]));
   const uniqueStates = Array.from(new Set(initialUsers.filter(user => filters.country === 'all' || user.country === filters.country).map(user => user.state).filter(Boolean) as string[]));
   const uniqueCities = Array.from(new Set(initialUsers.filter(user => (filters.country === 'all' || user.country === filters.country) && (filters.state === 'all' || user.state === filters.state)).map(user => user.city).filter(Boolean) as string[]));
@@ -161,7 +169,7 @@ export default function PeoplePageClient({ initialUsers }: PeoplePageClientProps
                 </SelectTrigger>
                 <SelectContent className="bg-white dark:bg-gray-700">
                   <SelectItem value="all">{t('all_mbti')}</SelectItem>
-                  {uniqueMbti.map(mbti => (
+                  {ALL_MBTI_TYPES.map(mbti => (
                     <SelectItem key={mbti} value={mbti}>{mbti}</SelectItem>
                   ))}
                 </SelectContent>
@@ -173,9 +181,9 @@ export default function PeoplePageClient({ initialUsers }: PeoplePageClientProps
                 </SelectTrigger>
                 <SelectContent className="bg-white dark:bg-gray-700">
                   <SelectItem value="all">{t('all_genders')}</SelectItem>
-                  <SelectItem value="male">{t('male')}</SelectItem>
-                  <SelectItem value="female">{t('female')}</SelectItem>
-                  <SelectItem value="other">{t('other')}</SelectItem>
+                  {ALL_GENDERS.map(gender => (
+                      <SelectItem key={gender} value={gender}>{t(gender)}</SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
 

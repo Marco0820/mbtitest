@@ -43,10 +43,16 @@ export function ChatWindow({
 }: ChatWindowProps) {
   const { data: session } = useSession();
   const [newMessage, setNewMessage] = useState('');
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTo({
+        top: scrollContainerRef.current.scrollHeight,
+        behavior: 'smooth',
+      });
+    }
   }, [messages]);
   
   const handleFormSubmit = async (e: React.FormEvent) => {
@@ -55,6 +61,7 @@ export function ChatWindow({
     
     await onSendMessage(newMessage);
     setNewMessage('');
+    inputRef.current?.focus();
   };
 
   return (
@@ -76,7 +83,7 @@ export function ChatWindow({
           {selectedUser.mbti && <p className="text-sm text-purple-600">{selectedUser.mbti}</p>}
         </div>
       </div>
-      <div className="flex-1 p-4 overflow-y-auto bg-gray-50 dark:bg-gray-700">
+      <div ref={scrollContainerRef} className="flex-1 p-4 overflow-y-auto bg-gray-50 dark:bg-gray-700">
         {isLoadingMessages ? (
           <div className="text-center">Loading messages...</div>
         ) : (
@@ -103,11 +110,11 @@ export function ChatWindow({
               </div>
             ))
         )}
-        <div ref={messagesEndRef} />
       </div>
       <form onSubmit={handleFormSubmit} className="p-4 border-t bg-white dark:bg-gray-800">
         <div className="flex items-center space-x-2">
           <Input
+            ref={inputRef}
             type="text"
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
