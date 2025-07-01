@@ -1,132 +1,366 @@
 {
   "nav": {
     "home": "Home",
-    "personalities": "Personality Types",
-    "test": "Take Test",
-    "people": "Meet People",
-    "blog": "Articles",
-    "about": "About",
-    "login": "Sign In",
-    "signup": "Sign Up"
+    "personalities": "Persoonlijkheden",
+    "test": "Test",
+    "people": "Mensen",
+    "blog": "Blog",
+    "about": "Over ons",
+    "login": "Inloggen",
+    "signup": "Aanmelden",
+    "logout": "Uitloggen",
+    "profile": "Profiel",
+    "settings": "Instellingen",
+    "language": "Taal",
+    "secondary_cta": "Mensen uit dezelfde stad"
   },
-  "personalities": {
-    "analysts": "Analysts",
-    "diplomats": "Diplomats", 
-    "sentinels": "Sentinels",
-    "explorers": "Explorers",
-    "intj": {
-      "name": "Architect",
-      "description": "Imaginative and strategic thinkers, with a plan for everything."
-    },
-    "intp": {
-      "name": "Thinker", 
-      "description": "Innovative inventors with an unquenchable thirst for knowledge."
-    },
-    "entj": {
-      "name": "Commander",
-      "description": "Bold, imaginative and strong-willed leaders, always finding a way – or making one."
-    },
-    "entp": {
-      "name": "Debater",
-      "description": "Smart and curious thinkers who cannot resist an intellectual challenge."
-    },
-    "infj": {
-      "name": "Advocate",
-      "description": "Quiet and mystical, yet very inspiring and tireless idealists."
-    },
-    "infp": {
-      "name": "Mediator",
-      "description": "Poetic, kind and altruistic people, always eager to help a good cause."
-    },
-    "enfj": {
-      "name": "Protagonist",
-      "description": "Charismatic and inspiring leaders, able to mesmerize their listeners."
-    },
-    "enfp": {
-      "name": "Campaigner",
-      "description": "Enthusiastic, creative and sociable free spirits, who can always find a reason to smile."
-    },
-    "istj": {
-      "name": "Logistician",
-      "description": "Practical and fact-minded, reliable and responsible."
-    },
-    "isfj": {
-      "name": "Protector",
-      "description": "Warm-hearted and dedicated, always ready to protect their loved ones."
-    },
-    "estj": {
-      "name": "Executive",
-      "description": "Excellent administrators, unsurpassed at managing things – or people."
-    },
-    "esfj": {
-      "name": "Consul",
-      "description": "Extraordinarily caring, social and popular people, always eager to help."
-    },
-    "istp": {
-      "name": "Virtuoso",
-      "description": "Bold and practical experimenters, masters of all kinds of tools."
-    },
-    "isfp": {
-      "name": "Adventurer",
-      "description": "Flexible and charming artists, always ready to explore new possibilities."
-    },
-    "estp": {
-      "name": "Entrepreneur",
-      "description": "Smart, energetic and very perceptive people, who truly enjoy living on the edge."
-    },
-    "esfp": {
-      "name": "Entertainer",
-      "description": "Spontaneous, energetic and enthusiastic people – life is never boring around them."
-    }
+  "blog": {
+    "title": "Wat de 16 persoonlijkheidstypes in de wereld doen"
+  },
+  "auth": {
+    "login": "Inloggen",
+    "login_description": "Log in op uw account om door te gaan.",
+    "signup": "Aanmelden",
+    "signup_description": "Maak een account aan om te beginnen.",
+    "email": "E-mail",
+    "password": "Wachtwoord",
+    "no_account": "Heeft u geen account?",
+    "have_account": "Heeft u al een account?",
+    "logging_in": "Inloggen...",
+    "signing_up": "Aanmelden...",
+    "login_failed": "Inloggen mislukt. Controleer uw gegevens.",
+    "signup_failed": "Aanmelden mislukt. Probeer het opnieuw."
   },
   "home": {
     "hero": {
-      "title": "Discover Your True Self",
-      "subtitle": "Connect with millions worldwide through personality insights",
-      "cta": "Take the Free Test",
-      "secondary_cta": "Meet Like-Minded People"
+      "title": "Ontdek uw ware persoonlijkheid",
+      "subtitle": "Doe onze gratis persoonlijkheidstest en ontvang een gedetailleerd rapport over uw type.",
+      "cta": "Doe de Test",
+      "secondary_cta": "Mensen uit dezelfde stad"
     },
     "features": {
+      "title": "Waarom kiezen voor MBTITEST?",
+      "subtitle": "Ervaar het meest uitgebreide platform voor persoonlijkheidsbeoordeling met geavanceerde sociale functies en wereldwijd bereik.",
       "accurate": {
-        "title": "Scientifically Accurate",
-        "description": "Based on decades of psychological research and validated methodologies"
+        "title": "Nauwkeurig",
+        "description": "Onze test is gebaseerd op de officiële Myers-Briggs Type Indicator."
       },
       "social": {
-        "title": "Global Community", 
-        "description": "Connect with people who share your personality type from around the world"
+        "title": "Sociale functies",
+        "description": "Deel uw resultaten met vrienden en zie hoe u zich verhoudt."
       },
       "insights": {
-        "title": "Deep Insights",
-        "description": "Comprehensive reports covering career, relationships, and personal growth"
-      }
-    },
-    "test": {
-      "start": {
-        "title": "Discover Your Personality Type",
-        "description": "Answer questions about how you typically think, feel, and behave. Be honest – there are no right or wrong answers.",
-        "time": "Takes less than 12 minutes",
-        "privacy": "Your responses are completely private and secure",
-        "start_button": "Start Test"
+        "title": "Diepere inzichten",
+        "description": "Ga verder dan uw type met diepgaande analyses en rapporten."
       },
-      "progress": "Question {current} of {total}",
-      "navigation": {
-        "back": "Back",
-        "next": "Next",
-        "finish": "Finish Test"
+      "privacy": {
+        "title": "Privacy voorop",
+        "description": "Uw persoonlijke gegevens worden versleuteld en nooit gedeeld met derden."
       },
-      "options": {
-        "agree_strongly": "Agree Strongly",
-        "agree": "Agree",
-        "neutral": "Neutral", 
-        "disagree": "Disagree",
-        "disagree_strongly": "Disagree Strongly"
+      "languages": {
+        "title": "21 talen",
+        "description": "Beschikbaar in 21 talen met cultureel aangepaste inhoud."
+      },
+      "instant": {
+        "title": "Directe resultaten",
+        "description": "Krijg uw persoonlijkheidstype direct na het voltooien van de test."
       }
-    },
-    "footer": {
-      "company": "© 2024 MBTITEST. All rights reserved.",
-      "privacy": "Privacy Policy",
-      "terms": "Terms of Service",
-      "contact": "Contact Us"
     }
+  },
+  "test": {
+    "title": "Gratis, snelle en zeer nauwkeurige persoonlijkheidstest",
+    "subtitle": "Ontdek welke van de 16 persoonlijkheden u bent. Leer uw sterke en zwakke punten en ideale carrièrepaden kennen.",
+    "feature_quick_title": "Snel en efficiënt",
+    "time": "Duurt ongeveer 10-15 minuten",
+    "feature_private_title": "Volledig privé",
+    "privacy": "Uw testresultaten zijn volledig anoniem",
+    "feature_accurate_title": "Wetenschappelijk gevalideerd",
+    "accuracy": "Gebaseerd op goed onderzochte typologie",
+    "start_button": "Start de test",
+    "tagline": "Sluit u aan bij duizenden gebruikers die hun persoonlijkheidstype al hebben gevonden.",
+    "page_indicator": "Pagina {currentPage} van {totalPages}",
+    "back": "Terug",
+    "next": "Volgende",
+    "finish_test": "Test voltooien",
+    "calculating": "Berekenen...",
+    "progress_title": "Voortgang",
+    "progress": "{progress}% voltooid",
+    "agree": "Eens",
+    "disagree": "Oneens",
+    "gender_select": "Selecteer uw geslacht",
+    "male": "Man",
+    "female": "Vrouw",
+    "other": "Anders",
+    "q1": "U vindt het moeilijk om uzelf voor te stellen aan andere mensen.",
+    "q2": "U raakt vaak zo verdiept in gedachten dat u uw omgeving negeert of vergeet.",
+    "q3": "U probeert uw e-mails zo snel mogelijk te beantwoorden en kunt een rommelige inbox niet verdragen.",
+    "q4": "U vindt het gemakkelijk om ontspannen en gefocust te blijven, zelfs als er enige druk is.",
+    "q5": "U begint meestal geen gesprekken.",
+    "q6": "U doet zelden iets uit pure nieuwsgierigheid.",
+    "q7": "U voelt zich superieur aan andere mensen.",
+    "q8": "Georganiseerd zijn is belangrijker voor u dan aanpasbaar zijn.",
+    "q9": "U bent meestal zeer gemotiveerd en energiek.",
+    "q10": "Een debat winnen is voor u minder belangrijk dan ervoor te zorgen dat niemand van streek raakt.",
+    "q11": "U voelt vaak dat u zichzelf moet rechtvaardigen tegenover andere mensen.",
+    "q12": "Uw huis- en werkomgevingen zijn vrij netjes.",
+    "q13": "U vindt het niet erg om in het middelpunt van de belangstelling te staan.",
+    "q14": "U beschouwt uzelf als praktischer dan creatief.",
+    "q15": "Mensen kunnen u zelden van streek maken.",
+    "q16": "Uw reisplannen zijn meestal goed doordacht.",
+    "q17": "Het is vaak moeilijk voor u om u in te leven in de gevoelens van andere mensen.",
+    "q18": "Uw humeur kan zeer snel veranderen.",
+    "q19": "In een discussie moet de waarheid belangrijker zijn dan de gevoeligheden van mensen.",
+    "q20": "U maakt zich zelden zorgen over hoe uw acties andere mensen beïnvloeden.",
+    "q21": "Uw werkstijl is meer een kwestie van willekeurige energiepieken dan een methodische en georganiseerde aanpak.",
+    "q22": "U bent vaak jaloers op anderen.",
+    "q23": "Een interessant boek of een videogame is vaak beter dan een sociaal evenement.",
+    "q24": "Een plan kunnen ontwikkelen en eraan vasthouden is het belangrijkste onderdeel van elk project.",
+    "q25": "U laat zich zelden meeslepen door fantasieën en ideeën.",
+    "q26": "U merkt vaak dat u verdiept bent in gedachten als u in de natuur wandelt.",
+    "q27": "Als iemand niet snel op uw e-mail reageert, begint u zich zorgen te maken of u iets verkeerds heeft gezegd.",
+    "q28": "Als ouder zou u liever zien dat uw kind vriendelijk opgroeit dan slim.",
+    "q29": "U laat andere mensen uw acties niet beïnvloeden.",
+    "q30": "Uw dromen zijn meestal gericht op de echte wereld en haar gebeurtenissen.",
+    "q31": "Het kost u niet veel tijd om betrokken te raken bij sociale activiteiten op uw nieuwe werkplek.",
+    "q32": "U bent meer een natuurlijke improvisator dan een zorgvuldige planner.",
+    "q33": "Uw emoties beheersen u meer dan u hen beheerst.",
+    "q34": "U geniet van sociale evenementen met verkleedpartijen of rollenspellen.",
+    "q35": "U besteedt vaak tijd aan het verkennen van onrealistische en onpraktische, maar intrigerende ideeën.",
+    "q36": "U improviseert liever dan tijd te besteden aan het opstellen van een gedetailleerd plan.",
+    "q37": "U bent een relatief gereserveerd en stil persoon.",
+    "q38": "Als u een bedrijf had, zou u het erg moeilijk vinden om loyale maar onderpresterende werknemers te ontslaan.",
+    "q39": "U overdenkt vaak de redenen van het menselijk bestaan.",
+    "q40": "Logica is meestal belangrijker dan het hart als het gaat om het nemen van belangrijke beslissingen.",
+    "q41": "U vindt het gemakkelijk om u in te leven in een persoon wiens ervaringen sterk verschillen van de uwe.",
+    "q42": "U verkiest meestal spontaniteit boven planning.",
+    "q43": "U voelt zich op uw gemak als u gewoon naar iemand toeloopt die u interessant vindt en een gesprek begint.",
+    "q44": "U stoort zich niet al te zeer aan rommelige mensen.",
+    "q45": "U bent erg sentimenteel.",
+    "q46": "U bent erg goed in het beheren van uw tijd.",
+    "q47": "U geniet ervan om mensen te zien ruziën.",
+    "q48": "U neigt ernaar om de aandacht niet op uzelf te vestigen.",
+    "q49": "Uw humeur is erg stabiel.",
+    "q50": "U bent beslist geen artistiek type.",
+    "q51": "U denkt dat de wereld een betere plek zou zijn als mensen meer op rationaliteit en minder op hun gevoelens zouden vertrouwen.",
+    "q52": "U doet liever uw klusjes voordat u zichzelf toestaat te ontspannen.",
+    "q53": "U geniet van films die u aan het huilen maken.",
+    "q54": "U bent erg privé en deelt uw gevoelens niet gemakkelijk.",
+    "q55": "U bent erg goed in het lezen van de emoties van andere mensen.",
+    "q56": "U bent erg geduldig.",
+    "q57": "U voelt zich vaak overweldigd door emoties.",
+    "q58": "U bent liever in een groep dan alleen.",
+    "q59": "U bent erg zelfkritisch.",
+    "q60": "U bent een zeer creatief persoon."
+  },
+  "results": {
+    "title": "Uw persoonlijkheidstype is",
+    "your_personality_type": "Uw persoonlijkheidstype is",
+    "scroll_to_learn_more": "Scroll naar beneden voor meer informatie",
+    "see_full_report": "Bekijk volledig rapport",
+    "your_type": "Uw type",
+    "personality_type": "Persoonlijkheidstype",
+    "personality_type_description": "Dit bepaalt hoe we de wereld zien en beslissingen nemen.",
+    "code": "Code",
+    "introduction": "Introductie",
+    "strengths_weaknesses": "Sterke en zwakke punten",
+    "romantic_relationships": "Romantische relaties",
+    "friendships": "Vriendschappen",
+    "parenthood": "Ouderschap",
+    "career_paths": "Carrièrepaden",
+    "workplace_habits": "Gewoonten op de werkplek",
+    "conclusion": "Conclusie",
+    "share_results": "Deel uw resultaten",
+    "take_test_again": "Doe de test opnieuw",
+    "no_result_title": "Geen resultaat gevonden",
+    "no_result_description": "We konden uw testresultaat niet vinden. Doe de test om uw persoonlijkheidstype te ontdekken.",
+    "take_test_button": "Doe de test opnieuw",
+    "breakdown_title": "Score-overzicht",
+    "extraversion_low": "Introvert",
+    "extraversion_high": "Extravert",
+    "intuition_low": "Sensing",
+    "intuition_high": "Intuïtie",
+    "feeling_low": "Denken",
+    "feeling_high": "Voelen",
+    "judging_low": "Waarnemen",
+    "judging_high": "Oordelen",
+    "assertive_low": "Turbulent",
+    "assertive_high": "Assertief",
+    "confidence_title": "Resultaatbetrouwbaarheid",
+    "confidence_description": "Onze betrouwbaarheid in dit resultaat is {confidence}%.",
+    "consistency_title": "Consistentie van antwoorden",
+    "consistency_description": "Uw antwoorden waren {consistency}% consistent.",
+    "anomalies_title": "Analyse-opmerkingen",
+    "extreme_response_pattern": "U neigde ernaar de meest extreme antwoorden te kiezen.",
+    "excessive_neutral_responses": "U gebruikte veel neutrale antwoorden.",
+    "too_fast_completion": "U heeft de test zeer snel voltooid.",
+    "view_full_profile_button": "Bekijk volledig {type} profiel",
+    "trait_I_title": "Introvert",
+    "trait_I_subtitle": "Energie",
+    "trait_I_text": "Introverte mensen krijgen de meeste energie als ze alleen zijn. Ze geven de voorkeur aan diepe, betekenisvolle sociale interacties en socialiseren liever met een paar goede vrienden dan met een grote groep mensen.",
+    "trait_E_title": "Extravert",
+    "trait_E_subtitle": "Energie",
+    "trait_E_text": "Extraverte mensen krijgen energie van sociale interactie. Ze zijn extravert en genieten van de interactie met een grote verscheidenheid aan mensen.",
+    "trait_N_title": "Intuïtief",
+    "trait_N_subtitle": "Geest",
+    "trait_N_text": "Intuïtieve individuen richten zich op mogelijkheden en de toekomst. Ze genieten van abstract denken en richten zich op het grote geheel in plaats van op de details.",
+    "trait_S_title": "Sensorisch",
+    "trait_S_subtitle": "Geest",
+    "trait_S_text": "Sensorische individuen zijn praktisch en richten zich op feiten en details. Ze geven de voorkeur aan praktijkervaring boven theorie.",
+    "trait_T_title": "Denkend",
+    "trait_T_subtitle": "Natuur",
+    "trait_T_text": "Denkende individuen nemen beslissingen op basis van logica en objectieve criteria. Ze geven prioriteit aan eerlijkheid en rechtvaardigheid boven de gevoelens van anderen.",
+    "trait_F_title": "Voelend",
+    "trait_F_subtitle": "Natuur",
+    "trait_F_text": "Voelende individuen nemen beslissingen op basis van hun waarden en gevoelens. Ze geven prioriteit aan harmonie en samenwerking.",
+    "trait_J_title": "Oordelend",
+    "trait_J_subtitle": "Tactiek",
+    "trait_J_text": "Oordelende individuen zijn besluitvaardig en geven de voorkeur aan planning en structuur. Ze genieten ervan dingen georganiseerd te hebben en beslissingen te nemen.",
+    "trait_P_title": "Waarnemend",
+    "trait_P_subtitle": "Tactiek",
+    "trait_P_text": "Waarnemende individuen zijn flexibel en houden hun opties graag open. Ze genieten van spontaniteit en passen zich graag aan nieuwe situaties aan."
+  },
+  "footer": {
+    "rights_reserved": "Alle rechten voorbehouden.",
+    "tagline": "Ontdek uw ware persoonlijkheid.",
+    "quick_links": "Snelle links",
+    "support": "Ondersteuning",
+    "legal": "Juridisch",
+    "privacy": "Privacybeleid",
+    "terms": "Servicevoorwaarden",
+    "company": "© 2024 MBTITEST. Alle rechten voorbehouden.",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "faq": {
+    "title": "Veelgestelde vragen",
+    "q1_title": "Wat is de MBTI-test?",
+    "q1_text": "De Myers-Briggs Type Indicator (MBTI) is een introspectieve zelfrapportagevragenlijst die verschillende psychologische voorkeuren aangeeft in hoe mensen de wereld waarnemen en beslissingen nemen. Onze test is ontworpen om u een duidelijk begrip te geven van uw persoonlijkheidstype op basis van dit model.",
+    "q2_title": "Hoe nauwkeurig is de test?",
+    "q2_text": "Hoewel geen enkele persoonlijkheidstest 100% nauwkeurig is, is onze beoordeling gebaseerd op uitgebreid onderzoek en ontworpen als een zeer betrouwbaar hulpmiddel voor zelfontdekking. Het biedt een solide kader voor het begrijpen van uw voorkeuren en hoe u met de wereld omgaat.",
+    "q3_title": "Hoe lang duurt het om te voltooien?",
+    "q3_text": "De test duurt doorgaans ongeveer 10-15 minuten om te voltooien. We raden u aan de vragen eerlijk en spontaan te beantwoorden voor de meest nauwkeurige resultaten.",
+    "q4_title": "Zijn mijn testresultaten en profielinformatie privé?",
+    "q4_text": "Ja. Uw individuele testresultaten zijn privé. Uw openbare profiel (naam, MBTI, bio, locatie) is zichtbaar voor andere gebruikers op de pagina 'Mensen' om community-interactie te vergemakkelijken. U kunt bepalen welke informatie u deelt op uw profielpagina.",
+    "q5_title": "Waar is de 'Mensen'-pagina voor?",
+    "q5_text": "De 'Mensen'-pagina is een functie waarmee u in contact kunt komen met andere gebruikers. U kunt filteren op persoonlijkheidstype, locatie en andere criteria om gelijkgestemde individuen van over de hele wereld te vinden en ermee te communiceren.",
+    "q6_title": "Hoe update ik mijn profielinformatie?",
+    "q6_text": "U kunt uw naam, bio, locatie en profielfoto rechtstreeks op uw profielpagina bijwerken. Navigeer eenvoudig naar uw profiel en klik op de bewerkingspictogrammen naast de informatie die u wilt wijzigen."
+  },
+  "personalities": {
+    "title": "16 persoonlijkheidstypes",
+    "subtitle": "Lees meer over elk van de 16 persoonlijkheidstypes en vind degene die het meest op u lijkt.",
+    "analysts": "Analisten",
+    "analysts_description": "Intuïtieve (N) en Denkende (T) persoonlijkheidstypes, bekend om hun rationaliteit, onpartijdigheid en intellectuele uitmuntendheid.",
+    "diplomats": "Diplomaten",
+    "diplomats_description": "Intuïtieve (N) en Voelende (F) persoonlijkheidstypes, bekend om hun empathie, diplomatieke vaardigheden en gepassioneerd idealisme.",
+    "sentinels": "Schildwachten",
+    "sentinels_description": "Observerende (S) en Oordelende (J) persoonlijkheidstypes, bekend om hun praktisch nut en focus op orde, veiligheid en stabiliteit.",
+    "explorers": "Verkenners",
+    "explorers_description": "Observerende (S) en Waarnemende (P) persoonlijkheidstypes, bekend om hun spontaniteit, vindingrijkheid en flexibiliteit.",
+    "intj": { "name": "Architect" },
+    "intp": { "name": "Logicus" },
+    "entj": { "name": "Bevelhebber" },
+    "entp": { "name": "Debater" },
+    "infj": { "name": "Advocaat" },
+    "infp": { "name": "Bemiddelaar" },
+    "enfj": { "name": "Protagonist" },
+    "enfp": { "name": "Campagnevoerder" },
+    "istj": { "name": "Logisticus" },
+    "isfj": { "name": "Verdediger" },
+    "estj": { "name": "Executive" },
+    "esfj": { "name": "Consul" },
+    "istp": { "name": "Virtuoos" },
+    "isfp": { "name": "Avonturier" },
+    "estp": { "name": "Ondernemer" },
+    "esfp": { "name": "Entertainer" }
+  },
+  "people": {
+    "title": "Mensen zoeken",
+    "search_by_name": "Zoeken op naam...",
+    "filter_by_mbti": "Filteren op MBTI",
+    "all_mbti": "Alle MBTI",
+    "filter_by_gender": "Filteren op geslacht",
+    "all_genders": "Alle geslachten",
+    "male": "Man",
+    "female": "Vrouw",
+    "filter_by_country": "Filteren op land",
+    "all_countries": "Alle landen",
+    "filter_by_state": "Filteren op staat",
+    "all_states": "Alle staten",
+    "filter_by_city": "Filteren op stad",
+    "all_cities": "Alle steden",
+    "search": "Zoeken",
+    "clear": "Wissen",
+    "no_users_found": "Geen gebruikers gevonden die aan uw criteria voldoen.",
+    "message": "Bericht"
+  },
+  "profile": {
+    "title": "Mijn profiel",
+    "uploadAvatar": "Upload een nieuwe avatar",
+    "updateSuccess": "Profiel succesvol bijgewerkt!",
+    "updateError": "Profiel bijwerken mislukt.",
+    "historyTitle": "Testgeschiedenis",
+    "historyDescription": "Bekijk uw eerdere MBTI-testresultaten.",
+    "viewResult": "Resultaat bekijken",
+    "noHistory": "U heeft geen testgeschiedenis.",
+    "messagesTitle": "Berichten",
+    "messagesDescription": "Maak contact met mensen van andere persoonlijkheidstypes.",
+    "messagesPlaceholder": "Uw berichten verschijnen hier.",
+    "messagesContent": "Uw berichten verschijnen hier.",
+    "goToMessages": "Ga naar berichten",
+    "detailsTitle": "Details",
+    "detailsDescription": "Uw persoonlijke informatie.",
+    "notSet": "Niet ingesteld",
+    "selectGender": "Selecteer geslacht",
+    "male": "Man",
+    "female": "Vrouw",
+    "other": "Anders",
+    "infoRequiredTitle": "Profielupdate vereist",
+    "infoRequiredDescription": "Voltooi uw profielinformatie om toegang te krijgen tot berichtfuncties.",
+    "bio": "Bio",
+    "gender": "Geslacht",
+    "location": "Locatie",
+    "country": "Land",
+    "state": "Staat",
+    "city": "Stad",
+    "editDetails": "Details bewerken",
+    "save": "Opslaan",
+    "cancel": "Annuleren",
+    "editName": "Naam bewerken",
+    "signOut": "Uitloggen"
+  },
+  "about": {
+    "seo_title": "Over ons | Nauwkeurige MBTI-test & 16 persoonlijkheden community",
+    "seo_description": "Lees meer over MBTITEST, uw bestemming voor een nauwkeurige, gratis 16 persoonlijkhedentest. Ontdek onze missie en unieke sociale functies om in contact te komen met anderen op basis van uw MBTI-type."
+  },
+  "login": {
+    "title": "Inloggen",
+    "subtitle": "Welkom terug! Log in om door te gaan.",
+    "email_label": "E-mail",
+    "password_label": "Wachtwoord",
+    "forgot_password": "Wachtwoord vergeten?",
+    "login_button": "Inloggen",
+    "no_account": "Heeft u geen account?",
+    "signup_link": "Aanmelden"
+  },
+  "register": {
+    "title": "Account aanmaken",
+    "subtitle": "Sluit u bij ons aan en ontdek uw persoonlijkheidstype.",
+    "name_label": "Naam",
+    "email_label": "E-mail",
+    "password_label": "Wachtwoord",
+    "register_button": "Registreren",
+    "have_account": "Heeft u al een account?",
+    "login_link": "Inloggen"
+  },
+  "submit": "Verzenden",
+  "finish": "Voltooien",
+  "Admin": {
+    "title": "Beheerderspaneel",
+    "populateBlogs": "Blogs vullen",
+    "populateEnglish": "Engelse blogs vullen",
+    "populateChinese": "Chinese blogs vullen",
+    "populating": "Vullen...",
+    "results": "Resultaten"
   }
-} 
+}

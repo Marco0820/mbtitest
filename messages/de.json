@@ -1,132 +1,442 @@
 {
   "nav": {
-    "home": "Home",
-    "personalities": "Personality Types",
-    "test": "Take Test",
-    "people": "Meet People",
-    "blog": "Articles",
-    "about": "About",
-    "login": "Sign In",
-    "signup": "Sign Up"
+    "home": "Startseite",
+    "personalities": "Persönlichkeitstypen",
+    "test": "Test machen",
+    "people": "Leute treffen",
+    "blog": "Artikel",
+    "about": "Über uns",
+    "login": "Anmelden",
+    "signup": "Registrieren",
+    "logout": "Abmelden",
+    "profile": "Profil",
+    "settings": "Einstellungen",
+    "language": "Sprache",
+    "secondary_cta": "Leute aus der gleichen Stadt"
   },
   "personalities": {
-    "analysts": "Analysts",
-    "diplomats": "Diplomats", 
-    "sentinels": "Sentinels",
-    "explorers": "Explorers",
+    "analysts": "Analysten",
+    "diplomats": "Diplomaten",
+    "sentinels": "Wächter",
+    "explorers": "Forscher",
     "intj": {
-      "name": "Architect",
-      "description": "Imaginative and strategic thinkers, with a plan for everything."
+      "name": "Architekt",
+      "description": "Fantasievolle und strategische Denker, mit einem Plan für alles."
     },
     "intp": {
-      "name": "Thinker", 
-      "description": "Innovative inventors with an unquenchable thirst for knowledge."
+      "name": "Denker",
+      "description": "Innovative Erfinder mit einem unstillbaren Wissensdurst."
     },
     "entj": {
-      "name": "Commander",
-      "description": "Bold, imaginative and strong-willed leaders, always finding a way – or making one."
+      "name": "Kommandant",
+      "description": "Kühne, fantasievolle und willensstarke Führungspersönlichkeiten, die immer einen Weg finden – oder einen schaffen."
     },
     "entp": {
-      "name": "Debater",
-      "description": "Smart and curious thinkers who cannot resist an intellectual challenge."
+      "name": "Debattierer",
+      "description": "Intelligente und neugierige Denker, die einer intellektuellen Herausforderung nicht widerstehen können."
     },
     "infj": {
-      "name": "Advocate",
-      "description": "Quiet and mystical, yet very inspiring and tireless idealists."
+      "name": "Advokat",
+      "description": "Ruhige und mystische, aber sehr inspirierende und unermüdliche Idealisten."
     },
     "infp": {
-      "name": "Mediator",
-      "description": "Poetic, kind and altruistic people, always eager to help a good cause."
+      "name": "Vermittler",
+      "description": "Poetische, freundliche und altruistische Menschen, die immer bereit sind, einer guten Sache zu helfen."
     },
     "enfj": {
       "name": "Protagonist",
-      "description": "Charismatic and inspiring leaders, able to mesmerize their listeners."
+      "description": "Charismatische und inspirierende Führungspersönlichkeiten, die ihre Zuhörer in ihren Bann ziehen können."
     },
     "enfp": {
-      "name": "Campaigner",
-      "description": "Enthusiastic, creative and sociable free spirits, who can always find a reason to smile."
+      "name": "Aktivist",
+      "description": "Enthusiastische, kreative und gesellige Freigeister, die immer einen Grund zum Lächeln finden können."
     },
     "istj": {
-      "name": "Logistician",
-      "description": "Practical and fact-minded, reliable and responsible."
+      "name": "Logistiker",
+      "description": "Praktische und faktenorientierte, zuverlässige und verantwortungsbewusste Menschen."
     },
     "isfj": {
-      "name": "Protector",
-      "description": "Warm-hearted and dedicated, always ready to protect their loved ones."
+      "name": "Verteidiger",
+      "description": "Warmherzige und engagierte Beschützer, die immer bereit sind, ihre Lieben zu verteidigen."
     },
     "estj": {
-      "name": "Executive",
-      "description": "Excellent administrators, unsurpassed at managing things – or people."
+      "name": "Exekutive",
+      "description": "Hervorragende Administratoren, unübertroffen im Management von Dingen – oder Menschen."
     },
     "esfj": {
-      "name": "Consul",
-      "description": "Extraordinarily caring, social and popular people, always eager to help."
+      "name": "Konsul",
+      "description": "Außerordentlich fürsorgliche, soziale und beliebte Menschen, die immer gerne helfen."
     },
     "istp": {
-      "name": "Virtuoso",
-      "description": "Bold and practical experimenters, masters of all kinds of tools."
+      "name": "Virtuose",
+      "description": "Kühne und praktische Experimentatoren, Meister aller Arten von Werkzeugen."
     },
     "isfp": {
-      "name": "Adventurer",
-      "description": "Flexible and charming artists, always ready to explore new possibilities."
+      "name": "Abenteurer",
+      "description": "Flexible und charmante Künstler, immer bereit, neue Möglichkeiten zu erkunden."
     },
     "estp": {
-      "name": "Entrepreneur",
-      "description": "Smart, energetic and very perceptive people, who truly enjoy living on the edge."
+      "name": "Unternehmer",
+      "description": "Intelligente, energische und sehr scharfsinnige Menschen, die es wirklich genießen, am Rande zu leben."
     },
     "esfp": {
       "name": "Entertainer",
-      "description": "Spontaneous, energetic and enthusiastic people – life is never boring around them."
-    }
+      "description": "Spontane, energische und enthusiastische Menschen – das Leben wird mit ihnen nie langweilig."
+    },
+    "title": "16 Persönlichkeitstypen",
+    "subtitle": "Erfahren Sie mehr über jeden der 16 Persönlichkeitstypen und finden Sie den, der Ihnen am ähnlichsten ist.",
+    "analysts_description": "Intuitive (N) und denkende (T) Persönlichkeitstypen, bekannt für ihre Rationalität, Unparteilichkeit und intellektuelle Exzellenz.",
+    "diplomats_description": "Intuitive (N) und fühlende (F) Persönlichkeitstypen, bekannt für ihre Empathie, diplomatischen Fähigkeiten und leidenschaftlichen Idealismus.",
+    "sentinels_description": "Beobachtende (S) und urteilende (J) Persönlichkeitstypen, bekannt für ihre Praktikabilität und ihren Fokus auf Ordnung, Sicherheit und Stabilität.",
+    "explorers_description": "Beobachtende (S) und prospektierende (P) Persönlichkeitstypen, bekannt für ihre Spontaneität, ihren Einfallsreichtum und ihre Flexibilität."
   },
   "home": {
     "hero": {
-      "title": "Discover Your True Self",
-      "subtitle": "Connect with millions worldwide through personality insights",
-      "cta": "Take the Free Test",
-      "secondary_cta": "Meet Like-Minded People"
+      "title": "Entdecke dein wahres Selbst",
+      "subtitle": "Verbinde dich mit Millionen weltweit durch Persönlichkeitseinblicke",
+      "cta": "Mach den kostenlosen Test",
+      "secondary_cta": "Triff Gleichgesinnte"
     },
     "features": {
       "accurate": {
-        "title": "Scientifically Accurate",
-        "description": "Based on decades of psychological research and validated methodologies"
+        "title": "Wissenschaftlich exakt",
+        "description": "Basiert auf jahrzehntelanger psychologischer Forschung und validierten Methoden"
       },
       "social": {
-        "title": "Global Community", 
-        "description": "Connect with people who share your personality type from around the world"
+        "title": "Globale Gemeinschaft",
+        "description": "Verbinde dich mit Menschen aus der ganzen Welt, die deinen Persönlichkeitstyp teilen"
       },
       "insights": {
-        "title": "Deep Insights",
-        "description": "Comprehensive reports covering career, relationships, and personal growth"
+        "title": "Tiefe Einblicke",
+        "description": "Umfassende Berichte über Karriere, Beziehungen und persönliches Wachstum"
+      },
+      "title": "Warum MBTITEST wählen?",
+      "subtitle": "Erleben Sie die umfassendste Plattform zur Persönlichkeitsbewertung mit fortschrittlichen sozialen Funktionen und globaler Reichweite.",
+      "privacy": {
+        "title": "Datenschutz an erster Stelle",
+        "description": "Ihre persönlichen Daten werden verschlüsselt und niemals an Dritte weitergegeben."
+      },
+      "languages": {
+        "title": "21 Sprachen",
+        "description": "Verfügbar in 21 Sprachen mit kulturell angepassten Inhalten."
+      },
+      "instant": {
+        "title": "Sofortige Ergebnisse",
+        "description": "Erhalten Sie Ihren Persönlichkeitstyp sofort nach Abschluss des Tests."
       }
     },
     "test": {
       "start": {
-        "title": "Discover Your Personality Type",
-        "description": "Answer questions about how you typically think, feel, and behave. Be honest – there are no right or wrong answers.",
-        "time": "Takes less than 12 minutes",
-        "privacy": "Your responses are completely private and secure",
-        "start_button": "Start Test"
+        "title": "Entdecken Sie Ihren Persönlichkeitstyp",
+        "description": "Beantworten Sie Fragen dazu, wie Sie normalerweise denken, fühlen und sich verhalten. Seien Sie ehrlich – es gibt keine richtigen oder falschen Antworten.",
+        "time": "Dauert weniger als 12 Minuten",
+        "privacy": "Ihre Antworten sind vollständig privat und sicher",
+        "start_button": "Test starten"
       },
-      "progress": "Question {current} of {total}",
+      "progress": "Frage {current} von {total}",
       "navigation": {
-        "back": "Back",
-        "next": "Next",
-        "finish": "Finish Test"
+        "back": "Zurück",
+        "next": "Weiter",
+        "finish": "Test beenden"
       },
       "options": {
-        "agree_strongly": "Agree Strongly",
-        "agree": "Agree",
-        "neutral": "Neutral", 
-        "disagree": "Disagree",
-        "disagree_strongly": "Disagree Strongly"
+        "agree_strongly": "Stimme voll und ganz zu",
+        "agree": "Zustimmen",
+        "neutral": "Neutral",
+        "disagree": "Nicht zustimmen",
+        "disagree_strongly": "Stimme überhaupt nicht zu"
       }
     },
     "footer": {
-      "company": "© 2024 MBTITEST. All rights reserved.",
-      "privacy": "Privacy Policy",
-      "terms": "Terms of Service",
-      "contact": "Contact Us"
+      "company": "© 2024 MBTITEST. Alle Rechte vorbehalten.",
+      "privacy": "Datenschutz-Bestimmungen",
+      "terms": "Nutzungsbedingungen",
+      "contact": "Kontaktiere uns"
     }
+  },
+  "blog": {
+    "title": "Was die 16 Persönlichkeitstypen auf der Welt tun"
+  },
+  "auth": {
+    "login": "Anmeldung",
+    "login_description": "Melden Sie sich bei Ihrem Konto an, um fortzufahren.",
+    "signup": "Registrieren",
+    "signup_description": "Erstellen Sie ein Konto, um loszulegen.",
+    "email": "Email",
+    "password": "Passwort",
+    "no_account": "Sie haben noch kein Konto?",
+    "have_account": "Sie haben bereits ein Konto?",
+    "logging_in": "Anmelden...",
+    "signing_up": "Registrieren...",
+    "login_failed": "Anmeldung fehlgeschlagen. Bitte überprüfen Sie Ihre Anmeldedaten.",
+    "signup_failed": "Registrierung fehlgeschlagen. Bitte versuchen Sie es erneut."
+  },
+  "test": {
+    "title": "Kostenloser, schneller und hochpräziser Persönlichkeitstest",
+    "subtitle": "Entdecken Sie, welche der 16 Persönlichkeiten Sie sind. Lernen Sie Ihre Stärken, Schwächen und idealen Karrierewege kennen.",
+    "feature_quick_title": "Schnell & Effizient",
+    "time": "Dauert ca. 10-15 Minuten",
+    "feature_private_title": "Vollkommen Privat",
+    "privacy": "Ihre Testergebnisse sind vollständig anonym",
+    "feature_accurate_title": "Wissenschaftlich validiert",
+    "accuracy": "Basiert auf gut erforschter Typologie",
+    "start_button": "Test starten",
+    "tagline": "Schließen Sie sich Tausenden von Nutzern an, die bereits ihren Persönlichkeitstyp gefunden haben.",
+    "page_indicator": "Seite {currentPage} von {totalPages}",
+    "back": "Zurück",
+    "next": "Nächste",
+    "finish_test": "Test beenden",
+    "calculating": "Berechnung...",
+    "progress_title": "Fortschritt",
+    "progress": "{progress}% abgeschlossen",
+    "agree": "Zustimmen",
+    "disagree": "Nicht zustimmen",
+    "gender_select": "Bitte wählen Sie Ihr Geschlecht",
+    "male": "Männlich",
+    "female": "Weiblich",
+    "other": "Andere",
+    "q1": "Es fällt Ihnen schwer, sich anderen Menschen vorzustellen.",
+    "q2": "Sie verlieren sich oft so sehr in Gedanken, dass Sie Ihre Umgebung ignorieren oder vergessen.",
+    "q3": "Sie versuchen, so schnell wie möglich auf Ihre E-Mails zu antworten und können einen unordentlichen Posteingang nicht ertragen.",
+    "q4": "Es fällt Ihnen leicht, auch unter Druck entspannt und konzentriert zu bleiben.",
+    "q5": "Sie ergreifen normalerweise nicht die Initiative für Gespräche.",
+    "q6": "Sie tun selten etwas nur aus reiner Neugier.",
+    "q7": "Sie fühlen sich anderen Menschen überlegen.",
+    "q8": "Organisiert zu sein ist Ihnen wichtiger als anpassungsfähig zu sein.",
+    "q9": "Sie sind normalerweise hoch motiviert und energiegeladen.",
+    "q10": "Eine Debatte zu gewinnen ist Ihnen weniger wichtig als sicherzustellen, dass niemand verärgert wird.",
+    "q11": "Sie haben oft das Gefühl, sich vor anderen Menschen rechtfertigen zu müssen.",
+    "q12": "Ihre Wohn- und Arbeitsumgebungen sind ziemlich ordentlich.",
+    "q13": "Es macht Ihnen nichts aus, im Mittelpunkt der Aufmerksamkeit zu stehen.",
+    "q14": "Sie halten sich für praktischer als kreativ.",
+    "q15": "Menschen können Sie selten verärgern.",
+    "q16": "Ihre Reisepläne sind normalerweise gut durchdacht.",
+    "q17": "Es fällt Ihnen oft schwer, sich in die Gefühle anderer Menschen hineinzuversetzen.",
+    "q18": "Ihre Stimmung kann sich sehr schnell ändern.",
+    "q19": "In einer Diskussion sollte die Wahrheit wichtiger sein als die Empfindlichkeiten der Menschen.",
+    "q20": "Sie machen sich selten Sorgen darüber, wie Ihre Handlungen andere Menschen beeinflussen.",
+    "q21": "Ihr Arbeitsstil ähnelt eher zufälligen Energieschüben als einem methodischen und organisierten Ansatz.",
+    "q22": "Sie sind oft neidisch auf andere.",
+    "q23": "Ein interessantes Buch oder ein Videospiel ist oft besser als eine gesellschaftliche Veranstaltung.",
+    "q24": "Die Fähigkeit, einen Plan zu entwickeln und ihn einzuhalten, ist der wichtigste Teil jedes Projekts.",
+    "q25": "Sie lassen sich selten von Fantasien und Ideen mitreißen.",
+    "q26": "Sie finden sich oft in Gedanken verloren, wenn Sie in der Natur spazieren gehen.",
+    "q27": "Wenn jemand nicht schnell auf Ihre E-Mail antwortet, machen Sie sich Sorgen, ob Sie etwas Falsches gesagt haben.",
+    "q28": "Als Elternteil möchten Sie lieber, dass Ihr Kind freundlich als klug aufwächst.",
+    "q29": "Sie lassen sich von anderen Menschen nicht in Ihren Handlungen beeinflussen.",
+    "q30": "Ihre Träume konzentrieren sich tendenziell auf die reale Welt und ihre Ereignisse.",
+    "q31": "Sie brauchen nicht viel Zeit, um sich an Ihrem neuen Arbeitsplatz an sozialen Aktivitäten zu beteiligen.",
+    "q32": "Sie sind eher ein natürlicher Improvisator als ein sorgfältiger Planer.",
+    "q33": "Ihre Emotionen kontrollieren Sie mehr als Sie sie kontrollieren.",
+    "q34": "Sie genießen es, an gesellschaftlichen Veranstaltungen teilzunehmen, die Verkleidungs- oder Rollenspielaktivitäten beinhalten.",
+    "q35": "Sie verbringen oft Zeit damit, unrealistische und unpraktische, aber faszinierende Ideen zu erforschen.",
+    "q36": "Sie improvisieren lieber, als Zeit damit zu verbringen, einen detaillierten Plan auszuarbeiten.",
+    "q37": "Sie sind eine relativ zurückhaltende und ruhige Person.",
+    "q38": "Wenn Sie ein Unternehmen hätten, würde es Ihnen sehr schwer fallen, loyale, aber leistungsschwache Mitarbeiter zu entlassen.",
+    "q39": "Sie denken oft über die Gründe der menschlichen Existenz nach.",
+    "q40": "Logik ist normalerweise wichtiger als das Herz, wenn es darum geht, wichtige Entscheidungen zu treffen.",
+    "q41": "Es fällt Ihnen leicht, sich in eine Person hineinzuversetzen, deren Erfahrungen sich sehr von Ihren unterscheiden.",
+    "q42": "Sie ziehen es normalerweise vor, spontan statt geplant zu sein.",
+    "q43": "Sie fühlen sich wohl dabei, einfach auf jemanden zuzugehen, den Sie interessant finden, und ein Gespräch zu beginnen.",
+    "q44": "Unordentliche Menschen stören Sie nicht besonders.",
+    "q45": "Sie sind sehr sentimental.",
+    "q46": "Sie sind sehr gut darin, Ihre Zeit zu managen.",
+    "q47": "Sie sehen gerne Menschen streiten.",
+    "q48": "Sie neigen dazu, Aufmerksamkeit auf sich selbst zu vermeiden.",
+    "q49": "Ihre Stimmung ist sehr stabil.",
+    "q50": "Sie sind definitiv kein künstlerischer Typ Mensch.",
+    "q51": "Sie denken, die Welt wäre ein besserer Ort, wenn die Menschen sich mehr auf Rationalität und weniger auf ihre Gefühle verlassen würden.",
+    "q52": "Sie erledigen lieber Ihre Aufgaben, bevor Sie sich entspannen.",
+    "q53": "Sie sehen gerne Filme, die Sie zum Weinen bringen.",
+    "q54": "Sie sind sehr privat und teilen Ihre Gefühle nicht leicht.",
+    "q55": "Sie sind sehr gut darin, die Emotionen anderer Menschen zu lesen.",
+    "q56": "Sie sind sehr geduldig.",
+    "q57": "Sie fühlen sich oft von Emotionen überwältigt.",
+    "q58": "Sie sind lieber in einer Gruppe als allein.",
+    "q59": "Sie sind sehr selbstkritisch.",
+    "q60": "Sie sind eine sehr kreative Person."
+  },
+  "results": {
+    "title": "Ihr Persönlichkeitstyp ist",
+    "your_personality_type": "Ihr Persönlichkeitstyp ist",
+    "scroll_to_learn_more": "Scrollen Sie nach unten, um mehr zu erfahren",
+    "see_full_report": "Vollständigen Bericht ansehen",
+    "your_type": "Ihr Typ",
+    "personality_type": "Persönlichkeitstyp",
+    "personality_type_description": "Dies bestimmt, wie wir die Welt sehen und Entscheidungen treffen.",
+    "code": "Code",
+    "introduction": "Einführung",
+    "strengths_weaknesses": "Stärken & Schwächen",
+    "romantic_relationships": "Romantische Beziehungen",
+    "friendships": "Freundschaften",
+    "parenthood": "Elternschaft",
+    "career_paths": "Karrierewege",
+    "workplace_habits": "Arbeitsplatzgewohnheiten",
+    "conclusion": "Fazit",
+    "share_results": "Teilen Sie Ihre Ergebnisse",
+    "take_test_again": "Test erneut machen",
+    "no_result_title": "Kein Ergebnis gefunden",
+    "no_result_description": "Wir konnten Ihr Testergebnis nicht finden. Bitte machen Sie den Test, um Ihren Persönlichkeitstyp zu entdecken.",
+    "take_test_button": "Test erneut machen",
+    "breakdown_title": "Ergebnisaufschlüsselung",
+    "extraversion_low": "Introversion",
+    "extraversion_high": "Extraversion",
+    "intuition_low": "Sensing",
+    "intuition_high": "Intuition",
+    "feeling_low": "Denken",
+    "feeling_high": "Fühlen",
+    "judging_low": "Wahrnehmen",
+    "judging_high": "Beurteilen",
+    "assertive_low": "Turbulent",
+    "assertive_high": "Durchsetzungsfähig",
+    "confidence_title": "Ergebnissicherheit",
+    "confidence_description": "Unsere Sicherheit bei diesem Ergebnis beträgt {confidence}%.",
+    "consistency_title": "Antwortkonsistenz",
+    "consistency_description": "Ihre Antworten waren zu {consistency}% konsistent.",
+    "anomalies_title": "Analysehinweise",
+    "extreme_response_pattern": "Sie neigten dazu, die extremsten Antworten zu wählen.",
+    "excessive_neutral_responses": "Sie haben viele neutrale Antworten verwendet.",
+    "too_fast_completion": "Sie haben den Test sehr schnell abgeschlossen.",
+    "view_full_profile_button": "Vollständiges {type} Profil anzeigen",
+    "trait_I_title": "Introvertiert",
+    "trait_I_subtitle": "Energie",
+    "trait_I_text": "Introvertierte sind am energiegeladensten, wenn sie allein sind. Sie bevorzugen tiefe, bedeutungsvolle soziale Interaktionen und ziehen es vor, mit ein paar engen Freunden zu verkehren, anstatt mit einer großen Gruppe von Menschen.",
+    "trait_E_title": "Extravertiert",
+    "trait_E_subtitle": "Energie",
+    "trait_E_text": "Extravertierte gewinnen Energie aus sozialen Interaktionen. Sie sind kontaktfreudig und genießen die Interaktion mit einer Vielzahl von Menschen.",
+    "trait_N_title": "Intuitiv",
+    "trait_N_subtitle": "Verstand",
+    "trait_N_text": "Intuitive Personen konzentrieren sich auf Möglichkeiten und die Zukunft. Sie denken gerne abstrakt und konzentrieren sich auf das große Ganze statt auf Details.",
+    "trait_S_title": "Sensing",
+    "trait_S_subtitle": "Verstand",
+    "trait_S_text": "Sensing-Personen sind praktisch und konzentrieren sich auf Fakten und Details. Sie bevorzugen praktische Erfahrungen gegenüber der Theorie.",
+    "trait_T_title": "Denken",
+    "trait_T_subtitle": "Natur",
+    "trait_T_text": "Denkende Personen treffen Entscheidungen auf der Grundlage von Logik und objektiven Kriterien. Sie priorisieren Fairness und Gerechtigkeit über die Gefühle anderer.",
+    "trait_F_title": "Fühlen",
+    "trait_F_subtitle": "Natur",
+    "trait_F_text": "Fühlende Personen treffen Entscheidungen auf der Grundlage ihrer Werte und Gefühle. Sie priorisieren Harmonie und Zusammenarbeit.",
+    "trait_J_title": "Beurteilen",
+    "trait_J_subtitle": "Taktik",
+    "trait_J_text": "Beurteilende Personen sind entscheidungsfreudig und bevorzugen Planung und Struktur. Sie genießen es, wenn die Dinge organisiert sind und mögen es, wenn die Dinge entschieden sind.",
+    "trait_P_title": "Wahrnehmen",
+    "trait_P_subtitle": "Taktik",
+    "trait_P_text": "Wahrnehmende Personen sind flexibel und halten sich ihre Optionen gerne offen. Sie genießen Spontaneität und passen sich gerne neuen Situationen an."
+  },
+  "footer": {
+    "rights_reserved": "Alle Rechte vorbehalten.",
+    "tagline": "Entdecken Sie Ihre wahre Persönlichkeit.",
+    "quick_links": "Schnell-Links",
+    "support": "Unterstützung",
+    "legal": "Rechtliches",
+    "privacy": "Datenschutz-Bestimmungen",
+    "terms": "Nutzungsbedingungen",
+    "company": "© 2024 MBTITEST. Alle Rechte vorbehalten.",
+    "faq": "FAQ",
+    "contact": "Kontaktiere uns"
+  },
+  "faq": {
+    "title": "Häufig gestellte Fragen",
+    "q1_title": "Was ist der MBTI-Test?",
+    "q1_text": "Der Myers-Briggs-Typenindikator (MBTI) ist ein introspektiver Selbstberichtsfragebogen, der unterschiedliche psychologische Präferenzen aufzeigt, wie Menschen die Welt wahrnehmen und Entscheidungen treffen. Unser Test soll Ihnen ein klares Verständnis Ihres Persönlichkeitstyps auf der Grundlage dieses Modells vermitteln.",
+    "q2_title": "Wie genau ist der Test?",
+    "q2_text": "Obwohl kein Persönlichkeitstest zu 100 % genau ist, basiert unsere Bewertung auf umfangreichen Forschungen und ist als äußerst zuverlässiges Werkzeug zur Selbstfindung konzipiert. Es bietet einen soliden Rahmen zum Verständnis Ihrer Vorlieben und wie Sie mit der Welt interagieren.",
+    "q3_title": "Wie lange dauert die Durchführung?",
+    "q3_text": "Der Test dauert in der Regel etwa 10-15 Minuten. Wir empfehlen Ihnen, die Fragen ehrlich und spontan zu beantworten, um die genauesten Ergebnisse zu erzielen.",
+    "q4_title": "Sind meine Testergebnisse und Profilinformationen privat?",
+    "q4_text": "Ja. Ihre individuellen Testergebnisse sind privat. Ihr öffentliches Profil (Name, MBTI, Biografie, Standort) ist für andere Benutzer auf der Seite 'Personen' sichtbar, um die Community-Interaktion zu erleichtern. Sie können steuern, welche Informationen Sie auf Ihrer Profilseite teilen.",
+    "q5_title": "Wofür ist die Seite 'Personen'?",
+    "q5_text": "Die Seite 'Personen' ist eine Funktion, mit der Sie sich mit anderen Benutzern verbinden können. Sie können nach Persönlichkeitstyp, Standort und anderen Kriterien filtern, um Gleichgesinnte aus der ganzen Welt zu finden und mit ihnen zu interagieren.",
+    "q6_title": "Wie aktualisiere ich meine Profilinformationen?",
+    "q6_text": "Sie können Ihren Namen, Ihre Biografie, Ihren Standort und Ihr Profilbild direkt auf Ihrer Profilseite aktualisieren. Navigieren Sie einfach zu Ihrem Profil und klicken Sie auf die Bearbeitungssymbole neben den Informationen, die Sie ändern möchten."
+  },
+  "people": {
+    "title": "Leute finden",
+    "search_by_name": "Suche nach Name...",
+    "filter_by_mbti": "Nach MBTI filtern",
+    "all_mbti": "Alle MBTI",
+    "filter_by_gender": "Nach Geschlecht filtern",
+    "all_genders": "Alle Geschlechter",
+    "male": "Männlich",
+    "female": "Weiblich",
+    "filter_by_country": "Nach Land filtern",
+    "all_countries": "Alle Länder",
+    "filter_by_state": "Nach Bundesland filtern",
+    "all_states": "Alle Bundesländer",
+    "filter_by_city": "Nach Stadt filtern",
+    "all_cities": "Alle Städte",
+    "search": "Suchen",
+    "clear": "Löschen",
+    "no_users_found": "Keine Benutzer gefunden, die Ihren Kriterien entsprechen.",
+    "message": "Nachricht"
+  },
+  "profile": {
+    "title": "Mein Profil",
+    "uploadAvatar": "Neuen Avatar hochladen",
+    "updateSuccess": "Profil erfolgreich aktualisiert!",
+    "updateError": "Profil konnte nicht aktualisiert werden.",
+    "historyTitle": "Testverlauf",
+    "historyDescription": "Überprüfen Sie Ihre vergangenen MBTI-Testergebnisse.",
+    "viewResult": "Ergebnis anzeigen",
+    "noHistory": "Sie haben keinen Testverlauf.",
+    "messagesTitle": "Nachrichten",
+    "messagesDescription": "Verbinden Sie sich mit Menschen anderer Persönlichkeitstypen.",
+    "messagesPlaceholder": "Ihre Nachrichten werden hier angezeigt.",
+    "messagesContent": "Ihre Nachrichten werden hier angezeigt.",
+    "goToMessages": "Zu den Nachrichten gehen",
+    "detailsTitle": "Einzelheiten",
+    "detailsDescription": "Ihre persönlichen Daten.",
+    "notSet": "Nicht festgelegt",
+    "selectGender": "Geschlecht wählen",
+    "male": "Männlich",
+    "female": "Weiblich",
+    "other": "Andere",
+    "infoRequiredTitle": "Profilaktualisierung erforderlich",
+    "infoRequiredDescription": "Bitte vervollständigen Sie Ihre Profilinformationen, um auf die Nachrichtenfunktionen zugreifen zu können.",
+    "bio": "Bio",
+    "gender": "Geschlecht",
+    "location": "Standort",
+    "country": "Land",
+    "state": "Bundesland",
+    "city": "Stadt",
+    "editDetails": "Details bearbeiten",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "editName": "Name bearbeiten",
+    "signOut": "Abmelden"
+  },
+  "about": {
+    "seo_title": "Über uns | Genauer MBTI-Test & 16-Persönlichkeiten-Community",
+    "seo_description": "Erfahren Sie mehr über MBTITEST, Ihr Ziel für einen genauen, kostenlosen 16-Persönlichkeiten-Test. Entdecken Sie unsere Mission und einzigartige soziale Funktionen, um sich mit anderen basierend auf Ihrem MBTI-Typ zu verbinden."
+  },
+  "login": {
+    "title": "Anmeldung",
+    "subtitle": "Willkommen zurück! Bitte melden Sie sich an, um fortzufahren.",
+    "email_label": "Email",
+    "password_label": "Passwort",
+    "forgot_password": "Passwort vergessen?",
+    "login_button": "Anmeldung",
+    "no_account": "Sie haben noch kein Konto?",
+    "signup_link": "Registrieren"
+  },
+  "register": {
+    "title": "Konto erstellen",
+    "subtitle": "Schließen Sie sich uns an und entdecken Sie Ihren Persönlichkeitstyp.",
+    "name_label": "Name",
+    "email_label": "Email",
+    "password_label": "Passwort",
+    "register_button": "Registrieren",
+    "have_account": "Sie haben bereits ein Konto?",
+    "login_link": "Anmeldung"
+  },
+  "submit": "Einreichen",
+  "finish": "Fertig",
+  "Admin": {
+    "title": "Admin-Panel",
+    "populateBlogs": "Blogs füllen",
+    "populateEnglish": "Englische Blogs füllen",
+    "populateChinese": "Chinesische Blogs füllen",
+    "populating": "Füllen...",
+    "results": "Ergebnisse"
   }
-} 
+}

@@ -137,7 +137,8 @@
     "clear": "清除",
     "search": "搜索",
     "no_users_found": "未找到符合条件的用户。",
-    "message": "发消息"
+    "message": "发消息",
+    "title": "Find People"
   },
   "login": {
     "title": "登录",
@@ -167,7 +168,12 @@
     "blog": "博客",
     "about": "关于",
     "login": "登录",
-    "signup": "注册"
+    "signup": "注册",
+    "logout": "Logout",
+    "profile": "Profile",
+    "settings": "Settings",
+    "language": "Language",
+    "secondary_cta": "Same City People"
   },
   "Admin": {
     "title": "管理后台",
@@ -176,5 +182,218 @@
     "populateChinese": "填充中文博客",
     "populating": "填充中...",
     "results": "结果"
-  }
+  },
+  "blog": {
+    "title": "What the 16 personality types in the world are doing"
+  },
+  "auth": {
+    "login": "Login",
+    "login_description": "Login to your account to continue.",
+    "signup": "Sign Up",
+    "signup_description": "Create an account to get started.",
+    "email": "Email",
+    "password": "Password",
+    "no_account": "Don't have an account?",
+    "have_account": "Already have an account?",
+    "logging_in": "Logging in...",
+    "signing_up": "Signing up...",
+    "login_failed": "Login failed. Please check your credentials.",
+    "signup_failed": "Sign up failed. Please try again."
+  },
+  "home": {
+    "hero": {
+      "title": "Discover Your True Personality",
+      "subtitle": "Take our free personality test and get a detailed report on your type.",
+      "cta": "Take the Test",
+      "secondary_cta": "Same City People"
+    },
+    "features": {
+      "title": "Why Choose MBTITEST?",
+      "subtitle": "Experience the most comprehensive personality assessment platform with advanced social features and global reach.",
+      "accurate": {
+        "title": "Accurate",
+        "description": "Our test is based on the official Myers-Briggs Type Indicator."
+      },
+      "social": {
+        "title": "Social Features",
+        "description": "Share your results with friends and see how you compare."
+      },
+      "insights": {
+        "title": "Deeper Insights",
+        "description": "Go beyond your type with in-depth analysis and reports."
+      },
+      "privacy": {
+        "title": "Privacy First",
+        "description": "Your personal data is encrypted and never shared with third parties."
+      },
+      "languages": {
+        "title": "21 Languages",
+        "description": "Available in 21 languages with culturally adapted content."
+      },
+      "instant": {
+        "title": "Instant Results",
+        "description": "Get your personality type immediately after completing the test."
+      }
+    }
+  },
+  "results": {
+    "title": "Your Personality Type Is",
+    "your_personality_type": "Your Personality Type is",
+    "scroll_to_learn_more": "Scroll down to learn more",
+    "see_full_report": "See Full Report",
+    "your_type": "Your Type",
+    "personality_type": "Personality Type",
+    "personality_type_description": "This determines how we see the world and make decisions.",
+    "code": "Code",
+    "introduction": "Introduction",
+    "strengths_weaknesses": "Strengths & Weaknesses",
+    "romantic_relationships": "Romantic Relationships",
+    "friendships": "Friendships",
+    "parenthood": "Parenthood",
+    "career_paths": "Career Paths",
+    "workplace_habits": "Workplace Habits",
+    "conclusion": "Conclusion",
+    "share_results": "Share Your Results",
+    "take_test_again": "Take the Test Again",
+    "no_result_title": "No Result Found",
+    "no_result_description": "We couldn't find your test result. Please take the test to discover your personality type.",
+    "take_test_button": "Take the Test Again",
+    "breakdown_title": "Score Breakdown",
+    "extraversion_low": "Introversion",
+    "extraversion_high": "Extraversion",
+    "intuition_low": "Sensing",
+    "intuition_high": "Intuition",
+    "feeling_low": "Thinking",
+    "feeling_high": "Feeling",
+    "judging_low": "Perceiving",
+    "judging_high": "Judging",
+    "assertive_low": "Turbulent",
+    "assertive_high": "Assertive",
+    "confidence_title": "Result Confidence",
+    "confidence_description": "Our confidence in this result is {confidence}%.",
+    "consistency_title": "Answer Consistency",
+    "consistency_description": "Your answers were {consistency}% consistent.",
+    "anomalies_title": "Analysis Notes",
+    "extreme_response_pattern": "You tended to choose the most extreme answers.",
+    "excessive_neutral_responses": "You used a lot of neutral answers.",
+    "too_fast_completion": "You completed the test very quickly.",
+    "view_full_profile_button": "View Full {type} Profile",
+    "trait_I_title": "Introverted",
+    "trait_I_subtitle": "Energy",
+    "trait_I_text": "Introverts are most energized when they are alone. They prefer deep, meaningful social interactions and prefer to socialize with a few close friends rather than a large group of people.",
+    "trait_E_title": "Extraverted",
+    "trait_E_subtitle": "Energy",
+    "trait_E_text": "Extraverts gain energy from social interaction. They are outgoing and enjoy interacting with a wide variety of people.",
+    "trait_N_title": "Intuitive",
+    "trait_N_subtitle": "Mind",
+    "trait_N_text": "Intuitive individuals focus on possibilities and the future. They enjoy thinking abstractly and focus on the big picture rather than the details.",
+    "trait_S_title": "Sensing",
+    "trait_S_subtitle": "Mind",
+    "trait_S_text": "Sensing individuals are practical and focus on facts and details. They prefer hands-on experience rather than theory.",
+    "trait_T_title": "Thinking",
+    "trait_T_subtitle": "Nature",
+    "trait_T_text": "Thinking individuals make decisions based on logic and objective criteria. They prioritize fairness and justice over the feelings of others.",
+    "trait_F_title": "Feeling",
+    "trait_F_subtitle": "Nature",
+    "trait_F_text": "Feeling individuals make decisions based on their values and feelings. They prioritize harmony and cooperation.",
+    "trait_J_title": "Judging",
+    "trait_J_subtitle": "Tactics",
+    "trait_J_text": "Judging individuals are decisive and prefer planning and structure. They enjoy having things organized and like to have things decided.",
+    "trait_P_title": "Prospecting",
+    "trait_P_subtitle": "Tactics",
+    "trait_P_text": "Prospecting individuals are flexible and prefer to keep their options open. They enjoy spontaneity and enjoy adapting to new situations."
+  },
+  "footer": {
+    "rights_reserved": "All rights reserved.",
+    "tagline": "Discover your true personality.",
+    "quick_links": "Quick Links",
+    "support": "Support",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "company": "© 2024 MBTITEST. All rights reserved.",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "q1_title": "What is the MBTI test?",
+    "q1_text": "The Myers-Briggs Type Indicator (MBTI) is an introspective self-report questionnaire indicating differing psychological preferences in how people perceive the world and make decisions. Our test is designed to give you a clear understanding of your personality type based on this model.",
+    "q2_title": "How accurate is the test?",
+    "q2_text": "While no personality test is 100% accurate, our assessment is built on extensive research and designed to be a highly reliable tool for self-discovery. It provides a solid framework for understanding your preferences and how you interact with the world.",
+    "q3_title": "How long does it take to complete?",
+    "q3_text": "The test typically takes about 10-15 minutes to complete. We recommend you answer the questions honestly and spontaneously for the most accurate results.",
+    "q4_title": "Are my test results and profile information private?",
+    "q4_text": "Yes. Your individual test results are private. Your public profile (name, MBTI, bio, location) is visible to other users on the 'People' page to facilitate community interaction. You can control what information you share on your profile page.",
+    "q5_title": "What is the 'People' page for?",
+    "q5_text": "The 'People' page is a feature that allows you to connect with other users. You can filter by personality type, location, and other criteria to find and interact with like-minded individuals from around the world.",
+    "q6_title": "How do I update my profile information?",
+    "q6_text": "You can update your name, bio, location, and profile picture directly on your profile page. Simply navigate to your profile and click the edit icons next to the information you wish to change."
+  },
+  "personalities": {
+    "title": "16 Personality Types",
+    "subtitle": "Learn about each of the 16 personality types and find the one that's most like you.",
+    "analysts": "Analysts",
+    "analysts_description": "Intuitive (N) and Thinking (T) personality types, known for their rationality, impartiality, and intellectual excellence.",
+    "diplomats": "Diplomats",
+    "diplomats_description": "Intuitive (N) and Feeling (F) personality types, known for their empathy, diplomatic skills, and passionate idealism.",
+    "sentinels": "Sentinels",
+    "sentinels_description": "Observant (S) and Judging (J) personality types, known for their practicality and focus on order, security, and stability.",
+    "explorers": "Explorers",
+    "explorers_description": "Observant (S) and Prospecting (P) personality types, known for their spontaneity, ingenuity, and flexibility.",
+    "intj": {
+      "name": "Architect"
+    },
+    "intp": {
+      "name": "Logician"
+    },
+    "entj": {
+      "name": "Commander"
+    },
+    "entp": {
+      "name": "Debater"
+    },
+    "infj": {
+      "name": "Advocate"
+    },
+    "infp": {
+      "name": "Mediator"
+    },
+    "enfj": {
+      "name": "Protagonist"
+    },
+    "enfp": {
+      "name": "Campaigner"
+    },
+    "istj": {
+      "name": "Logistician"
+    },
+    "isfj": {
+      "name": "Defender"
+    },
+    "estj": {
+      "name": "Executive"
+    },
+    "esfj": {
+      "name": "Consul"
+    },
+    "istp": {
+      "name": "Virtuoso"
+    },
+    "isfp": {
+      "name": "Adventurer"
+    },
+    "estp": {
+      "name": "Entrepreneur"
+    },
+    "esfp": {
+      "name": "Entertainer"
+    }
+  },
+  "about": {
+    "seo_title": "About Us | Accurate MBTI Test & 16 Personalities Community",
+    "seo_description": "Learn about MBTITEST, your destination for an accurate, free 16 personalities test. Discover our mission and unique social features to connect with others based on your MBTI type."
+  },
+  "submit": "Submit",
+  "finish": "Finish"
 }
