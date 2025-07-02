@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { PersonalityHeader } from './PersonalityHeader';
 import { PersonalitySidebar } from './PersonalitySidebar';
 import { CheckCircle, XCircle } from 'lucide-react';
+import { BackToTopButton } from '@/components/layout/BackToTopButton';
 
 // --- DATA STRUCTURES --- //
 interface TitledBlock { title: string; }
@@ -52,9 +53,9 @@ const ContentItemRenderer: React.FC<{ item: ContentItem }> = ({ item }) => {
 
     switch (item.type) {
         case 'paragraph':
-            return <p className="mb-4">{item.text}</p>;
+            return <p className="mb-4 rtl:text-right">{item.text}</p>;
         case 'subheading':
-            return <h3 className="text-2xl font-bold mt-10 mb-4 text-gray-800 dark:text-gray-200">{item.text}</h3>;
+            return <h3 className="text-2xl font-bold mt-10 mb-4 text-gray-800 dark:text-gray-200 rtl:text-right">{item.text}</h3>;
         case 'illustration':
             return (
                 <div className="my-8 relative h-56 w-full">
@@ -69,8 +70,8 @@ const ContentItemRenderer: React.FC<{ item: ContentItem }> = ({ item }) => {
             );
         case 'pullquote':
             return (
-                <blockquote className="my-6 p-4 bg-gray-100 dark:bg-gray-800 border-l-4 border-gray-300 dark:border-gray-600 rounded-r-lg">
-                    <p className="italic text-gray-600 dark:text-gray-400">"{item.text}"</p>
+                <blockquote className="my-6 p-4 bg-gray-100 dark:bg-gray-800 border-l-4 rtl:border-l-0 rtl:border-r-4 border-gray-300 dark:border-gray-600 rounded-lg rtl:rounded-l-lg rtl:rounded-r-none">
+                    <p className="italic text-gray-600 dark:text-gray-400 rtl:text-right">"{item.text}"</p>
                 </blockquote>
             );
         default:
@@ -81,10 +82,10 @@ const ContentItemRenderer: React.FC<{ item: ContentItem }> = ({ item }) => {
 // --- MAIN COMPONENT --- //
 interface PersonalityDetailProps {
   type: string;
+  locale: string;
 }
 
-const PersonalityDetail: React.FC<PersonalityDetailProps> = ({ type }) => {
-  const locale = useLocale();
+const PersonalityDetail: React.FC<PersonalityDetailProps> = ({ type, locale }) => {
   const [data, setData] = React.useState<PersonalityData | null>(null);
   const [isLoading, setIsLoading] = React.useState(true);
   const [error, setError] = React.useState<string | null>(null);
@@ -142,11 +143,11 @@ const PersonalityDetail: React.FC<PersonalityDetailProps> = ({ type }) => {
         return (
             <>
               {introQuote && (
-                <blockquote className="my-6 p-4 border-l-4 border-purple-400 bg-purple-50 dark:bg-gray-800 rounded-r-lg">
-                  <p className="text-xl italic text-gray-700 dark:text-gray-300">"{introQuote}"</p>
+                <blockquote className="my-6 p-4 border-l-4 rtl:border-l-0 rtl:border-r-4 border-purple-400 bg-purple-50 dark:bg-gray-800 rounded-lg rtl:rounded-l-lg rtl:rounded-r-none">
+                  <p className="text-xl italic text-gray-700 dark:text-gray-300 rtl:text-right">"{introQuote}"</p>
                 </blockquote>
               )}
-              <div className="prose prose-lg max-w-none dark:prose-invert text-gray-700 dark:text-gray-300 leading-relaxed space-y-4">
+              <div className="prose prose-lg max-w-none dark:prose-invert text-gray-700 dark:text-gray-300 leading-relaxed space-y-4 rtl:text-right">
                   {paragraphs}
               </div>
             </>
@@ -158,9 +159,9 @@ const PersonalityDetail: React.FC<PersonalityDetailProps> = ({ type }) => {
 
   const renderStrengthsWeaknessesSection = (section: StrengthsWeaknessesBlock) => (
     <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
-      <div>
-        <h3 className="text-2xl font-semibold text-green-600 mb-6 flex items-center">
-          <CheckCircle className="w-8 h-8 mr-3 flex-shrink-0" />
+      <div className="rtl:text-right">
+        <h3 className="text-2xl font-semibold text-green-600 mb-6 flex items-center rtl:flex-row-reverse">
+          <CheckCircle className="w-8 h-8 mx-3 flex-shrink-0" />
           <span>{section.strengths.title}</span>
         </h3>
         <ul className="space-y-6">
@@ -172,9 +173,9 @@ const PersonalityDetail: React.FC<PersonalityDetailProps> = ({ type }) => {
           ))}
         </ul>
       </div>
-      <div>
-        <h3 className="text-2xl font-semibold text-red-600 mb-6 flex items-center">
-          <XCircle className="w-8 h-8 mr-3 flex-shrink-0" />
+      <div className="rtl:text-right">
+        <h3 className="text-2xl font-semibold text-red-600 mb-6 flex items-center rtl:flex-row-reverse">
+          <XCircle className="w-8 h-8 mx-3 flex-shrink-0" />
           <span>{section.weaknesses.title}</span>
         </h3>
         <ul className="space-y-6">
@@ -208,20 +209,21 @@ const PersonalityDetail: React.FC<PersonalityDetailProps> = ({ type }) => {
 
   return (
     <article>
+      <BackToTopButton />
       <PersonalityHeader type={type} name={data.name || ''} title={data.title || ''} subtitle={data.subtitle || ''} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="lg:grid lg:grid-cols-12 lg:gap-x-12">
-          <aside className="hidden lg:block lg:col-span-3">
+          <aside className="hidden lg:block lg:col-span-3 lg:rtl:col-start-10">
             <div className="sticky top-24">
               <PersonalitySidebar sections={finalSections.map(s => ({ id: s.id, title: s.data!.title }))} />
             </div>
           </aside>
-          <main className="lg:col-span-9">
+          <main className="lg:col-span-9 lg:rtl:col-start-1 lg:rtl:row-start-1">
             {finalSections.map(section => {
               if (!section.data) return null;
               return (
                 <section key={section.id} id={section.id} className="mb-12 scroll-mt-24">
-                  <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-100 border-l-4 border-purple-500 pl-4">
+                  <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-100 border-l-4 rtl:border-l-0 rtl:border-r-4 border-purple-500 pl-4 rtl:pl-0 rtl:pr-4 rtl:text-right">
                     {section.data.title}
                   </h2>
                   {section.id === 'strengths_weaknesses'

@@ -64,7 +64,7 @@ function AuthNav({ unreadCount }: { unreadCount: number }) {
   };
 
   return (
-    <div className="flex items-center space-x-4">
+    <div className="flex items-center space-x-4 rtl:space-x-reverse">
       <LanguageSwitcher />
       {user ? (
         <>
@@ -104,12 +104,12 @@ function AuthNav({ unreadCount }: { unreadCount: number }) {
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild className="focus:bg-blue-100 focus:text-blue-900">
                     <Link href={`/${locale}/profile`}>
-                      <User className="mr-2 h-4 w-4" />
+                      <User className="ms-2 h-4 w-4" />
                       <span>{t('profile')}</span>
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={handleLogout} className="focus:bg-blue-100 focus:text-blue-900 cursor-pointer">
-                     <LogOut className="mr-2 h-4 w-4" />
+                     <LogOut className="ms-2 h-4 w-4" />
                      <span>{t('logout')}</span>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
@@ -202,12 +202,12 @@ export function HeaderClient() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 dark:bg-gray-900/80">
       <div className="container flex h-16 items-center justify-between px-8">
-        <div className="mr-4 hidden md:flex">
+        <div className="hidden md:flex">
           <Logo />
         </div>
         
         <div className="flex-1 flex items-center justify-center">
-          <nav className="hidden md:flex items-center space-x-1 p-1">
+          <nav className="hidden md:flex items-center space-x-1 rtl:space-x-reverse p-1">
             <Link href={`/${locale}`} className={navLinkClasses(`/${locale}`)}>{t('home')}</Link>
             
             <div className="relative" onMouseLeave={handleDropdownLeave}>
@@ -216,7 +216,7 @@ export function HeaderClient() {
                 className={buttonClasses(`/${locale}/personalities`)}
               >
                 <span>{t('personalities')}</span>
-                <ChevronDown className="w-4 h-4 ml-1" />
+                <ChevronDown className="w-4 h-4 ms-1" />
               </button>
               <PersonalityDropdown isOpen={isPersonalityOpen} onMouseEnter={handleDropdownEnter} onClose={handleCloseDropdown} />
             </div>
@@ -233,25 +233,28 @@ export function HeaderClient() {
         </div>
 
         <div className="md:hidden flex flex-1 items-center justify-between">
-          <div className="flex-1 flex justify-start">
+          <div className="flex-1 flex justify-start rtl:justify-end">
             <Logo />
           </div>
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="flex-1 flex justify-end rtl:justify-start">
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </div>
 
       {isMenuOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-800 p-4 space-y-2">
+        <div className="md:hidden bg-white dark:bg-gray-800 p-4 space-y-2 text-right rtl:text-left">
             <Link href={`/${locale}`} className="block" onClick={() => setIsMenuOpen(false)}>{t('home')}</Link>
             <Link href={`/${locale}/personalities`} className="block" onClick={() => setIsMenuOpen(false)}>{t('personalities')}</Link>
             <Link href={`/${locale}/people`} className="block" onClick={() => setIsMenuOpen(false)}>{t('people')}</Link>
             <Link href={`/${locale}/test`} className="block" onClick={() => setIsMenuOpen(false)}>{t('test')}</Link>
             <Link href={`/${locale}/blog`} className="block" onClick={() => setIsMenuOpen(false)}>{t('blog')}</Link>
             <Link href={`/${locale}/about`} className="block" onClick={() => setIsMenuOpen(false)}>{t('about')}</Link>
-            <div className="pt-4 border-t">
-              <AuthNav unreadCount={unreadCount} />
+            <DropdownMenuSeparator />
+            <div className="flex flex-col space-y-2 pt-2">
+                <AuthNav unreadCount={unreadCount} />
             </div>
         </div>
       )}

@@ -17,7 +17,7 @@ interface PersonalityPageProps {
 }
 
 export default function PersonalityPage({ params }: PersonalityPageProps) {
-  const { type } = params;
+  const { type, locale } = params;
 
   if (!validTypes.includes(type.toLowerCase())) {
     notFound();
@@ -25,7 +25,7 @@ export default function PersonalityPage({ params }: PersonalityPageProps) {
 
   return (
     <main>
-      <PersonalityDetail type={type.toLowerCase()} />
+      <PersonalityDetail type={type.toLowerCase()} locale={locale} />
     </main>
   );
 }

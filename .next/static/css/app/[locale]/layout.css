@@ -733,6 +733,9 @@ video {
 .left-2 {
   left: 0.5rem;
 }
+.left-8 {
+  left: 2rem;
+}
 .right-0 {
   right: 0px;
 }
@@ -778,6 +781,10 @@ video {
 .-mx-1 {
   margin-left: -0.25rem;
   margin-right: -0.25rem;
+}
+.mx-3 {
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
 }
 .mx-auto {
   margin-left: auto;
@@ -834,9 +841,6 @@ video {
 .mb-8 {
   margin-bottom: 2rem;
 }
-.ml-1 {
-  margin-left: 0.25rem;
-}
 .ml-2 {
   margin-left: 0.5rem;
 }
@@ -849,8 +853,11 @@ video {
 .mr-3 {
   margin-right: 0.75rem;
 }
-.mr-4 {
-  margin-right: 1rem;
+.ms-1 {
+  margin-inline-start: 0.25rem;
+}
+.ms-2 {
+  margin-inline-start: 0.5rem;
 }
 .mt-1 {
   margin-top: 0.25rem;
@@ -1754,8 +1761,8 @@ video {
 .pt-0 {
   padding-top: 0px;
 }
-.pt-4 {
-  padding-top: 1rem;
+.pt-2 {
+  padding-top: 0.5rem;
 }
 .pt-8 {
   padding-top: 2rem;
@@ -1765,6 +1772,9 @@ video {
 }
 .text-center {
   text-align: center;
+}
+.text-right {
+  text-align: right;
 }
 .text-2xl {
   font-size: 1.5rem;
@@ -2009,6 +2019,12 @@ video {
 .placeholder-gray-400::placeholder {
   color: var(--gray-400);
 }
+.opacity-0 {
+  opacity: 0;
+}
+.opacity-100 {
+  opacity: 1;
+}
 .opacity-50 {
   opacity: 0.5;
 }
@@ -2089,6 +2105,11 @@ video {
 }
 .transition-colors {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.transition-opacity {
+  transition-property: opacity;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -2294,6 +2315,10 @@ html {
   background-color: var(--gray-50);
 }
 
+.hover\:bg-gray-900:hover {
+  background-color: var(--gray-900);
+}
+
 .hover\:bg-green-200:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(187 247 208 / var(--tw-bg-opacity, 1));
@@ -2446,6 +2471,10 @@ html {
 .focus\:ring-blue-500:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(59 130 246 / var(--tw-ring-opacity, 1));
+}
+
+.focus\:ring-gray-500:focus {
+  --tw-ring-color: var(--gray-500);
 }
 
 .focus\:ring-purple-500:focus {
@@ -2627,6 +2656,10 @@ html {
   background-color: rgb(30 58 138 / 0.2);
 }
 
+.dark\:bg-gray-200:is(.dark *) {
+  background-color: var(--gray-200);
+}
+
 .dark\:bg-gray-600:is(.dark *) {
   background-color: var(--gray-600);
 }
@@ -2669,6 +2702,10 @@ html {
   color: var(--gray-400);
 }
 
+.dark\:text-gray-800:is(.dark *) {
+  color: var(--gray-800);
+}
+
 .dark\:text-purple-400:is(.dark *) {
   --tw-text-opacity: 1;
   color: rgb(192 132 252 / var(--tw-text-opacity, 1));
@@ -2682,6 +2719,10 @@ html {
 .dark\:hover\:bg-blue-700:hover:is(.dark *) {
   --tw-bg-opacity: 1;
   background-color: rgb(29 78 216 / var(--tw-bg-opacity, 1));
+}
+
+.dark\:hover\:bg-gray-300:hover:is(.dark *) {
+  background-color: var(--gray-300);
 }
 
 .dark\:hover\:bg-gray-700:hover:is(.dark *) {
@@ -2892,6 +2933,71 @@ html {
   .lg\:text-6xl {
     font-size: 3.75rem;
     line-height: 1;
+  }
+}
+
+.rtl\:flex-row-reverse:where([dir="rtl"], [dir="rtl"] *) {
+  flex-direction: row-reverse;
+}
+
+.rtl\:justify-start:where([dir="rtl"], [dir="rtl"] *) {
+  justify-content: flex-start;
+}
+
+.rtl\:justify-end:where([dir="rtl"], [dir="rtl"] *) {
+  justify-content: flex-end;
+}
+
+.rtl\:space-x-reverse:where([dir="rtl"], [dir="rtl"] *) > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+.rtl\:rounded-l-lg:where([dir="rtl"], [dir="rtl"] *) {
+  border-top-left-radius: var(--radius);
+  border-bottom-left-radius: var(--radius);
+}
+
+.rtl\:rounded-r-none:where([dir="rtl"], [dir="rtl"] *) {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.rtl\:border-l-0:where([dir="rtl"], [dir="rtl"] *) {
+  border-left-width: 0px;
+}
+
+.rtl\:border-r-4:where([dir="rtl"], [dir="rtl"] *) {
+  border-right-width: 4px;
+}
+
+.rtl\:pl-0:where([dir="rtl"], [dir="rtl"] *) {
+  padding-left: 0px;
+}
+
+.rtl\:pr-4:where([dir="rtl"], [dir="rtl"] *) {
+  padding-right: 1rem;
+}
+
+.rtl\:text-left:where([dir="rtl"], [dir="rtl"] *) {
+  text-align: left;
+}
+
+.rtl\:text-right:where([dir="rtl"], [dir="rtl"] *) {
+  text-align: right;
+}
+
+@media (min-width: 1024px) {
+
+  .lg\:rtl\:col-start-1:where([dir="rtl"], [dir="rtl"] *) {
+    grid-column-start: 1;
+  }
+
+  .lg\:rtl\:col-start-10:where([dir="rtl"], [dir="rtl"] *) {
+    grid-column-start: 10;
+  }
+
+  .lg\:rtl\:row-start-1:where([dir="rtl"], [dir="rtl"] *) {
+    grid-row-start: 1;
   }
 }
 
