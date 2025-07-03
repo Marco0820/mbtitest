@@ -43,7 +43,8 @@ export function LanguageSwitcher() {
     if (!pathname) return;
     const segments = pathname.split('/');
     segments[1] = newLocale;
-    router.push(segments.join('/'));
+    // router.push(segments.join('/'));
+    window.location.href = segments.join('/');
     setIsOpen(false);
   };
 

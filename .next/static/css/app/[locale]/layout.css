@@ -926,6 +926,9 @@ video {
 .block {
   display: block;
 }
+.inline-block {
+  display: inline-block;
+}
 .inline {
   display: inline;
 }
@@ -1108,6 +1111,9 @@ video {
 }
 .min-w-\[var\(--radix-select-trigger-width\)\] {
   min-width: var(--radix-select-trigger-width);
+}
+.max-w-2xl {
+  max-width: 42rem;
 }
 .max-w-3xl {
   max-width: 48rem;
@@ -2445,6 +2451,10 @@ html {
 
 .hover\:text-gray-800:hover {
   color: var(--gray-800);
+}
+
+.hover\:text-gray-900:hover {
+  color: var(--gray-900);
 }
 
 .hover\:text-purple-600:hover {
