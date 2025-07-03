@@ -647,6 +647,28 @@ video {
   html[dir="rtl"] .flex {
     flex-direction: row-reverse;
   }
+
+  .rtl .text-left {
+    text-align: right !important;
+  }
+
+  .rtl .text-right {
+    text-align: left !important;
+  }
+
+  /* Reverse flexbox order in RTL */
+  .rtl .flex-row {
+    flex-direction: row-reverse !important;
+  }
+
+  .rtl .flex-row-reverse {
+    flex-direction: row !important;
+  }
+
+  /* Reverse grid columns order in RTL */
+  .rtl .grid[dir="rtl"] > * {
+    direction: rtl; /* If items need to be RTL too */
+  }
 .container {
   width: 100%;
 }
@@ -1015,9 +1037,6 @@ video {
 .min-h-\[100px\] {
   min-height: 100px;
 }
-.min-h-\[380px\] {
-  min-height: 380px;
-}
 .min-h-\[40vh\] {
   min-height: 40vh;
 }
@@ -1198,6 +1217,9 @@ video {
 .flex-row {
   flex-direction: row;
 }
+.flex-row-reverse {
+  flex-direction: row-reverse;
+}
 .flex-col {
   flex-direction: column;
 }
@@ -1345,6 +1367,10 @@ video {
 .rounded-xl {
   border-radius: 0.75rem;
 }
+.rounded-l-lg {
+  border-top-left-radius: var(--radius);
+  border-bottom-left-radius: var(--radius);
+}
 .rounded-r-lg {
   border-top-right-radius: var(--radius);
   border-bottom-right-radius: var(--radius);
@@ -1372,6 +1398,9 @@ video {
 }
 .border-r {
   border-right-width: 1px;
+}
+.border-r-4 {
+  border-right-width: 4px;
 }
 .border-t {
   border-top-width: 1px;
@@ -1754,6 +1783,9 @@ video {
 }
 .pr-2\.5 {
   padding-right: 0.625rem;
+}
+.pr-4 {
+  padding-right: 1rem;
 }
 .pr-8 {
   padding-right: 2rem;
@@ -2186,6 +2218,17 @@ video {
   animation-play-state: running;
 }
 
+/* 
+  Force RTL text direction only on text-based elements for `.rtl` mode,
+  without affecting the overall LTR layout of blocks.
+*/
+.rtl h1, .rtl h2, .rtl h3, .rtl h4, .rtl h5, .rtl h6,
+.rtl p, .rtl a, .rtl span, .rtl li, .rtl button,
+.rtl label, .rtl input, .rtl textarea, 
+.rtl div[class*="text-"], .rtl p[class*="text-"] {
+  direction: rtl;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -2208,6 +2251,12 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (min-width: 640px) {
+  .rtl .sm\:flex-row {
+    flex-direction: row-reverse !important;
+  }
+}
+
 @media (min-width: 768px) {
   
   html[dir="rtl"] .md\:flex {
@@ -2220,7 +2269,22 @@ html {
   html[dir="rtl"] .lg\:flex {
     flex-direction: row-reverse;
   }
+  .rtl .lg\:grid[dir="rtl"] > * {
+    direction: rtl; /* If items need to be RTL too */
+  }
 }
+
+.rtl .rtl\:text-left:where([dir="rtl"], [dir="rtl"] *) {
+    text-align: right !important;
+  }
+
+.rtl .rtl\:text-right:where([dir="rtl"], [dir="rtl"] *) {
+    text-align: left !important;
+  }
+
+.rtl .rtl\:flex-row-reverse:where([dir="rtl"], [dir="rtl"] *) {
+    flex-direction: row !important;
+  }
 
 .file\:border-0::file-selector-button {
   border-width: 0px;
@@ -2890,6 +2954,18 @@ html {
 
   .lg\:col-span-9 {
     grid-column: span 9 / span 9;
+  }
+
+  .lg\:col-start-1 {
+    grid-column-start: 1;
+  }
+
+  .lg\:col-start-10 {
+    grid-column-start: 10;
+  }
+
+  .lg\:row-start-1 {
+    grid-row-start: 1;
   }
 
   .lg\:block {

@@ -87,11 +87,11 @@ export function PersonalityTypes() {
               if (!group) return null;
               const styles = colorStyles[group.color as keyof typeof colorStyles] || colorStyles.purple;
               return (
-                <div key={group.groupKey} className={`p-6 rounded-xl ${styles.bg} flex flex-col min-h-[380px]`}>
+                <div key={group.groupKey} className={`p-6 rounded-xl ${styles.bg} flex flex-col`}>
                   <h3 className={`text-2xl font-bold ${styles.text} mb-3`}>
                     {group.title}
                   </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                  <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-grow">
                     {group.description}
                   </p>
                   

@@ -1,9 +1,9 @@
 {
   "pages": {
-    "/[locale]/personalities/[type]/page": [
+    "/[locale]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/[locale]/personalities/[type]/page.js"
+      "static/chunks/app/[locale]/page.js"
     ],
     "/[locale]/layout": [
       "static/chunks/webpack.js",
@@ -11,10 +11,15 @@
       "static/css/app/[locale]/layout.css",
       "static/chunks/app/[locale]/layout.js"
     ],
-    "/[locale]/page": [
+    "/[locale]/test/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/[locale]/page.js"
+      "static/chunks/app/[locale]/test/page.js"
+    ],
+    "/[locale]/auth/login/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/[locale]/auth/login/page.js"
     ]
   }
 }

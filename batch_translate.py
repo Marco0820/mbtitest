@@ -37,14 +37,14 @@ DB_CONFIG = {
 
 SOURCE_LOCALE = 'en'  # 源语言
 
-# Configure for Russian
-TARGET_LOCALE_DB = 'ru'  # 更新到数据库的目标 locale 名称
-TARGET_LOCALE_API = 'ru'   # 调用百度 API 使用的语言代码 (俄语)
+# Configure for Italian
+TARGET_LOCALE_DB = 'it'  # 更新到数据库的目标 locale 名称
+TARGET_LOCALE_API = 'it'   # 调用百度 API 使用的语言代码 (意大利语)
 
 TABLE_NAME = 'public.personality_details'
 # !! 注意: 将此处设置为您想强制更新的特定类型，或设置为 None 来翻译所有类型
 # Set to None to translate all types for the new language
-FORCE_UPDATE_TYPE = None
+FORCE_UPDATE_TYPE = ['infp', 'istj', 'intj']
 
 
 def translate_text(text, target_lang_api):

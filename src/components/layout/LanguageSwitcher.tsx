@@ -17,16 +17,18 @@ const languages = [
   { code: 'fr', name: 'French', nativeName: 'Français' },
   { code: 'de', name: 'German', nativeName: 'Deutsch' },
   { code: 'ko', name: 'Korean', nativeName: '한국어' },
+  { code: 'it', name: 'Italian', nativeName: 'Italiano' },
+  /*
   { code: 'hi', name: 'Hindi', nativeName: 'हिन्दी' },
   { code: 'tr', name: 'Turkish', nativeName: 'Türkçe' },
   { code: 'vi', name: 'Vietnamese', nativeName: 'Tiếng Việt' },
   { code: 'th', name: 'Thai', nativeName: 'ไทย' },
-  { code: 'it', name: 'Italian', nativeName: 'Italiano' },
   { code: 'ur', name: 'Urdu', nativeName: 'اردو' },
   { code: 'pl', name: 'Polish', nativeName: 'Polski' },
   { code: 'id', name: 'Indonesian', nativeName: 'Bahasa Indonesia' },
   { code: 'nl', name: 'Dutch', nativeName: 'Nederlands' },
   { code: 'fa', name: 'Persian', nativeName: 'فارسی' },
+  */
 ];
 
 export function LanguageSwitcher() {

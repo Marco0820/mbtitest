@@ -3,8 +3,9 @@ import { Inter } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
 import { PageLayout } from '@/components/layout/PageLayout';
-import AuthProvider from '@/components/AuthProvider'; // 确保你已经创建了这个文件
+import AuthProvider from '@/components/AuthProvider';
 import '../globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -22,9 +23,10 @@ export default async function LocaleLayout({
   params: { locale: string };
 }) {
   const messages = await getMessages();
+  const isRTL = ['ar'].includes(locale);
 
   return (
-    <html lang={locale} dir={['ar', 'ur', 'fa'].includes(locale) ? 'rtl' : 'ltr'}>
+    <html lang={locale} className={isRTL ? 'rtl' : ''}>
       <body className={`${inter.className} bg-gray-50 flex flex-col min-h-screen`}>
         <AuthProvider>
           <NextIntlClientProvider messages={messages}>
@@ -34,6 +36,7 @@ export default async function LocaleLayout({
                 {children}
               </main>
             </PageLayout>
+            <Footer />
           </NextIntlClientProvider>
         </AuthProvider>
       </body>

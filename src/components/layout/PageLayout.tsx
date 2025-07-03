@@ -1,20 +1,15 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
-import { Footer } from './Footer';
+// No longer need usePathname or Footer here
+// import { usePathname } from 'next/navigation';
+// import { Footer } from './Footer';
 
 export function PageLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const pathname = usePathname();
-  const isMessagesPage = pathname ? pathname.includes('/messages') : false;
-
-  return (
-    <>
-      {children}
-      {!isMessagesPage && <Footer />}
-    </>
-  );
+  // All conditional logic for footer is removed.
+  // This component now acts as a simple wrapper.
+  return <>{children}</>;
 } 

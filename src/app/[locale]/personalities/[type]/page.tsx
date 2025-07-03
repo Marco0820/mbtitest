@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import PersonalityDetail from '@/components/personalities/PersonalityDetail';
+import PersonalityDetailRTL from '@/components/personalities/PersonalityDetailRTL';
 
 const validTypes = [
   'intj', 'intp', 'entj', 'entp',
@@ -23,9 +24,15 @@ export default function PersonalityPage({ params }: PersonalityPageProps) {
     notFound();
   }
 
+  const isRTL = ['ar'].includes(locale);
+
   return (
     <main>
-      <PersonalityDetail type={type.toLowerCase()} locale={locale} />
+      {isRTL ? (
+        <PersonalityDetailRTL type={type.toLowerCase()} locale={locale} />
+      ) : (
+        <PersonalityDetail type={type.toLowerCase()} locale={locale} />
+      )}
     </main>
   );
 }

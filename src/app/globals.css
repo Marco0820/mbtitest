@@ -2,6 +2,17 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+/* 
+  Force RTL text direction only on text-based elements for `.rtl` mode,
+  without affecting the overall LTR layout of blocks.
+*/
+.rtl h1, .rtl h2, .rtl h3, .rtl h4, .rtl h5, .rtl h6,
+.rtl p, .rtl a, .rtl span, .rtl li, .rtl button,
+.rtl label, .rtl input, .rtl textarea, 
+.rtl div[class*="text-"], .rtl p[class*="text-"] {
+  direction: rtl;
+}
+
 @layer base {
   :root {
     --primary-50: #f0f9ff;
@@ -96,6 +107,28 @@
   
   html[dir="rtl"] .flex {
     flex-direction: row-reverse;
+  }
+
+  .rtl .text-left {
+    text-align: right !important;
+  }
+
+  .rtl .text-right {
+    text-align: left !important;
+  }
+
+  /* Reverse flexbox order in RTL */
+  .rtl .flex-row {
+    flex-direction: row-reverse !important;
+  }
+
+  .rtl .flex-row-reverse {
+    flex-direction: row !important;
+  }
+
+  /* Reverse grid columns order in RTL */
+  .rtl .grid[dir="rtl"] > * {
+    direction: rtl; /* If items need to be RTL too */
   }
 }
 
