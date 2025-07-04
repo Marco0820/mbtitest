@@ -1,10 +1,4 @@
 {
-  "/api/messages/unread-count/route": "app/api/messages/unread-count/route.js",
-  "/api/user/profile/route": "app/api/user/profile/route.js",
-  "/api/personalities/[type]/route": "app/api/personalities/[type]/route.js",
   "/[locale]/page": "app/[locale]/page.js",
-  "/[locale]/test/page": "app/[locale]/test/page.js",
-  "/[locale]/personalities/[type]/page": "app/[locale]/personalities/[type]/page.js",
-  "/[locale]/test/questions/page": "app/[locale]/test/questions/page.js",
-  "/[locale]/results/[type]/page": "app/[locale]/results/[type]/page.js"
+  "/[locale]/personalities/[type]/page": "app/[locale]/personalities/[type]/page.js"
 }

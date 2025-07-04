@@ -11,8 +11,11 @@ import '../globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'MBTI Test',
+  title: 'MBTI TEST',
   description: 'An MBTI personality test application',
+  icons: {
+    icon: '/logo.png',
+  },
 };
 
 export default async function LocaleLayout({
