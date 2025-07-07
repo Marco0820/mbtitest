@@ -1,4 +1,4 @@
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Metadata } from 'next';
 
 // Generate metadata for SEO
@@ -12,7 +12,8 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-export default function AboutPage() {
+export default function AboutPage({ params: { locale } }: { params: { locale: string } }) {
+  setRequestLocale(locale);
   return (
     <div className="bg-white dark:bg-gray-900">
       <div className="container mx-auto px-6 py-16 text-gray-800 dark:text-gray-200">

@@ -1,11 +1,13 @@
 import {getRequestConfig} from 'next-intl/server';
+import { routing } from './routing';
 
-// Can be imported from a shared config
-const locales = [
-  'en', 'zh-CN', 'zh-TW', 'es', 'ar', 'pt', 'ja', 'ru', 'fr', 'de',
-  'ko', 'hi', 'tr', 'vi', 'th', 'it', 'ur', 'pl', 'id', 'nl', 'fa'
-];
+export default getRequestConfig(async ({locale}) => {
+  // 验证传入的 locale 是否有效
+  if (!routing.locales.includes(locale as any)) {
+    throw new Error(`Invalid locale: ${locale}`);
+  }
 
-export default getRequestConfig(async ({locale}) => ({
-  messages: (await import(`../messages/${locale}.json`)).default
-}));
+  return {
+    messages: (await import(`../messages/${locale}.json`)).default
+  };
+});

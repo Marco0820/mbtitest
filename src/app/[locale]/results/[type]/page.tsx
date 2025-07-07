@@ -1,3 +1,22 @@
+import { routing } from '@/routing';
+
+const validTypes = [
+  'intj', 'intp', 'entj', 'entp',
+  'infj', 'infp', 'enfj', 'enfp',
+  'istj', 'isfj', 'estj', 'esfj',
+  'istp', 'isfp', 'estp', 'esfp'
+];
+
+export function generateStaticParams() {
+  const params: { type: string; locale: string }[] = [];
+  routing.locales.forEach((locale) => {
+    validTypes.forEach((type) => {
+      params.push({ locale, type });
+    });
+  });
+  return params;
+}
+
 'use client';
 
 import { useEffect, useState } from 'react';
