@@ -66,9 +66,14 @@ function ProfileContent() {
   useEffect(() => {
     if (session?.user) {
       setName(session.user.name || '');
+      // Map legacy gender values to new i18n keys
+      let genderValue = session.user.gender || 'female';
+      if (genderValue === '女') genderValue = 'female';
+      if (genderValue === '男') genderValue = 'male';
+
       setDetails({
         bio: session.user.bio || '',
-        gender: session.user.gender || '女',
+        gender: genderValue,
         country: session.user.country || '',
         state: session.user.state || '',
         city: session.user.city || '',
@@ -337,9 +342,9 @@ function ProfileContent() {
                       value={details.gender}
                       onChange={(e) => setDetails({ ...details, gender: e.target.value })}
                     >
-                      <option value="女">女士</option>
-                      <option value="男">男士</option>
-                      <option value="其他">其他</option>
+                      <option value="female">{t('gender_female')}</option>
+                      <option value="male">{t('gender_male')}</option>
+                      <option value="other">{t('gender_other')}</option>
                     </select>
                   </div>
                   <div>
@@ -389,7 +394,15 @@ function ProfileContent() {
               ) : (
                 <div className="space-y-2">
                   <p><strong>{t('bio')}:</strong> {session?.user.bio || t('notSet')}</p>
-                  <p><strong>{t('gender')}:</strong> {session?.user.gender === '男' ? '男士' : session?.user.gender === '女' ? '女士' : session?.user.gender || t('notSet')}</p>
+                  <p><strong>{t('gender')}:</strong> {
+                    ((gender) => {
+                      if (!gender) return t('notSet');
+                      const lowerGender = gender.toLowerCase();
+                      if (lowerGender === 'male' || lowerGender === '男') return t('gender_male');
+                      if (lowerGender === 'female' || lowerGender === '女') return t('gender_female');
+                      return t('gender_other');
+                    })(session.user.gender)
+                  }</p>
                   <p><strong>{t('location')}:</strong> {`${session?.user.city || ''}, ${session?.user.state || ''}, ${session?.user.country || ''}`.replace(/^, |, $/g, '') || t('notSet')}</p>
                   <Button variant="outline" onClick={handleEditDetailsClick} className="mt-2">{t('editDetails')}</Button>
                 </div>

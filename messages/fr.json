@@ -366,7 +366,7 @@
     "message": "Message"
   },
   "profile": {
-    "title": "Mon profil",
+    "title": "Profil",
     "uploadAvatar": "Télécharger un nouvel avatar",
     "updateSuccess": "Profil mis à jour avec succès !",
     "updateError": "Échec de la mise à jour du profil.",
@@ -388,9 +388,11 @@
     "other": "Autre",
     "infoRequiredTitle": "Mise à jour du profil requise",
     "infoRequiredDescription": "Veuillez compléter vos informations de profil pour accéder aux fonctionnalités de messagerie.",
-    "bio": "Biographie",
-    "gender": "Sexe",
-    "location": "Emplacement",
+    "bio": "Bio",
+    "gender": "Genre",
+    "gender_male": "Homme",
+    "gender_female": "Femme",
+    "gender_other": "Autre",
     "country": "Pays",
     "state": "État",
     "city": "Ville",
@@ -398,7 +400,8 @@
     "save": "Enregistrer",
     "cancel": "Annuler",
     "editName": "Modifier le nom",
-    "signOut": "Se déconnecter"
+    "signOut": "Se déconnecter",
+    "uploading": "Téléchargement..."
   },
   "about": {
     "seo_title": "À propos de nous | Test MBTI précis et communauté des 16 personnalités",

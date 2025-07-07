@@ -51,7 +51,7 @@ export default function BlogPage() {
 
   return (
     <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8 flex justify-center items-center min-h-screen">
-      <div className="w-full max-w-4xl aspect-w-16 aspect-h-9">
+      <div className="w-1/2 aspect-w-16 aspect-h-9">
           <iframe
             className="w-full h-full"
             src="https://www.youtube.com/embed/18ut8M8hv7I"

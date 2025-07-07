@@ -299,7 +299,7 @@
     "message": "Mesaj"
   },
   "profile": {
-    "title": "Profilim",
+    "title": "Profil",
     "uploadAvatar": "Yeni bir avatar yükle",
     "updateSuccess": "Profil başarıyla güncellendi!",
     "updateError": "Profil güncellenemedi.",
@@ -323,7 +323,9 @@
     "infoRequiredDescription": "Mesajlaşma özelliklerine erişmek için lütfen profil bilgilerinizi tamamlayın.",
     "bio": "Biyografi",
     "gender": "Cinsiyet",
-    "location": "Konum",
+    "gender_male": "Erkek",
+    "gender_female": "Kadın",
+    "gender_other": "Diğer",
     "country": "Ülke",
     "state": "Eyalet",
     "city": "Şehir",
@@ -331,7 +333,8 @@
     "save": "Kaydet",
     "cancel": "İptal",
     "editName": "Adı Düzenle",
-    "signOut": "Çıkış Yap"
+    "signOut": "Oturumu Kapat",
+    "uploading": "Yükleniyor..."
   },
   "about": {
     "seo_title": "Hakkımızda | Doğru MBTI Testi ve 16 Kişilik Topluluğu",

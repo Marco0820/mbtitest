@@ -323,6 +323,9 @@
     "infoRequiredDescription": "Please complete your profile information to access messaging features.",
     "bio": "Bio",
     "gender": "Gender",
+    "gender_male": "Male",
+    "gender_female": "Female",
+    "gender_other": "Other",
     "location": "Location",
     "country": "Country",
     "state": "State",
@@ -331,7 +334,8 @@
     "save": "Save",
     "cancel": "Cancel",
     "editName": "Edit Name",
-    "signOut": "Sign Out"
+    "signOut": "Sign Out",
+    "uploading": "Uploading..."
   },
   "about": {
     "seo_title": "About Us | Accurate MBTI Test & 16 Personalities Community",

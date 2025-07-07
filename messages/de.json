@@ -376,7 +376,7 @@
     "message": "Nachricht"
   },
   "profile": {
-    "title": "Mein Profil",
+    "title": "Profil",
     "uploadAvatar": "Neuen Avatar hochladen",
     "updateSuccess": "Profil erfolgreich aktualisiert!",
     "updateError": "Profil konnte nicht aktualisiert werden.",
@@ -400,6 +400,9 @@
     "infoRequiredDescription": "Bitte vervollständigen Sie Ihre Profilinformationen, um auf die Nachrichtenfunktionen zugreifen zu können.",
     "bio": "Bio",
     "gender": "Geschlecht",
+    "gender_male": "Männlich",
+    "gender_female": "Weiblich",
+    "gender_other": "Andere",
     "location": "Standort",
     "country": "Land",
     "state": "Bundesland",
@@ -408,7 +411,8 @@
     "save": "Speichern",
     "cancel": "Abbrechen",
     "editName": "Name bearbeiten",
-    "signOut": "Abmelden"
+    "signOut": "Abmelden",
+    "uploading": "Wird hochgeladen..."
   },
   "about": {
     "seo_title": "Über uns | Genauer MBTI-Test & 16-Persönlichkeiten-Community",

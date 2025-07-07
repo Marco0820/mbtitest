@@ -48,16 +48,12 @@ export async function PUT(req: Request) {
         });
       }
 
-      if (Object.keys(updateData).length === 0) {
-        const currentUser = await tx.user.findUnique({ where: { id: session.user!.id! }});
-        if (!currentUser) throw new Error("User not found");
-        return currentUser;
-      }
-
-      return tx.user.update({
+      const user = await tx.user.update({
         where: { id: session.user!.id! },
         data: updateData,
       });
+
+      return user;
     });
 
     const { password: _, ...userWithoutPassword } = updatedUser;
@@ -68,6 +64,7 @@ export async function PUT(req: Request) {
     if (error instanceof z.ZodError) {
       return NextResponse.json({ message: error.message }, { status: 400 });
     }
+    console.error('Error updating profile:', error);
     return NextResponse.json({ message: 'Something went wrong' }, { status: 500 });
   }
 } 

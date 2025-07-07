@@ -323,6 +323,9 @@
     "infoRequiredDescription": "Uzupełnij informacje w profilu, aby uzyskać dostęp do funkcji wiadomości.",
     "bio": "Biografia",
     "gender": "Płeć",
+    "gender_male": "Mężczyzna",
+    "gender_female": "Kobieta",
+    "gender_other": "Inna",
     "location": "Lokalizacja",
     "country": "Kraj",
     "state": "Województwo",
@@ -331,7 +334,8 @@
     "save": "Zapisz",
     "cancel": "Anuluj",
     "editName": "Edytuj imię",
-    "signOut": "Wyloguj się"
+    "signOut": "Wyloguj się",
+    "uploading": "Przesyłanie..."
   },
   "about": {
     "seo_title": "O nas | Dokładny test MBTI i społeczność 16 osobowości",
