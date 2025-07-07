@@ -7,9 +7,10 @@ import { Footer } from '@/components/layout/Footer';
 import { PageLayout } from '@/components/layout/PageLayout';
 import AuthProvider from '@/components/AuthProvider';
 import '../globals.css';
-import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
-import { GA_TRACKING_ID } from '@/lib/gtag';
 import { createTranslator } from 'next-intl';
+import { GoogleAnalytics } from '@next/third-parties/google';
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from '@vercel/analytics/react';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -72,7 +73,6 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={isRTL ? 'rtl' : ''}>
       <body className={`${inter.className} bg-gray-50 flex flex-col min-h-screen`}>
-        {GA_TRACKING_ID && <GoogleAnalytics gaId={GA_TRACKING_ID} />}
         <AuthProvider>
           <NextIntlClientProvider messages={messages}>
             <Header />
@@ -84,6 +84,9 @@ export default async function LocaleLayout({
             <Footer />
           </NextIntlClientProvider>
         </AuthProvider>
+        <SpeedInsights />
+        <Analytics />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID as string} />
       </body>
     </html>
   );
