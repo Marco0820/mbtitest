@@ -1,4 +1,8 @@
 {
+  "Layout": {
+    "title": "MBTI 16 Persönlichkeitstest",
+    "description": "Machen Sie unseren kostenlosen Persönlichkeitstest, um Ihren MBTI-Typ zu entdecken. Verstehen Sie Ihre Stärken, Schwächen und idealen Karrierewege. Schließen Sie sich Millionen an, die ihren Persönlichkeitstyp gefunden haben."
+  },
   "nav": {
     "home": "Startseite",
     "personalities": "Persönlichkeitstypen",
@@ -12,7 +16,8 @@
     "profile": "Profil",
     "settings": "Einstellungen",
     "language": "Sprache",
-    "secondary_cta": "Leute aus der gleichen Stadt"
+    "secondary_cta": "Leute aus der gleichen Stadt",
+    "explorers_description": "Beobachtende (S) und prospektierende (P) Persönlichkeitstypen, bekannt für ihre Spontaneität, ihren Einfallsreichtum und ihre Flexibilität."
   },
   "personalities": {
     "analysts": "Analysten",
@@ -92,7 +97,7 @@
   },
   "home": {
     "hero": {
-      "title": "Entdecke dein wahres Selbst",
+      "title": "Entdecken Sie Ihre wahre Persönlichkeit mit unserem kostenlosen MBTI-Test",
       "subtitle": "Verbinde dich mit Millionen weltweit durch Persönlichkeitseinblicke",
       "cta": "Mach den kostenlosen Test",
       "secondary_cta": "Triff Gleichgesinnte"

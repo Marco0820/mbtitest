@@ -4,19 +4,23 @@ import { NextRequest } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 
+export async function getBlogs(locale?: string) {
+  return prisma.blog.findMany({
+    where: {
+      locale: locale || undefined,
+    },
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
+}
+
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const locale = searchParams.get('locale');
 
-    const blogs = await prisma.blog.findMany({
-      where: {
-        locale: locale || undefined,
-      },
-      orderBy: {
-        createdAt: 'desc',
-      },
-    });
+    const blogs = await getBlogs(locale || undefined);
     return NextResponse.json(blogs);
   } catch (error) {
     console.error('Failed to fetch blogs:', error);

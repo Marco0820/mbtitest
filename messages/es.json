@@ -1,4 +1,8 @@
 {
+  "Layout": {
+    "title": "Test de Personalidad de 16 Tipos MBTI",
+    "description": "Realiza nuestro test de personalidad gratuito para descubrir tu tipo de MBTI. Comprende tus fortalezas, debilidades y trayectorias profesionales ideales. Únete a millones de personas que han encontrado su tipo de personalidad."
+  },
   "nav": {
     "home": "Inicio",
     "personalities": "Tipos de Personalidad",
@@ -92,7 +96,7 @@
   },
   "home": {
     "hero": {
-      "title": "Descubre tu Verdadero Ser",
+      "title": "Descubre tu Verdadera Personalidad con Nuestro Test MBTI Gratuito",
       "subtitle": "Conéctate con millones en todo el mundo a través de conocimientos de personalidad",
       "cta": "Hacer el Test Gratuito",
       "secondary_cta": "Conoce a Gente Afín"

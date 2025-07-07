@@ -1,8 +1,12 @@
 {
+  "Layout": {
+    "title": "MBTI 16 Personality Test",
+    "description": "Take our free personality test to discover your MBTI type. Understand your strengths, weaknesses, and ideal career paths. Join millions who have found their personality type."
+  },
   "nav": {
     "home": "Home",
     "personalities": "Personalities",
-    "test": "Test MBTI",
+    "test": "Test",
     "people": "People",
     "blog": "Blog",
     "about": "About",
@@ -33,7 +37,7 @@
   },
   "home": {
     "hero": {
-      "title": "Discover Your True Personality",
+      "title": "Discover Your True Personality with Our Free MBTI Test",
       "subtitle": "Take our free personality test and get a detailed report on your type.",
       "cta": "Take the Test",
       "secondary_cta": "Same City People"

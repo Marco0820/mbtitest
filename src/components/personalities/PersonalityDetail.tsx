@@ -101,6 +101,37 @@ const PersonalityDetail: React.FC<PersonalityDetailProps> = ({ type, locale }) =
         }
         const jsonData: PersonalityData = await response.json();
         setData(jsonData);
+
+        // Inject JSON-LD structured data
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.innerHTML = JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Article',
+          'mainEntityOfPage': {
+            '@type': 'WebPage',
+            '@id': `https://your-website.com/${locale}/personalities/${type}`,
+          },
+          'headline': `${type.toUpperCase()} - ${jsonData.name}`,
+          'description': jsonData.subtitle,
+          'image': `https://your-website.com/og-image-${type}.png`,
+          'author': {
+            '@type': 'Organization',
+            'name': 'MBTI TEST',
+          },
+          'publisher': {
+            '@type': 'Organization',
+            'name': 'MBTI TEST',
+            'logo': {
+              '@type': 'ImageObject',
+              'url': 'https://your-website.com/logo.png',
+            },
+          },
+          'datePublished': new Date().toISOString(),
+          'dateModified': new Date().toISOString(),
+        });
+        document.head.appendChild(script);
+
       } catch (err: any) {
         setError(err.message);
       } finally {

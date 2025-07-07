@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin/
+Disallow: /profile/
+Disallow: /messages/
+Disallow: /auth/
+
+Sitemap: https://your-website.com/sitemap.xml 
