@@ -1,4 +1,8 @@
 {
+  "Layout": {
+    "title": "MBTI 16 Kişilik Tipi Testi",
+    "description": "MBTI tipinizi keşfetmek için ücretsiz kişilik testimizi yapın. Güçlü ve zayıf yönlerinizi, ideal kariyer yollarınızı anlayın. Kişilik tiplerini bulmuş milyonlarca kişiye katılın."
+  },
   "nav": {
     "home": "Anasayfa",
     "personalities": "Kişilikler",
@@ -33,7 +37,7 @@
   },
   "home": {
     "hero": {
-      "title": "Gerçek Kişiliğinizi Keşfedin",
+      "title": "Ücretsiz MBTI Testimizle Gerçek Kişiliğinizi Keşfedin",
       "subtitle": "Ücretsiz kişilik testimizi yapın ve tipiniz hakkında ayrıntılı bir rapor alın.",
       "cta": "Testi Yap",
       "secondary_cta": "Aynı Şehirdeki İnsanlar"

@@ -1,4 +1,8 @@
 {
+  "Layout": {
+    "title": "Tes Kepribadian 16 Tipe MBTI",
+    "description": "Ikuti tes kepribadian gratis kami untuk menemukan tipe MBTI Anda. Pahami kekuatan, kelemahan, dan jalur karier ideal Anda. Bergabunglah dengan jutaan orang yang telah menemukan tipe kepribadian mereka."
+  },
   "nav": {
     "home": "Beranda",
     "personalities": "Tipe Kepribadian",
@@ -12,7 +16,8 @@
     "profile": "Profil",
     "settings": "Pengaturan",
     "language": "Bahasa",
-    "secondary_cta": "Orang Sekota"
+    "secondary_cta": "Orang Sekota",
+    "explorers_description": "Tipe kepribadian Pengamat (S) dan Prospek (P), yang dikenal karena spontanitas, kecerdikan, dan fleksibilitasnya."
   },
   "personalities": {
     "analysts": "Analis",
@@ -92,7 +97,7 @@
   },
   "home": {
     "hero": {
-      "title": "Temukan Jati Diri Anda",
+      "title": "Temukan Jati Diri Anda dengan Tes MBTI Gratis Kami",
       "subtitle": "Terhubung dengan jutaan orang di seluruh dunia melalui wawasan kepribadian",
       "cta": "Ikuti Tes Gratis",
       "secondary_cta": "Temui Orang-Orang Sejiwa"

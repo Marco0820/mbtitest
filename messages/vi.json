@@ -1,4 +1,8 @@
 {
+  "Layout": {
+    "title": "Bài kiểm tra 16 loại tính cách MBTI",
+    "description": "Làm bài kiểm tra tính cách miễn phí của chúng tôi để khám phá loại MBTI của bạn. Hiểu điểm mạnh, điểm yếu và con đường sự nghiệp lý tưởng của bạn. Tham gia cùng hàng triệu người đã tìm thấy loại tính cách của họ."
+  },
   "nav": {
     "home": "Trang chủ",
     "personalities": "Tính cách",
@@ -33,7 +37,7 @@
   },
   "home": {
     "hero": {
-      "title": "Khám phá tính cách thật của bạn",
+      "title": "Khám phá tính cách thật của bạn với bài kiểm tra MBTI miễn phí của chúng tôi",
       "subtitle": "Làm bài kiểm tra tính cách miễn phí của chúng tôi và nhận báo cáo chi tiết về loại của bạn.",
       "cta": "Làm bài kiểm tra",
       "secondary_cta": "Những người cùng thành phố"
