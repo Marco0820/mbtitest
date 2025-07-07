@@ -103,17 +103,26 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
     async session({ session, token }) {
-      if (session.user) {
-        session.user.id = token.id;
-        session.user.mbti = token.mbti;
-        session.user.name = token.name;
-        session.user.email = token.email;
-        session.user.image = token.picture;
-        session.user.gender = token.gender;
-        session.user.country = token.country;
-        session.user.state = token.state;
-        session.user.city = token.city;
-        session.user.bio = token.bio;
+      if (token && token.id) {
+        const dbUser = await prisma.user.findUnique({
+          where: { id: token.id },
+        });
+
+        if (dbUser) {
+          session.user.id = dbUser.id;
+          session.user.name = dbUser.name;
+          session.user.email = dbUser.email;
+          session.user.image = dbUser.image;
+          session.user.mbti = dbUser.mbti;
+          session.user.gender = dbUser.gender;
+          session.user.country = dbUser.country;
+          session.user.state = dbUser.state;
+          session.user.city = dbUser.city;
+          session.user.bio = dbUser.bio;
+        } else {
+          // User not found in DB, invalidate session
+          return null as any; 
+        }
       }
       return session;
     },
