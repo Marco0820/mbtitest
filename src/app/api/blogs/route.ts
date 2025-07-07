@@ -4,7 +4,7 @@ import { NextRequest } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 
-export async function getBlogs(locale?: string) {
+async function getBlogs(locale?: string) {
   return prisma.blog.findMany({
     where: {
       locale: locale || undefined,

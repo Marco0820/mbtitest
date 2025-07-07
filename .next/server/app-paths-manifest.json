@@ -1,7 +1,8 @@
 {
-  "/api/personalities/[type]/route": "app/api/personalities/[type]/route.js",
-  "/[locale]/personalities/[type]/page": "app/[locale]/personalities/[type]/page.js",
-  "/[locale]/page": "app/[locale]/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
   "/[locale]/test/page": "app/[locale]/test/page.js",
-  "/[locale]/test/questions/page": "app/[locale]/test/questions/page.js"
+  "/[locale]/test/questions/page": "app/[locale]/test/questions/page.js",
+  "/[locale]/page": "app/[locale]/page.js",
+  "/[locale]/personalities/[type]/page": "app/[locale]/personalities/[type]/page.js"
 }
