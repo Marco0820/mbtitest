@@ -50,12 +50,22 @@ export default function BlogPage() {
   */
 
   return (
-    <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8 flex justify-center items-center min-h-screen">
+    <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center min-h-screen space-y-8">
       <div className="w-1/2 relative" style={{ paddingTop: '33.75%' /* 16:9 aspect ratio * 60% */ }}>
           <iframe
             className="absolute top-0 left-0 w-full h-full"
             src="https://www.youtube.com/embed/2FqUf4b521A"
-            title="YouTube video player"
+            title="YouTube video player 1"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+      </div>
+      <div className="w-1/2 relative" style={{ paddingTop: '33.75%' /* 16:9 aspect ratio * 60% */ }}>
+          <iframe
+            className="absolute top-0 left-0 w-full h-full"
+            src="https://www.youtube.com/embed/pGX-Qgppy9k"
+            title="YouTube video player 2"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
