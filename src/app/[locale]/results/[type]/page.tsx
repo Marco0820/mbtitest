@@ -3,6 +3,7 @@ export const dynamicParams = false;
 
 import { routing } from '@/routing';
 import ResultsClientPage from '@/components/results/ResultsClientPage';
+import { Suspense } from 'react';
 
 const validTypes = [
   'intj', 'intp', 'entj', 'entp',
@@ -22,5 +23,9 @@ export function generateStaticParams() {
 }
 
 export default function ResultPage({ params }: { params: { type: string } }) {
-  return <ResultsClientPage type={params.type} />;
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ResultsClientPage type={params.type} />
+    </Suspense>
+  );
 }
