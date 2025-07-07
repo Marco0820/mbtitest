@@ -48,10 +48,25 @@ export async function PUT(req: Request) {
         });
       }
 
-      const user = await tx.user.update({
+      // Then, update the user profile with any provided data
+      const updateResult = await tx.user.updateMany({
         where: { id: session.user!.id! },
         data: updateData,
       });
+
+      // If no user was updated, it means the user ID from the session is stale.
+      if (updateResult.count === 0) {
+        throw new Error('User not found. Please re-login.');
+      }
+      
+      const user = await tx.user.findUnique({
+        where: { id: session.user!.id! },
+      });
+
+      if (!user) {
+        // This case should theoretically not be reached if updateMany succeeded.
+        throw new Error('User not found after update.');
+      }
 
       return user;
     });
@@ -65,6 +80,11 @@ export async function PUT(req: Request) {
       return NextResponse.json({ message: error.message }, { status: 400 });
     }
     console.error('Error updating profile:', error);
+
+    if (error instanceof Error && error.message.includes('User not found')) {
+      return NextResponse.json({ message: error.message }, { status: 401 });
+    }
+
     return NextResponse.json({ message: 'Something went wrong' }, { status: 500 });
   }
 } 
