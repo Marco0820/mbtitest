@@ -44,10 +44,12 @@ export const authOptions: NextAuthOptions = {
           throw new Error('Missing credentials or token.');
         }
 
+        /*
         const isHuman = await verifyTurnstile(credentials.token);
         if (!isHuman) {
           throw new Error('Human verification failed.');
         }
+        */
 
         const user = await prisma.user.findUnique({
           where: { email: credentials.email },

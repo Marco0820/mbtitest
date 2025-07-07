@@ -1,5 +1,10 @@
 {
-  "/[locale]/page": "app/[locale]/page.js",
-  "/[locale]/personalities/[type]/page": "app/[locale]/personalities/[type]/page.js",
-  "/[locale]/test/page": "app/[locale]/test/page.js"
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
+  "/api/messages/unread-count/route": "app/api/messages/unread-count/route.js",
+  "/api/user/history/route": "app/api/user/history/route.js",
+  "/api/user/profile/route": "app/api/user/profile/route.js",
+  "/[locale]/auth/login/page": "app/[locale]/auth/login/page.js",
+  "/[locale]/profile/page": "app/[locale]/profile/page.js",
+  "/[locale]/page": "app/[locale]/page.js"
 }

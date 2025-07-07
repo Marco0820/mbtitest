@@ -68,7 +68,7 @@ function ProfileContent() {
       setName(session.user.name || '');
       setDetails({
         bio: session.user.bio || '',
-        gender: session.user.gender || '',
+        gender: session.user.gender || '女',
         country: session.user.country || '',
         state: session.user.state || '',
         city: session.user.city || '',
@@ -330,14 +330,17 @@ function ProfileContent() {
                   </div>
                   <div>
                     <label htmlFor="gender" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('gender')}</label>
-                    <input
-                      type="text"
-                      name="gender"
+                    <select
                       id="gender"
+                      name="gender"
                       className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                       value={details.gender}
                       onChange={(e) => setDetails({ ...details, gender: e.target.value })}
-                    />
+                    >
+                      <option value="女">女士</option>
+                      <option value="男">男士</option>
+                      <option value="其他">其他</option>
+                    </select>
                   </div>
                   <div>
                     <label htmlFor="country" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('country')}</label>
@@ -386,7 +389,7 @@ function ProfileContent() {
               ) : (
                 <div className="space-y-2">
                   <p><strong>{t('bio')}:</strong> {session?.user.bio || t('notSet')}</p>
-                  <p><strong>{t('gender')}:</strong> {session?.user.gender || t('notSet')}</p>
+                  <p><strong>{t('gender')}:</strong> {session?.user.gender === '男' ? '男士' : session?.user.gender === '女' ? '女士' : session?.user.gender || t('notSet')}</p>
                   <p><strong>{t('location')}:</strong> {`${session?.user.city || ''}, ${session?.user.state || ''}, ${session?.user.country || ''}`.replace(/^, |, $/g, '') || t('notSet')}</p>
                   <Button variant="outline" onClick={handleEditDetailsClick} className="mt-2">{t('editDetails')}</Button>
                 </div>

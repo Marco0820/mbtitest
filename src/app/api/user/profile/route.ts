@@ -28,14 +28,14 @@ export async function PUT(req: Request) {
     const parsedBody = profileSchema.parse(body);
     
     const updateData: { [key: string]: any } = {};
-    if (parsedBody.name !== undefined) updateData.name = parsedBody.name;
-    if (parsedBody.bio !== undefined) updateData.bio = parsedBody.bio;
-    if (parsedBody.image !== undefined) updateData.image = parsedBody.image;
-    if (parsedBody.gender !== undefined) updateData.gender = parsedBody.gender;
-    if (parsedBody.country !== undefined) updateData.country = parsedBody.country;
-    if (parsedBody.state !== undefined) updateData.state = parsedBody.state;
-    if (parsedBody.city !== undefined) updateData.city = parsedBody.city;
-    if (parsedBody.mbti !== undefined) updateData.mbti = parsedBody.mbti;
+    if (parsedBody.name) updateData.name = parsedBody.name;
+    if (parsedBody.bio) updateData.bio = parsedBody.bio;
+    if (parsedBody.image) updateData.image = parsedBody.image;
+    if (parsedBody.gender) updateData.gender = parsedBody.gender;
+    if (parsedBody.country) updateData.country = parsedBody.country;
+    if (parsedBody.state) updateData.state = parsedBody.state;
+    if (parsedBody.city) updateData.city = parsedBody.city;
+    if (parsedBody.mbti) updateData.mbti = parsedBody.mbti;
 
     const updatedUser = await prisma.$transaction(async (tx) => {
       if (parsedBody.mbti && parsedBody.result) {
