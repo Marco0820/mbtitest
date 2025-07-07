@@ -54,7 +54,7 @@ export default function BlogPage() {
       <div className="w-full max-w-4xl aspect-w-16 aspect-h-9">
           <iframe
             className="w-full h-full"
-            src="https://www.youtube.com/embed/OjTngPFo6eE"
+            src="https://www.youtube.com/embed/18ut8M8hv7I"
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
