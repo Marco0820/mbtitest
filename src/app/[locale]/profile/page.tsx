@@ -223,6 +223,7 @@ function ProfileContent() {
       }
       const { user: updatedUser } = await profileResponse.json();
       await update({ image: updatedUser.image });
+      router.refresh();
       setSuccess('Avatar updated successfully!');
     } catch (err: any) {
       setError(err.message || 'An error occurred.');
