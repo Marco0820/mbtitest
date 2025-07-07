@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import { NextRequest } from 'next/server';
 import axios from 'axios';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(req: NextRequest) {
   try {
     const ip = req.ip || req.headers.get('x-forwarded-for')?.split(',')[0] || '8.8.8.8';
