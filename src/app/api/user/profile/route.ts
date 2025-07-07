@@ -49,26 +49,17 @@ export async function PUT(req: Request) {
       }
 
       // Then, update the user profile with any provided data
-      const updateResult = await tx.user.updateMany({
+      const updatedUserResult = await tx.user.update({
         where: { id: session.user!.id! },
         data: updateData,
       });
 
       // If no user was updated, it means the user ID from the session is stale.
-      if (updateResult.count === 0) {
+      if (!updatedUserResult) {
         throw new Error('User not found. Please re-login.');
       }
       
-      const user = await tx.user.findUnique({
-        where: { id: session.user!.id! },
-      });
-
-      if (!user) {
-        // This case should theoretically not be reached if updateMany succeeded.
-        throw new Error('User not found after update.');
-      }
-
-      return user;
+      return updatedUserResult;
     });
 
     const { password: _, ...userWithoutPassword } = updatedUser;

@@ -26,5 +26,5 @@ export async function POST(request: Request): Promise<NextResponse> {
     access: 'public',
   });
 
-  return NextResponse.json(blob);
+  return NextResponse.json({ url: blob.url });
 } 

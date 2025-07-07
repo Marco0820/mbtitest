@@ -81,51 +81,46 @@ function AuthNav({ unreadCount }: { unreadCount: number }) {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Link href={`/${locale}/profile`}>
-                <Button variant="ghost" className="relative h-10 w-10 rounded-full">
-                  <Image
-                    src={user.image || 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'}
-                    alt={user.name || 'User avatar'}
-                    fill
-                    className="rounded-full object-cover"
-                  />
-                </Button>
-              </Link>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="relative h-10 w-10 rounded-full">
+                    <Image
+                      src={user.image || 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'}
+                      alt={user.name || 'User avatar'}
+                      fill
+                      className="rounded-full object-cover"
+                      unoptimized
+                    />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56 bg-white" align="end" forceMount>
+                  <DropdownMenuLabel className="font-normal">
+                    <div className="flex flex-col space-y-1">
+                      <p className="text-sm font-medium leading-none">{user.name}</p>
+                      <p className="text-xs leading-none text-muted-foreground">
+                        {user.email}
+                      </p>
+                    </div>
+                  </DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem asChild className="focus:bg-blue-100 focus:text-blue-900 cursor-pointer">
+                    <Link href={`/${locale}/profile`}>
+                      <User className="ms-2 h-4 w-4" />
+                      <span>{t('profile')}</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={handleLogout} className="focus:bg-blue-100 focus:text-blue-900 cursor-pointer">
+                     <LogOut className="ms-2 h-4 w-4" />
+                     <span>{t('logout')}</span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </TooltipTrigger>
             <TooltipContent>
-              <p>{t('profile')}</p>
+              <p>{user.name}</p>
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
-
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon">
-              <ChevronDown className="h-5 w-5" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-56 bg-white" align="end" forceMount>
-            <DropdownMenuLabel className="font-normal">
-              <div className="flex flex-col space-y-1">
-                <p className="text-sm font-medium leading-none">{user.name}</p>
-                <p className="text-xs leading-none text-muted-foreground">
-                  {user.email}
-                </p>
-              </div>
-            </DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem asChild className="focus:bg-blue-100 focus:text-blue-900">
-              <Link href={`/${locale}/profile`}>
-                <User className="ms-2 h-4 w-4" />
-                <span>{t('profile')}</span>
-              </Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={handleLogout} className="focus:bg-blue-100 focus:text-blue-900 cursor-pointer">
-                <LogOut className="ms-2 h-4 w-4" />
-                <span>{t('logout')}</span>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
         </>
       ) : (
         <>
