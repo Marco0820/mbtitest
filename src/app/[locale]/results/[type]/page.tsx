@@ -1,5 +1,5 @@
 export const dynamic = 'error';
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 import { routing } from '@/routing';
 import ResultsClientPage from '@/components/results/ResultsClientPage';
