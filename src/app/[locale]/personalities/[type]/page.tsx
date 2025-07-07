@@ -1,3 +1,6 @@
+export const dynamic = 'error';
+export const dynamicParams = false;
+
 import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import PersonalityDetail from '@/components/personalities/PersonalityDetail';

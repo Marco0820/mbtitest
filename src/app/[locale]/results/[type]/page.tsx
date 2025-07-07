@@ -1,3 +1,6 @@
+export const dynamic = 'error';
+export const dynamicParams = false;
+
 import { routing } from '@/routing';
 
 const validTypes = [
