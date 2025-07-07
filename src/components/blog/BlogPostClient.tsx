@@ -36,10 +36,6 @@ export default function BlogPostClient({ blog }: { blog: Blog | null }) {
 
   return (
     <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8 max-w-4xl">
-      <Button variant="ghost" onClick={() => router.back()} className="mb-8">
-        <ArrowLeft className="mr-2 h-4 w-4" />
-        {t('back_button')}
-      </Button>
       <article>
         <header className="mb-8">
           <Badge variant="secondary" className="mb-4">{blog.trendingKeyword}</Badge>
