@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { setRequestLocale } from 'next-intl/server';
+import { unstable_setRequestLocale } from 'next-intl/server';
 import PersonalityDetail from '@/components/personalities/PersonalityDetail';
 import PersonalityDetailRTL from '@/components/personalities/PersonalityDetailRTL';
 import { locales } from '@root/i18n.config';
@@ -21,7 +21,7 @@ interface PersonalityPageProps {
 }
 
 export default function PersonalityPage({ params }: PersonalityPageProps) {
-  setRequestLocale(params.locale);
+  unstable_setRequestLocale(params.locale);
   const { type, locale } = params;
 
   if (!validTypes.includes(type.toLowerCase())) {
