@@ -11,7 +11,14 @@ export async function GET() {
   try {
     // 1. Get daily trending searches from Google Trends for the US
     const trendsData = await trends.dailyTrends({ geo: 'US' });
-    const trendsJson = JSON.parse(trendsData);
+    let trendsJson;
+    try {
+      trendsJson = JSON.parse(trendsData);
+    } catch (e) {
+      console.error("Failed to parse Google Trends data. It's likely HTML, not JSON.", trendsData);
+      // Exit gracefully if trends data is not valid JSON
+      return NextResponse.json({ message: 'Could not fetch trends, likely due to Google blocking the request.' });
+    }
     const trendingKeywords = trendsJson.default.trendingSearchesDays[0].trendingSearches.slice(0, 10).map((t: any) => t.title.query);
 
     console.log(`Found top 10 trending keywords: ${trendingKeywords.join(', ')}`);
