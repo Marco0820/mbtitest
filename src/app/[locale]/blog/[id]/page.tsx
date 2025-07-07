@@ -1,12 +1,4 @@
-'use client';
-
-import { useParams, useRouter } from 'next/navigation';
-import { useLocale, useTranslations } from 'next-intl';
-import Image from 'next/image';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { ArrowLeft, ExternalLink } from 'lucide-react';
-import { Loader2 } from 'lucide-react';
+import { routing } from '@/routing';
 
 interface Blog {
   id: string;
@@ -76,6 +68,29 @@ const blogDatabase: { [key: string]: Omit<Blog, 'id'> } = {
     imageUrl: 'https://images.unsplash.com/photo-1505526543118-2469491CFde1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80',
   },
 };
+
+export function generateStaticParams() {
+  const params: { id: string; locale: string }[] = [];
+  const blogIds = Object.keys(blogDatabase);
+  
+  routing.locales.forEach((locale) => {
+    blogIds.forEach((id) => {
+      params.push({ locale, id });
+    });
+  });
+
+  return params;
+}
+
+'use client';
+
+import { useParams, useRouter } from 'next/navigation';
+import { useLocale, useTranslations } from 'next-intl';
+import Image from 'next/image';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { ArrowLeft, ExternalLink } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 
 export default function BlogPostPage() {
   const params = useParams();
