@@ -1,9 +1,9 @@
-'use client';
 
 export const dynamic = 'error';
 export const dynamicParams = false;
 
 import { routing } from '@/routing';
+import BlogPostClient from '@/components/blog/BlogPostClient';
 
 interface Blog {
   id: string;
@@ -38,7 +38,7 @@ const blogDatabase: { [key: string]: Omit<Blog, 'id'> } = {
       <p>The stock market and financial world are complex, data-driven systems. INTJs can use their analytical skills to spot trends, build investment models, and make calculated decisions, removing emotion from the equation.</p>
     `,
     sourceUrl: 'https://mbti16personalities.online/blog/intj-careers',
-    imageUrl: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1505526543118-2469491CFde1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80',
   },
   'infp-infj-compatibility': {
     trendingKeyword: 'INFP INFJ Compatibility',
@@ -87,74 +87,16 @@ export function generateStaticParams() {
   return params;
 }
 
-import { useParams, useRouter } from 'next/navigation';
-import { useLocale, useTranslations } from 'next-intl';
-import Image from 'next/image';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { ArrowLeft, ExternalLink } from 'lucide-react';
-import { Loader2 } from 'lucide-react';
-
-export default function BlogPostPage() {
-  const params = useParams();
-  const router = useRouter();
-  const id = params?.id as string;
+// This is now a Server Component
+export default function BlogPostPage({ params }: { params: { id: string } }) {
+  const id = params?.id;
   const blogData = blogDatabase[id];
-  const t = useTranslations('blog');
 
   if (!blogData) {
-    return (
-      <div className="flex justify-center items-center min-h-[60vh]">
-        <div className="text-center py-20">
-          <h2 className="text-2xl font-bold">Blog post not found.</h2>
-          <Button variant="ghost" onClick={() => router.back()} className="mt-8">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Blog
-          </Button>
-        </div>
-      </div>
-    );
+    return <BlogPostClient blog={null} />;
   }
 
-  const blog: Blog = { ...blogData, id };
+  const blogWithId: Blog = { ...blogData, id };
 
-  return (
-    <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8 max-w-4xl">
-      <Button variant="ghost" onClick={() => router.back()} className="mb-8">
-        <ArrowLeft className="mr-2 h-4 w-4" />
-        {t('back_button')}
-      </Button>
-      <article>
-        <header className="mb-8">
-          <Badge variant="secondary" className="mb-4">{blog.trendingKeyword}</Badge>
-          <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
-            {blog.title}
-          </h1>
-        </header>
-
-        {blog.imageUrl && (
-          <div className="relative w-full h-96 rounded-lg overflow-hidden mb-8 shadow-lg">
-            <Image
-              src={blog.imageUrl}
-              alt={blog.title}
-              layout="fill"
-              objectFit="cover"
-            />
-          </div>
-        )}
-
-        <div 
-          className="prose prose-lg max-w-none"
-          dangerouslySetInnerHTML={{ __html: blog.content }} 
-        />
-        
-        <footer className="mt-12 border-t pt-8">
-            <a href={blog.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-gray-600 hover:text-gray-900">
-                 Source Link
-                <ExternalLink className="ml-2 h-4 w-4 inline-block" />
-            </a>
-        </footer>
-      </article>
-    </div>
-  );
+  return <BlogPostClient blog={blogWithId} />;
 } 
