@@ -1,19 +1,8 @@
 import { NextResponse } from 'next/server';
-import { prisma } from '@/lib/db';
 import { NextRequest } from 'next/server';
+import { getBlogs } from '@/lib/blog-actions';
 
 export const dynamic = 'force-dynamic';
-
-async function getBlogs(locale?: string) {
-  return prisma.blog.findMany({
-    where: {
-      locale: locale || undefined,
-    },
-    orderBy: {
-      createdAt: 'desc',
-    },
-  });
-}
 
 export async function GET(request: NextRequest) {
   try {

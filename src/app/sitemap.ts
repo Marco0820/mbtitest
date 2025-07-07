@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 import { routing } from '@/routing';
-import { getBlogs } from '@/app/api/blogs/route';
+import { getBlogs } from '@/lib/blog-actions';
 
 const URL = 'https://www.mbti16personalities.online';
 
