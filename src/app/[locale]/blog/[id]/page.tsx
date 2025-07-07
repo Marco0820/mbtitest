@@ -1,3 +1,5 @@
+'use client';
+
 export const dynamic = 'error';
 export const dynamicParams = false;
 
@@ -84,8 +86,6 @@ export function generateStaticParams() {
 
   return params;
 }
-
-'use client';
 
 import { useParams, useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
