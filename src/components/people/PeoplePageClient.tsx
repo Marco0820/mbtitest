@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect, MouseEvent } from 'react';
-import { useTranslations } from 'next-intl';
+import { useState, useMemo, useEffect } from 'react';
+import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from '@/components/ui/input';
@@ -15,67 +15,66 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination"
-import { Country, State, City } from 'country-state-city';
+} from "@/components/ui/pagination";
+import Link from 'next/link';
+import { useSession } from 'next-auth/react';
 
-const ALL_MBTI_TYPES = [
-  'INTJ-A', 'INTJ-T', 'INTP-A', 'INTP-T', 'ENTJ-A', 'ENTJ-T', 'ENTP-A', 'ENTP-T',
-  'INFJ-A', 'INFJ-T', 'INFP-A', 'INFP-T', 'ENFJ-A', 'ENFJ-T', 'ENFP-A', 'ENFP-T',
-  'ISTJ-A', 'ISTJ-T', 'ISFJ-A', 'ISFJ-T', 'ESTJ-A', 'ESTJ-T', 'ESFJ-A', 'ESFJ-T',
-  'ISTP-A', 'ISTP-T', 'ISFP-A', 'ISFP-T', 'ESTP-A', 'ESTP-T', 'ESFP-A', 'ESFP-T'
-];
-
-const ALL_GENDERS = ['male', 'female', 'other'];
-
-// Manually define User type based on schema.prisma
-// This avoids issues with Prisma client generation paths
-export type User = {
-    id: string;
-    name: string | null;
-    email: string | null;
-    emailVerified: Date | null;
-    image: string | null;
-    password?: string | null;
-    mbti: string | null;
-    bio: string | null;
-    gender: string | null;
-    country: string | null;
-    state: string | null;
-    city: string | null;
-};
+// Define the User type based on what the API returns
+export interface User {
+  id: string;
+  name: string | null;
+  image: string | null;
+  mbti: string | null;
+  bio: string | null;
+  country: string | null;
+  state: string | null;
+  city: string | null;
+  gender: string | null;
+}
 
 const ITEMS_PER_PAGE = 6;
 
 function UserCard({ user }: { user: User }) {
   const t = useTranslations('people');
-  const location = [user.city, user.state, user.country].filter(Boolean).join(', ');
+  const locale = useLocale();
+  const { data: session } = useSession();
+
+  const isProfileComplete = 
+    session?.user?.gender &&
+    session?.user?.country &&
+    session?.user?.state &&
+    session?.user?.city;
+  
+  const messageHref = isProfileComplete 
+    ? `/${locale}/messages?receiverId=${user.id}` 
+    : `/${locale}/profile?from=messaging`;
 
   return (
     <Card className="overflow-hidden transform hover:-translate-y-1 transition-transform duration-300 ease-in-out">
       <CardContent className="p-4 flex items-start space-x-4">
         <div className="w-20 h-20 flex-shrink-0">
           <Image
-            src={user.image || `https://api.dicebear.com/7.x/initials/svg?seed=${user.name}`}
-            alt={user.name || 'User avatar'}
-            width={128}
-            height={128}
-            className="rounded-full w-full h-full object-cover border-2 border-gray-200"
+            src={user.image || '/logo.png'}
+            alt={user.name || 'User Avatar'}
+            width={80}
+            height={80}
+            className="rounded-full border-2 border-gray-200 object-cover w-full h-full"
             unoptimized
           />
         </div>
         <div className="flex-1">
-          <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">{user.name}</h3>
-          <p className="text-sm font-semibold text-purple-600 dark:text-purple-400">{user.mbti}</p>
-          <p className="text-sm text-gray-600 dark:text-gray-300 mt-1 line-clamp-2">{user.bio}</p>
-          {location && (
-            <div className="text-xs text-gray-500 dark:text-gray-400 mt-2">
-              {location}
-            </div>
-          )}
-          <Button size="sm" className="mt-2">
-            <MessageSquare className="w-4 h-4 mr-2" />
-            {t('message')}
-          </Button>
+          <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">{user.name || 'Anonymous User'}</h3>
+          {user.mbti && <p className="text-sm font-semibold text-purple-600 dark:text-purple-400">{user.mbti}</p>}
+          <p className="text-sm text-gray-600 dark:text-gray-300 mt-1 h-12 overflow-hidden">{user.bio}</p>
+          <div className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+            {[user.city, user.state, user.country].filter(Boolean).join(', ')}
+          </div>
+          <Link href={messageHref} passHref>
+            <Button size="sm" className="mt-2">
+              <MessageSquare className="w-4 h-4 mr-2" />
+              {t('message')}
+            </Button>
+          </Link>
         </div>
       </CardContent>
     </Card>
@@ -93,72 +92,48 @@ const initialFilters = {
 
 interface PeoplePageClientProps {
     initialUsers: User[];
+    initialFilters: {
+        mbti: string[];
+        countries: string[];
+        states: string[];
+        cities: string[];
+        genders: string[];
+    }
 }
 
-export default function PeoplePageClient({ initialUsers }: PeoplePageClientProps) {
+export default function PeoplePageClient({ initialUsers, initialFilters: fetchedFilters }: PeoplePageClientProps) {
   const t = useTranslations('people');
+  const [allUsers, setAllUsers] = useState<User[]>(initialUsers);
   const [filters, setFilters] = useState(initialFilters);
-  const [users, setUsers] = useState(initialUsers);
-  const [isLoading, setIsLoading] = useState(false);
+  const [appliedFilters, setAppliedFilters] = useState(initialFilters);
   const [currentPage, setCurrentPage] = useState(1);
-  
-  const [countries, setCountries] = useState<any[]>([]);
-  const [states, setStates] = useState<any[]>([]);
-  const [cities, setCities] = useState<any[]>([]);
+  const [filterOptions, setFilterOptions] = useState(fetchedFilters);
 
-  useEffect(() => {
-    setCountries(Country.getAllCountries());
-  }, []);
+  const filteredUsers = useMemo(() => {
+    return allUsers.filter(user => {
+      return (appliedFilters.mbti === 'all' ? true : user.mbti?.startsWith(appliedFilters.mbti)) &&
+             (appliedFilters.country === 'all' ? true : user.country === appliedFilters.country) &&
+             (appliedFilters.state === 'all' ? true : user.state === appliedFilters.state) &&
+             (appliedFilters.city === 'all' ? true : user.city === appliedFilters.city) &&
+             (appliedFilters.gender === 'all' ? true : user.gender === appliedFilters.gender) &&
+             (appliedFilters.searchTerm ? user.name?.toLowerCase().includes(appliedFilters.searchTerm.toLowerCase()) : true);
+    });
+  }, [appliedFilters, allUsers]);
 
-  useEffect(() => {
-    if (filters.country && filters.country !== 'all') {
-      setStates(State.getStatesOfCountry(filters.country));
-    } else {
-      setStates([]);
-    }
-    setCities([]);
-  }, [filters.country]);
-  
-  useEffect(() => {
-    if (filters.country && filters.state && filters.state !== 'all') {
-      setCities(City.getCitiesOfState(filters.country, filters.state));
-    } else {
-      setCities([]);
-    }
-  }, [filters.country, filters.state]);
-
-  const totalPages = Math.ceil(users.length / ITEMS_PER_PAGE);
-  const paginatedUsers = users.slice(
+  const totalPages = Math.ceil(filteredUsers.length / ITEMS_PER_PAGE);
+  const paginatedUsers = filteredUsers.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
     currentPage * ITEMS_PER_PAGE
   );
 
-  const handleSearch = async () => {
+  const handleSearch = () => {
     setCurrentPage(1);
-    setIsLoading(true);
-    const queryParams = new URLSearchParams();
-    if(filters.mbti !== 'all') queryParams.append('mbti', filters.mbti);
-    if(filters.gender !== 'all') queryParams.append('gender', filters.gender);
-    if(filters.country !== 'all') queryParams.append('country', Country.getCountryByCode(filters.country)?.name || '');
-    if(filters.state !== 'all') queryParams.append('state', State.getStateByCodeAndCountry(filters.state, filters.country)?.name || '');
-    if(filters.city !== 'all') queryParams.append('city', filters.city);
-    if(filters.searchTerm) queryParams.append('name', filters.searchTerm);
-    
-    try {
-      const response = await fetch(`/api/users/search?${queryParams.toString()}`);
-      const data = await response.json();
-      setUsers(data);
-    } catch (error) {
-      console.error("Failed to fetch users", error);
-      // You might want to show an error message to the user
-    } finally {
-      setIsLoading(false);
-    }
+    setAppliedFilters(filters);
   };
 
   const handleClear = () => {
     setFilters(initialFilters);
-    setUsers(initialUsers);
+    setAppliedFilters(initialFilters);
     setCurrentPage(1);
   };
 
@@ -169,17 +144,7 @@ export default function PeoplePageClient({ initialUsers }: PeoplePageClientProps
   };
   
   const handleFilterChange = (filterName: string, value: string) => {
-    setFilters(prev => {
-      const newFilters = {...prev, [filterName]: value};
-      if (filterName === 'country') {
-        newFilters.state = 'all';
-        newFilters.city = 'all';
-      }
-      if (filterName === 'state') {
-        newFilters.city = 'all';
-      }
-      return newFilters;
-    });
+    setFilters(prev => ({...prev, [filterName]: value}));
   };
 
   return (
@@ -193,129 +158,94 @@ export default function PeoplePageClient({ initialUsers }: PeoplePageClientProps
                 placeholder={t('search_by_name')}
                 value={filters.searchTerm}
                 onChange={(e) => handleFilterChange('searchTerm', e.target.value)}
-                className="lg:col-span-2 focus:ring-blue-500 hover:bg-blue-100 transition-colors"
+                className="lg:col-span-2 focus:ring-blue-500 hover:bg-blue-200 transition-colors"
               />
               <Select value={filters.mbti} onValueChange={(v) => handleFilterChange('mbti', v)}>
-                <SelectTrigger className="focus:ring-blue-500 hover:bg-blue-100 transition-colors">
+                <SelectTrigger className="focus:ring-blue-500 hover:bg-blue-200 transition-colors">
                   <SelectValue placeholder={t('filter_by_mbti')} />
                 </SelectTrigger>
                 <SelectContent className="bg-white dark:bg-gray-700">
                   <SelectItem value="all">{t('all_mbti')}</SelectItem>
-                  {ALL_MBTI_TYPES.map(mbti => (
-                    <SelectItem key={mbti} value={mbti}>{mbti}</SelectItem>
-                  ))}
+                  {filterOptions.mbti.map(mbti => <SelectItem key={mbti} value={mbti}>{mbti}</SelectItem>)}
                 </SelectContent>
               </Select>
-
               <Select value={filters.gender} onValueChange={(v) => handleFilterChange('gender', v)}>
-                <SelectTrigger className="focus:ring-blue-500 hover:bg-blue-100 transition-colors">
+                <SelectTrigger className="focus:ring-blue-500 hover:bg-blue-200 transition-colors">
                   <SelectValue placeholder={t('filter_by_gender')} />
                 </SelectTrigger>
                 <SelectContent className="bg-white dark:bg-gray-700">
                   <SelectItem value="all">{t('all_genders')}</SelectItem>
-                  {ALL_GENDERS.map(gender => (
-                      <SelectItem key={gender} value={gender}>{t(gender)}</SelectItem>
-                  ))}
+                  {filterOptions.genders.map(gender => <SelectItem key={gender} value={gender}>{gender}</SelectItem>)}
                 </SelectContent>
               </Select>
-
               <Select value={filters.country} onValueChange={(v) => handleFilterChange('country', v)}>
-                <SelectTrigger className="focus:ring-blue-500 hover:bg-blue-100 transition-colors">
+                <SelectTrigger className="focus:ring-blue-500 hover:bg-blue-200 transition-colors">
                   <SelectValue placeholder={t('filter_by_country')} />
                 </SelectTrigger>
-                <SelectContent className="bg-white dark:bg-gray-700 max-h-60">
+                <SelectContent className="bg-white dark:bg-gray-700">
                   <SelectItem value="all">{t('all_countries')}</SelectItem>
-                  {countries.map(country => (
-                    <SelectItem key={country.isoCode} value={country.isoCode}>{country.name}</SelectItem>
-                  ))}
+                  {filterOptions.countries.map(country => <SelectItem key={country} value={country}>{country}</SelectItem>)}
                 </SelectContent>
               </Select>
-
-              <Select value={filters.state} onValueChange={(v) => handleFilterChange('state', v)} disabled={filters.country === 'all'}>
-                <SelectTrigger className="focus:ring-blue-500 hover:bg-blue-100 transition-colors">
+              <Select value={filters.state} onValueChange={(v) => handleFilterChange('state', v)}>
+                <SelectTrigger className="focus:ring-blue-500 hover:bg-blue-200 transition-colors">
                   <SelectValue placeholder={t('filter_by_state')} />
                 </SelectTrigger>
-                <SelectContent className="bg-white dark:bg-gray-700 max-h-60">
+                <SelectContent className="bg-white dark:bg-gray-700">
                   <SelectItem value="all">{t('all_states')}</SelectItem>
-                  {states.map(state => (
-                    <SelectItem key={state.isoCode} value={state.isoCode}>{state.name}</SelectItem>
-                  ))}
+                  {filterOptions.states.map(state => <SelectItem key={state} value={state}>{state}</SelectItem>)}
                 </SelectContent>
               </Select>
-
-              <Select value={filters.city} onValueChange={(v) => handleFilterChange('city', v)} disabled={filters.state === 'all'}>
-                <SelectTrigger className="focus:ring-blue-500 hover:bg-blue-100 transition-colors">
-                  <SelectValue placeholder={t('filter_by_city')} />
-                </SelectTrigger>
-                <SelectContent className="bg-white dark:bg-gray-700 max-h-60">
-                  <SelectItem value="all">{t('all_cities')}</SelectItem>
-                  {cities.map(city => (
-                    <SelectItem key={city.name} value={city.name}>{city.name}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+               <Select value={filters.city} onValueChange={(v) => handleFilterChange('city', v)}>
+                 <SelectTrigger className="focus:ring-blue-500 hover:bg-blue-200 transition-colors">
+                   <SelectValue placeholder={t('filter_by_city')} />
+                 </SelectTrigger>
+                 <SelectContent className="bg-white dark:bg-gray-700">
+                   <SelectItem value="all">{t('all_cities')}</SelectItem>
+                   {filterOptions.cities.map(city => <SelectItem key={city} value={city}>{city}</SelectItem>)}
+                 </SelectContent>
+               </Select>
             </div>
-            <div className="flex justify-end gap-2 mt-4">
-              <Button variant="outline" onClick={handleClear} className="hover:bg-blue-100 transition-colors">{t('clear')}</Button>
-              <Button onClick={handleSearch} disabled={isLoading} className="bg-blue-600 hover:bg-blue-700">
-                {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                {t('search')}
-              </Button>
+            <div className="flex justify-end space-x-2 mt-4">
+              <Button onClick={handleSearch} className="bg-blue-600 hover:bg-blue-700">{t('search')}</Button>
+              <Button onClick={handleClear} variant="outline">{t('clear')}</Button>
             </div>
           </div>
-          
-          {isLoading ? (
-             <div className="flex justify-center items-center min-h-[40vh]">
-              <Loader2 className="h-16 w-16 animate-spin text-blue-600" />
-            </div>
-          ) : (
-            <>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {paginatedUsers.length > 0 ? (
-                  paginatedUsers.map(user => (
-                    <UserCard key={user.id} user={user} />
-                  ))
-                ) : (
-                  <div className="col-span-full text-center py-12">
-                    <p className="text-lg text-gray-500">{t('no_users_found')}</p>
-                  </div>
-                )}
-              </div>
 
-              {totalPages > 1 && (
-                <Pagination className="mt-8">
-                  <PaginationContent>
-                    <PaginationItem>
-                      <PaginationPrevious 
-                        href="#" 
-                        onClick={(e: MouseEvent) => { e.preventDefault(); handlePageChange(currentPage - 1); }}
-                        className={currentPage === 1 ? "pointer-events-none opacity-50" : undefined}
-                      />
-                    </PaginationItem>
-                    
-                    {[...Array(totalPages)].map((_, i) => (
-                        <PaginationItem key={i}>
-                          <PaginationLink 
-                            href="#" 
-                            isActive={currentPage === i + 1}
-                            onClick={(e: MouseEvent) => { e.preventDefault(); handlePageChange(i + 1); }}
-                          >
-                            {i + 1}
-                          </PaginationLink>
-                        </PaginationItem>
-                    ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {paginatedUsers.map((user) => (
+              <UserCard key={user.id} user={user} />
+            ))}
+          </div>
 
-                    <PaginationItem>
-                      <PaginationNext 
-                        href="#" 
-                        onClick={(e: MouseEvent) => { e.preventDefault(); handlePageChange(currentPage + 1); }}
-                        className={currentPage === totalPages ? "pointer-events-none opacity-50" : undefined}
-                      />
-                    </PaginationItem>
-                  </PaginationContent>
-                </Pagination>
-              )}
-            </>
+          {totalPages > 1 && (
+            <Pagination className="mt-8">
+              <PaginationContent>
+                <PaginationItem>
+                  <PaginationPrevious 
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    className={currentPage === 1 ? 'pointer-events-none opacity-50' : 'cursor-pointer'}
+                  />
+                </PaginationItem>
+                {[...Array(totalPages)].map((_, i) => (
+                  <PaginationItem key={i}>
+                    <PaginationLink 
+                      onClick={() => handlePageChange(i + 1)}
+                      isActive={currentPage === i + 1}
+                      className="cursor-pointer"
+                    >
+                      {i + 1}
+                    </PaginationLink>
+                  </PaginationItem>
+                ))}
+                <PaginationItem>
+                  <PaginationNext 
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    className={currentPage === totalPages ? 'pointer-events-none opacity-50' : 'cursor-pointer'}
+                  />
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
           )}
         </div>
       </main>
