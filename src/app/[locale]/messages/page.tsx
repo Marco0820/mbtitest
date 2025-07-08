@@ -206,19 +206,53 @@ export default function MessagesPage() {
         throw new Error(`Failed to send message: ${errorBody}`);
       }
       
-      const sentMessage = await res.json();
+      const sentMessageData = await res.json();
+      const { message: sentMessage, conversationId } = sentMessageData;
       
       // Replace optimistic message with actual message from server
-      setMessages(prev => prev.map(msg => (msg.id === tempMessageId ? sentMessage.message : msg)));
+      setMessages(prev => prev.map(msg => (msg.id === tempMessageId ? sentMessage : msg)));
 
-      // If it was a new conversation, update the state
-      if (!selectedUser.conversationId) {
-        const newConversationId = sentMessage.conversationId;
-        setSelectedUser(prev => ({ ...prev!, conversationId: newConversationId }));
-      }
+      // Update conversations list locally instead of re-fetching
+      setConversations(prevConvos => {
+        const now = new Date().toISOString();
+        
+        const existingConvoIndex = prevConvos.findIndex(c => c.otherUser.id === receiverId);
+
+        let updatedConvo;
+        let newConvos = [...prevConvos];
+
+        if (existingConvoIndex > -1) {
+          // It's an existing conversation, update it and move to top
+          updatedConvo = {
+            ...newConvos[existingConvoIndex],
+            lastMessage: content,
+            lastMessageTimestamp: now,
+            unreadCount: 0 
+          };
+          newConvos.splice(existingConvoIndex, 1);
+        } else {
+          // It's a new conversation, create it
+          updatedConvo = {
+            id: conversationId,
+            lastMessage: content,
+            lastMessageTimestamp: now,
+            otherUser: {
+                id: selectedUser.id,
+                name: selectedUser.name,
+                image: selectedUser.image,
+                mbti: selectedUser.mbti,
+            },
+            unreadCount: 0
+          };
+        }
+        
+        return [updatedConvo, ...newConvos];
+      });
       
-      // Refresh conversations to show the latest message on the list
-      fetchConversations();
+      // If it was a new conversation, update the selected user state with the new ID
+      if (!selectedUser.conversationId) {
+        setSelectedUser(prev => ({ ...prev!, conversationId }));
+      }
 
     } catch (error) {
       console.error("Failed to send message", error);
