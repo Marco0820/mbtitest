@@ -1,5 +1,4 @@
 {
-  "/api/messages/unread-count/route": "app/api/messages/unread-count/route.js",
-  "/[locale]/page": "app/[locale]/page.js",
-  "/[locale]/people/page": "app/[locale]/people/page.js"
+  "/[locale]/people/page": "app/[locale]/people/page.js",
+  "/[locale]/page": "app/[locale]/page.js"
 }

@@ -61,7 +61,7 @@ const ContentItemRenderer: React.FC<{ item: ContentItem }> = ({ item }) => {
                 <div className="my-8 relative h-56 w-full">
                     <Image 
                         src={item.src!} 
-                        alt={item.src!} 
+                        alt={item.text || 'Personality illustration'} 
                         layout="fill" 
                         objectFit="contain"
                         onError={() => setImageError(true)}
