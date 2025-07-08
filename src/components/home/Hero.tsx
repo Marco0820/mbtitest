@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 import { Play, Users, ArrowRight } from 'lucide-react';
 import React from 'react';
+import Image from 'next/image';
 
 const HeroComponent = () => {
   const t = useTranslations('home');
@@ -11,17 +12,18 @@ const HeroComponent = () => {
 
   return (
     <section className="relative h-[110vh] flex items-center justify-center overflow-hidden">
-      {/* Video Background */}
+      {/* Static Image Background */}
       <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover scale-[1.32]"
-        >
-          <source src="/videos/background.mp4" type="video/mp4" />
-        </video>
+        <Image
+          src="/images/hero-background.webp" // Replace with your optimized image path
+          alt="Abstract background"
+          layout="fill"
+          objectFit="cover"
+          quality={80} // Adjust quality as needed
+          priority // Load this image first
+        />
+        {/* Add a semi-transparent overlay to ensure text is readable */}
+        <div className="absolute inset-0 bg-black opacity-50"></div>
       </div>
 
       {/* Content */}

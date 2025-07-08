@@ -104,20 +104,29 @@ export const authOptions: NextAuthOptions = {
       return true; // Allow sign-in
     },
     async jwt({ token, user, trigger, session }) {
+      // The user object is only available on the first sign-in.
+      // We use it to find our user in the database and get their ID.
       if (user) {
-        const customUser = user as User;
-        token.id = customUser.id;
-        token.mbti = customUser.mbti;
-        token.name = customUser.name;
-        token.email = customUser.email;
-        token.picture = customUser.image;
-        token.gender = customUser.gender;
-        token.country = customUser.country;
-        token.state = customUser.state;
-        token.city = customUser.city;
-        token.bio = customUser.bio;
+        const dbUser = await prisma.user.findUnique({
+          where: { email: user.email! },
+        });
+        
+        if (dbUser) {
+          // Persist the user's ID and other details to the token
+          token.id = dbUser.id;
+          token.mbti = dbUser.mbti;
+          token.name = dbUser.name;
+          token.email = dbUser.email;
+          token.picture = dbUser.image;
+          token.gender = dbUser.gender;
+          token.country = dbUser.country;
+          token.state = dbUser.state;
+          token.city = dbUser.city;
+          token.bio = dbUser.bio;
+        }
       }
 
+      // This is for session updates, e.g., when a user updates their profile
       if (trigger === "update" && session) {
         token = { ...token, ...session.user };
         if (session.user?.image) {
