@@ -79,6 +79,30 @@ export const authOptions: NextAuthOptions = {
     signIn: '/auth/login',
   },
   callbacks: {
+    async signIn({ user, account, profile }) {
+      if (account?.provider === 'google' && profile?.email) {
+        try {
+          const userExists = await prisma.user.findUnique({
+            where: { email: profile.email },
+          });
+
+          if (!userExists) {
+            await prisma.user.create({
+              data: {
+                email: profile.email,
+                name: profile.name,
+                image: (profile as any).picture,
+              },
+            });
+          }
+        } catch (error) {
+          console.error("Failed to create user during Google sign-in:", error);
+          // Prevent sign-in if database operation fails
+          return false;
+        }
+      }
+      return true; // Allow sign-in
+    },
     async jwt({ token, user, trigger, session }) {
       if (user) {
         const customUser = user as User;

@@ -1,7 +1,4 @@
 {
-  "/api/messages/unread-count/route": "app/api/messages/unread-count/route.js",
-  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
-  "/api/user/history/route": "app/api/user/history/route.js",
   "/[locale]/auth/login/page": "app/[locale]/auth/login/page.js",
   "/[locale]/profile/page": "app/[locale]/profile/page.js"
 }
