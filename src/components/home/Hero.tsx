@@ -15,10 +15,10 @@ const HeroComponent = () => {
       {/* Static Image Background */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/hero-background.webp" // Replace with your optimized image path
+          src="/images/hero-background.jpg" // Replace with your optimized image path
           alt="Abstract background"
-          layout="fill"
-          objectFit="cover"
+          fill={true}
+          style={{ objectFit: 'cover' }}
           quality={80} // Adjust quality as needed
           priority // Load this image first
         />

@@ -24,7 +24,18 @@ export async function generateMetadata({ params: { locale } }: { params: { local
       template: `%s | ${t('Layout.title')}`,
     },
     description: t('Layout.description'),
-    keywords: ['MBTI', '16型人格', '性格测试', 'personality test', 'career', 'psychology'],
+    keywords: [
+      'MBTI', '16型人格', '性格测试', 'personality test', 'career', 'psychology',
+      '社交', '交友', '约会', '恋爱', '灵魂伴侣', '性格配对',
+      'MBTI dating', 'MBTI compatibility', 'MBTI match', 'MBTI community', 'MBTI forum',
+      '16 personalities', 'personality types', 'find friends', 'social app', 'online dating',
+      '外向', '内向', 'extrovert', 'introvert', 'social skills', '社交技巧',
+      'INFP', 'INFJ', 'ENFP', 'ENFJ', 'INTP', 'INTJ', 'ENTP', 'ENTJ',
+      'ISFP', 'ISFJ', 'ESFP', 'ESFJ', 'ISTP', 'ISTJ', 'ESTP', 'ESTJ',
+      '调停者', '治愈者', '哲学家', '建筑师', '逻辑学家', '指挥官', '辩论家',
+      '提倡者', '主人公', '竞选者', '物流师', '守卫者', '总经理', '执政官',
+      '鉴赏家', '探险家', '表演者', '企业家', '星座', '心理学', '自我提升'
+    ],
     alternates: {
       canonical: `https://your-website.com/${locale}`,
       languages: {

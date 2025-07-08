@@ -1,18 +1,8 @@
 import PeoplePageClient from '@/components/people/PeoplePageClient';
-import { APP_URL } from '@/lib/constants';
-
-async function getUsersData() {
-  const res = await fetch(`${APP_URL}/api/users`, { cache: 'no-store' });
-
-  if (!res.ok) {
-    throw new Error('Failed to fetch users data');
-  }
-  
-  return res.json();
-}
+import { getUsersAndFilters } from '@/lib/data';
 
 export default async function PeoplePage() {
-  const { users, filters } = await getUsersData();
+  const { users, filters } = await getUsersAndFilters();
 
   return <PeoplePageClient initialUsers={users} initialFilters={filters} />;
 }
