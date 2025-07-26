@@ -14,6 +14,8 @@ import { Analytics } from '@vercel/analytics/react';
 import Script from 'next/script';
 import { headers } from 'next/headers';
 
+export const dynamic = 'force-dynamic';
+
 const inter = Inter({ subsets: ['latin'] });
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
