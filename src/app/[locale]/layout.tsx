@@ -11,7 +11,6 @@ import { createTranslator } from 'next-intl';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from '@vercel/analytics/react';
-import Script from 'next/script';
 import { headers } from 'next/headers';
 
 export const dynamic = 'force-dynamic';
@@ -92,13 +91,20 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className={isRTL ? 'rtl' : ''}>
+      <head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4690050292021329"
+          crossOrigin="anonymous"
+        ></script>
+      </head>
       <body className={`${inter.className} bg-gray-50 flex flex-col min-h-screen`}>
-        <Script
+        {/* <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4690050292021329"
           crossOrigin="anonymous"
           strategy="beforeInteractive"
-        />
+        /> */}
         <AuthProvider>
           <NextIntlClientProvider messages={messages}>
             <Header />
