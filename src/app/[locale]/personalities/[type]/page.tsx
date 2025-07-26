@@ -1,6 +1,3 @@
-export const dynamic = 'error';
-export const dynamicParams = false;
-
 import { notFound } from 'next/navigation';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { createTranslator } from 'next-intl';
@@ -25,29 +22,32 @@ interface PersonalityPageProps {
 export async function generateMetadata({ params: { locale, type } }: PersonalityPageProps) {
   const messages = await getMessages({ locale });
   const t = createTranslator({ locale, messages });
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-website.com';
 
   const personalityName = t(`personalities.${type.toLowerCase()}.name`);
   const pageTitle = `${type.toUpperCase()} - ${personalityName} | 16 Personalities | MBTI Test`;
   const pageDescription = `Learn all about the ${type.toUpperCase()} personality type, also known as the ${personalityName}. Discover their strengths, weaknesses, career paths, and more.`;
 
+  const canonicalUrl = `${siteUrl}/${locale}/personalities/${type.toLowerCase()}`;
+
   return {
     title: pageTitle,
     description: pageDescription,
     alternates: {
-      canonical: `https://your-website.com/${locale}/personalities/${type.toLowerCase()}`,
+      canonical: canonicalUrl,
       languages: {
-        'en-US': `https://your-website.com/en/personalities/${type.toLowerCase()}`,
-        'zh-CN': `https://your-website.com/zh-CN/personalities/${type.toLowerCase()}`,
+        'en-US': `${siteUrl}/en/personalities/${type.toLowerCase()}`,
+        'zh-CN': `${siteUrl}/zh-CN/personalities/${type.toLowerCase()}`,
       },
     },
     openGraph: {
       title: pageTitle,
       description: pageDescription,
-      url: `https://your-website.com/${locale}/personalities/${type.toLowerCase()}`,
+      url: canonicalUrl,
       siteName: 'MBTI TEST',
       images: [
         {
-          url: `https://your-website.com/og-image-${type.toLowerCase()}.png`, // You should create these images
+          url: `${siteUrl}/og-image-${type.toLowerCase()}.png`, // You should create these images
           width: 800,
           height: 600,
         },
@@ -58,7 +58,7 @@ export async function generateMetadata({ params: { locale, type } }: Personality
       card: 'summary_large_image',
       title: pageTitle,
       description: pageDescription,
-      images: [`https://your-website.com/og-image-${type.toLowerCase()}.png`], // You should create these images
+      images: [`${siteUrl}/og-image-${type.toLowerCase()}.png`], // You should create these images
     },
   };
 }
