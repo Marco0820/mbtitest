@@ -11,12 +11,19 @@ import { createTranslator } from 'next-intl';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from '@vercel/analytics/react';
+import Script from 'next/script';
+import { headers } from 'next/headers';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
   const messages = await getMessages({ locale });
   const t = createTranslator({ locale, messages });
+
+  const headersList = headers();
+  const pathname = headersList.get('x-next-pathname') || '';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-website.com';
+  const canonicalUrl = `${siteUrl}${pathname}`;
 
   return {
     title: {
@@ -37,20 +44,20 @@ export async function generateMetadata({ params: { locale } }: { params: { local
       '鉴赏家', '探险家', '表演者', '企业家', '星座', '心理学', '自我提升'
     ],
     alternates: {
-      canonical: `https://your-website.com/${locale}`,
+      canonical: canonicalUrl,
       languages: {
-        'en-US': 'https://your-website.com/en',
-        'zh-CN': 'https://your-website.com/zh-CN',
+        'en-US': `${siteUrl}/en`,
+        'zh-CN': `${siteUrl}/zh-CN`,
       },
     },
     openGraph: {
       title: t('Layout.title'),
       description: t('Layout.description'),
-      url: 'https://your-website.com',
+      url: siteUrl,
       siteName: 'MBTI TEST',
       images: [
         {
-          url: 'https://your-website.com/logo.png',
+          url: `${siteUrl}/logo.png`,
           width: 800,
           height: 600,
         },
@@ -62,7 +69,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
       card: 'summary_large_image',
       title: t('Layout.title'),
       description: t('Layout.description'),
-      images: ['https://your-website.com/logo.png'],
+      images: [`${siteUrl}/logo.png`],
     },
     icons: {
       icon: '/logo.png',
@@ -84,6 +91,12 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={isRTL ? 'rtl' : ''}>
       <body className={`${inter.className} bg-gray-50 flex flex-col min-h-screen`}>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4690050292021329"
+          crossOrigin="anonymous"
+          strategy="beforeInteractive"
+        />
         <AuthProvider>
           <NextIntlClientProvider messages={messages}>
             <Header />
