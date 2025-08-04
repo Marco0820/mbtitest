@@ -69,6 +69,11 @@
         "title": "Instant Results",
         "description": "Get your personality type immediately after completing the test."
       }
+    },
+    "community": {
+      "title": "Join Our Thriving Community",
+      "subtitle": "Connect with others, share your experiences, and explore the world of personality types together.",
+      "cta": "Explore the Community"
     }
   },
   "test": {
