@@ -10,17 +10,6 @@
       "source": "/(.*)",
       "has": [
         {
-          "type": "host",
-          "value": "www.mbti16personalities.online"
-        }
-      ],
-      "destination": "https://mbti16personalities.online/$1",
-      "permanent": true
-    },
-    {
-      "source": "/(.*)",
-      "has": [
-        {
           "type": "header",
           "key": "x-forwarded-proto",
           "value": "http"
