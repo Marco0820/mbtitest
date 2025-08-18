@@ -252,6 +252,13 @@
     "contact": "联系我们",
     "share_website": "分享我们的网站"
   },
+  "share": {
+    "share": "分享",
+    "share_to": "分享到",
+    "share_on": "分享到",
+    "copy_link": "复制链接",
+    "copied": "已复制"
+  },
   "faq": {
     "title": "常见问题",
     "q1_title": "MBTI测试是什么？",

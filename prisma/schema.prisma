@@ -137,3 +137,82 @@ model Blog {
 
   @@index([trendingKeyword])
 }
+
+model OutreachCampaign {
+  id           String   @id @default(cuid())
+  name         String
+  type         String
+  template     String   @db.Text
+  scheduledDate DateTime
+  status       String   @default("active")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  
+  targets      OutreachTarget[]
+  
+  @@map("OutreachCampaign")
+}
+
+model OutreachTarget {
+  id              String    @id @default(cuid())
+  domain          String
+  contactEmail    String?
+  type            String
+  authority       Int
+  relevance       Int
+  lastContactDate DateTime?
+  status          String    @default("pending")
+  notes           String?
+  campaignId      String
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  
+  campaign        OutreachCampaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  
+  @@index([campaignId])
+  @@index([status])
+  @@index([domain])
+  @@map("OutreachTarget")
+}
+
+model OutreachActivity {
+  id               String    @id @default(cuid())
+  targetDomain     String
+  campaignId       String
+  type             String
+  status           String
+  emailSubject     String?
+  emailContent     String?   @db.Text
+  responseReceived Boolean   @default(false)
+  responseContent  String?   @db.Text
+  linkAcquired     Boolean   @default(false)
+  linkUrl          String?
+  timestamp        DateTime  @default(now())
+  
+  backlinks        Backlink[]
+  
+  @@index([campaignId])
+  @@index([timestamp])
+  @@map("OutreachActivity")
+}
+
+model Backlink {
+  id                 String    @id @default(cuid())
+  sourceUrl          String
+  targetUrl          String
+  anchorText         String
+  discoveredDate     DateTime  @default(now())
+  lastCheckedDate    DateTime  @default(now())
+  status             String    @default("active")
+  domainAuthority    Int?
+  pageAuthority      Int?
+  traffic            Int?
+  clicks             Int?
+  outreachActivityId String?
+  
+  outreachActivity   OutreachActivity? @relation(fields: [outreachActivityId], references: [id], onDelete: SetNull)
+  
+  @@index([sourceUrl])
+  @@index([status])
+  @@map("Backlink")
+}

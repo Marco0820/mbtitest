@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { OutreachEngine } from '@/lib/outreach/outreach-engine';
 
 export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
+export const maxDuration = 300; // 5 minutes
 
 // 验证请求是否来自合法的cron服务
 function validateCronRequest(request: NextRequest): boolean {

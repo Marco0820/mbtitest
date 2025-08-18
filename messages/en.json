@@ -252,6 +252,13 @@
     "contact": "Contact",
     "share_website": "Share Our Website"
   },
+  "share": {
+    "share": "Share",
+    "share_to": "Share to",
+    "share_on": "Share on",
+    "copy_link": "Copy Link",
+    "copied": "Copied"
+  },
   "faq": {
     "title": "Frequently Asked Questions",
     "q1_title": "What is the MBTI test?",

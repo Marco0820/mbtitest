@@ -4,6 +4,10 @@ import trends from 'google-trends-api';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
 
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
+export const maxDuration = 300; // 5 minutes
+
 // This is the main function for the cron job
 export async function GET() {
   console.log('Cron job started: fetching blogs');

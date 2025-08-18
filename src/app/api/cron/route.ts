@@ -3,6 +3,10 @@ import { prisma } from '@/lib/db';
 import { request } from 'undici';
 import { Parser } from 'xml2js';
 
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
+export const maxDuration = 300; // 5 minutes
+
 const SEARCHAPI_KEY = process.env.SEARCHAPI_API_KEY;
 const PROXY_URL = process.env.HTTPS_PROXY || process.env.HTTP_PROXY;
 

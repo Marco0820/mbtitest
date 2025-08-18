@@ -423,6 +423,13 @@
     "journey_content": "Votre personnalité est votre plan unique. La comprendre est une aventure de toute une vie, et nous sommes là pour être votre guide. Passez notre test gratuit des 16 personnalités aujourd'hui pour recevoir votre profil détaillé et débloquer un monde de conscience de soi et de découverte sociale.",
     "cta_button": "Passer le test gratuit maintenant"
   },
+  "share": {
+    "share": "Partager",
+    "share_to": "Partager vers",
+    "share_on": "Partager sur",
+    "copy_link": "Copier le lien",
+    "copied": "Copié"
+  },
   "login": {
     "title": "Connexion",
     "subtitle": "Bienvenue à nouveau ! Veuillez vous connecter pour continuer.",

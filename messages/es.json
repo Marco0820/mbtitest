@@ -418,6 +418,13 @@
     "journey_content": "Tu personalidad es tu plano único. Entenderla es una aventura de toda la vida, y estamos aquí para ser tu guía. Toma nuestro test gratuito de 16 personalidades hoy para recibir tu perfil detallado y desbloquear un mundo de autoconciencia y descubrimiento social.",
     "cta_button": "Tomar el test gratuito ahora"
   },
+  "share": {
+    "share": "Compartir",
+    "share_to": "Compartir en",
+    "share_on": "Compartir en",
+    "copy_link": "Copiar enlace",
+    "copied": "Copiado"
+  },
   "login": {
     "title": "Iniciar Sesión",
     "subtitle": "¡Bienvenido de nuevo! Por favor, inicia sesión para continuar.",

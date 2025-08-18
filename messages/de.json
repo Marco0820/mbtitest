@@ -434,6 +434,13 @@
     "journey_content": "Ihre Persönlichkeit ist Ihr einzigartiger Bauplan. Sie zu verstehen ist ein lebenslanges Abenteuer, und wir sind hier, um Ihr Leitfaden zu sein. Machen Sie heute unseren kostenlosen 16-Persönlichkeiten-Test, um Ihr detailliertes Profil zu erhalten und eine Welt des Selbstbewusstseins und der sozialen Entdeckung zu erschließen.",
     "cta_button": "Jetzt kostenlosen Test machen"
   },
+  "share": {
+    "share": "Teilen",
+    "share_to": "Teilen mit",
+    "share_on": "Teilen auf",
+    "copy_link": "Link kopieren",
+    "copied": "Kopiert"
+  },
   "login": {
     "title": "Anmeldung",
     "subtitle": "Willkommen zurück! Bitte melden Sie sich an, um fortzufahren.",

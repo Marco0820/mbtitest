@@ -1,7 +1,5 @@
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '@/lib/db';
 import axios from 'axios';
-
-const prisma = new PrismaClient();
 
 export interface OutreachTarget {
   id: string;
@@ -290,33 +288,95 @@ export class OutreachEngine {
    * 执行具体的外链联系
    */
   private async executeOutreach(target: OutreachTarget, campaign: OutreachCampaign): Promise<void> {
-    // 模拟发送邮件（在实际应用中，这里会集成邮件服务）
-    console.log(`Executing outreach to ${target.domain} for campaign ${campaign.name}`);
+    try {
+      // 生成个性化邮件内容
+      const emailContent = this.generatePersonalizedEmail(target, campaign);
+      
+      // 模拟发送邮件（在实际应用中，这里会集成邮件服务）
+      console.log(`Executing outreach to ${target.domain} for campaign ${campaign.name}`);
+      console.log('Email content preview:', emailContent.subject);
+      
+      // 更新目标状态
+      await prisma.outreachTarget.update({
+        where: { id: target.id },
+        data: {
+          status: 'contacted',
+          lastContactDate: new Date()
+        }
+      });
+      
+      // 记录外链活动
+      await this.logOutreachActivity({
+        targetDomain: target.domain,
+        campaignId: campaign.id,
+        type: campaign.type,
+        timestamp: new Date(),
+        status: 'sent'
+      });
+      
+      // 实际发送邮件的代码会在这里
+      // await this.sendEmail(emailContent);
+      
+    } catch (error) {
+      console.error(`Failed to execute outreach to ${target.domain}:`, error);
+      throw error;
+    }
+  }
+  
+  /**
+   * 生成个性化邮件内容
+   */
+  private generatePersonalizedEmail(target: OutreachTarget, campaign: OutreachCampaign): { subject: string; content: string } {
+    let template = campaign.template;
     
-    // 更新目标状态
-    target.status = 'contacted';
-    target.lastContactDate = new Date();
+    // 替换模板变量
+    template = template.replace(/{{domain}}/g, target.domain);
+    template = template.replace(/{{niche}}/g, this.getNicheForDomain(target.domain));
     
-    // 记录外链活动
-    await this.logOutreachActivity({
-      targetDomain: target.domain,
-      campaignId: campaign.id,
-      type: campaign.type,
-      timestamp: new Date(),
-      status: 'sent'
-    });
+    // 提取主题行
+    const subjectMatch = template.match(/Subject: (.+)/);
+    const subject = subjectMatch ? subjectMatch[1] : `外链合作机会 - ${target.domain}`;
+    
+    // 移除主题行，保留邮件正文
+    const content = template.replace(/Subject: .+\n\n/, '');
+    
+    return { subject, content };
+  }
+  
+  /**
+   * 根据域名获取细分领域
+   */
+  private getNicheForDomain(domain: string): string {
+    if (domain.includes('psychology')) return '心理学';
+    if (domain.includes('career')) return '职业发展';
+    if (domain.includes('business')) return '商业管理';
+    if (domain.includes('education')) return '教育';
+    return '专业发展';
   }
 
   /**
    * 获取每日外链联系数量
    */
   private async getDailyOutreachCount(date: Date): Promise<number> {
-    // 从数据库查询当日已发送的外链联系数量
-    const startOfDay = new Date(date.setHours(0, 0, 0, 0));
-    const endOfDay = new Date(date.setHours(23, 59, 59, 999));
-    
-    // 这里应该查询实际数据库
-    return 0; // 临时返回0
+    try {
+      const startOfDay = new Date(date.setHours(0, 0, 0, 0));
+      const endOfDay = new Date(date.setHours(23, 59, 59, 999));
+      
+      const count = await prisma.outreachActivity.count({
+        where: {
+          timestamp: {
+            gte: startOfDay,
+            lte: endOfDay
+          },
+          status: 'sent'
+        }
+      });
+      
+      return count;
+    } catch (error) {
+      console.error('Failed to get daily outreach count:', error);
+      return 0;
+    }
   }
 
   /**
@@ -330,17 +390,74 @@ export class OutreachEngine {
    * 保存活动到数据库
    */
   private async saveCampaignToDatabase(campaign: OutreachCampaign): Promise<void> {
-    // 实际实现中会保存到数据库
-    console.log(`Saving campaign ${campaign.name} to database`);
+    try {
+      // 保存活动
+      await prisma.outreachCampaign.create({
+        data: {
+          id: campaign.id,
+          name: campaign.name,
+          type: campaign.type,
+          template: campaign.template,
+          scheduledDate: campaign.scheduledDate,
+          status: campaign.status,
+          targets: {
+            create: campaign.targets.map(target => ({
+              id: target.id,
+              domain: target.domain,
+              contactEmail: target.contactEmail,
+              type: target.type,
+              authority: target.authority,
+              relevance: target.relevance,
+              status: target.status,
+              notes: target.notes
+            }))
+          }
+        }
+      });
+      console.log(`Campaign ${campaign.name} saved to database`);
+    } catch (error) {
+      console.error('Failed to save campaign to database:', error);
+      throw error;
+    }
   }
 
   /**
    * 从数据库获取活动
    */
   private async getCampaignFromDatabase(campaignId: string): Promise<OutreachCampaign | null> {
-    // 实际实现中从数据库查询
-    console.log(`Loading campaign ${campaignId} from database`);
-    return null;
+    try {
+      const campaign = await prisma.outreachCampaign.findUnique({
+        where: { id: campaignId },
+        include: { targets: true }
+      });
+      
+      if (!campaign) {
+        return null;
+      }
+      
+      return {
+        id: campaign.id,
+        name: campaign.name,
+        type: campaign.type as OutreachCampaign['type'],
+        template: campaign.template,
+        scheduledDate: campaign.scheduledDate,
+        status: campaign.status as OutreachCampaign['status'],
+        targets: campaign.targets.map(target => ({
+          id: target.id,
+          domain: target.domain,
+          contactEmail: target.contactEmail || undefined,
+          type: target.type as OutreachTarget['type'],
+          authority: target.authority,
+          relevance: target.relevance,
+          lastContactDate: target.lastContactDate || undefined,
+          status: target.status as OutreachTarget['status'],
+          notes: target.notes || undefined
+        }))
+      };
+    } catch (error) {
+      console.error('Failed to load campaign from database:', error);
+      return null;
+    }
   }
 
   /**
@@ -353,7 +470,19 @@ export class OutreachEngine {
     timestamp: Date;
     status: string;
   }): Promise<void> {
-    console.log('Logging outreach activity:', activity);
-    // 实际实现中会保存到数据库
+    try {
+      await prisma.outreachActivity.create({
+        data: {
+          targetDomain: activity.targetDomain,
+          campaignId: activity.campaignId,
+          type: activity.type,
+          status: activity.status,
+          timestamp: activity.timestamp
+        }
+      });
+      console.log('Outreach activity logged:', activity);
+    } catch (error) {
+      console.error('Failed to log outreach activity:', error);
+    }
   }
 }
