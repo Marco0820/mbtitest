@@ -405,7 +405,23 @@
   },
   "about": {
     "seo_title": "À propos de nous | Test MBTI précis et communauté des 16 personnalités",
-    "seo_description": "Apprenez-en davantage sur MBTITEST, votre destination pour un test précis et gratuit des 16 personnalités. Découvrez notre mission et nos fonctionnalités sociales uniques pour vous connecter avec d'autres en fonction de votre type MBTI."
+    "seo_description": "Apprenez-en davantage sur MBTITEST, votre destination pour un test précis et gratuit des 16 personnalités. Découvrez notre mission et nos fonctionnalités sociales uniques pour vous connecter avec d'autres en fonction de votre type MBTI.",
+    "title": "À propos de MBTITEST : Votre guide pour la découverte de soi et la connexion",
+    "intro": "Bienvenue sur MBTITEST, la destination de choix pour tous ceux qui cherchent à explorer leur personnalité et à se connecter avec les autres. Dans un monde d'interactions éphémères, nous croyons que se comprendre soi-même est la première étape vers la construction de relations plus profondes et plus significatives. Notre plateforme est construite sur ce principe, offrant l'un des tests gratuits des 16 personnalités les plus précis disponibles en ligne.",
+    "mission_title": "Notre mission : la précision rencontre l'innovation",
+    "mission_content": "Le voyage de la découverte de soi est personnel et profond. C'est pourquoi nous nous sommes consacrés à créer un test MBTI qui n'est pas seulement gratuit et accessible, mais aussi profondément perspicace et fiable. Notre évaluation est méticuleusement conçue sur la base des principes fondamentaux de l'indicateur de type Myers-Briggs, tirant parti de l'analyse psychométrique moderne pour vous assurer de recevoir un résultat qui résonne vraiment. Nous ne vous disons pas seulement votre type ; nous fournissons une analyse complète de vos fonctions cognitives, vous aidant à comprendre le \"pourquoi\" derrière votre \"qui\".",
+    "community_title": "Plus qu'un test : une communauté pour la connexion",
+    "community_intro": "Ce qui distingue vraiment MBTITEST, c'est notre communauté dynamique et en croissance. Nous croyons que votre type de personnalité est une clé, déverrouillant de nouvelles façons de se connecter avec les gens. Nos fonctionnalités sociales uniques vous permettent de :",
+    "feature1_title": "Trouver des amis par personnalité",
+    "feature1_description": "Rechercher et filtrer les personnes qui partagent votre type de personnalité, ou explorer les types qui vous intriguent, localement et globalement.",
+    "feature2_title": "Explorer la compatibilité",
+    "feature2_description": "Découvrir comment votre type de personnalité interagit avec les autres dans l'amitié, la romance et le lieu de travail. Nos insights peuvent vous aider à naviguer votre monde social avec plus de confiance.",
+    "feature3_title": "Partager et comparer",
+    "feature3_description": "Se connecter avec des amis, partager vos résultats détaillés et découvrir de nouvelles perspectives fascinantes sur vos relations.",
+    "community_conclusion": "Que vous recherchiez un collaborateur INTJ pour votre prochain grand projet ou un ami ENFP pour explorer la ville, notre plateforme est conçue pour faire de cette connexion une réalité.",
+    "journey_title": "Rejoignez-nous dans le voyage",
+    "journey_content": "Votre personnalité est votre plan unique. La comprendre est une aventure de toute une vie, et nous sommes là pour être votre guide. Passez notre test gratuit des 16 personnalités aujourd'hui pour recevoir votre profil détaillé et débloquer un monde de conscience de soi et de découverte sociale.",
+    "cta_button": "Passer le test gratuit maintenant"
   },
   "login": {
     "title": "Connexion",

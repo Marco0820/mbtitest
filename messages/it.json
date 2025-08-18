@@ -338,7 +338,23 @@
   },
   "about": {
     "seo_title": "Chi siamo | Test MBTI accurato e comunità delle 16 personalità",
-    "seo_description": "Scopri MBTITEST, la tua destinazione per un test accurato e gratuito sulle 16 personalità. Scopri la nostra missione e le nostre funzionalità social uniche per connetterti con gli altri in base al tuo tipo MBTI."
+    "seo_description": "Scopri MBTITEST, la tua destinazione per un test accurato e gratuito sulle 16 personalità. Scopri la nostra missione e le nostre funzionalità social uniche per connetterti con gli altri in base al tuo tipo MBTI.",
+    "title": "Chi siamo MBTITEST: La tua guida all'autodiscovery e connessione",
+    "intro": "Benvenuto in MBTITEST, la destinazione principale per chiunque cerchi di esplorare la propria personalità e connettersi con gli altri. In un mondo di interazioni fugaci, crediamo che capire se stessi sia il primo passo verso la costruzione di relazioni più profonde e significative. La nostra piattaforma è costruita su questo principio, offrendo uno dei test gratuiti delle 16 personalità più accurati disponibili online.",
+    "mission_title": "La nostra missione: La precisione incontra l'innovazione",
+    "mission_content": "Il viaggio dell'autodiscovery è personale e profondo. Ecco perché ci siamo dedicati alla creazione di un test MBTI che non è solo gratuito e accessibile, ma anche profondamente perspicace e affidabile. La nostra valutazione è meticolosamente realizzata basandosi sui principi fondamentali dell'Indicatore di Tipo Myers-Briggs, sfruttando l'analisi psicometrica moderna per assicurarti di ricevere un risultato che risuoni veramente. Non ti diciamo solo il tuo tipo; forniamo un'analisi completa delle tue funzioni cognitive, aiutandoti a capire il \"perché\" dietro il tuo \"chi\".",
+    "community_title": "Più di un test: Una comunità per la connessione",
+    "community_intro": "Ciò che distingue veramente MBTITEST è la nostra comunità vibrante e in crescita. Crediamo che il tuo tipo di personalità sia una chiave, che sblocca nuovi modi di connettersi con le persone. Le nostre funzionalità social uniche ti permettono di:",
+    "feature1_title": "Trova amici per personalità",
+    "feature1_description": "Cerca e filtra persone che condividono il tuo tipo di personalità, o esplora tipi che ti incuriosiscono, sia localmente che globalmente.",
+    "feature2_title": "Esplora la compatibilità",
+    "feature2_description": "Scopri come il tuo tipo di personalità interagisce con gli altri nell'amicizia, nel romanticismo e sul posto di lavoro. I nostri insights possono aiutarti a navigare il tuo mondo sociale con maggiore fiducia.",
+    "feature3_title": "Condividi e confronta",
+    "feature3_description": "Connettiti con gli amici, condividi i tuoi risultati dettagliati e scopri nuove prospettive affascinanti sulle tue relazioni.",
+    "community_conclusion": "Che tu stia cercando un collaboratore INTJ per il tuo prossimo grande progetto o un amico ENFP per esplorare la città, la nostra piattaforma è progettata per far accadere quella connessione.",
+    "journey_title": "Unisciti a noi nel viaggio",
+    "journey_content": "La tua personalità è il tuo progetto unico. Capirla è un'avventura di tutta la vita, e noi siamo qui per essere la tua guida. Fai il nostro test gratuito delle 16 personalità oggi per ricevere il tuo profilo dettagliato e sbloccare un mondo di autoconsapevolezza e scoperta sociale.",
+    "cta_button": "Fai il test gratuito ora"
   },
   "login": {
     "title": "Accedi",

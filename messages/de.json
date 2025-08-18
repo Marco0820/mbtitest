@@ -416,7 +416,23 @@
   },
   "about": {
     "seo_title": "Über uns | Genauer MBTI-Test & 16-Persönlichkeiten-Community",
-    "seo_description": "Erfahren Sie mehr über MBTITEST, Ihr Ziel für einen genauen, kostenlosen 16-Persönlichkeiten-Test. Entdecken Sie unsere Mission und einzigartige soziale Funktionen, um sich mit anderen basierend auf Ihrem MBTI-Typ zu verbinden."
+    "seo_description": "Erfahren Sie mehr über MBTITEST, Ihr Ziel für einen genauen, kostenlosen 16-Persönlichkeiten-Test. Entdecken Sie unsere Mission und einzigartige soziale Funktionen, um sich mit anderen basierend auf Ihrem MBTI-Typ zu verbinden.",
+    "title": "Über MBTITEST: Ihr Leitfaden zur Selbstentdeckung und Verbindung",
+    "intro": "Willkommen bei MBTITEST, dem ersten Ziel für alle, die ihre Persönlichkeit erforschen und sich mit anderen verbinden möchten. In einer Welt flüchtiger Interaktionen glauben wir, dass das Verständnis für sich selbst der erste Schritt zum Aufbau tieferer, bedeutungsvollerer Beziehungen ist. Unsere Plattform basiert auf diesem Prinzip und bietet einen der genauesten kostenlosen 16-Persönlichkeiten-Tests, die online verfügbar sind.",
+    "mission_title": "Unsere Mission: Genauigkeit trifft Innovation",
+    "mission_content": "Die Reise der Selbstentdeckung ist persönlich und tiefgreifend. Deshalb haben wir uns der Erstellung eines MBTI-Tests verschrieben, der nicht nur kostenlos und zugänglich, sondern auch tiefgreifend aufschlussreich und zuverlässig ist. Unsere Bewertung ist sorgfältig auf der Grundlage der grundlegenden Prinzipien des Myers-Briggs-Typindikators erstellt und nutzt moderne psychometrische Analysen, um sicherzustellen, dass Sie ein Ergebnis erhalten, das wirklich resoniert. Wir sagen Ihnen nicht nur Ihren Typ; wir bieten eine umfassende Aufschlüsselung Ihrer kognitiven Funktionen und helfen Ihnen, das \"Warum\" hinter Ihrem \"Wer\" zu verstehen.",
+    "community_title": "Mehr als ein Test: Eine Gemeinschaft für Verbindungen",
+    "community_intro": "Was MBTITEST wirklich auszeichnet, ist unsere lebendige und wachsende Gemeinschaft. Wir glauben, dass Ihr Persönlichkeitstyp ein Schlüssel ist, der neue Wege der Verbindung mit Menschen erschließt. Unsere einzigartigen sozialen Funktionen ermöglichen es Ihnen:",
+    "feature1_title": "Freunde nach Persönlichkeit finden",
+    "feature1_description": "Nach Personen suchen und filtern, die Ihren Persönlichkeitstyp teilen, oder Typen erkunden, die Sie neugierig machen, sowohl lokal als auch global.",
+    "feature2_title": "Kompatibilität erkunden",
+    "feature2_description": "Entdecken Sie, wie Ihr Persönlichkeitstyp mit anderen in Freundschaften, Romantik und am Arbeitsplatz interagiert. Unsere Einblicke können Ihnen helfen, Ihre soziale Welt mit größerem Vertrauen zu navigieren.",
+    "feature3_title": "Teilen und vergleichen",
+    "feature3_description": "Mit Freunden verbinden, Ihre detaillierten Ergebnisse teilen und faszinierende neue Perspektiven auf Ihre Beziehungen entdecken.",
+    "community_conclusion": "Ob Sie einen INTJ-Kollaborateur für Ihr nächstes großes Projekt oder einen ENFP-Freund suchen, um die Stadt zu erkunden, unsere Plattform ist darauf ausgelegt, diese Verbindung Realität werden zu lassen.",
+    "journey_title": "Begleiten Sie uns auf der Reise",
+    "journey_content": "Ihre Persönlichkeit ist Ihr einzigartiger Bauplan. Sie zu verstehen ist ein lebenslanges Abenteuer, und wir sind hier, um Ihr Leitfaden zu sein. Machen Sie heute unseren kostenlosen 16-Persönlichkeiten-Test, um Ihr detailliertes Profil zu erhalten und eine Welt des Selbstbewusstseins und der sozialen Entdeckung zu erschließen.",
+    "cta_button": "Jetzt kostenlosen Test machen"
   },
   "login": {
     "title": "Anmeldung",

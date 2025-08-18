@@ -7,6 +7,7 @@ import { PersonalityHeader } from './PersonalityHeader';
 import { PersonalitySidebar } from './PersonalitySidebar';
 import { CheckCircle, XCircle } from 'lucide-react';
 import { BackToTopButton } from '@/components/layout/BackToTopButton';
+import { ShareButton } from '@/components/ui/ShareButton';
 
 // --- DATA STRUCTURES --- //
 interface TitledBlock { title: string; }
@@ -250,6 +251,27 @@ const PersonalityDetail: React.FC<PersonalityDetailProps> = ({ type, locale }) =
             </div>
           </aside>
           <main className="lg:col-span-9 lg:rtl:col-start-1 lg:rtl:row-start-1">
+            {/* Share Section */}
+            <div className="mb-12 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8">
+              <div className="text-center">
+                <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
+                  📤 分享这个性格类型
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                  觉得这个性格类型很有趣？与朋友分享并探索更多性格类型！
+                </p>
+                <ShareButton
+                  url={typeof window !== 'undefined' ? window.location.href : `https://mbti16personalities.online/${locale}/personalities/${type}`}
+                  title={`${type.toUpperCase()} 性格类型 - ${data?.name || ''}`}
+                  description={data?.subtitle || `了解 ${type.toUpperCase()} 性格类型的特点、优势和职业建议`}
+                  hashtags={['MBTI', type.toUpperCase(), 'PersonalityType']}
+                  variant="horizontal"
+                  size="medium"
+                  className="justify-center"
+                />
+              </div>
+            </div>
+            
             {finalSections.map(section => {
               if (!section.data) return null;
               return (

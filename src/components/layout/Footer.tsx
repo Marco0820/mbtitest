@@ -2,6 +2,7 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
+import { ShareButton } from '@/components/ui/ShareButton';
 
 export function Footer() {
   const t = useTranslations();
@@ -56,7 +57,7 @@ export function Footer() {
               <Link href={`/${locale}/faq`} className="text-gray-400 hover:text-white transition-colors">
                 {t('footer.faq')}
               </Link>
-              <a href="mailto:lvyuzhen0820@gmail.com" className="text-gray-400 hover:text-white transition-colors">
+              <a href="mailto:huazhenglobal@gmail.com" className="text-gray-400 hover:text-white transition-colors">
                 {t('footer.contact')}
               </a>
             </div>
@@ -76,10 +77,30 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-          <p className="text-gray-400 text-sm">
-            {t('footer.company')}
-          </p>
+        <div className="border-t border-gray-800 mt-8 pt-8">
+          {/* Share Section */}
+          <div className="flex flex-col md:flex-row items-center justify-between mb-6 gap-4">
+            <div className="text-center md:text-left">
+              <h4 className="text-white font-semibold mb-2">{t('footer.share_website')}</h4>
+              <p className="text-gray-400 text-sm">{t('footer.tagline')}</p>
+            </div>
+            <div className="flex-shrink-0">
+              <ShareButton
+                url={typeof window !== 'undefined' ? window.location.origin + `/${locale}` : `https://mbti16personalities.online/${locale}`}
+                title="MBTITEST - 免费性格测试"
+                description={t('footer.tagline')}
+                hashtags={['MBTI', 'PersonalityTest', 'Psychology']}
+                variant="compact"
+                size="medium"
+              />
+            </div>
+          </div>
+          
+          <div className="text-center">
+            <p className="text-gray-400 text-sm">
+              {t('footer.company')}
+            </p>
+          </div>
         </div>
       </div>
     </footer>

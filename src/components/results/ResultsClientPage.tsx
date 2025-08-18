@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { PersonalityResult } from '@/types/mbti';
 import { BarChart, CheckCircle, AlertTriangle, Home } from 'lucide-react';
 import Link from 'next/link';
+import { ShareButton } from '@/components/ui/ShareButton';
 
 // A simple component to render a dimension bar
 function DimensionBar({ name, value }: { name: string; value: number }) {
@@ -116,6 +117,14 @@ export default function ResultsClientPage({ type: initialType }: { type: string 
 
   const { type, scores, confidence, consistency, anomalies } = result;
   const fourLetterType = type.split('-')[0].toLowerCase();
+  
+  // Create share content
+  const shareUrl = typeof window !== 'undefined' 
+    ? `${window.location.origin}/${locale}/personalities/${fourLetterType}`
+    : `https://mbti16personalities.online/${locale}/personalities/${fourLetterType}`;
+  
+  const shareTitle = `我的性格类型是 ${type} - ${t_personalities(`${fourLetterType}.name`)}`;
+  const shareDescription = `我刚刚完成了MBTI性格测试，结果是${type}！快来看看你的性格类型吧。`;
 
   return (
     <div className="bg-gray-50 min-h-screen">
@@ -177,7 +186,28 @@ export default function ResultsClientPage({ type: initialType }: { type: string 
             </div>
           </div>
         )}
-         <div className="mt-12 text-center">
+        
+        {/* Share Results Section */}
+        <div className="mt-12 bg-white p-8 rounded-2xl shadow-lg">
+          <div className="text-center mb-6">
+            <h3 className="text-2xl font-bold text-gray-800 mb-4">🎉 {t_results('congratulations', { type })}</h3>
+            <p className="text-gray-600">{t_results('share_encouragement')}</p>
+          </div>
+          
+          <div className="flex justify-center mb-8">
+            <ShareButton
+              url={shareUrl}
+              title={shareTitle}
+              description={shareDescription}
+              hashtags={['MBTI', type, 'PersonalityTest']}
+              variant="horizontal"
+              size="large"
+              className="justify-center"
+            />
+          </div>
+        </div>
+        
+         <div className="mt-8 text-center">
             <Link href={`/${locale}/personalities/${type.split('-')[0].toLowerCase()}`} className="bg-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-purple-700 transition-colors shadow-lg">
                 {t_results('view_full_profile_button', { type })}
             </Link>

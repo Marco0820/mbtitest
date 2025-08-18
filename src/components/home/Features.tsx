@@ -49,12 +49,24 @@ export function Features() {
     <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
+          <div className="mb-4">
+            <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-purple-100 text-purple-800 mb-4">
+              🏆 精选特色功能
+            </span>
+          </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
             {t('title')}
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-6">
             {t('subtitle')}
           </p>
+          <div className="flex flex-wrap justify-center gap-2 text-sm text-gray-500">
+            <span className="px-3 py-1 bg-gray-100 rounded-full">#MBTI测试</span>
+            <span className="px-3 py-1 bg-gray-100 rounded-full">#16型人格</span>
+            <span className="px-3 py-1 bg-gray-100 rounded-full">#性格分析</span>
+            <span className="px-3 py-1 bg-gray-100 rounded-full">#心理测试</span>
+            <span className="px-3 py-1 bg-gray-100 rounded-full">#职业规划</span>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

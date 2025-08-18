@@ -336,7 +336,23 @@
   },
   "about": {
     "seo_title": "Sobre Nós | Teste MBTI Preciso e Comunidade de 16 Personalidades",
-    "seo_description": "Saiba mais sobre o MBTITEST, seu destino para um teste preciso e gratuito de 16 personalidades. Descubra nossa missão e recursos sociais exclusivos para se conectar com outras pessoas com base no seu tipo MBTI."
+    "seo_description": "Saiba mais sobre o MBTITEST, seu destino para um teste preciso e gratuito de 16 personalidades. Descubra nossa missão e recursos sociais exclusivos para se conectar com outras pessoas com base no seu tipo MBTI.",
+    "title": "Sobre o MBTITEST: Seu guia para autodescoberta e conexão",
+    "intro": "Bem-vindo ao MBTITEST, o destino principal para qualquer pessoa que busca explorar sua personalidade e se conectar com outros. Em um mundo de interações passageiras, acreditamos que entender a si mesmo é o primeiro passo para construir relacionamentos mais profundos e significativos. Nossa plataforma é construída sobre este princípio, oferecendo um dos testes gratuitos de 16 personalidades mais precisos disponíveis online.",
+    "mission_title": "Nossa missão: Precisão encontra inovação",
+    "mission_content": "A jornada da autodescoberta é pessoal e profunda. É por isso que nos dedicamos a criar um teste MBTI que não é apenas gratuito e acessível, mas também profundamente perspicaz e confiável. Nossa avaliação é meticulosamente criada com base nos princípios fundamentais do Indicador de Tipo Myers-Briggs, aproveitando a análise psicométrica moderna para garantir que você receba um resultado que realmente ressoe. Não apenas dizemos seu tipo; fornecemos uma análise abrangente de suas funções cognitivas, ajudando você a entender o \"porquê\" por trás do seu \"quem\".",
+    "community_title": "Mais que um teste: Uma comunidade para conexão",
+    "community_intro": "O que realmente diferencia o MBTITEST é nossa comunidade vibrante e crescente. Acreditamos que seu tipo de personalidade é uma chave, desbloqueando novas maneiras de se conectar com as pessoas. Nossos recursos sociais únicos permitem que você:",
+    "feature1_title": "Encontre amigos por personalidade",
+    "feature1_description": "Busque e filtre pessoas que compartilham seu tipo de personalidade, ou explore tipos que despertam sua curiosidade, tanto local quanto globalmente.",
+    "feature2_title": "Explore compatibilidade",
+    "feature2_description": "Descubra como seu tipo de personalidade interage com outros na amizade, romance e local de trabalho. Nossos insights podem ajudá-lo a navegar seu mundo social com maior confiança.",
+    "feature3_title": "Compartilhe e compare",
+    "feature3_description": "Conecte-se com amigos, compartilhe seus resultados detalhados e descubra perspectivas fascinantes e novas sobre seus relacionamentos.",
+    "community_conclusion": "Seja procurando um colaborador INTJ para seu próximo grande projeto ou um amigo ENFP para explorar a cidade, nossa plataforma é projetada para fazer essa conexão acontecer.",
+    "journey_title": "Junte-se a nós na jornada",
+    "journey_content": "Sua personalidade é seu projeto único. Entendê-la é uma aventura para toda a vida, e estamos aqui para ser seu guia. Faça nosso teste gratuito de 16 personalidades hoje para receber seu perfil detalhado e desbloquear um mundo de autoconsciência e descoberta social.",
+    "cta_button": "Fazer o teste gratuito agora"
   },
   "login": {
     "title": "Login",

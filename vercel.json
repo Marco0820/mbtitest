@@ -3,6 +3,11 @@
     {
       "path": "/api/cron/fetch-blogs",
       "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/api/cron/outreach",
+      "schedule": "0 9 * * *",
+      "description": "Daily outreach automation - runs at 9:00 AM UTC"
     }
   ],
   "redirects": [
