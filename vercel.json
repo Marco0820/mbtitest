@@ -6,8 +6,7 @@
     },
     {
       "path": "/api/cron/outreach",
-      "schedule": "0 9 * * *",
-      "description": "Daily outreach automation - runs at 9:00 AM UTC"
+      "schedule": "0 9 * * *"
     }
   ],
   "redirects": [
