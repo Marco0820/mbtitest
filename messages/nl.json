@@ -69,6 +69,11 @@
         "title": "Directe resultaten",
         "description": "Krijg uw persoonlijkheidstype direct na het voltooien van de test."
       }
+    },
+    "community": {
+      "title": "Word Lid van Onze Bloeiende Gemeenschap",
+      "subtitle": "Verbind met anderen, deel uw ervaringen en verken samen de wereld van persoonlijkheidstypes.",
+      "cta": "Verken de Gemeenschap"
     }
   },
   "test": {

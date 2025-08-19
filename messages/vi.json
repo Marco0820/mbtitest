@@ -69,6 +69,11 @@
         "title": "Kết quả tức thì",
         "description": "Nhận loại tính cách của bạn ngay sau khi hoàn thành bài kiểm tra."
       }
+    },
+    "community": {
+      "title": "Tham Gia Cộng Đồng Thịnh Vượng Của Chúng Tôi",
+      "subtitle": "Kết nối với những người khác, chia sẻ trải nghiệm của bạn và cùng nhau khám phá thế giới các loại tính cách.",
+      "cta": "Khám Phá Cộng Đồng"
     }
   },
   "test": {

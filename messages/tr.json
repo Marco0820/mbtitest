@@ -69,6 +69,11 @@
         "title": "Anında Sonuçlar",
         "description": "Testi tamamladıktan hemen sonra kişilik tipinizi öğrenin."
       }
+    },
+    "community": {
+      "title": "Gelişen Topluluğumuza Katılın",
+      "subtitle": "Başkalarıyla bağlantı kurun, deneyimlerinizi paylaşın ve kişilik türleri dünyasını birlikte keşfedin.",
+      "cta": "Topluluğu Keşfet"
     }
   },
   "test": {

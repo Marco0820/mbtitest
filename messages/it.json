@@ -69,6 +69,11 @@
         "title": "Risultati immediati",
         "description": "Ottieni il tuo tipo di personalità subito dopo aver completato il test."
       }
+    },
+    "community": {
+      "title": "Unisciti alla Nostra Comunità Fiorente",
+      "subtitle": "Connettiti con gli altri, condividi le tue esperienze ed esplora insieme il mondo dei tipi di personalità.",
+      "cta": "Esplora la Comunità"
     }
   },
   "test": {

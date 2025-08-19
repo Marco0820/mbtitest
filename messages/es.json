@@ -128,6 +128,11 @@
         "title": "Resultados Instantáneos",
         "description": "Obtén tu tipo de personalidad inmediatamente después de completar el test."
       }
+    },
+    "community": {
+      "title": "Únete a Nuestra Comunidad Próspera",
+      "subtitle": "Conéctate con otros, comparte tus experiencias y explora el mundo de los tipos de personalidad juntos.",
+      "cta": "Explorar la Comunidad"
     }
   },
   "test": {

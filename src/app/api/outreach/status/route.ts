@@ -4,7 +4,7 @@ import { prisma } from '@/lib/db';
 export const dynamic = 'force-dynamic';
 
 /**
- * 获取外链建设状态和统计
+ * Get outreach status and statistics
  */
 export async function GET(request: NextRequest) {
   try {
@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
     const startDate = new Date();
     startDate.setDate(startDate.getDate() - days);
 
-    // 获取实际统计数据
+    // Get actual statistics data
     const [totalCampaigns, activeCampaigns, totalTargets, contactedTargets, respondedTargets, acceptedTargets, rejectedTargets] = await Promise.all([
       prisma.outreachCampaign.count(),
       prisma.outreachCampaign.count({ where: { status: 'active' } }),
@@ -29,7 +29,7 @@ export async function GET(request: NextRequest) {
     
     const pendingTargets = totalTargets - contactedTargets;
     
-    // 获取每日统计
+    // Get daily statistics
     const dailyStats = await Promise.all(
       Array.from({ length: 7 }, async (_, i) => {
         const date = new Date();
@@ -73,16 +73,16 @@ export async function GET(request: NextRequest) {
       })
     );
     
-    // 按类型统计
-    const typeStats = await Promise.all([
+    // Statistics by type
+    const typeStatsBase = [
       { type: 'guest_posting', campaigns: await prisma.outreachCampaign.count({ where: { type: 'guest_posting' } }) },
       { type: 'resource_submission', campaigns: await prisma.outreachCampaign.count({ where: { type: 'resource_submission' } }) },
       { type: 'broken_link', campaigns: await prisma.outreachCampaign.count({ where: { type: 'broken_link' } }) },
       { type: 'partnership', campaigns: await prisma.outreachCampaign.count({ where: { type: 'partnership' } }) }
-    ]);
+    ];
     
-    // 添加成功率计算
-    for (const stat of typeStats) {
+    // Add success rate calculation
+    const typeStats = await Promise.all(typeStatsBase.map(async (stat) => {
       const typeAccepted = await prisma.outreachTarget.count({
         where: {
           status: 'accepted',
@@ -95,10 +95,15 @@ export async function GET(request: NextRequest) {
           campaign: { type: stat.type }
         }
       });
-      stat.successRate = typeContacted > 0 ? typeAccepted / typeContacted : 0;
-    }
+      const successRate = typeContacted > 0 ? typeAccepted / typeContacted : 0;
+      
+      return {
+        ...stat,
+        successRate
+      };
+    }));
     
-    // 顶级域名表现
+    // Top domain performance
     const topDomains = await prisma.outreachTarget.groupBy({
       by: ['domain'],
       _count: { id: true },
@@ -122,7 +127,7 @@ export async function GET(request: NextRequest) {
       })
     );
     
-    // 近期活动
+    // Recent activities
     const recentActivities = await prisma.outreachActivity.findMany({
       orderBy: { timestamp: 'desc' },
       take: 5,
@@ -144,7 +149,7 @@ export async function GET(request: NextRequest) {
         });
         
         return {
-          id: parseInt(activity.id.slice(-6), 16), // 简化ID
+          id: parseInt(activity.id.slice(-6), 16), // Simplified ID
           date: activity.timestamp.toISOString(),
           type: activity.status === 'sent' ? 'contact_sent' : 'response_received',
           target: activity.targetDomain,
@@ -171,7 +176,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      stats: mockStats,
+      stats: stats,
       period: {
         startDate: startDate.toISOString().split('T')[0],
         endDate: endDate.toISOString().split('T')[0],
@@ -192,14 +197,14 @@ export async function GET(request: NextRequest) {
 }
 
 /**
- * 更新外链目标状态
+ * Update outreach target status
  */
 export async function PUT(request: NextRequest) {
   try {
     const body = await request.json();
     const { targetId, status, notes, linkUrl } = body;
 
-    // 验证状态值
+    // Validate status values
     const validStatuses = ['pending', 'contacted', 'responded', 'accepted', 'rejected'];
     if (!validStatuses.includes(status)) {
       return NextResponse.json(
@@ -208,7 +213,7 @@ export async function PUT(request: NextRequest) {
       );
     }
 
-    // 更新数据库中的目标状态
+    // Update target status in database
     await prisma.outreachTarget.update({
       where: { id: targetId },
       data: {
@@ -218,7 +223,7 @@ export async function PUT(request: NextRequest) {
       }
     });
 
-    // 如果状态是accepted且提供了链接URL，记录成功的外链
+    // If status is accepted and link URL is provided, record successful backlink
     if (status === 'accepted' && linkUrl) {
       const target = await prisma.outreachTarget.findUnique({
         where: { id: targetId },
@@ -230,7 +235,7 @@ export async function PUT(request: NextRequest) {
           data: {
             sourceUrl: linkUrl,
             targetUrl: 'https://www.mbti16personalities.online',
-            anchorText: 'MBTI测试',
+            anchorText: 'MBTI Test',
             status: 'active'
           }
         });

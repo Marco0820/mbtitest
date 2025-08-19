@@ -15,18 +15,18 @@ export interface BacklinkData {
 }
 
 export class BacklinkTracker {
-  private readonly checkInterval = 24 * 60 * 60 * 1000; // 24小时
+  private readonly checkInterval = 24 * 60 * 60 * 1000; // 24 hours
   
   constructor() {}
 
   /**
-   * 发现新的外链
+   * Discover new backlinks
    */
   async discoverBacklinks(): Promise<BacklinkData[]> {
     const discovered: BacklinkData[] = [];
     
     try {
-      // 使用多种方法发现外链
+      // Use multiple methods to discover backlinks
       const sources = [
         await this.checkGoogleSearchConsole(),
         await this.checkAhrefs(),
@@ -163,14 +163,14 @@ export class BacklinkTracker {
    * 检查Google Search Console
    */
   private async checkGoogleSearchConsole(): Promise<BacklinkData[]> {
-    // 这里需要集成Google Search Console API
+    // Need to integrateGoogle Search Console API
     // 目前返回模拟数据
     return [
       {
         id: 'gsc_1',
         sourceUrl: 'https://example-blog.com/personality-tests',
         targetUrl: 'https://www.mbti16personalities.online',
-        anchorText: 'MBTI测试',
+        anchorText: 'MBTI Test',
         discoveredDate: new Date(),
         lastCheckedDate: new Date(),
         status: 'active',
@@ -184,7 +184,7 @@ export class BacklinkTracker {
    * 检查Ahrefs API
    */
   private async checkAhrefs(): Promise<BacklinkData[]> {
-    // 这里需要集成Ahrefs API
+    // Need to integrateAhrefs API
     return [];
   }
 
@@ -192,7 +192,7 @@ export class BacklinkTracker {
    * 检查Majestic API
    */
   private async checkMajestic(): Promise<BacklinkData[]> {
-    // 这里需要集成Majestic API
+    // Need to integrateMajestic API
     return [];
   }
 
@@ -200,7 +200,7 @@ export class BacklinkTracker {
    * 检查Moz API
    */
   private async checkMoz(): Promise<BacklinkData[]> {
-    // 这里需要集成Moz API
+    // Need to integrateMoz API
     return [];
   }
 
@@ -238,7 +238,7 @@ export class BacklinkTracker {
    * 获取页面权威性
    */
   private async getPageAuthority(url: string): Promise<number> {
-    // 这里需要集成Moz API或其他权威性检查服务
+    // Need to integrateMoz API或其他权威性检查服务
     return Math.floor(Math.random() * 100);
   }
 
@@ -246,7 +246,7 @@ export class BacklinkTracker {
    * 获取域名权威性
    */
   private async getDomainAuthority(url: string): Promise<number> {
-    // 这里需要集成Moz API或其他权威性检查服务
+    // Need to integrateMoz API或其他权威性检查服务
     const domain = new URL(url).hostname;
     return Math.floor(Math.random() * 100);
   }

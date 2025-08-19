@@ -73,6 +73,9 @@ export function Footer() {
               <Link href={`/${locale}/terms`} className="text-gray-400 hover:text-white transition-colors">
                 {t('footer.terms')}
               </Link>
+              <Link href={`/${locale}/cookies`} className="text-gray-400 hover:text-white transition-colors">
+                {t('footer.cookies')}
+              </Link>
             </div>
           </div>
         </div>
@@ -87,7 +90,7 @@ export function Footer() {
             <div className="flex-shrink-0">
               <ShareButton
                 url={typeof window !== 'undefined' ? window.location.origin + `/${locale}` : `https://mbti16personalities.online/${locale}`}
-                title="MBTITEST - 免费性格测试"
+                title={locale === 'zh-CN' ? "MBTITEST - 免费性格测试" : "MBTITEST - Free Personality Test"}
                 description={t('footer.tagline')}
                 hashtags={['MBTI', 'PersonalityTest', 'Psychology']}
                 variant="compact"

@@ -6,6 +6,8 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { PageLayout } from '@/components/layout/PageLayout';
 import AuthProvider from '@/components/AuthProvider';
+import { CookieBanner } from '@/components/ui/CookieBanner';
+import { CookieManager } from '@/components/ui/CookieManager';
 import '../globals.css';
 import { createTranslator } from 'next-intl';
 import { GoogleAnalytics } from '@next/third-parties/google';
@@ -33,7 +35,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
       template: `%s | ${t('Layout.title')}`,
     },
     description: t('Layout.description'),
-    keywords: [
+    keywords: locale === 'zh-CN' ? [
       // 核心MBTI关键词
       'MBTI测试', 'MBTI性格测试', '免费MBTI测试', '16型人格', '16personalities',
       'Myers-Briggs', '迈尔斯布里格斯', '性格类型测试', '人格测试',
@@ -55,6 +57,28 @@ export async function generateMetadata({ params: { locale } }: { params: { local
       // 心理学相关
       '心理学测试', '认知功能', '性格特征', '心理类型学', '人格心理学',
       '内向外向测试', '直觉感觉测试', '思维情感测试', '判断感知测试'
+    ] : [
+      // Core MBTI keywords
+      'MBTI test', 'MBTI personality test', 'free MBTI test', '16 personalities', '16personalities',
+      'Myers-Briggs', 'personality type test', 'personality test',
+      
+      // Long-tail keywords
+      'MBTI career planning', 'MBTI relationships', 'MBTI personality analysis',
+      'which MBTI type am I', 'how to know my MBTI type', 'is MBTI test accurate',
+      
+      // Specific type keywords
+      'INTJ architect', 'ENFP campaigner', 'INFJ advocate', 'ESTP entrepreneur',
+      'ISFJ protector', 'ENTP debater', 'INFP mediator', 'ESTJ executive',
+      'ISTP virtuoso', 'ENFJ protagonist', 'INTP logician', 'ESFP entertainer',
+      'ISTJ logistician', 'ENTJ commander', 'ISFP adventurer', 'ESFJ consul',
+      
+      // Social and application scenarios
+      'personality test social', 'MBTI friends', 'MBTI dating', 'personality matching',
+      'psychology test', 'career personality test', 'team collaboration test',
+      
+      // Psychology related
+      'psychology test', 'cognitive functions', 'personality traits', 'personality psychology',
+      'introversion extraversion test', 'intuition sensing test', 'thinking feeling test'
     ],
     alternates: {
       canonical: canonicalUrl,
@@ -148,6 +172,8 @@ export default async function LocaleLayout({
               </main>
             </PageLayout>
             <Footer />
+            <CookieBanner />
+            <CookieManager />
           </NextIntlClientProvider>
         </AuthProvider>
         <SpeedInsights />

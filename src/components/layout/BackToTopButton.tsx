@@ -6,7 +6,7 @@ import { ArrowUp } from 'lucide-react';
 export const BackToTopButton = () => {
   const [isVisible, setIsVisible] = React.useState(false);
 
-  // 当滚动超过300px时显示按钮
+  // Show button when scrolled more than 300px
   const toggleVisibility = () => {
     if (window.scrollY > 300) {
       setIsVisible(true);
@@ -15,7 +15,7 @@ export const BackToTopButton = () => {
     }
   };
 
-  // 平滑滚动到页面顶部
+  // Smooth scroll to top of page
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -24,10 +24,10 @@ export const BackToTopButton = () => {
   };
 
   React.useEffect(() => {
-    // 监听滚动事件
+    // Listen to scroll events
     window.addEventListener('scroll', toggleVisibility);
 
-    // 组件卸载时移除监听
+    // Remove listener when component unmounts
     return () => {
       window.removeEventListener('scroll', toggleVisibility);
     };

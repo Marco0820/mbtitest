@@ -69,6 +69,11 @@
         "title": "Natychmiastowe wyniki",
         "description": "Otrzymaj swój typ osobowości natychmiast po ukończeniu testu."
       }
+    },
+    "community": {
+      "title": "Dołącz do Naszej Kwitnącej Społeczności",
+      "subtitle": "Połącz się z innymi, podziel się swoimi doświadczeniami i razem odkrywaj świat typów osobowości.",
+      "cta": "Odkryj Społeczność"
     }
   },
   "test": {

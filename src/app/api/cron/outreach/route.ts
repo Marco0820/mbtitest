@@ -5,26 +5,29 @@ export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
 export const maxDuration = 300; // 5 minutes
 
-// 验证请求是否来自合法的cron服务
+// Validate if request comes from legitimate cron service
 function validateCronRequest(request: NextRequest): boolean {
+  // 1) Allow Vercel Cron (Vercel will include this header automatically)
+  const isVercelCron = request.headers.get('x-vercel-cron') === '1';
+  if (isVercelCron) return true;
+
+  // 2) Allow manual trigger via Authorization header
   const authHeader = request.headers.get('authorization');
   const cronSecret = process.env.CRON_SECRET;
-  
   if (!cronSecret) {
     console.error('CRON_SECRET not configured');
     return false;
   }
-  
   return authHeader === `Bearer ${cronSecret}`;
 }
 
 /**
- * 每日自动外链建设任务
- * 建议设置为每天执行一次，例如北京时间上午9点
+ * Daily automatic outreach task
+ * Recommended to run once daily, e.g., 9 AM Beijing time
  */
 export async function GET(request: NextRequest) {
   try {
-    // 验证请求权限
+    // Validate request permissions
     if (!validateCronRequest(request)) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
@@ -34,23 +37,23 @@ export async function GET(request: NextRequest) {
     const outreachEngine = new OutreachEngine();
     const today = new Date();
     
-    // 1. 创建每日外链建设活动
+    // 1. Create daily outreach campaigns
     const campaigns = await Promise.all([
-      // 客座文章投稿活动
+      // Guest posting campaign
       outreachEngine.createOutreachCampaign(
         `Guest Posting Campaign - ${today.toISOString().split('T')[0]}`,
         'guest_posting',
         3
       ),
       
-      // 资源页面提交活动
+      // Resource submission campaign
       outreachEngine.createOutreachCampaign(
         `Resource Submission Campaign - ${today.toISOString().split('T')[0]}`,
         'resource_submission',
         4
       ),
       
-      // 破损链接修复活动（每周两次）
+      // Broken link repair campaign (twice weekly)
       ...(today.getDay() === 1 || today.getDay() === 4 ? [
         outreachEngine.createOutreachCampaign(
           `Broken Link Campaign - ${today.toISOString().split('T')[0]}`,
@@ -59,7 +62,7 @@ export async function GET(request: NextRequest) {
         )
       ] : []),
       
-      // 合作伙伴关系活动（每周一次）
+      // Partnership campaign (once weekly)
       ...(today.getDay() === 2 ? [
         outreachEngine.createOutreachCampaign(
           `Partnership Campaign - ${today.toISOString().split('T')[0]}`,
@@ -69,7 +72,7 @@ export async function GET(request: NextRequest) {
       ] : [])
     ]);
 
-    // 2. 执行活动
+    // 2. Execute campaigns
     const results = [];
     for (const campaign of campaigns) {
       try {
@@ -91,7 +94,7 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    // 3. 生成执行报告
+    // 3. Generate execution report
     const summary = {
       date: today.toISOString().split('T')[0],
       totalCampaigns: campaigns.length,
@@ -122,7 +125,7 @@ export async function GET(request: NextRequest) {
 }
 
 /**
- * 手动触发外链建设任务
+ * Manually trigger outreach task
  */
 export async function POST(request: NextRequest) {
   try {

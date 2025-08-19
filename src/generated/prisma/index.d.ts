@@ -63,6 +63,26 @@ export type PersonalityDetails = $Result.DefaultSelection<Prisma.$PersonalityDet
  * 
  */
 export type Blog = $Result.DefaultSelection<Prisma.$BlogPayload>
+/**
+ * Model OutreachCampaign
+ * 
+ */
+export type OutreachCampaign = $Result.DefaultSelection<Prisma.$OutreachCampaignPayload>
+/**
+ * Model OutreachTarget
+ * 
+ */
+export type OutreachTarget = $Result.DefaultSelection<Prisma.$OutreachTargetPayload>
+/**
+ * Model OutreachActivity
+ * 
+ */
+export type OutreachActivity = $Result.DefaultSelection<Prisma.$OutreachActivityPayload>
+/**
+ * Model Backlink
+ * 
+ */
+export type Backlink = $Result.DefaultSelection<Prisma.$BacklinkPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -288,6 +308,46 @@ export class PrismaClient<
     * ```
     */
   get blog(): Prisma.BlogDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.outreachCampaign`: Exposes CRUD operations for the **OutreachCampaign** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more OutreachCampaigns
+    * const outreachCampaigns = await prisma.outreachCampaign.findMany()
+    * ```
+    */
+  get outreachCampaign(): Prisma.OutreachCampaignDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.outreachTarget`: Exposes CRUD operations for the **OutreachTarget** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more OutreachTargets
+    * const outreachTargets = await prisma.outreachTarget.findMany()
+    * ```
+    */
+  get outreachTarget(): Prisma.OutreachTargetDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.outreachActivity`: Exposes CRUD operations for the **OutreachActivity** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more OutreachActivities
+    * const outreachActivities = await prisma.outreachActivity.findMany()
+    * ```
+    */
+  get outreachActivity(): Prisma.OutreachActivityDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.backlink`: Exposes CRUD operations for the **Backlink** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Backlinks
+    * const backlinks = await prisma.backlink.findMany()
+    * ```
+    */
+  get backlink(): Prisma.BacklinkDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -346,8 +406,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.11.0
-   * Query Engine version: 9c30299f5a0ea26a96790e13f796dc6094db3173
+   * Prisma Client JS version: 6.11.1
+   * Query Engine version: f40f79ec31188888a2e33acda0ecc8fd10a853a9
    */
   export type PrismaVersion = {
     client: string
@@ -737,7 +797,11 @@ export namespace Prisma {
     ConversationParticipant: 'ConversationParticipant',
     Message: 'Message',
     PersonalityDetails: 'PersonalityDetails',
-    Blog: 'Blog'
+    Blog: 'Blog',
+    OutreachCampaign: 'OutreachCampaign',
+    OutreachTarget: 'OutreachTarget',
+    OutreachActivity: 'OutreachActivity',
+    Backlink: 'Backlink'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -756,7 +820,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "account" | "session" | "verificationToken" | "resultHistory" | "conversation" | "conversationParticipant" | "message" | "personalityDetails" | "blog"
+      modelProps: "user" | "account" | "session" | "verificationToken" | "resultHistory" | "conversation" | "conversationParticipant" | "message" | "personalityDetails" | "blog" | "outreachCampaign" | "outreachTarget" | "outreachActivity" | "backlink"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1500,6 +1564,302 @@ export namespace Prisma {
           }
         }
       }
+      OutreachCampaign: {
+        payload: Prisma.$OutreachCampaignPayload<ExtArgs>
+        fields: Prisma.OutreachCampaignFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.OutreachCampaignFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachCampaignPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.OutreachCampaignFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachCampaignPayload>
+          }
+          findFirst: {
+            args: Prisma.OutreachCampaignFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachCampaignPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.OutreachCampaignFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachCampaignPayload>
+          }
+          findMany: {
+            args: Prisma.OutreachCampaignFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachCampaignPayload>[]
+          }
+          create: {
+            args: Prisma.OutreachCampaignCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachCampaignPayload>
+          }
+          createMany: {
+            args: Prisma.OutreachCampaignCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.OutreachCampaignCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachCampaignPayload>[]
+          }
+          delete: {
+            args: Prisma.OutreachCampaignDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachCampaignPayload>
+          }
+          update: {
+            args: Prisma.OutreachCampaignUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachCampaignPayload>
+          }
+          deleteMany: {
+            args: Prisma.OutreachCampaignDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.OutreachCampaignUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.OutreachCampaignUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachCampaignPayload>[]
+          }
+          upsert: {
+            args: Prisma.OutreachCampaignUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachCampaignPayload>
+          }
+          aggregate: {
+            args: Prisma.OutreachCampaignAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateOutreachCampaign>
+          }
+          groupBy: {
+            args: Prisma.OutreachCampaignGroupByArgs<ExtArgs>
+            result: $Utils.Optional<OutreachCampaignGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.OutreachCampaignCountArgs<ExtArgs>
+            result: $Utils.Optional<OutreachCampaignCountAggregateOutputType> | number
+          }
+        }
+      }
+      OutreachTarget: {
+        payload: Prisma.$OutreachTargetPayload<ExtArgs>
+        fields: Prisma.OutreachTargetFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.OutreachTargetFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachTargetPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.OutreachTargetFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachTargetPayload>
+          }
+          findFirst: {
+            args: Prisma.OutreachTargetFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachTargetPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.OutreachTargetFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachTargetPayload>
+          }
+          findMany: {
+            args: Prisma.OutreachTargetFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachTargetPayload>[]
+          }
+          create: {
+            args: Prisma.OutreachTargetCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachTargetPayload>
+          }
+          createMany: {
+            args: Prisma.OutreachTargetCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.OutreachTargetCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachTargetPayload>[]
+          }
+          delete: {
+            args: Prisma.OutreachTargetDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachTargetPayload>
+          }
+          update: {
+            args: Prisma.OutreachTargetUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachTargetPayload>
+          }
+          deleteMany: {
+            args: Prisma.OutreachTargetDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.OutreachTargetUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.OutreachTargetUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachTargetPayload>[]
+          }
+          upsert: {
+            args: Prisma.OutreachTargetUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachTargetPayload>
+          }
+          aggregate: {
+            args: Prisma.OutreachTargetAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateOutreachTarget>
+          }
+          groupBy: {
+            args: Prisma.OutreachTargetGroupByArgs<ExtArgs>
+            result: $Utils.Optional<OutreachTargetGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.OutreachTargetCountArgs<ExtArgs>
+            result: $Utils.Optional<OutreachTargetCountAggregateOutputType> | number
+          }
+        }
+      }
+      OutreachActivity: {
+        payload: Prisma.$OutreachActivityPayload<ExtArgs>
+        fields: Prisma.OutreachActivityFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.OutreachActivityFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachActivityPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.OutreachActivityFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachActivityPayload>
+          }
+          findFirst: {
+            args: Prisma.OutreachActivityFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachActivityPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.OutreachActivityFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachActivityPayload>
+          }
+          findMany: {
+            args: Prisma.OutreachActivityFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachActivityPayload>[]
+          }
+          create: {
+            args: Prisma.OutreachActivityCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachActivityPayload>
+          }
+          createMany: {
+            args: Prisma.OutreachActivityCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.OutreachActivityCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachActivityPayload>[]
+          }
+          delete: {
+            args: Prisma.OutreachActivityDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachActivityPayload>
+          }
+          update: {
+            args: Prisma.OutreachActivityUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachActivityPayload>
+          }
+          deleteMany: {
+            args: Prisma.OutreachActivityDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.OutreachActivityUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.OutreachActivityUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachActivityPayload>[]
+          }
+          upsert: {
+            args: Prisma.OutreachActivityUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutreachActivityPayload>
+          }
+          aggregate: {
+            args: Prisma.OutreachActivityAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateOutreachActivity>
+          }
+          groupBy: {
+            args: Prisma.OutreachActivityGroupByArgs<ExtArgs>
+            result: $Utils.Optional<OutreachActivityGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.OutreachActivityCountArgs<ExtArgs>
+            result: $Utils.Optional<OutreachActivityCountAggregateOutputType> | number
+          }
+        }
+      }
+      Backlink: {
+        payload: Prisma.$BacklinkPayload<ExtArgs>
+        fields: Prisma.BacklinkFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BacklinkFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BacklinkPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BacklinkFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BacklinkPayload>
+          }
+          findFirst: {
+            args: Prisma.BacklinkFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BacklinkPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BacklinkFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BacklinkPayload>
+          }
+          findMany: {
+            args: Prisma.BacklinkFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BacklinkPayload>[]
+          }
+          create: {
+            args: Prisma.BacklinkCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BacklinkPayload>
+          }
+          createMany: {
+            args: Prisma.BacklinkCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BacklinkCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BacklinkPayload>[]
+          }
+          delete: {
+            args: Prisma.BacklinkDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BacklinkPayload>
+          }
+          update: {
+            args: Prisma.BacklinkUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BacklinkPayload>
+          }
+          deleteMany: {
+            args: Prisma.BacklinkDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BacklinkUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.BacklinkUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BacklinkPayload>[]
+          }
+          upsert: {
+            args: Prisma.BacklinkUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BacklinkPayload>
+          }
+          aggregate: {
+            args: Prisma.BacklinkAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBacklink>
+          }
+          groupBy: {
+            args: Prisma.BacklinkGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BacklinkGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BacklinkCountArgs<ExtArgs>
+            result: $Utils.Optional<BacklinkCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1594,6 +1954,10 @@ export namespace Prisma {
     message?: MessageOmit
     personalityDetails?: PersonalityDetailsOmit
     blog?: BlogOmit
+    outreachCampaign?: OutreachCampaignOmit
+    outreachTarget?: OutreachTargetOmit
+    outreachActivity?: OutreachActivityOmit
+    backlink?: BacklinkOmit
   }
 
   /* Types for Logging */
@@ -1787,6 +2151,68 @@ export namespace Prisma {
    */
   export type ConversationCountOutputTypeCountMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: MessageWhereInput
+  }
+
+
+  /**
+   * Count Type OutreachCampaignCountOutputType
+   */
+
+  export type OutreachCampaignCountOutputType = {
+    targets: number
+  }
+
+  export type OutreachCampaignCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    targets?: boolean | OutreachCampaignCountOutputTypeCountTargetsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * OutreachCampaignCountOutputType without action
+   */
+  export type OutreachCampaignCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachCampaignCountOutputType
+     */
+    select?: OutreachCampaignCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * OutreachCampaignCountOutputType without action
+   */
+  export type OutreachCampaignCountOutputTypeCountTargetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OutreachTargetWhereInput
+  }
+
+
+  /**
+   * Count Type OutreachActivityCountOutputType
+   */
+
+  export type OutreachActivityCountOutputType = {
+    backlinks: number
+  }
+
+  export type OutreachActivityCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    backlinks?: boolean | OutreachActivityCountOutputTypeCountBacklinksArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * OutreachActivityCountOutputType without action
+   */
+  export type OutreachActivityCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachActivityCountOutputType
+     */
+    select?: OutreachActivityCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * OutreachActivityCountOutputType without action
+   */
+  export type OutreachActivityCountOutputTypeCountBacklinksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BacklinkWhereInput
   }
 
 
@@ -12574,6 +13000,4677 @@ export namespace Prisma {
 
 
   /**
+   * Model OutreachCampaign
+   */
+
+  export type AggregateOutreachCampaign = {
+    _count: OutreachCampaignCountAggregateOutputType | null
+    _min: OutreachCampaignMinAggregateOutputType | null
+    _max: OutreachCampaignMaxAggregateOutputType | null
+  }
+
+  export type OutreachCampaignMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    type: string | null
+    template: string | null
+    scheduledDate: Date | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type OutreachCampaignMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    type: string | null
+    template: string | null
+    scheduledDate: Date | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type OutreachCampaignCountAggregateOutputType = {
+    id: number
+    name: number
+    type: number
+    template: number
+    scheduledDate: number
+    status: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type OutreachCampaignMinAggregateInputType = {
+    id?: true
+    name?: true
+    type?: true
+    template?: true
+    scheduledDate?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type OutreachCampaignMaxAggregateInputType = {
+    id?: true
+    name?: true
+    type?: true
+    template?: true
+    scheduledDate?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type OutreachCampaignCountAggregateInputType = {
+    id?: true
+    name?: true
+    type?: true
+    template?: true
+    scheduledDate?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type OutreachCampaignAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OutreachCampaign to aggregate.
+     */
+    where?: OutreachCampaignWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OutreachCampaigns to fetch.
+     */
+    orderBy?: OutreachCampaignOrderByWithRelationInput | OutreachCampaignOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: OutreachCampaignWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OutreachCampaigns from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OutreachCampaigns.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned OutreachCampaigns
+    **/
+    _count?: true | OutreachCampaignCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: OutreachCampaignMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: OutreachCampaignMaxAggregateInputType
+  }
+
+  export type GetOutreachCampaignAggregateType<T extends OutreachCampaignAggregateArgs> = {
+        [P in keyof T & keyof AggregateOutreachCampaign]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateOutreachCampaign[P]>
+      : GetScalarType<T[P], AggregateOutreachCampaign[P]>
+  }
+
+
+
+
+  export type OutreachCampaignGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OutreachCampaignWhereInput
+    orderBy?: OutreachCampaignOrderByWithAggregationInput | OutreachCampaignOrderByWithAggregationInput[]
+    by: OutreachCampaignScalarFieldEnum[] | OutreachCampaignScalarFieldEnum
+    having?: OutreachCampaignScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: OutreachCampaignCountAggregateInputType | true
+    _min?: OutreachCampaignMinAggregateInputType
+    _max?: OutreachCampaignMaxAggregateInputType
+  }
+
+  export type OutreachCampaignGroupByOutputType = {
+    id: string
+    name: string
+    type: string
+    template: string
+    scheduledDate: Date
+    status: string
+    createdAt: Date
+    updatedAt: Date
+    _count: OutreachCampaignCountAggregateOutputType | null
+    _min: OutreachCampaignMinAggregateOutputType | null
+    _max: OutreachCampaignMaxAggregateOutputType | null
+  }
+
+  type GetOutreachCampaignGroupByPayload<T extends OutreachCampaignGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<OutreachCampaignGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof OutreachCampaignGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], OutreachCampaignGroupByOutputType[P]>
+            : GetScalarType<T[P], OutreachCampaignGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type OutreachCampaignSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    type?: boolean
+    template?: boolean
+    scheduledDate?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    targets?: boolean | OutreachCampaign$targetsArgs<ExtArgs>
+    _count?: boolean | OutreachCampaignCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["outreachCampaign"]>
+
+  export type OutreachCampaignSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    type?: boolean
+    template?: boolean
+    scheduledDate?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["outreachCampaign"]>
+
+  export type OutreachCampaignSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    type?: boolean
+    template?: boolean
+    scheduledDate?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["outreachCampaign"]>
+
+  export type OutreachCampaignSelectScalar = {
+    id?: boolean
+    name?: boolean
+    type?: boolean
+    template?: boolean
+    scheduledDate?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type OutreachCampaignOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "type" | "template" | "scheduledDate" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["outreachCampaign"]>
+  export type OutreachCampaignInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    targets?: boolean | OutreachCampaign$targetsArgs<ExtArgs>
+    _count?: boolean | OutreachCampaignCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type OutreachCampaignIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type OutreachCampaignIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $OutreachCampaignPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "OutreachCampaign"
+    objects: {
+      targets: Prisma.$OutreachTargetPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      type: string
+      template: string
+      scheduledDate: Date
+      status: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["outreachCampaign"]>
+    composites: {}
+  }
+
+  type OutreachCampaignGetPayload<S extends boolean | null | undefined | OutreachCampaignDefaultArgs> = $Result.GetResult<Prisma.$OutreachCampaignPayload, S>
+
+  type OutreachCampaignCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<OutreachCampaignFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: OutreachCampaignCountAggregateInputType | true
+    }
+
+  export interface OutreachCampaignDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['OutreachCampaign'], meta: { name: 'OutreachCampaign' } }
+    /**
+     * Find zero or one OutreachCampaign that matches the filter.
+     * @param {OutreachCampaignFindUniqueArgs} args - Arguments to find a OutreachCampaign
+     * @example
+     * // Get one OutreachCampaign
+     * const outreachCampaign = await prisma.outreachCampaign.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends OutreachCampaignFindUniqueArgs>(args: SelectSubset<T, OutreachCampaignFindUniqueArgs<ExtArgs>>): Prisma__OutreachCampaignClient<$Result.GetResult<Prisma.$OutreachCampaignPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one OutreachCampaign that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {OutreachCampaignFindUniqueOrThrowArgs} args - Arguments to find a OutreachCampaign
+     * @example
+     * // Get one OutreachCampaign
+     * const outreachCampaign = await prisma.outreachCampaign.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends OutreachCampaignFindUniqueOrThrowArgs>(args: SelectSubset<T, OutreachCampaignFindUniqueOrThrowArgs<ExtArgs>>): Prisma__OutreachCampaignClient<$Result.GetResult<Prisma.$OutreachCampaignPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first OutreachCampaign that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutreachCampaignFindFirstArgs} args - Arguments to find a OutreachCampaign
+     * @example
+     * // Get one OutreachCampaign
+     * const outreachCampaign = await prisma.outreachCampaign.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends OutreachCampaignFindFirstArgs>(args?: SelectSubset<T, OutreachCampaignFindFirstArgs<ExtArgs>>): Prisma__OutreachCampaignClient<$Result.GetResult<Prisma.$OutreachCampaignPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first OutreachCampaign that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutreachCampaignFindFirstOrThrowArgs} args - Arguments to find a OutreachCampaign
+     * @example
+     * // Get one OutreachCampaign
+     * const outreachCampaign = await prisma.outreachCampaign.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends OutreachCampaignFindFirstOrThrowArgs>(args?: SelectSubset<T, OutreachCampaignFindFirstOrThrowArgs<ExtArgs>>): Prisma__OutreachCampaignClient<$Result.GetResult<Prisma.$OutreachCampaignPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more OutreachCampaigns that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutreachCampaignFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all OutreachCampaigns
+     * const outreachCampaigns = await prisma.outreachCampaign.findMany()
+     * 
+     * // Get first 10 OutreachCampaigns
+     * const outreachCampaigns = await prisma.outreachCampaign.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const outreachCampaignWithIdOnly = await prisma.outreachCampaign.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends OutreachCampaignFindManyArgs>(args?: SelectSubset<T, OutreachCampaignFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutreachCampaignPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a OutreachCampaign.
+     * @param {OutreachCampaignCreateArgs} args - Arguments to create a OutreachCampaign.
+     * @example
+     * // Create one OutreachCampaign
+     * const OutreachCampaign = await prisma.outreachCampaign.create({
+     *   data: {
+     *     // ... data to create a OutreachCampaign
+     *   }
+     * })
+     * 
+     */
+    create<T extends OutreachCampaignCreateArgs>(args: SelectSubset<T, OutreachCampaignCreateArgs<ExtArgs>>): Prisma__OutreachCampaignClient<$Result.GetResult<Prisma.$OutreachCampaignPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many OutreachCampaigns.
+     * @param {OutreachCampaignCreateManyArgs} args - Arguments to create many OutreachCampaigns.
+     * @example
+     * // Create many OutreachCampaigns
+     * const outreachCampaign = await prisma.outreachCampaign.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends OutreachCampaignCreateManyArgs>(args?: SelectSubset<T, OutreachCampaignCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many OutreachCampaigns and returns the data saved in the database.
+     * @param {OutreachCampaignCreateManyAndReturnArgs} args - Arguments to create many OutreachCampaigns.
+     * @example
+     * // Create many OutreachCampaigns
+     * const outreachCampaign = await prisma.outreachCampaign.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many OutreachCampaigns and only return the `id`
+     * const outreachCampaignWithIdOnly = await prisma.outreachCampaign.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends OutreachCampaignCreateManyAndReturnArgs>(args?: SelectSubset<T, OutreachCampaignCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutreachCampaignPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a OutreachCampaign.
+     * @param {OutreachCampaignDeleteArgs} args - Arguments to delete one OutreachCampaign.
+     * @example
+     * // Delete one OutreachCampaign
+     * const OutreachCampaign = await prisma.outreachCampaign.delete({
+     *   where: {
+     *     // ... filter to delete one OutreachCampaign
+     *   }
+     * })
+     * 
+     */
+    delete<T extends OutreachCampaignDeleteArgs>(args: SelectSubset<T, OutreachCampaignDeleteArgs<ExtArgs>>): Prisma__OutreachCampaignClient<$Result.GetResult<Prisma.$OutreachCampaignPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one OutreachCampaign.
+     * @param {OutreachCampaignUpdateArgs} args - Arguments to update one OutreachCampaign.
+     * @example
+     * // Update one OutreachCampaign
+     * const outreachCampaign = await prisma.outreachCampaign.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends OutreachCampaignUpdateArgs>(args: SelectSubset<T, OutreachCampaignUpdateArgs<ExtArgs>>): Prisma__OutreachCampaignClient<$Result.GetResult<Prisma.$OutreachCampaignPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more OutreachCampaigns.
+     * @param {OutreachCampaignDeleteManyArgs} args - Arguments to filter OutreachCampaigns to delete.
+     * @example
+     * // Delete a few OutreachCampaigns
+     * const { count } = await prisma.outreachCampaign.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends OutreachCampaignDeleteManyArgs>(args?: SelectSubset<T, OutreachCampaignDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more OutreachCampaigns.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutreachCampaignUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many OutreachCampaigns
+     * const outreachCampaign = await prisma.outreachCampaign.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends OutreachCampaignUpdateManyArgs>(args: SelectSubset<T, OutreachCampaignUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more OutreachCampaigns and returns the data updated in the database.
+     * @param {OutreachCampaignUpdateManyAndReturnArgs} args - Arguments to update many OutreachCampaigns.
+     * @example
+     * // Update many OutreachCampaigns
+     * const outreachCampaign = await prisma.outreachCampaign.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more OutreachCampaigns and only return the `id`
+     * const outreachCampaignWithIdOnly = await prisma.outreachCampaign.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends OutreachCampaignUpdateManyAndReturnArgs>(args: SelectSubset<T, OutreachCampaignUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutreachCampaignPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one OutreachCampaign.
+     * @param {OutreachCampaignUpsertArgs} args - Arguments to update or create a OutreachCampaign.
+     * @example
+     * // Update or create a OutreachCampaign
+     * const outreachCampaign = await prisma.outreachCampaign.upsert({
+     *   create: {
+     *     // ... data to create a OutreachCampaign
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the OutreachCampaign we want to update
+     *   }
+     * })
+     */
+    upsert<T extends OutreachCampaignUpsertArgs>(args: SelectSubset<T, OutreachCampaignUpsertArgs<ExtArgs>>): Prisma__OutreachCampaignClient<$Result.GetResult<Prisma.$OutreachCampaignPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of OutreachCampaigns.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutreachCampaignCountArgs} args - Arguments to filter OutreachCampaigns to count.
+     * @example
+     * // Count the number of OutreachCampaigns
+     * const count = await prisma.outreachCampaign.count({
+     *   where: {
+     *     // ... the filter for the OutreachCampaigns we want to count
+     *   }
+     * })
+    **/
+    count<T extends OutreachCampaignCountArgs>(
+      args?: Subset<T, OutreachCampaignCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], OutreachCampaignCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a OutreachCampaign.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutreachCampaignAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends OutreachCampaignAggregateArgs>(args: Subset<T, OutreachCampaignAggregateArgs>): Prisma.PrismaPromise<GetOutreachCampaignAggregateType<T>>
+
+    /**
+     * Group by OutreachCampaign.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutreachCampaignGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends OutreachCampaignGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: OutreachCampaignGroupByArgs['orderBy'] }
+        : { orderBy?: OutreachCampaignGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, OutreachCampaignGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOutreachCampaignGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the OutreachCampaign model
+   */
+  readonly fields: OutreachCampaignFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for OutreachCampaign.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__OutreachCampaignClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    targets<T extends OutreachCampaign$targetsArgs<ExtArgs> = {}>(args?: Subset<T, OutreachCampaign$targetsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutreachTargetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the OutreachCampaign model
+   */
+  interface OutreachCampaignFieldRefs {
+    readonly id: FieldRef<"OutreachCampaign", 'String'>
+    readonly name: FieldRef<"OutreachCampaign", 'String'>
+    readonly type: FieldRef<"OutreachCampaign", 'String'>
+    readonly template: FieldRef<"OutreachCampaign", 'String'>
+    readonly scheduledDate: FieldRef<"OutreachCampaign", 'DateTime'>
+    readonly status: FieldRef<"OutreachCampaign", 'String'>
+    readonly createdAt: FieldRef<"OutreachCampaign", 'DateTime'>
+    readonly updatedAt: FieldRef<"OutreachCampaign", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * OutreachCampaign findUnique
+   */
+  export type OutreachCampaignFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachCampaign
+     */
+    select?: OutreachCampaignSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachCampaign
+     */
+    omit?: OutreachCampaignOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachCampaignInclude<ExtArgs> | null
+    /**
+     * Filter, which OutreachCampaign to fetch.
+     */
+    where: OutreachCampaignWhereUniqueInput
+  }
+
+  /**
+   * OutreachCampaign findUniqueOrThrow
+   */
+  export type OutreachCampaignFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachCampaign
+     */
+    select?: OutreachCampaignSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachCampaign
+     */
+    omit?: OutreachCampaignOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachCampaignInclude<ExtArgs> | null
+    /**
+     * Filter, which OutreachCampaign to fetch.
+     */
+    where: OutreachCampaignWhereUniqueInput
+  }
+
+  /**
+   * OutreachCampaign findFirst
+   */
+  export type OutreachCampaignFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachCampaign
+     */
+    select?: OutreachCampaignSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachCampaign
+     */
+    omit?: OutreachCampaignOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachCampaignInclude<ExtArgs> | null
+    /**
+     * Filter, which OutreachCampaign to fetch.
+     */
+    where?: OutreachCampaignWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OutreachCampaigns to fetch.
+     */
+    orderBy?: OutreachCampaignOrderByWithRelationInput | OutreachCampaignOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OutreachCampaigns.
+     */
+    cursor?: OutreachCampaignWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OutreachCampaigns from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OutreachCampaigns.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OutreachCampaigns.
+     */
+    distinct?: OutreachCampaignScalarFieldEnum | OutreachCampaignScalarFieldEnum[]
+  }
+
+  /**
+   * OutreachCampaign findFirstOrThrow
+   */
+  export type OutreachCampaignFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachCampaign
+     */
+    select?: OutreachCampaignSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachCampaign
+     */
+    omit?: OutreachCampaignOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachCampaignInclude<ExtArgs> | null
+    /**
+     * Filter, which OutreachCampaign to fetch.
+     */
+    where?: OutreachCampaignWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OutreachCampaigns to fetch.
+     */
+    orderBy?: OutreachCampaignOrderByWithRelationInput | OutreachCampaignOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OutreachCampaigns.
+     */
+    cursor?: OutreachCampaignWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OutreachCampaigns from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OutreachCampaigns.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OutreachCampaigns.
+     */
+    distinct?: OutreachCampaignScalarFieldEnum | OutreachCampaignScalarFieldEnum[]
+  }
+
+  /**
+   * OutreachCampaign findMany
+   */
+  export type OutreachCampaignFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachCampaign
+     */
+    select?: OutreachCampaignSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachCampaign
+     */
+    omit?: OutreachCampaignOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachCampaignInclude<ExtArgs> | null
+    /**
+     * Filter, which OutreachCampaigns to fetch.
+     */
+    where?: OutreachCampaignWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OutreachCampaigns to fetch.
+     */
+    orderBy?: OutreachCampaignOrderByWithRelationInput | OutreachCampaignOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing OutreachCampaigns.
+     */
+    cursor?: OutreachCampaignWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OutreachCampaigns from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OutreachCampaigns.
+     */
+    skip?: number
+    distinct?: OutreachCampaignScalarFieldEnum | OutreachCampaignScalarFieldEnum[]
+  }
+
+  /**
+   * OutreachCampaign create
+   */
+  export type OutreachCampaignCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachCampaign
+     */
+    select?: OutreachCampaignSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachCampaign
+     */
+    omit?: OutreachCampaignOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachCampaignInclude<ExtArgs> | null
+    /**
+     * The data needed to create a OutreachCampaign.
+     */
+    data: XOR<OutreachCampaignCreateInput, OutreachCampaignUncheckedCreateInput>
+  }
+
+  /**
+   * OutreachCampaign createMany
+   */
+  export type OutreachCampaignCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many OutreachCampaigns.
+     */
+    data: OutreachCampaignCreateManyInput | OutreachCampaignCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * OutreachCampaign createManyAndReturn
+   */
+  export type OutreachCampaignCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachCampaign
+     */
+    select?: OutreachCampaignSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachCampaign
+     */
+    omit?: OutreachCampaignOmit<ExtArgs> | null
+    /**
+     * The data used to create many OutreachCampaigns.
+     */
+    data: OutreachCampaignCreateManyInput | OutreachCampaignCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * OutreachCampaign update
+   */
+  export type OutreachCampaignUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachCampaign
+     */
+    select?: OutreachCampaignSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachCampaign
+     */
+    omit?: OutreachCampaignOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachCampaignInclude<ExtArgs> | null
+    /**
+     * The data needed to update a OutreachCampaign.
+     */
+    data: XOR<OutreachCampaignUpdateInput, OutreachCampaignUncheckedUpdateInput>
+    /**
+     * Choose, which OutreachCampaign to update.
+     */
+    where: OutreachCampaignWhereUniqueInput
+  }
+
+  /**
+   * OutreachCampaign updateMany
+   */
+  export type OutreachCampaignUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update OutreachCampaigns.
+     */
+    data: XOR<OutreachCampaignUpdateManyMutationInput, OutreachCampaignUncheckedUpdateManyInput>
+    /**
+     * Filter which OutreachCampaigns to update
+     */
+    where?: OutreachCampaignWhereInput
+    /**
+     * Limit how many OutreachCampaigns to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * OutreachCampaign updateManyAndReturn
+   */
+  export type OutreachCampaignUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachCampaign
+     */
+    select?: OutreachCampaignSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachCampaign
+     */
+    omit?: OutreachCampaignOmit<ExtArgs> | null
+    /**
+     * The data used to update OutreachCampaigns.
+     */
+    data: XOR<OutreachCampaignUpdateManyMutationInput, OutreachCampaignUncheckedUpdateManyInput>
+    /**
+     * Filter which OutreachCampaigns to update
+     */
+    where?: OutreachCampaignWhereInput
+    /**
+     * Limit how many OutreachCampaigns to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * OutreachCampaign upsert
+   */
+  export type OutreachCampaignUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachCampaign
+     */
+    select?: OutreachCampaignSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachCampaign
+     */
+    omit?: OutreachCampaignOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachCampaignInclude<ExtArgs> | null
+    /**
+     * The filter to search for the OutreachCampaign to update in case it exists.
+     */
+    where: OutreachCampaignWhereUniqueInput
+    /**
+     * In case the OutreachCampaign found by the `where` argument doesn't exist, create a new OutreachCampaign with this data.
+     */
+    create: XOR<OutreachCampaignCreateInput, OutreachCampaignUncheckedCreateInput>
+    /**
+     * In case the OutreachCampaign was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<OutreachCampaignUpdateInput, OutreachCampaignUncheckedUpdateInput>
+  }
+
+  /**
+   * OutreachCampaign delete
+   */
+  export type OutreachCampaignDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachCampaign
+     */
+    select?: OutreachCampaignSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachCampaign
+     */
+    omit?: OutreachCampaignOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachCampaignInclude<ExtArgs> | null
+    /**
+     * Filter which OutreachCampaign to delete.
+     */
+    where: OutreachCampaignWhereUniqueInput
+  }
+
+  /**
+   * OutreachCampaign deleteMany
+   */
+  export type OutreachCampaignDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OutreachCampaigns to delete
+     */
+    where?: OutreachCampaignWhereInput
+    /**
+     * Limit how many OutreachCampaigns to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * OutreachCampaign.targets
+   */
+  export type OutreachCampaign$targetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachTarget
+     */
+    select?: OutreachTargetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachTarget
+     */
+    omit?: OutreachTargetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachTargetInclude<ExtArgs> | null
+    where?: OutreachTargetWhereInput
+    orderBy?: OutreachTargetOrderByWithRelationInput | OutreachTargetOrderByWithRelationInput[]
+    cursor?: OutreachTargetWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: OutreachTargetScalarFieldEnum | OutreachTargetScalarFieldEnum[]
+  }
+
+  /**
+   * OutreachCampaign without action
+   */
+  export type OutreachCampaignDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachCampaign
+     */
+    select?: OutreachCampaignSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachCampaign
+     */
+    omit?: OutreachCampaignOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachCampaignInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model OutreachTarget
+   */
+
+  export type AggregateOutreachTarget = {
+    _count: OutreachTargetCountAggregateOutputType | null
+    _avg: OutreachTargetAvgAggregateOutputType | null
+    _sum: OutreachTargetSumAggregateOutputType | null
+    _min: OutreachTargetMinAggregateOutputType | null
+    _max: OutreachTargetMaxAggregateOutputType | null
+  }
+
+  export type OutreachTargetAvgAggregateOutputType = {
+    authority: number | null
+    relevance: number | null
+  }
+
+  export type OutreachTargetSumAggregateOutputType = {
+    authority: number | null
+    relevance: number | null
+  }
+
+  export type OutreachTargetMinAggregateOutputType = {
+    id: string | null
+    domain: string | null
+    contactEmail: string | null
+    type: string | null
+    authority: number | null
+    relevance: number | null
+    lastContactDate: Date | null
+    status: string | null
+    notes: string | null
+    campaignId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type OutreachTargetMaxAggregateOutputType = {
+    id: string | null
+    domain: string | null
+    contactEmail: string | null
+    type: string | null
+    authority: number | null
+    relevance: number | null
+    lastContactDate: Date | null
+    status: string | null
+    notes: string | null
+    campaignId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type OutreachTargetCountAggregateOutputType = {
+    id: number
+    domain: number
+    contactEmail: number
+    type: number
+    authority: number
+    relevance: number
+    lastContactDate: number
+    status: number
+    notes: number
+    campaignId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type OutreachTargetAvgAggregateInputType = {
+    authority?: true
+    relevance?: true
+  }
+
+  export type OutreachTargetSumAggregateInputType = {
+    authority?: true
+    relevance?: true
+  }
+
+  export type OutreachTargetMinAggregateInputType = {
+    id?: true
+    domain?: true
+    contactEmail?: true
+    type?: true
+    authority?: true
+    relevance?: true
+    lastContactDate?: true
+    status?: true
+    notes?: true
+    campaignId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type OutreachTargetMaxAggregateInputType = {
+    id?: true
+    domain?: true
+    contactEmail?: true
+    type?: true
+    authority?: true
+    relevance?: true
+    lastContactDate?: true
+    status?: true
+    notes?: true
+    campaignId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type OutreachTargetCountAggregateInputType = {
+    id?: true
+    domain?: true
+    contactEmail?: true
+    type?: true
+    authority?: true
+    relevance?: true
+    lastContactDate?: true
+    status?: true
+    notes?: true
+    campaignId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type OutreachTargetAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OutreachTarget to aggregate.
+     */
+    where?: OutreachTargetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OutreachTargets to fetch.
+     */
+    orderBy?: OutreachTargetOrderByWithRelationInput | OutreachTargetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: OutreachTargetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OutreachTargets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OutreachTargets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned OutreachTargets
+    **/
+    _count?: true | OutreachTargetCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: OutreachTargetAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: OutreachTargetSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: OutreachTargetMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: OutreachTargetMaxAggregateInputType
+  }
+
+  export type GetOutreachTargetAggregateType<T extends OutreachTargetAggregateArgs> = {
+        [P in keyof T & keyof AggregateOutreachTarget]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateOutreachTarget[P]>
+      : GetScalarType<T[P], AggregateOutreachTarget[P]>
+  }
+
+
+
+
+  export type OutreachTargetGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OutreachTargetWhereInput
+    orderBy?: OutreachTargetOrderByWithAggregationInput | OutreachTargetOrderByWithAggregationInput[]
+    by: OutreachTargetScalarFieldEnum[] | OutreachTargetScalarFieldEnum
+    having?: OutreachTargetScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: OutreachTargetCountAggregateInputType | true
+    _avg?: OutreachTargetAvgAggregateInputType
+    _sum?: OutreachTargetSumAggregateInputType
+    _min?: OutreachTargetMinAggregateInputType
+    _max?: OutreachTargetMaxAggregateInputType
+  }
+
+  export type OutreachTargetGroupByOutputType = {
+    id: string
+    domain: string
+    contactEmail: string | null
+    type: string
+    authority: number
+    relevance: number
+    lastContactDate: Date | null
+    status: string
+    notes: string | null
+    campaignId: string
+    createdAt: Date
+    updatedAt: Date
+    _count: OutreachTargetCountAggregateOutputType | null
+    _avg: OutreachTargetAvgAggregateOutputType | null
+    _sum: OutreachTargetSumAggregateOutputType | null
+    _min: OutreachTargetMinAggregateOutputType | null
+    _max: OutreachTargetMaxAggregateOutputType | null
+  }
+
+  type GetOutreachTargetGroupByPayload<T extends OutreachTargetGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<OutreachTargetGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof OutreachTargetGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], OutreachTargetGroupByOutputType[P]>
+            : GetScalarType<T[P], OutreachTargetGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type OutreachTargetSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    domain?: boolean
+    contactEmail?: boolean
+    type?: boolean
+    authority?: boolean
+    relevance?: boolean
+    lastContactDate?: boolean
+    status?: boolean
+    notes?: boolean
+    campaignId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    campaign?: boolean | OutreachCampaignDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["outreachTarget"]>
+
+  export type OutreachTargetSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    domain?: boolean
+    contactEmail?: boolean
+    type?: boolean
+    authority?: boolean
+    relevance?: boolean
+    lastContactDate?: boolean
+    status?: boolean
+    notes?: boolean
+    campaignId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    campaign?: boolean | OutreachCampaignDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["outreachTarget"]>
+
+  export type OutreachTargetSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    domain?: boolean
+    contactEmail?: boolean
+    type?: boolean
+    authority?: boolean
+    relevance?: boolean
+    lastContactDate?: boolean
+    status?: boolean
+    notes?: boolean
+    campaignId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    campaign?: boolean | OutreachCampaignDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["outreachTarget"]>
+
+  export type OutreachTargetSelectScalar = {
+    id?: boolean
+    domain?: boolean
+    contactEmail?: boolean
+    type?: boolean
+    authority?: boolean
+    relevance?: boolean
+    lastContactDate?: boolean
+    status?: boolean
+    notes?: boolean
+    campaignId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type OutreachTargetOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "domain" | "contactEmail" | "type" | "authority" | "relevance" | "lastContactDate" | "status" | "notes" | "campaignId" | "createdAt" | "updatedAt", ExtArgs["result"]["outreachTarget"]>
+  export type OutreachTargetInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    campaign?: boolean | OutreachCampaignDefaultArgs<ExtArgs>
+  }
+  export type OutreachTargetIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    campaign?: boolean | OutreachCampaignDefaultArgs<ExtArgs>
+  }
+  export type OutreachTargetIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    campaign?: boolean | OutreachCampaignDefaultArgs<ExtArgs>
+  }
+
+  export type $OutreachTargetPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "OutreachTarget"
+    objects: {
+      campaign: Prisma.$OutreachCampaignPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      domain: string
+      contactEmail: string | null
+      type: string
+      authority: number
+      relevance: number
+      lastContactDate: Date | null
+      status: string
+      notes: string | null
+      campaignId: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["outreachTarget"]>
+    composites: {}
+  }
+
+  type OutreachTargetGetPayload<S extends boolean | null | undefined | OutreachTargetDefaultArgs> = $Result.GetResult<Prisma.$OutreachTargetPayload, S>
+
+  type OutreachTargetCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<OutreachTargetFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: OutreachTargetCountAggregateInputType | true
+    }
+
+  export interface OutreachTargetDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['OutreachTarget'], meta: { name: 'OutreachTarget' } }
+    /**
+     * Find zero or one OutreachTarget that matches the filter.
+     * @param {OutreachTargetFindUniqueArgs} args - Arguments to find a OutreachTarget
+     * @example
+     * // Get one OutreachTarget
+     * const outreachTarget = await prisma.outreachTarget.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends OutreachTargetFindUniqueArgs>(args: SelectSubset<T, OutreachTargetFindUniqueArgs<ExtArgs>>): Prisma__OutreachTargetClient<$Result.GetResult<Prisma.$OutreachTargetPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one OutreachTarget that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {OutreachTargetFindUniqueOrThrowArgs} args - Arguments to find a OutreachTarget
+     * @example
+     * // Get one OutreachTarget
+     * const outreachTarget = await prisma.outreachTarget.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends OutreachTargetFindUniqueOrThrowArgs>(args: SelectSubset<T, OutreachTargetFindUniqueOrThrowArgs<ExtArgs>>): Prisma__OutreachTargetClient<$Result.GetResult<Prisma.$OutreachTargetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first OutreachTarget that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutreachTargetFindFirstArgs} args - Arguments to find a OutreachTarget
+     * @example
+     * // Get one OutreachTarget
+     * const outreachTarget = await prisma.outreachTarget.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends OutreachTargetFindFirstArgs>(args?: SelectSubset<T, OutreachTargetFindFirstArgs<ExtArgs>>): Prisma__OutreachTargetClient<$Result.GetResult<Prisma.$OutreachTargetPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first OutreachTarget that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutreachTargetFindFirstOrThrowArgs} args - Arguments to find a OutreachTarget
+     * @example
+     * // Get one OutreachTarget
+     * const outreachTarget = await prisma.outreachTarget.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends OutreachTargetFindFirstOrThrowArgs>(args?: SelectSubset<T, OutreachTargetFindFirstOrThrowArgs<ExtArgs>>): Prisma__OutreachTargetClient<$Result.GetResult<Prisma.$OutreachTargetPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more OutreachTargets that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutreachTargetFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all OutreachTargets
+     * const outreachTargets = await prisma.outreachTarget.findMany()
+     * 
+     * // Get first 10 OutreachTargets
+     * const outreachTargets = await prisma.outreachTarget.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const outreachTargetWithIdOnly = await prisma.outreachTarget.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends OutreachTargetFindManyArgs>(args?: SelectSubset<T, OutreachTargetFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutreachTargetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a OutreachTarget.
+     * @param {OutreachTargetCreateArgs} args - Arguments to create a OutreachTarget.
+     * @example
+     * // Create one OutreachTarget
+     * const OutreachTarget = await prisma.outreachTarget.create({
+     *   data: {
+     *     // ... data to create a OutreachTarget
+     *   }
+     * })
+     * 
+     */
+    create<T extends OutreachTargetCreateArgs>(args: SelectSubset<T, OutreachTargetCreateArgs<ExtArgs>>): Prisma__OutreachTargetClient<$Result.GetResult<Prisma.$OutreachTargetPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many OutreachTargets.
+     * @param {OutreachTargetCreateManyArgs} args - Arguments to create many OutreachTargets.
+     * @example
+     * // Create many OutreachTargets
+     * const outreachTarget = await prisma.outreachTarget.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends OutreachTargetCreateManyArgs>(args?: SelectSubset<T, OutreachTargetCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many OutreachTargets and returns the data saved in the database.
+     * @param {OutreachTargetCreateManyAndReturnArgs} args - Arguments to create many OutreachTargets.
+     * @example
+     * // Create many OutreachTargets
+     * const outreachTarget = await prisma.outreachTarget.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many OutreachTargets and only return the `id`
+     * const outreachTargetWithIdOnly = await prisma.outreachTarget.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends OutreachTargetCreateManyAndReturnArgs>(args?: SelectSubset<T, OutreachTargetCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutreachTargetPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a OutreachTarget.
+     * @param {OutreachTargetDeleteArgs} args - Arguments to delete one OutreachTarget.
+     * @example
+     * // Delete one OutreachTarget
+     * const OutreachTarget = await prisma.outreachTarget.delete({
+     *   where: {
+     *     // ... filter to delete one OutreachTarget
+     *   }
+     * })
+     * 
+     */
+    delete<T extends OutreachTargetDeleteArgs>(args: SelectSubset<T, OutreachTargetDeleteArgs<ExtArgs>>): Prisma__OutreachTargetClient<$Result.GetResult<Prisma.$OutreachTargetPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one OutreachTarget.
+     * @param {OutreachTargetUpdateArgs} args - Arguments to update one OutreachTarget.
+     * @example
+     * // Update one OutreachTarget
+     * const outreachTarget = await prisma.outreachTarget.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends OutreachTargetUpdateArgs>(args: SelectSubset<T, OutreachTargetUpdateArgs<ExtArgs>>): Prisma__OutreachTargetClient<$Result.GetResult<Prisma.$OutreachTargetPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more OutreachTargets.
+     * @param {OutreachTargetDeleteManyArgs} args - Arguments to filter OutreachTargets to delete.
+     * @example
+     * // Delete a few OutreachTargets
+     * const { count } = await prisma.outreachTarget.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends OutreachTargetDeleteManyArgs>(args?: SelectSubset<T, OutreachTargetDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more OutreachTargets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutreachTargetUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many OutreachTargets
+     * const outreachTarget = await prisma.outreachTarget.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends OutreachTargetUpdateManyArgs>(args: SelectSubset<T, OutreachTargetUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more OutreachTargets and returns the data updated in the database.
+     * @param {OutreachTargetUpdateManyAndReturnArgs} args - Arguments to update many OutreachTargets.
+     * @example
+     * // Update many OutreachTargets
+     * const outreachTarget = await prisma.outreachTarget.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more OutreachTargets and only return the `id`
+     * const outreachTargetWithIdOnly = await prisma.outreachTarget.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends OutreachTargetUpdateManyAndReturnArgs>(args: SelectSubset<T, OutreachTargetUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutreachTargetPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one OutreachTarget.
+     * @param {OutreachTargetUpsertArgs} args - Arguments to update or create a OutreachTarget.
+     * @example
+     * // Update or create a OutreachTarget
+     * const outreachTarget = await prisma.outreachTarget.upsert({
+     *   create: {
+     *     // ... data to create a OutreachTarget
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the OutreachTarget we want to update
+     *   }
+     * })
+     */
+    upsert<T extends OutreachTargetUpsertArgs>(args: SelectSubset<T, OutreachTargetUpsertArgs<ExtArgs>>): Prisma__OutreachTargetClient<$Result.GetResult<Prisma.$OutreachTargetPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of OutreachTargets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutreachTargetCountArgs} args - Arguments to filter OutreachTargets to count.
+     * @example
+     * // Count the number of OutreachTargets
+     * const count = await prisma.outreachTarget.count({
+     *   where: {
+     *     // ... the filter for the OutreachTargets we want to count
+     *   }
+     * })
+    **/
+    count<T extends OutreachTargetCountArgs>(
+      args?: Subset<T, OutreachTargetCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], OutreachTargetCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a OutreachTarget.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutreachTargetAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends OutreachTargetAggregateArgs>(args: Subset<T, OutreachTargetAggregateArgs>): Prisma.PrismaPromise<GetOutreachTargetAggregateType<T>>
+
+    /**
+     * Group by OutreachTarget.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutreachTargetGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends OutreachTargetGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: OutreachTargetGroupByArgs['orderBy'] }
+        : { orderBy?: OutreachTargetGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, OutreachTargetGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOutreachTargetGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the OutreachTarget model
+   */
+  readonly fields: OutreachTargetFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for OutreachTarget.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__OutreachTargetClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    campaign<T extends OutreachCampaignDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OutreachCampaignDefaultArgs<ExtArgs>>): Prisma__OutreachCampaignClient<$Result.GetResult<Prisma.$OutreachCampaignPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the OutreachTarget model
+   */
+  interface OutreachTargetFieldRefs {
+    readonly id: FieldRef<"OutreachTarget", 'String'>
+    readonly domain: FieldRef<"OutreachTarget", 'String'>
+    readonly contactEmail: FieldRef<"OutreachTarget", 'String'>
+    readonly type: FieldRef<"OutreachTarget", 'String'>
+    readonly authority: FieldRef<"OutreachTarget", 'Int'>
+    readonly relevance: FieldRef<"OutreachTarget", 'Int'>
+    readonly lastContactDate: FieldRef<"OutreachTarget", 'DateTime'>
+    readonly status: FieldRef<"OutreachTarget", 'String'>
+    readonly notes: FieldRef<"OutreachTarget", 'String'>
+    readonly campaignId: FieldRef<"OutreachTarget", 'String'>
+    readonly createdAt: FieldRef<"OutreachTarget", 'DateTime'>
+    readonly updatedAt: FieldRef<"OutreachTarget", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * OutreachTarget findUnique
+   */
+  export type OutreachTargetFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachTarget
+     */
+    select?: OutreachTargetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachTarget
+     */
+    omit?: OutreachTargetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachTargetInclude<ExtArgs> | null
+    /**
+     * Filter, which OutreachTarget to fetch.
+     */
+    where: OutreachTargetWhereUniqueInput
+  }
+
+  /**
+   * OutreachTarget findUniqueOrThrow
+   */
+  export type OutreachTargetFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachTarget
+     */
+    select?: OutreachTargetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachTarget
+     */
+    omit?: OutreachTargetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachTargetInclude<ExtArgs> | null
+    /**
+     * Filter, which OutreachTarget to fetch.
+     */
+    where: OutreachTargetWhereUniqueInput
+  }
+
+  /**
+   * OutreachTarget findFirst
+   */
+  export type OutreachTargetFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachTarget
+     */
+    select?: OutreachTargetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachTarget
+     */
+    omit?: OutreachTargetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachTargetInclude<ExtArgs> | null
+    /**
+     * Filter, which OutreachTarget to fetch.
+     */
+    where?: OutreachTargetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OutreachTargets to fetch.
+     */
+    orderBy?: OutreachTargetOrderByWithRelationInput | OutreachTargetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OutreachTargets.
+     */
+    cursor?: OutreachTargetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OutreachTargets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OutreachTargets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OutreachTargets.
+     */
+    distinct?: OutreachTargetScalarFieldEnum | OutreachTargetScalarFieldEnum[]
+  }
+
+  /**
+   * OutreachTarget findFirstOrThrow
+   */
+  export type OutreachTargetFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachTarget
+     */
+    select?: OutreachTargetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachTarget
+     */
+    omit?: OutreachTargetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachTargetInclude<ExtArgs> | null
+    /**
+     * Filter, which OutreachTarget to fetch.
+     */
+    where?: OutreachTargetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OutreachTargets to fetch.
+     */
+    orderBy?: OutreachTargetOrderByWithRelationInput | OutreachTargetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OutreachTargets.
+     */
+    cursor?: OutreachTargetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OutreachTargets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OutreachTargets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OutreachTargets.
+     */
+    distinct?: OutreachTargetScalarFieldEnum | OutreachTargetScalarFieldEnum[]
+  }
+
+  /**
+   * OutreachTarget findMany
+   */
+  export type OutreachTargetFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachTarget
+     */
+    select?: OutreachTargetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachTarget
+     */
+    omit?: OutreachTargetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachTargetInclude<ExtArgs> | null
+    /**
+     * Filter, which OutreachTargets to fetch.
+     */
+    where?: OutreachTargetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OutreachTargets to fetch.
+     */
+    orderBy?: OutreachTargetOrderByWithRelationInput | OutreachTargetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing OutreachTargets.
+     */
+    cursor?: OutreachTargetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OutreachTargets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OutreachTargets.
+     */
+    skip?: number
+    distinct?: OutreachTargetScalarFieldEnum | OutreachTargetScalarFieldEnum[]
+  }
+
+  /**
+   * OutreachTarget create
+   */
+  export type OutreachTargetCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachTarget
+     */
+    select?: OutreachTargetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachTarget
+     */
+    omit?: OutreachTargetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachTargetInclude<ExtArgs> | null
+    /**
+     * The data needed to create a OutreachTarget.
+     */
+    data: XOR<OutreachTargetCreateInput, OutreachTargetUncheckedCreateInput>
+  }
+
+  /**
+   * OutreachTarget createMany
+   */
+  export type OutreachTargetCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many OutreachTargets.
+     */
+    data: OutreachTargetCreateManyInput | OutreachTargetCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * OutreachTarget createManyAndReturn
+   */
+  export type OutreachTargetCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachTarget
+     */
+    select?: OutreachTargetSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachTarget
+     */
+    omit?: OutreachTargetOmit<ExtArgs> | null
+    /**
+     * The data used to create many OutreachTargets.
+     */
+    data: OutreachTargetCreateManyInput | OutreachTargetCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachTargetIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * OutreachTarget update
+   */
+  export type OutreachTargetUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachTarget
+     */
+    select?: OutreachTargetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachTarget
+     */
+    omit?: OutreachTargetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachTargetInclude<ExtArgs> | null
+    /**
+     * The data needed to update a OutreachTarget.
+     */
+    data: XOR<OutreachTargetUpdateInput, OutreachTargetUncheckedUpdateInput>
+    /**
+     * Choose, which OutreachTarget to update.
+     */
+    where: OutreachTargetWhereUniqueInput
+  }
+
+  /**
+   * OutreachTarget updateMany
+   */
+  export type OutreachTargetUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update OutreachTargets.
+     */
+    data: XOR<OutreachTargetUpdateManyMutationInput, OutreachTargetUncheckedUpdateManyInput>
+    /**
+     * Filter which OutreachTargets to update
+     */
+    where?: OutreachTargetWhereInput
+    /**
+     * Limit how many OutreachTargets to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * OutreachTarget updateManyAndReturn
+   */
+  export type OutreachTargetUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachTarget
+     */
+    select?: OutreachTargetSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachTarget
+     */
+    omit?: OutreachTargetOmit<ExtArgs> | null
+    /**
+     * The data used to update OutreachTargets.
+     */
+    data: XOR<OutreachTargetUpdateManyMutationInput, OutreachTargetUncheckedUpdateManyInput>
+    /**
+     * Filter which OutreachTargets to update
+     */
+    where?: OutreachTargetWhereInput
+    /**
+     * Limit how many OutreachTargets to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachTargetIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * OutreachTarget upsert
+   */
+  export type OutreachTargetUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachTarget
+     */
+    select?: OutreachTargetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachTarget
+     */
+    omit?: OutreachTargetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachTargetInclude<ExtArgs> | null
+    /**
+     * The filter to search for the OutreachTarget to update in case it exists.
+     */
+    where: OutreachTargetWhereUniqueInput
+    /**
+     * In case the OutreachTarget found by the `where` argument doesn't exist, create a new OutreachTarget with this data.
+     */
+    create: XOR<OutreachTargetCreateInput, OutreachTargetUncheckedCreateInput>
+    /**
+     * In case the OutreachTarget was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<OutreachTargetUpdateInput, OutreachTargetUncheckedUpdateInput>
+  }
+
+  /**
+   * OutreachTarget delete
+   */
+  export type OutreachTargetDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachTarget
+     */
+    select?: OutreachTargetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachTarget
+     */
+    omit?: OutreachTargetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachTargetInclude<ExtArgs> | null
+    /**
+     * Filter which OutreachTarget to delete.
+     */
+    where: OutreachTargetWhereUniqueInput
+  }
+
+  /**
+   * OutreachTarget deleteMany
+   */
+  export type OutreachTargetDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OutreachTargets to delete
+     */
+    where?: OutreachTargetWhereInput
+    /**
+     * Limit how many OutreachTargets to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * OutreachTarget without action
+   */
+  export type OutreachTargetDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachTarget
+     */
+    select?: OutreachTargetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachTarget
+     */
+    omit?: OutreachTargetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachTargetInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model OutreachActivity
+   */
+
+  export type AggregateOutreachActivity = {
+    _count: OutreachActivityCountAggregateOutputType | null
+    _min: OutreachActivityMinAggregateOutputType | null
+    _max: OutreachActivityMaxAggregateOutputType | null
+  }
+
+  export type OutreachActivityMinAggregateOutputType = {
+    id: string | null
+    targetDomain: string | null
+    campaignId: string | null
+    type: string | null
+    status: string | null
+    emailSubject: string | null
+    emailContent: string | null
+    responseReceived: boolean | null
+    responseContent: string | null
+    linkAcquired: boolean | null
+    linkUrl: string | null
+    timestamp: Date | null
+  }
+
+  export type OutreachActivityMaxAggregateOutputType = {
+    id: string | null
+    targetDomain: string | null
+    campaignId: string | null
+    type: string | null
+    status: string | null
+    emailSubject: string | null
+    emailContent: string | null
+    responseReceived: boolean | null
+    responseContent: string | null
+    linkAcquired: boolean | null
+    linkUrl: string | null
+    timestamp: Date | null
+  }
+
+  export type OutreachActivityCountAggregateOutputType = {
+    id: number
+    targetDomain: number
+    campaignId: number
+    type: number
+    status: number
+    emailSubject: number
+    emailContent: number
+    responseReceived: number
+    responseContent: number
+    linkAcquired: number
+    linkUrl: number
+    timestamp: number
+    _all: number
+  }
+
+
+  export type OutreachActivityMinAggregateInputType = {
+    id?: true
+    targetDomain?: true
+    campaignId?: true
+    type?: true
+    status?: true
+    emailSubject?: true
+    emailContent?: true
+    responseReceived?: true
+    responseContent?: true
+    linkAcquired?: true
+    linkUrl?: true
+    timestamp?: true
+  }
+
+  export type OutreachActivityMaxAggregateInputType = {
+    id?: true
+    targetDomain?: true
+    campaignId?: true
+    type?: true
+    status?: true
+    emailSubject?: true
+    emailContent?: true
+    responseReceived?: true
+    responseContent?: true
+    linkAcquired?: true
+    linkUrl?: true
+    timestamp?: true
+  }
+
+  export type OutreachActivityCountAggregateInputType = {
+    id?: true
+    targetDomain?: true
+    campaignId?: true
+    type?: true
+    status?: true
+    emailSubject?: true
+    emailContent?: true
+    responseReceived?: true
+    responseContent?: true
+    linkAcquired?: true
+    linkUrl?: true
+    timestamp?: true
+    _all?: true
+  }
+
+  export type OutreachActivityAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OutreachActivity to aggregate.
+     */
+    where?: OutreachActivityWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OutreachActivities to fetch.
+     */
+    orderBy?: OutreachActivityOrderByWithRelationInput | OutreachActivityOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: OutreachActivityWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OutreachActivities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OutreachActivities.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned OutreachActivities
+    **/
+    _count?: true | OutreachActivityCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: OutreachActivityMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: OutreachActivityMaxAggregateInputType
+  }
+
+  export type GetOutreachActivityAggregateType<T extends OutreachActivityAggregateArgs> = {
+        [P in keyof T & keyof AggregateOutreachActivity]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateOutreachActivity[P]>
+      : GetScalarType<T[P], AggregateOutreachActivity[P]>
+  }
+
+
+
+
+  export type OutreachActivityGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OutreachActivityWhereInput
+    orderBy?: OutreachActivityOrderByWithAggregationInput | OutreachActivityOrderByWithAggregationInput[]
+    by: OutreachActivityScalarFieldEnum[] | OutreachActivityScalarFieldEnum
+    having?: OutreachActivityScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: OutreachActivityCountAggregateInputType | true
+    _min?: OutreachActivityMinAggregateInputType
+    _max?: OutreachActivityMaxAggregateInputType
+  }
+
+  export type OutreachActivityGroupByOutputType = {
+    id: string
+    targetDomain: string
+    campaignId: string
+    type: string
+    status: string
+    emailSubject: string | null
+    emailContent: string | null
+    responseReceived: boolean
+    responseContent: string | null
+    linkAcquired: boolean
+    linkUrl: string | null
+    timestamp: Date
+    _count: OutreachActivityCountAggregateOutputType | null
+    _min: OutreachActivityMinAggregateOutputType | null
+    _max: OutreachActivityMaxAggregateOutputType | null
+  }
+
+  type GetOutreachActivityGroupByPayload<T extends OutreachActivityGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<OutreachActivityGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof OutreachActivityGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], OutreachActivityGroupByOutputType[P]>
+            : GetScalarType<T[P], OutreachActivityGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type OutreachActivitySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    targetDomain?: boolean
+    campaignId?: boolean
+    type?: boolean
+    status?: boolean
+    emailSubject?: boolean
+    emailContent?: boolean
+    responseReceived?: boolean
+    responseContent?: boolean
+    linkAcquired?: boolean
+    linkUrl?: boolean
+    timestamp?: boolean
+    backlinks?: boolean | OutreachActivity$backlinksArgs<ExtArgs>
+    _count?: boolean | OutreachActivityCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["outreachActivity"]>
+
+  export type OutreachActivitySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    targetDomain?: boolean
+    campaignId?: boolean
+    type?: boolean
+    status?: boolean
+    emailSubject?: boolean
+    emailContent?: boolean
+    responseReceived?: boolean
+    responseContent?: boolean
+    linkAcquired?: boolean
+    linkUrl?: boolean
+    timestamp?: boolean
+  }, ExtArgs["result"]["outreachActivity"]>
+
+  export type OutreachActivitySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    targetDomain?: boolean
+    campaignId?: boolean
+    type?: boolean
+    status?: boolean
+    emailSubject?: boolean
+    emailContent?: boolean
+    responseReceived?: boolean
+    responseContent?: boolean
+    linkAcquired?: boolean
+    linkUrl?: boolean
+    timestamp?: boolean
+  }, ExtArgs["result"]["outreachActivity"]>
+
+  export type OutreachActivitySelectScalar = {
+    id?: boolean
+    targetDomain?: boolean
+    campaignId?: boolean
+    type?: boolean
+    status?: boolean
+    emailSubject?: boolean
+    emailContent?: boolean
+    responseReceived?: boolean
+    responseContent?: boolean
+    linkAcquired?: boolean
+    linkUrl?: boolean
+    timestamp?: boolean
+  }
+
+  export type OutreachActivityOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "targetDomain" | "campaignId" | "type" | "status" | "emailSubject" | "emailContent" | "responseReceived" | "responseContent" | "linkAcquired" | "linkUrl" | "timestamp", ExtArgs["result"]["outreachActivity"]>
+  export type OutreachActivityInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    backlinks?: boolean | OutreachActivity$backlinksArgs<ExtArgs>
+    _count?: boolean | OutreachActivityCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type OutreachActivityIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type OutreachActivityIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $OutreachActivityPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "OutreachActivity"
+    objects: {
+      backlinks: Prisma.$BacklinkPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      targetDomain: string
+      campaignId: string
+      type: string
+      status: string
+      emailSubject: string | null
+      emailContent: string | null
+      responseReceived: boolean
+      responseContent: string | null
+      linkAcquired: boolean
+      linkUrl: string | null
+      timestamp: Date
+    }, ExtArgs["result"]["outreachActivity"]>
+    composites: {}
+  }
+
+  type OutreachActivityGetPayload<S extends boolean | null | undefined | OutreachActivityDefaultArgs> = $Result.GetResult<Prisma.$OutreachActivityPayload, S>
+
+  type OutreachActivityCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<OutreachActivityFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: OutreachActivityCountAggregateInputType | true
+    }
+
+  export interface OutreachActivityDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['OutreachActivity'], meta: { name: 'OutreachActivity' } }
+    /**
+     * Find zero or one OutreachActivity that matches the filter.
+     * @param {OutreachActivityFindUniqueArgs} args - Arguments to find a OutreachActivity
+     * @example
+     * // Get one OutreachActivity
+     * const outreachActivity = await prisma.outreachActivity.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends OutreachActivityFindUniqueArgs>(args: SelectSubset<T, OutreachActivityFindUniqueArgs<ExtArgs>>): Prisma__OutreachActivityClient<$Result.GetResult<Prisma.$OutreachActivityPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one OutreachActivity that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {OutreachActivityFindUniqueOrThrowArgs} args - Arguments to find a OutreachActivity
+     * @example
+     * // Get one OutreachActivity
+     * const outreachActivity = await prisma.outreachActivity.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends OutreachActivityFindUniqueOrThrowArgs>(args: SelectSubset<T, OutreachActivityFindUniqueOrThrowArgs<ExtArgs>>): Prisma__OutreachActivityClient<$Result.GetResult<Prisma.$OutreachActivityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first OutreachActivity that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutreachActivityFindFirstArgs} args - Arguments to find a OutreachActivity
+     * @example
+     * // Get one OutreachActivity
+     * const outreachActivity = await prisma.outreachActivity.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends OutreachActivityFindFirstArgs>(args?: SelectSubset<T, OutreachActivityFindFirstArgs<ExtArgs>>): Prisma__OutreachActivityClient<$Result.GetResult<Prisma.$OutreachActivityPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first OutreachActivity that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutreachActivityFindFirstOrThrowArgs} args - Arguments to find a OutreachActivity
+     * @example
+     * // Get one OutreachActivity
+     * const outreachActivity = await prisma.outreachActivity.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends OutreachActivityFindFirstOrThrowArgs>(args?: SelectSubset<T, OutreachActivityFindFirstOrThrowArgs<ExtArgs>>): Prisma__OutreachActivityClient<$Result.GetResult<Prisma.$OutreachActivityPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more OutreachActivities that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutreachActivityFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all OutreachActivities
+     * const outreachActivities = await prisma.outreachActivity.findMany()
+     * 
+     * // Get first 10 OutreachActivities
+     * const outreachActivities = await prisma.outreachActivity.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const outreachActivityWithIdOnly = await prisma.outreachActivity.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends OutreachActivityFindManyArgs>(args?: SelectSubset<T, OutreachActivityFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutreachActivityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a OutreachActivity.
+     * @param {OutreachActivityCreateArgs} args - Arguments to create a OutreachActivity.
+     * @example
+     * // Create one OutreachActivity
+     * const OutreachActivity = await prisma.outreachActivity.create({
+     *   data: {
+     *     // ... data to create a OutreachActivity
+     *   }
+     * })
+     * 
+     */
+    create<T extends OutreachActivityCreateArgs>(args: SelectSubset<T, OutreachActivityCreateArgs<ExtArgs>>): Prisma__OutreachActivityClient<$Result.GetResult<Prisma.$OutreachActivityPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many OutreachActivities.
+     * @param {OutreachActivityCreateManyArgs} args - Arguments to create many OutreachActivities.
+     * @example
+     * // Create many OutreachActivities
+     * const outreachActivity = await prisma.outreachActivity.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends OutreachActivityCreateManyArgs>(args?: SelectSubset<T, OutreachActivityCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many OutreachActivities and returns the data saved in the database.
+     * @param {OutreachActivityCreateManyAndReturnArgs} args - Arguments to create many OutreachActivities.
+     * @example
+     * // Create many OutreachActivities
+     * const outreachActivity = await prisma.outreachActivity.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many OutreachActivities and only return the `id`
+     * const outreachActivityWithIdOnly = await prisma.outreachActivity.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends OutreachActivityCreateManyAndReturnArgs>(args?: SelectSubset<T, OutreachActivityCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutreachActivityPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a OutreachActivity.
+     * @param {OutreachActivityDeleteArgs} args - Arguments to delete one OutreachActivity.
+     * @example
+     * // Delete one OutreachActivity
+     * const OutreachActivity = await prisma.outreachActivity.delete({
+     *   where: {
+     *     // ... filter to delete one OutreachActivity
+     *   }
+     * })
+     * 
+     */
+    delete<T extends OutreachActivityDeleteArgs>(args: SelectSubset<T, OutreachActivityDeleteArgs<ExtArgs>>): Prisma__OutreachActivityClient<$Result.GetResult<Prisma.$OutreachActivityPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one OutreachActivity.
+     * @param {OutreachActivityUpdateArgs} args - Arguments to update one OutreachActivity.
+     * @example
+     * // Update one OutreachActivity
+     * const outreachActivity = await prisma.outreachActivity.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends OutreachActivityUpdateArgs>(args: SelectSubset<T, OutreachActivityUpdateArgs<ExtArgs>>): Prisma__OutreachActivityClient<$Result.GetResult<Prisma.$OutreachActivityPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more OutreachActivities.
+     * @param {OutreachActivityDeleteManyArgs} args - Arguments to filter OutreachActivities to delete.
+     * @example
+     * // Delete a few OutreachActivities
+     * const { count } = await prisma.outreachActivity.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends OutreachActivityDeleteManyArgs>(args?: SelectSubset<T, OutreachActivityDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more OutreachActivities.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutreachActivityUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many OutreachActivities
+     * const outreachActivity = await prisma.outreachActivity.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends OutreachActivityUpdateManyArgs>(args: SelectSubset<T, OutreachActivityUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more OutreachActivities and returns the data updated in the database.
+     * @param {OutreachActivityUpdateManyAndReturnArgs} args - Arguments to update many OutreachActivities.
+     * @example
+     * // Update many OutreachActivities
+     * const outreachActivity = await prisma.outreachActivity.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more OutreachActivities and only return the `id`
+     * const outreachActivityWithIdOnly = await prisma.outreachActivity.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends OutreachActivityUpdateManyAndReturnArgs>(args: SelectSubset<T, OutreachActivityUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutreachActivityPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one OutreachActivity.
+     * @param {OutreachActivityUpsertArgs} args - Arguments to update or create a OutreachActivity.
+     * @example
+     * // Update or create a OutreachActivity
+     * const outreachActivity = await prisma.outreachActivity.upsert({
+     *   create: {
+     *     // ... data to create a OutreachActivity
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the OutreachActivity we want to update
+     *   }
+     * })
+     */
+    upsert<T extends OutreachActivityUpsertArgs>(args: SelectSubset<T, OutreachActivityUpsertArgs<ExtArgs>>): Prisma__OutreachActivityClient<$Result.GetResult<Prisma.$OutreachActivityPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of OutreachActivities.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutreachActivityCountArgs} args - Arguments to filter OutreachActivities to count.
+     * @example
+     * // Count the number of OutreachActivities
+     * const count = await prisma.outreachActivity.count({
+     *   where: {
+     *     // ... the filter for the OutreachActivities we want to count
+     *   }
+     * })
+    **/
+    count<T extends OutreachActivityCountArgs>(
+      args?: Subset<T, OutreachActivityCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], OutreachActivityCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a OutreachActivity.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutreachActivityAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends OutreachActivityAggregateArgs>(args: Subset<T, OutreachActivityAggregateArgs>): Prisma.PrismaPromise<GetOutreachActivityAggregateType<T>>
+
+    /**
+     * Group by OutreachActivity.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutreachActivityGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends OutreachActivityGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: OutreachActivityGroupByArgs['orderBy'] }
+        : { orderBy?: OutreachActivityGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, OutreachActivityGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOutreachActivityGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the OutreachActivity model
+   */
+  readonly fields: OutreachActivityFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for OutreachActivity.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__OutreachActivityClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    backlinks<T extends OutreachActivity$backlinksArgs<ExtArgs> = {}>(args?: Subset<T, OutreachActivity$backlinksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BacklinkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the OutreachActivity model
+   */
+  interface OutreachActivityFieldRefs {
+    readonly id: FieldRef<"OutreachActivity", 'String'>
+    readonly targetDomain: FieldRef<"OutreachActivity", 'String'>
+    readonly campaignId: FieldRef<"OutreachActivity", 'String'>
+    readonly type: FieldRef<"OutreachActivity", 'String'>
+    readonly status: FieldRef<"OutreachActivity", 'String'>
+    readonly emailSubject: FieldRef<"OutreachActivity", 'String'>
+    readonly emailContent: FieldRef<"OutreachActivity", 'String'>
+    readonly responseReceived: FieldRef<"OutreachActivity", 'Boolean'>
+    readonly responseContent: FieldRef<"OutreachActivity", 'String'>
+    readonly linkAcquired: FieldRef<"OutreachActivity", 'Boolean'>
+    readonly linkUrl: FieldRef<"OutreachActivity", 'String'>
+    readonly timestamp: FieldRef<"OutreachActivity", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * OutreachActivity findUnique
+   */
+  export type OutreachActivityFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachActivity
+     */
+    select?: OutreachActivitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachActivity
+     */
+    omit?: OutreachActivityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachActivityInclude<ExtArgs> | null
+    /**
+     * Filter, which OutreachActivity to fetch.
+     */
+    where: OutreachActivityWhereUniqueInput
+  }
+
+  /**
+   * OutreachActivity findUniqueOrThrow
+   */
+  export type OutreachActivityFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachActivity
+     */
+    select?: OutreachActivitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachActivity
+     */
+    omit?: OutreachActivityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachActivityInclude<ExtArgs> | null
+    /**
+     * Filter, which OutreachActivity to fetch.
+     */
+    where: OutreachActivityWhereUniqueInput
+  }
+
+  /**
+   * OutreachActivity findFirst
+   */
+  export type OutreachActivityFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachActivity
+     */
+    select?: OutreachActivitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachActivity
+     */
+    omit?: OutreachActivityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachActivityInclude<ExtArgs> | null
+    /**
+     * Filter, which OutreachActivity to fetch.
+     */
+    where?: OutreachActivityWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OutreachActivities to fetch.
+     */
+    orderBy?: OutreachActivityOrderByWithRelationInput | OutreachActivityOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OutreachActivities.
+     */
+    cursor?: OutreachActivityWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OutreachActivities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OutreachActivities.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OutreachActivities.
+     */
+    distinct?: OutreachActivityScalarFieldEnum | OutreachActivityScalarFieldEnum[]
+  }
+
+  /**
+   * OutreachActivity findFirstOrThrow
+   */
+  export type OutreachActivityFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachActivity
+     */
+    select?: OutreachActivitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachActivity
+     */
+    omit?: OutreachActivityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachActivityInclude<ExtArgs> | null
+    /**
+     * Filter, which OutreachActivity to fetch.
+     */
+    where?: OutreachActivityWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OutreachActivities to fetch.
+     */
+    orderBy?: OutreachActivityOrderByWithRelationInput | OutreachActivityOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OutreachActivities.
+     */
+    cursor?: OutreachActivityWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OutreachActivities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OutreachActivities.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OutreachActivities.
+     */
+    distinct?: OutreachActivityScalarFieldEnum | OutreachActivityScalarFieldEnum[]
+  }
+
+  /**
+   * OutreachActivity findMany
+   */
+  export type OutreachActivityFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachActivity
+     */
+    select?: OutreachActivitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachActivity
+     */
+    omit?: OutreachActivityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachActivityInclude<ExtArgs> | null
+    /**
+     * Filter, which OutreachActivities to fetch.
+     */
+    where?: OutreachActivityWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OutreachActivities to fetch.
+     */
+    orderBy?: OutreachActivityOrderByWithRelationInput | OutreachActivityOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing OutreachActivities.
+     */
+    cursor?: OutreachActivityWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OutreachActivities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OutreachActivities.
+     */
+    skip?: number
+    distinct?: OutreachActivityScalarFieldEnum | OutreachActivityScalarFieldEnum[]
+  }
+
+  /**
+   * OutreachActivity create
+   */
+  export type OutreachActivityCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachActivity
+     */
+    select?: OutreachActivitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachActivity
+     */
+    omit?: OutreachActivityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachActivityInclude<ExtArgs> | null
+    /**
+     * The data needed to create a OutreachActivity.
+     */
+    data: XOR<OutreachActivityCreateInput, OutreachActivityUncheckedCreateInput>
+  }
+
+  /**
+   * OutreachActivity createMany
+   */
+  export type OutreachActivityCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many OutreachActivities.
+     */
+    data: OutreachActivityCreateManyInput | OutreachActivityCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * OutreachActivity createManyAndReturn
+   */
+  export type OutreachActivityCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachActivity
+     */
+    select?: OutreachActivitySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachActivity
+     */
+    omit?: OutreachActivityOmit<ExtArgs> | null
+    /**
+     * The data used to create many OutreachActivities.
+     */
+    data: OutreachActivityCreateManyInput | OutreachActivityCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * OutreachActivity update
+   */
+  export type OutreachActivityUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachActivity
+     */
+    select?: OutreachActivitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachActivity
+     */
+    omit?: OutreachActivityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachActivityInclude<ExtArgs> | null
+    /**
+     * The data needed to update a OutreachActivity.
+     */
+    data: XOR<OutreachActivityUpdateInput, OutreachActivityUncheckedUpdateInput>
+    /**
+     * Choose, which OutreachActivity to update.
+     */
+    where: OutreachActivityWhereUniqueInput
+  }
+
+  /**
+   * OutreachActivity updateMany
+   */
+  export type OutreachActivityUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update OutreachActivities.
+     */
+    data: XOR<OutreachActivityUpdateManyMutationInput, OutreachActivityUncheckedUpdateManyInput>
+    /**
+     * Filter which OutreachActivities to update
+     */
+    where?: OutreachActivityWhereInput
+    /**
+     * Limit how many OutreachActivities to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * OutreachActivity updateManyAndReturn
+   */
+  export type OutreachActivityUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachActivity
+     */
+    select?: OutreachActivitySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachActivity
+     */
+    omit?: OutreachActivityOmit<ExtArgs> | null
+    /**
+     * The data used to update OutreachActivities.
+     */
+    data: XOR<OutreachActivityUpdateManyMutationInput, OutreachActivityUncheckedUpdateManyInput>
+    /**
+     * Filter which OutreachActivities to update
+     */
+    where?: OutreachActivityWhereInput
+    /**
+     * Limit how many OutreachActivities to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * OutreachActivity upsert
+   */
+  export type OutreachActivityUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachActivity
+     */
+    select?: OutreachActivitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachActivity
+     */
+    omit?: OutreachActivityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachActivityInclude<ExtArgs> | null
+    /**
+     * The filter to search for the OutreachActivity to update in case it exists.
+     */
+    where: OutreachActivityWhereUniqueInput
+    /**
+     * In case the OutreachActivity found by the `where` argument doesn't exist, create a new OutreachActivity with this data.
+     */
+    create: XOR<OutreachActivityCreateInput, OutreachActivityUncheckedCreateInput>
+    /**
+     * In case the OutreachActivity was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<OutreachActivityUpdateInput, OutreachActivityUncheckedUpdateInput>
+  }
+
+  /**
+   * OutreachActivity delete
+   */
+  export type OutreachActivityDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachActivity
+     */
+    select?: OutreachActivitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachActivity
+     */
+    omit?: OutreachActivityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachActivityInclude<ExtArgs> | null
+    /**
+     * Filter which OutreachActivity to delete.
+     */
+    where: OutreachActivityWhereUniqueInput
+  }
+
+  /**
+   * OutreachActivity deleteMany
+   */
+  export type OutreachActivityDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OutreachActivities to delete
+     */
+    where?: OutreachActivityWhereInput
+    /**
+     * Limit how many OutreachActivities to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * OutreachActivity.backlinks
+   */
+  export type OutreachActivity$backlinksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Backlink
+     */
+    select?: BacklinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Backlink
+     */
+    omit?: BacklinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BacklinkInclude<ExtArgs> | null
+    where?: BacklinkWhereInput
+    orderBy?: BacklinkOrderByWithRelationInput | BacklinkOrderByWithRelationInput[]
+    cursor?: BacklinkWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BacklinkScalarFieldEnum | BacklinkScalarFieldEnum[]
+  }
+
+  /**
+   * OutreachActivity without action
+   */
+  export type OutreachActivityDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachActivity
+     */
+    select?: OutreachActivitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachActivity
+     */
+    omit?: OutreachActivityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachActivityInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Backlink
+   */
+
+  export type AggregateBacklink = {
+    _count: BacklinkCountAggregateOutputType | null
+    _avg: BacklinkAvgAggregateOutputType | null
+    _sum: BacklinkSumAggregateOutputType | null
+    _min: BacklinkMinAggregateOutputType | null
+    _max: BacklinkMaxAggregateOutputType | null
+  }
+
+  export type BacklinkAvgAggregateOutputType = {
+    domainAuthority: number | null
+    pageAuthority: number | null
+    traffic: number | null
+    clicks: number | null
+  }
+
+  export type BacklinkSumAggregateOutputType = {
+    domainAuthority: number | null
+    pageAuthority: number | null
+    traffic: number | null
+    clicks: number | null
+  }
+
+  export type BacklinkMinAggregateOutputType = {
+    id: string | null
+    sourceUrl: string | null
+    targetUrl: string | null
+    anchorText: string | null
+    discoveredDate: Date | null
+    lastCheckedDate: Date | null
+    status: string | null
+    domainAuthority: number | null
+    pageAuthority: number | null
+    traffic: number | null
+    clicks: number | null
+    outreachActivityId: string | null
+  }
+
+  export type BacklinkMaxAggregateOutputType = {
+    id: string | null
+    sourceUrl: string | null
+    targetUrl: string | null
+    anchorText: string | null
+    discoveredDate: Date | null
+    lastCheckedDate: Date | null
+    status: string | null
+    domainAuthority: number | null
+    pageAuthority: number | null
+    traffic: number | null
+    clicks: number | null
+    outreachActivityId: string | null
+  }
+
+  export type BacklinkCountAggregateOutputType = {
+    id: number
+    sourceUrl: number
+    targetUrl: number
+    anchorText: number
+    discoveredDate: number
+    lastCheckedDate: number
+    status: number
+    domainAuthority: number
+    pageAuthority: number
+    traffic: number
+    clicks: number
+    outreachActivityId: number
+    _all: number
+  }
+
+
+  export type BacklinkAvgAggregateInputType = {
+    domainAuthority?: true
+    pageAuthority?: true
+    traffic?: true
+    clicks?: true
+  }
+
+  export type BacklinkSumAggregateInputType = {
+    domainAuthority?: true
+    pageAuthority?: true
+    traffic?: true
+    clicks?: true
+  }
+
+  export type BacklinkMinAggregateInputType = {
+    id?: true
+    sourceUrl?: true
+    targetUrl?: true
+    anchorText?: true
+    discoveredDate?: true
+    lastCheckedDate?: true
+    status?: true
+    domainAuthority?: true
+    pageAuthority?: true
+    traffic?: true
+    clicks?: true
+    outreachActivityId?: true
+  }
+
+  export type BacklinkMaxAggregateInputType = {
+    id?: true
+    sourceUrl?: true
+    targetUrl?: true
+    anchorText?: true
+    discoveredDate?: true
+    lastCheckedDate?: true
+    status?: true
+    domainAuthority?: true
+    pageAuthority?: true
+    traffic?: true
+    clicks?: true
+    outreachActivityId?: true
+  }
+
+  export type BacklinkCountAggregateInputType = {
+    id?: true
+    sourceUrl?: true
+    targetUrl?: true
+    anchorText?: true
+    discoveredDate?: true
+    lastCheckedDate?: true
+    status?: true
+    domainAuthority?: true
+    pageAuthority?: true
+    traffic?: true
+    clicks?: true
+    outreachActivityId?: true
+    _all?: true
+  }
+
+  export type BacklinkAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Backlink to aggregate.
+     */
+    where?: BacklinkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Backlinks to fetch.
+     */
+    orderBy?: BacklinkOrderByWithRelationInput | BacklinkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BacklinkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Backlinks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Backlinks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Backlinks
+    **/
+    _count?: true | BacklinkCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BacklinkAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BacklinkSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BacklinkMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BacklinkMaxAggregateInputType
+  }
+
+  export type GetBacklinkAggregateType<T extends BacklinkAggregateArgs> = {
+        [P in keyof T & keyof AggregateBacklink]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBacklink[P]>
+      : GetScalarType<T[P], AggregateBacklink[P]>
+  }
+
+
+
+
+  export type BacklinkGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BacklinkWhereInput
+    orderBy?: BacklinkOrderByWithAggregationInput | BacklinkOrderByWithAggregationInput[]
+    by: BacklinkScalarFieldEnum[] | BacklinkScalarFieldEnum
+    having?: BacklinkScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BacklinkCountAggregateInputType | true
+    _avg?: BacklinkAvgAggregateInputType
+    _sum?: BacklinkSumAggregateInputType
+    _min?: BacklinkMinAggregateInputType
+    _max?: BacklinkMaxAggregateInputType
+  }
+
+  export type BacklinkGroupByOutputType = {
+    id: string
+    sourceUrl: string
+    targetUrl: string
+    anchorText: string
+    discoveredDate: Date
+    lastCheckedDate: Date
+    status: string
+    domainAuthority: number | null
+    pageAuthority: number | null
+    traffic: number | null
+    clicks: number | null
+    outreachActivityId: string | null
+    _count: BacklinkCountAggregateOutputType | null
+    _avg: BacklinkAvgAggregateOutputType | null
+    _sum: BacklinkSumAggregateOutputType | null
+    _min: BacklinkMinAggregateOutputType | null
+    _max: BacklinkMaxAggregateOutputType | null
+  }
+
+  type GetBacklinkGroupByPayload<T extends BacklinkGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BacklinkGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BacklinkGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BacklinkGroupByOutputType[P]>
+            : GetScalarType<T[P], BacklinkGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BacklinkSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sourceUrl?: boolean
+    targetUrl?: boolean
+    anchorText?: boolean
+    discoveredDate?: boolean
+    lastCheckedDate?: boolean
+    status?: boolean
+    domainAuthority?: boolean
+    pageAuthority?: boolean
+    traffic?: boolean
+    clicks?: boolean
+    outreachActivityId?: boolean
+    outreachActivity?: boolean | Backlink$outreachActivityArgs<ExtArgs>
+  }, ExtArgs["result"]["backlink"]>
+
+  export type BacklinkSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sourceUrl?: boolean
+    targetUrl?: boolean
+    anchorText?: boolean
+    discoveredDate?: boolean
+    lastCheckedDate?: boolean
+    status?: boolean
+    domainAuthority?: boolean
+    pageAuthority?: boolean
+    traffic?: boolean
+    clicks?: boolean
+    outreachActivityId?: boolean
+    outreachActivity?: boolean | Backlink$outreachActivityArgs<ExtArgs>
+  }, ExtArgs["result"]["backlink"]>
+
+  export type BacklinkSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sourceUrl?: boolean
+    targetUrl?: boolean
+    anchorText?: boolean
+    discoveredDate?: boolean
+    lastCheckedDate?: boolean
+    status?: boolean
+    domainAuthority?: boolean
+    pageAuthority?: boolean
+    traffic?: boolean
+    clicks?: boolean
+    outreachActivityId?: boolean
+    outreachActivity?: boolean | Backlink$outreachActivityArgs<ExtArgs>
+  }, ExtArgs["result"]["backlink"]>
+
+  export type BacklinkSelectScalar = {
+    id?: boolean
+    sourceUrl?: boolean
+    targetUrl?: boolean
+    anchorText?: boolean
+    discoveredDate?: boolean
+    lastCheckedDate?: boolean
+    status?: boolean
+    domainAuthority?: boolean
+    pageAuthority?: boolean
+    traffic?: boolean
+    clicks?: boolean
+    outreachActivityId?: boolean
+  }
+
+  export type BacklinkOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "sourceUrl" | "targetUrl" | "anchorText" | "discoveredDate" | "lastCheckedDate" | "status" | "domainAuthority" | "pageAuthority" | "traffic" | "clicks" | "outreachActivityId", ExtArgs["result"]["backlink"]>
+  export type BacklinkInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    outreachActivity?: boolean | Backlink$outreachActivityArgs<ExtArgs>
+  }
+  export type BacklinkIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    outreachActivity?: boolean | Backlink$outreachActivityArgs<ExtArgs>
+  }
+  export type BacklinkIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    outreachActivity?: boolean | Backlink$outreachActivityArgs<ExtArgs>
+  }
+
+  export type $BacklinkPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Backlink"
+    objects: {
+      outreachActivity: Prisma.$OutreachActivityPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      sourceUrl: string
+      targetUrl: string
+      anchorText: string
+      discoveredDate: Date
+      lastCheckedDate: Date
+      status: string
+      domainAuthority: number | null
+      pageAuthority: number | null
+      traffic: number | null
+      clicks: number | null
+      outreachActivityId: string | null
+    }, ExtArgs["result"]["backlink"]>
+    composites: {}
+  }
+
+  type BacklinkGetPayload<S extends boolean | null | undefined | BacklinkDefaultArgs> = $Result.GetResult<Prisma.$BacklinkPayload, S>
+
+  type BacklinkCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BacklinkFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BacklinkCountAggregateInputType | true
+    }
+
+  export interface BacklinkDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Backlink'], meta: { name: 'Backlink' } }
+    /**
+     * Find zero or one Backlink that matches the filter.
+     * @param {BacklinkFindUniqueArgs} args - Arguments to find a Backlink
+     * @example
+     * // Get one Backlink
+     * const backlink = await prisma.backlink.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BacklinkFindUniqueArgs>(args: SelectSubset<T, BacklinkFindUniqueArgs<ExtArgs>>): Prisma__BacklinkClient<$Result.GetResult<Prisma.$BacklinkPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Backlink that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BacklinkFindUniqueOrThrowArgs} args - Arguments to find a Backlink
+     * @example
+     * // Get one Backlink
+     * const backlink = await prisma.backlink.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BacklinkFindUniqueOrThrowArgs>(args: SelectSubset<T, BacklinkFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BacklinkClient<$Result.GetResult<Prisma.$BacklinkPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Backlink that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BacklinkFindFirstArgs} args - Arguments to find a Backlink
+     * @example
+     * // Get one Backlink
+     * const backlink = await prisma.backlink.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BacklinkFindFirstArgs>(args?: SelectSubset<T, BacklinkFindFirstArgs<ExtArgs>>): Prisma__BacklinkClient<$Result.GetResult<Prisma.$BacklinkPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Backlink that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BacklinkFindFirstOrThrowArgs} args - Arguments to find a Backlink
+     * @example
+     * // Get one Backlink
+     * const backlink = await prisma.backlink.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BacklinkFindFirstOrThrowArgs>(args?: SelectSubset<T, BacklinkFindFirstOrThrowArgs<ExtArgs>>): Prisma__BacklinkClient<$Result.GetResult<Prisma.$BacklinkPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Backlinks that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BacklinkFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Backlinks
+     * const backlinks = await prisma.backlink.findMany()
+     * 
+     * // Get first 10 Backlinks
+     * const backlinks = await prisma.backlink.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const backlinkWithIdOnly = await prisma.backlink.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BacklinkFindManyArgs>(args?: SelectSubset<T, BacklinkFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BacklinkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Backlink.
+     * @param {BacklinkCreateArgs} args - Arguments to create a Backlink.
+     * @example
+     * // Create one Backlink
+     * const Backlink = await prisma.backlink.create({
+     *   data: {
+     *     // ... data to create a Backlink
+     *   }
+     * })
+     * 
+     */
+    create<T extends BacklinkCreateArgs>(args: SelectSubset<T, BacklinkCreateArgs<ExtArgs>>): Prisma__BacklinkClient<$Result.GetResult<Prisma.$BacklinkPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Backlinks.
+     * @param {BacklinkCreateManyArgs} args - Arguments to create many Backlinks.
+     * @example
+     * // Create many Backlinks
+     * const backlink = await prisma.backlink.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BacklinkCreateManyArgs>(args?: SelectSubset<T, BacklinkCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Backlinks and returns the data saved in the database.
+     * @param {BacklinkCreateManyAndReturnArgs} args - Arguments to create many Backlinks.
+     * @example
+     * // Create many Backlinks
+     * const backlink = await prisma.backlink.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Backlinks and only return the `id`
+     * const backlinkWithIdOnly = await prisma.backlink.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BacklinkCreateManyAndReturnArgs>(args?: SelectSubset<T, BacklinkCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BacklinkPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Backlink.
+     * @param {BacklinkDeleteArgs} args - Arguments to delete one Backlink.
+     * @example
+     * // Delete one Backlink
+     * const Backlink = await prisma.backlink.delete({
+     *   where: {
+     *     // ... filter to delete one Backlink
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BacklinkDeleteArgs>(args: SelectSubset<T, BacklinkDeleteArgs<ExtArgs>>): Prisma__BacklinkClient<$Result.GetResult<Prisma.$BacklinkPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Backlink.
+     * @param {BacklinkUpdateArgs} args - Arguments to update one Backlink.
+     * @example
+     * // Update one Backlink
+     * const backlink = await prisma.backlink.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BacklinkUpdateArgs>(args: SelectSubset<T, BacklinkUpdateArgs<ExtArgs>>): Prisma__BacklinkClient<$Result.GetResult<Prisma.$BacklinkPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Backlinks.
+     * @param {BacklinkDeleteManyArgs} args - Arguments to filter Backlinks to delete.
+     * @example
+     * // Delete a few Backlinks
+     * const { count } = await prisma.backlink.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BacklinkDeleteManyArgs>(args?: SelectSubset<T, BacklinkDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Backlinks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BacklinkUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Backlinks
+     * const backlink = await prisma.backlink.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BacklinkUpdateManyArgs>(args: SelectSubset<T, BacklinkUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Backlinks and returns the data updated in the database.
+     * @param {BacklinkUpdateManyAndReturnArgs} args - Arguments to update many Backlinks.
+     * @example
+     * // Update many Backlinks
+     * const backlink = await prisma.backlink.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Backlinks and only return the `id`
+     * const backlinkWithIdOnly = await prisma.backlink.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BacklinkUpdateManyAndReturnArgs>(args: SelectSubset<T, BacklinkUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BacklinkPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Backlink.
+     * @param {BacklinkUpsertArgs} args - Arguments to update or create a Backlink.
+     * @example
+     * // Update or create a Backlink
+     * const backlink = await prisma.backlink.upsert({
+     *   create: {
+     *     // ... data to create a Backlink
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Backlink we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BacklinkUpsertArgs>(args: SelectSubset<T, BacklinkUpsertArgs<ExtArgs>>): Prisma__BacklinkClient<$Result.GetResult<Prisma.$BacklinkPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Backlinks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BacklinkCountArgs} args - Arguments to filter Backlinks to count.
+     * @example
+     * // Count the number of Backlinks
+     * const count = await prisma.backlink.count({
+     *   where: {
+     *     // ... the filter for the Backlinks we want to count
+     *   }
+     * })
+    **/
+    count<T extends BacklinkCountArgs>(
+      args?: Subset<T, BacklinkCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BacklinkCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Backlink.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BacklinkAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BacklinkAggregateArgs>(args: Subset<T, BacklinkAggregateArgs>): Prisma.PrismaPromise<GetBacklinkAggregateType<T>>
+
+    /**
+     * Group by Backlink.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BacklinkGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BacklinkGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BacklinkGroupByArgs['orderBy'] }
+        : { orderBy?: BacklinkGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BacklinkGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBacklinkGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Backlink model
+   */
+  readonly fields: BacklinkFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Backlink.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BacklinkClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    outreachActivity<T extends Backlink$outreachActivityArgs<ExtArgs> = {}>(args?: Subset<T, Backlink$outreachActivityArgs<ExtArgs>>): Prisma__OutreachActivityClient<$Result.GetResult<Prisma.$OutreachActivityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Backlink model
+   */
+  interface BacklinkFieldRefs {
+    readonly id: FieldRef<"Backlink", 'String'>
+    readonly sourceUrl: FieldRef<"Backlink", 'String'>
+    readonly targetUrl: FieldRef<"Backlink", 'String'>
+    readonly anchorText: FieldRef<"Backlink", 'String'>
+    readonly discoveredDate: FieldRef<"Backlink", 'DateTime'>
+    readonly lastCheckedDate: FieldRef<"Backlink", 'DateTime'>
+    readonly status: FieldRef<"Backlink", 'String'>
+    readonly domainAuthority: FieldRef<"Backlink", 'Int'>
+    readonly pageAuthority: FieldRef<"Backlink", 'Int'>
+    readonly traffic: FieldRef<"Backlink", 'Int'>
+    readonly clicks: FieldRef<"Backlink", 'Int'>
+    readonly outreachActivityId: FieldRef<"Backlink", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Backlink findUnique
+   */
+  export type BacklinkFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Backlink
+     */
+    select?: BacklinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Backlink
+     */
+    omit?: BacklinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BacklinkInclude<ExtArgs> | null
+    /**
+     * Filter, which Backlink to fetch.
+     */
+    where: BacklinkWhereUniqueInput
+  }
+
+  /**
+   * Backlink findUniqueOrThrow
+   */
+  export type BacklinkFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Backlink
+     */
+    select?: BacklinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Backlink
+     */
+    omit?: BacklinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BacklinkInclude<ExtArgs> | null
+    /**
+     * Filter, which Backlink to fetch.
+     */
+    where: BacklinkWhereUniqueInput
+  }
+
+  /**
+   * Backlink findFirst
+   */
+  export type BacklinkFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Backlink
+     */
+    select?: BacklinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Backlink
+     */
+    omit?: BacklinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BacklinkInclude<ExtArgs> | null
+    /**
+     * Filter, which Backlink to fetch.
+     */
+    where?: BacklinkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Backlinks to fetch.
+     */
+    orderBy?: BacklinkOrderByWithRelationInput | BacklinkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Backlinks.
+     */
+    cursor?: BacklinkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Backlinks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Backlinks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Backlinks.
+     */
+    distinct?: BacklinkScalarFieldEnum | BacklinkScalarFieldEnum[]
+  }
+
+  /**
+   * Backlink findFirstOrThrow
+   */
+  export type BacklinkFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Backlink
+     */
+    select?: BacklinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Backlink
+     */
+    omit?: BacklinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BacklinkInclude<ExtArgs> | null
+    /**
+     * Filter, which Backlink to fetch.
+     */
+    where?: BacklinkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Backlinks to fetch.
+     */
+    orderBy?: BacklinkOrderByWithRelationInput | BacklinkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Backlinks.
+     */
+    cursor?: BacklinkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Backlinks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Backlinks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Backlinks.
+     */
+    distinct?: BacklinkScalarFieldEnum | BacklinkScalarFieldEnum[]
+  }
+
+  /**
+   * Backlink findMany
+   */
+  export type BacklinkFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Backlink
+     */
+    select?: BacklinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Backlink
+     */
+    omit?: BacklinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BacklinkInclude<ExtArgs> | null
+    /**
+     * Filter, which Backlinks to fetch.
+     */
+    where?: BacklinkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Backlinks to fetch.
+     */
+    orderBy?: BacklinkOrderByWithRelationInput | BacklinkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Backlinks.
+     */
+    cursor?: BacklinkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Backlinks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Backlinks.
+     */
+    skip?: number
+    distinct?: BacklinkScalarFieldEnum | BacklinkScalarFieldEnum[]
+  }
+
+  /**
+   * Backlink create
+   */
+  export type BacklinkCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Backlink
+     */
+    select?: BacklinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Backlink
+     */
+    omit?: BacklinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BacklinkInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Backlink.
+     */
+    data: XOR<BacklinkCreateInput, BacklinkUncheckedCreateInput>
+  }
+
+  /**
+   * Backlink createMany
+   */
+  export type BacklinkCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Backlinks.
+     */
+    data: BacklinkCreateManyInput | BacklinkCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Backlink createManyAndReturn
+   */
+  export type BacklinkCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Backlink
+     */
+    select?: BacklinkSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Backlink
+     */
+    omit?: BacklinkOmit<ExtArgs> | null
+    /**
+     * The data used to create many Backlinks.
+     */
+    data: BacklinkCreateManyInput | BacklinkCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BacklinkIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Backlink update
+   */
+  export type BacklinkUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Backlink
+     */
+    select?: BacklinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Backlink
+     */
+    omit?: BacklinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BacklinkInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Backlink.
+     */
+    data: XOR<BacklinkUpdateInput, BacklinkUncheckedUpdateInput>
+    /**
+     * Choose, which Backlink to update.
+     */
+    where: BacklinkWhereUniqueInput
+  }
+
+  /**
+   * Backlink updateMany
+   */
+  export type BacklinkUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Backlinks.
+     */
+    data: XOR<BacklinkUpdateManyMutationInput, BacklinkUncheckedUpdateManyInput>
+    /**
+     * Filter which Backlinks to update
+     */
+    where?: BacklinkWhereInput
+    /**
+     * Limit how many Backlinks to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Backlink updateManyAndReturn
+   */
+  export type BacklinkUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Backlink
+     */
+    select?: BacklinkSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Backlink
+     */
+    omit?: BacklinkOmit<ExtArgs> | null
+    /**
+     * The data used to update Backlinks.
+     */
+    data: XOR<BacklinkUpdateManyMutationInput, BacklinkUncheckedUpdateManyInput>
+    /**
+     * Filter which Backlinks to update
+     */
+    where?: BacklinkWhereInput
+    /**
+     * Limit how many Backlinks to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BacklinkIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Backlink upsert
+   */
+  export type BacklinkUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Backlink
+     */
+    select?: BacklinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Backlink
+     */
+    omit?: BacklinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BacklinkInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Backlink to update in case it exists.
+     */
+    where: BacklinkWhereUniqueInput
+    /**
+     * In case the Backlink found by the `where` argument doesn't exist, create a new Backlink with this data.
+     */
+    create: XOR<BacklinkCreateInput, BacklinkUncheckedCreateInput>
+    /**
+     * In case the Backlink was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BacklinkUpdateInput, BacklinkUncheckedUpdateInput>
+  }
+
+  /**
+   * Backlink delete
+   */
+  export type BacklinkDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Backlink
+     */
+    select?: BacklinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Backlink
+     */
+    omit?: BacklinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BacklinkInclude<ExtArgs> | null
+    /**
+     * Filter which Backlink to delete.
+     */
+    where: BacklinkWhereUniqueInput
+  }
+
+  /**
+   * Backlink deleteMany
+   */
+  export type BacklinkDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Backlinks to delete
+     */
+    where?: BacklinkWhereInput
+    /**
+     * Limit how many Backlinks to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Backlink.outreachActivity
+   */
+  export type Backlink$outreachActivityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutreachActivity
+     */
+    select?: OutreachActivitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutreachActivity
+     */
+    omit?: OutreachActivityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutreachActivityInclude<ExtArgs> | null
+    where?: OutreachActivityWhereInput
+  }
+
+  /**
+   * Backlink without action
+   */
+  export type BacklinkDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Backlink
+     */
+    select?: BacklinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Backlink
+     */
+    omit?: BacklinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BacklinkInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -12709,6 +17806,74 @@ export namespace Prisma {
   };
 
   export type BlogScalarFieldEnum = (typeof BlogScalarFieldEnum)[keyof typeof BlogScalarFieldEnum]
+
+
+  export const OutreachCampaignScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    type: 'type',
+    template: 'template',
+    scheduledDate: 'scheduledDate',
+    status: 'status',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type OutreachCampaignScalarFieldEnum = (typeof OutreachCampaignScalarFieldEnum)[keyof typeof OutreachCampaignScalarFieldEnum]
+
+
+  export const OutreachTargetScalarFieldEnum: {
+    id: 'id',
+    domain: 'domain',
+    contactEmail: 'contactEmail',
+    type: 'type',
+    authority: 'authority',
+    relevance: 'relevance',
+    lastContactDate: 'lastContactDate',
+    status: 'status',
+    notes: 'notes',
+    campaignId: 'campaignId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type OutreachTargetScalarFieldEnum = (typeof OutreachTargetScalarFieldEnum)[keyof typeof OutreachTargetScalarFieldEnum]
+
+
+  export const OutreachActivityScalarFieldEnum: {
+    id: 'id',
+    targetDomain: 'targetDomain',
+    campaignId: 'campaignId',
+    type: 'type',
+    status: 'status',
+    emailSubject: 'emailSubject',
+    emailContent: 'emailContent',
+    responseReceived: 'responseReceived',
+    responseContent: 'responseContent',
+    linkAcquired: 'linkAcquired',
+    linkUrl: 'linkUrl',
+    timestamp: 'timestamp'
+  };
+
+  export type OutreachActivityScalarFieldEnum = (typeof OutreachActivityScalarFieldEnum)[keyof typeof OutreachActivityScalarFieldEnum]
+
+
+  export const BacklinkScalarFieldEnum: {
+    id: 'id',
+    sourceUrl: 'sourceUrl',
+    targetUrl: 'targetUrl',
+    anchorText: 'anchorText',
+    discoveredDate: 'discoveredDate',
+    lastCheckedDate: 'lastCheckedDate',
+    status: 'status',
+    domainAuthority: 'domainAuthority',
+    pageAuthority: 'pageAuthority',
+    traffic: 'traffic',
+    clicks: 'clicks',
+    outreachActivityId: 'outreachActivityId'
+  };
+
+  export type BacklinkScalarFieldEnum = (typeof BacklinkScalarFieldEnum)[keyof typeof BacklinkScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -13474,6 +18639,350 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Blog"> | Date | string
   }
 
+  export type OutreachCampaignWhereInput = {
+    AND?: OutreachCampaignWhereInput | OutreachCampaignWhereInput[]
+    OR?: OutreachCampaignWhereInput[]
+    NOT?: OutreachCampaignWhereInput | OutreachCampaignWhereInput[]
+    id?: StringFilter<"OutreachCampaign"> | string
+    name?: StringFilter<"OutreachCampaign"> | string
+    type?: StringFilter<"OutreachCampaign"> | string
+    template?: StringFilter<"OutreachCampaign"> | string
+    scheduledDate?: DateTimeFilter<"OutreachCampaign"> | Date | string
+    status?: StringFilter<"OutreachCampaign"> | string
+    createdAt?: DateTimeFilter<"OutreachCampaign"> | Date | string
+    updatedAt?: DateTimeFilter<"OutreachCampaign"> | Date | string
+    targets?: OutreachTargetListRelationFilter
+  }
+
+  export type OutreachCampaignOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    template?: SortOrder
+    scheduledDate?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    targets?: OutreachTargetOrderByRelationAggregateInput
+  }
+
+  export type OutreachCampaignWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: OutreachCampaignWhereInput | OutreachCampaignWhereInput[]
+    OR?: OutreachCampaignWhereInput[]
+    NOT?: OutreachCampaignWhereInput | OutreachCampaignWhereInput[]
+    name?: StringFilter<"OutreachCampaign"> | string
+    type?: StringFilter<"OutreachCampaign"> | string
+    template?: StringFilter<"OutreachCampaign"> | string
+    scheduledDate?: DateTimeFilter<"OutreachCampaign"> | Date | string
+    status?: StringFilter<"OutreachCampaign"> | string
+    createdAt?: DateTimeFilter<"OutreachCampaign"> | Date | string
+    updatedAt?: DateTimeFilter<"OutreachCampaign"> | Date | string
+    targets?: OutreachTargetListRelationFilter
+  }, "id">
+
+  export type OutreachCampaignOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    template?: SortOrder
+    scheduledDate?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: OutreachCampaignCountOrderByAggregateInput
+    _max?: OutreachCampaignMaxOrderByAggregateInput
+    _min?: OutreachCampaignMinOrderByAggregateInput
+  }
+
+  export type OutreachCampaignScalarWhereWithAggregatesInput = {
+    AND?: OutreachCampaignScalarWhereWithAggregatesInput | OutreachCampaignScalarWhereWithAggregatesInput[]
+    OR?: OutreachCampaignScalarWhereWithAggregatesInput[]
+    NOT?: OutreachCampaignScalarWhereWithAggregatesInput | OutreachCampaignScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"OutreachCampaign"> | string
+    name?: StringWithAggregatesFilter<"OutreachCampaign"> | string
+    type?: StringWithAggregatesFilter<"OutreachCampaign"> | string
+    template?: StringWithAggregatesFilter<"OutreachCampaign"> | string
+    scheduledDate?: DateTimeWithAggregatesFilter<"OutreachCampaign"> | Date | string
+    status?: StringWithAggregatesFilter<"OutreachCampaign"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"OutreachCampaign"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"OutreachCampaign"> | Date | string
+  }
+
+  export type OutreachTargetWhereInput = {
+    AND?: OutreachTargetWhereInput | OutreachTargetWhereInput[]
+    OR?: OutreachTargetWhereInput[]
+    NOT?: OutreachTargetWhereInput | OutreachTargetWhereInput[]
+    id?: StringFilter<"OutreachTarget"> | string
+    domain?: StringFilter<"OutreachTarget"> | string
+    contactEmail?: StringNullableFilter<"OutreachTarget"> | string | null
+    type?: StringFilter<"OutreachTarget"> | string
+    authority?: IntFilter<"OutreachTarget"> | number
+    relevance?: IntFilter<"OutreachTarget"> | number
+    lastContactDate?: DateTimeNullableFilter<"OutreachTarget"> | Date | string | null
+    status?: StringFilter<"OutreachTarget"> | string
+    notes?: StringNullableFilter<"OutreachTarget"> | string | null
+    campaignId?: StringFilter<"OutreachTarget"> | string
+    createdAt?: DateTimeFilter<"OutreachTarget"> | Date | string
+    updatedAt?: DateTimeFilter<"OutreachTarget"> | Date | string
+    campaign?: XOR<OutreachCampaignScalarRelationFilter, OutreachCampaignWhereInput>
+  }
+
+  export type OutreachTargetOrderByWithRelationInput = {
+    id?: SortOrder
+    domain?: SortOrder
+    contactEmail?: SortOrderInput | SortOrder
+    type?: SortOrder
+    authority?: SortOrder
+    relevance?: SortOrder
+    lastContactDate?: SortOrderInput | SortOrder
+    status?: SortOrder
+    notes?: SortOrderInput | SortOrder
+    campaignId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    campaign?: OutreachCampaignOrderByWithRelationInput
+  }
+
+  export type OutreachTargetWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: OutreachTargetWhereInput | OutreachTargetWhereInput[]
+    OR?: OutreachTargetWhereInput[]
+    NOT?: OutreachTargetWhereInput | OutreachTargetWhereInput[]
+    domain?: StringFilter<"OutreachTarget"> | string
+    contactEmail?: StringNullableFilter<"OutreachTarget"> | string | null
+    type?: StringFilter<"OutreachTarget"> | string
+    authority?: IntFilter<"OutreachTarget"> | number
+    relevance?: IntFilter<"OutreachTarget"> | number
+    lastContactDate?: DateTimeNullableFilter<"OutreachTarget"> | Date | string | null
+    status?: StringFilter<"OutreachTarget"> | string
+    notes?: StringNullableFilter<"OutreachTarget"> | string | null
+    campaignId?: StringFilter<"OutreachTarget"> | string
+    createdAt?: DateTimeFilter<"OutreachTarget"> | Date | string
+    updatedAt?: DateTimeFilter<"OutreachTarget"> | Date | string
+    campaign?: XOR<OutreachCampaignScalarRelationFilter, OutreachCampaignWhereInput>
+  }, "id">
+
+  export type OutreachTargetOrderByWithAggregationInput = {
+    id?: SortOrder
+    domain?: SortOrder
+    contactEmail?: SortOrderInput | SortOrder
+    type?: SortOrder
+    authority?: SortOrder
+    relevance?: SortOrder
+    lastContactDate?: SortOrderInput | SortOrder
+    status?: SortOrder
+    notes?: SortOrderInput | SortOrder
+    campaignId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: OutreachTargetCountOrderByAggregateInput
+    _avg?: OutreachTargetAvgOrderByAggregateInput
+    _max?: OutreachTargetMaxOrderByAggregateInput
+    _min?: OutreachTargetMinOrderByAggregateInput
+    _sum?: OutreachTargetSumOrderByAggregateInput
+  }
+
+  export type OutreachTargetScalarWhereWithAggregatesInput = {
+    AND?: OutreachTargetScalarWhereWithAggregatesInput | OutreachTargetScalarWhereWithAggregatesInput[]
+    OR?: OutreachTargetScalarWhereWithAggregatesInput[]
+    NOT?: OutreachTargetScalarWhereWithAggregatesInput | OutreachTargetScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"OutreachTarget"> | string
+    domain?: StringWithAggregatesFilter<"OutreachTarget"> | string
+    contactEmail?: StringNullableWithAggregatesFilter<"OutreachTarget"> | string | null
+    type?: StringWithAggregatesFilter<"OutreachTarget"> | string
+    authority?: IntWithAggregatesFilter<"OutreachTarget"> | number
+    relevance?: IntWithAggregatesFilter<"OutreachTarget"> | number
+    lastContactDate?: DateTimeNullableWithAggregatesFilter<"OutreachTarget"> | Date | string | null
+    status?: StringWithAggregatesFilter<"OutreachTarget"> | string
+    notes?: StringNullableWithAggregatesFilter<"OutreachTarget"> | string | null
+    campaignId?: StringWithAggregatesFilter<"OutreachTarget"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"OutreachTarget"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"OutreachTarget"> | Date | string
+  }
+
+  export type OutreachActivityWhereInput = {
+    AND?: OutreachActivityWhereInput | OutreachActivityWhereInput[]
+    OR?: OutreachActivityWhereInput[]
+    NOT?: OutreachActivityWhereInput | OutreachActivityWhereInput[]
+    id?: StringFilter<"OutreachActivity"> | string
+    targetDomain?: StringFilter<"OutreachActivity"> | string
+    campaignId?: StringFilter<"OutreachActivity"> | string
+    type?: StringFilter<"OutreachActivity"> | string
+    status?: StringFilter<"OutreachActivity"> | string
+    emailSubject?: StringNullableFilter<"OutreachActivity"> | string | null
+    emailContent?: StringNullableFilter<"OutreachActivity"> | string | null
+    responseReceived?: BoolFilter<"OutreachActivity"> | boolean
+    responseContent?: StringNullableFilter<"OutreachActivity"> | string | null
+    linkAcquired?: BoolFilter<"OutreachActivity"> | boolean
+    linkUrl?: StringNullableFilter<"OutreachActivity"> | string | null
+    timestamp?: DateTimeFilter<"OutreachActivity"> | Date | string
+    backlinks?: BacklinkListRelationFilter
+  }
+
+  export type OutreachActivityOrderByWithRelationInput = {
+    id?: SortOrder
+    targetDomain?: SortOrder
+    campaignId?: SortOrder
+    type?: SortOrder
+    status?: SortOrder
+    emailSubject?: SortOrderInput | SortOrder
+    emailContent?: SortOrderInput | SortOrder
+    responseReceived?: SortOrder
+    responseContent?: SortOrderInput | SortOrder
+    linkAcquired?: SortOrder
+    linkUrl?: SortOrderInput | SortOrder
+    timestamp?: SortOrder
+    backlinks?: BacklinkOrderByRelationAggregateInput
+  }
+
+  export type OutreachActivityWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: OutreachActivityWhereInput | OutreachActivityWhereInput[]
+    OR?: OutreachActivityWhereInput[]
+    NOT?: OutreachActivityWhereInput | OutreachActivityWhereInput[]
+    targetDomain?: StringFilter<"OutreachActivity"> | string
+    campaignId?: StringFilter<"OutreachActivity"> | string
+    type?: StringFilter<"OutreachActivity"> | string
+    status?: StringFilter<"OutreachActivity"> | string
+    emailSubject?: StringNullableFilter<"OutreachActivity"> | string | null
+    emailContent?: StringNullableFilter<"OutreachActivity"> | string | null
+    responseReceived?: BoolFilter<"OutreachActivity"> | boolean
+    responseContent?: StringNullableFilter<"OutreachActivity"> | string | null
+    linkAcquired?: BoolFilter<"OutreachActivity"> | boolean
+    linkUrl?: StringNullableFilter<"OutreachActivity"> | string | null
+    timestamp?: DateTimeFilter<"OutreachActivity"> | Date | string
+    backlinks?: BacklinkListRelationFilter
+  }, "id">
+
+  export type OutreachActivityOrderByWithAggregationInput = {
+    id?: SortOrder
+    targetDomain?: SortOrder
+    campaignId?: SortOrder
+    type?: SortOrder
+    status?: SortOrder
+    emailSubject?: SortOrderInput | SortOrder
+    emailContent?: SortOrderInput | SortOrder
+    responseReceived?: SortOrder
+    responseContent?: SortOrderInput | SortOrder
+    linkAcquired?: SortOrder
+    linkUrl?: SortOrderInput | SortOrder
+    timestamp?: SortOrder
+    _count?: OutreachActivityCountOrderByAggregateInput
+    _max?: OutreachActivityMaxOrderByAggregateInput
+    _min?: OutreachActivityMinOrderByAggregateInput
+  }
+
+  export type OutreachActivityScalarWhereWithAggregatesInput = {
+    AND?: OutreachActivityScalarWhereWithAggregatesInput | OutreachActivityScalarWhereWithAggregatesInput[]
+    OR?: OutreachActivityScalarWhereWithAggregatesInput[]
+    NOT?: OutreachActivityScalarWhereWithAggregatesInput | OutreachActivityScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"OutreachActivity"> | string
+    targetDomain?: StringWithAggregatesFilter<"OutreachActivity"> | string
+    campaignId?: StringWithAggregatesFilter<"OutreachActivity"> | string
+    type?: StringWithAggregatesFilter<"OutreachActivity"> | string
+    status?: StringWithAggregatesFilter<"OutreachActivity"> | string
+    emailSubject?: StringNullableWithAggregatesFilter<"OutreachActivity"> | string | null
+    emailContent?: StringNullableWithAggregatesFilter<"OutreachActivity"> | string | null
+    responseReceived?: BoolWithAggregatesFilter<"OutreachActivity"> | boolean
+    responseContent?: StringNullableWithAggregatesFilter<"OutreachActivity"> | string | null
+    linkAcquired?: BoolWithAggregatesFilter<"OutreachActivity"> | boolean
+    linkUrl?: StringNullableWithAggregatesFilter<"OutreachActivity"> | string | null
+    timestamp?: DateTimeWithAggregatesFilter<"OutreachActivity"> | Date | string
+  }
+
+  export type BacklinkWhereInput = {
+    AND?: BacklinkWhereInput | BacklinkWhereInput[]
+    OR?: BacklinkWhereInput[]
+    NOT?: BacklinkWhereInput | BacklinkWhereInput[]
+    id?: StringFilter<"Backlink"> | string
+    sourceUrl?: StringFilter<"Backlink"> | string
+    targetUrl?: StringFilter<"Backlink"> | string
+    anchorText?: StringFilter<"Backlink"> | string
+    discoveredDate?: DateTimeFilter<"Backlink"> | Date | string
+    lastCheckedDate?: DateTimeFilter<"Backlink"> | Date | string
+    status?: StringFilter<"Backlink"> | string
+    domainAuthority?: IntNullableFilter<"Backlink"> | number | null
+    pageAuthority?: IntNullableFilter<"Backlink"> | number | null
+    traffic?: IntNullableFilter<"Backlink"> | number | null
+    clicks?: IntNullableFilter<"Backlink"> | number | null
+    outreachActivityId?: StringNullableFilter<"Backlink"> | string | null
+    outreachActivity?: XOR<OutreachActivityNullableScalarRelationFilter, OutreachActivityWhereInput> | null
+  }
+
+  export type BacklinkOrderByWithRelationInput = {
+    id?: SortOrder
+    sourceUrl?: SortOrder
+    targetUrl?: SortOrder
+    anchorText?: SortOrder
+    discoveredDate?: SortOrder
+    lastCheckedDate?: SortOrder
+    status?: SortOrder
+    domainAuthority?: SortOrderInput | SortOrder
+    pageAuthority?: SortOrderInput | SortOrder
+    traffic?: SortOrderInput | SortOrder
+    clicks?: SortOrderInput | SortOrder
+    outreachActivityId?: SortOrderInput | SortOrder
+    outreachActivity?: OutreachActivityOrderByWithRelationInput
+  }
+
+  export type BacklinkWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: BacklinkWhereInput | BacklinkWhereInput[]
+    OR?: BacklinkWhereInput[]
+    NOT?: BacklinkWhereInput | BacklinkWhereInput[]
+    sourceUrl?: StringFilter<"Backlink"> | string
+    targetUrl?: StringFilter<"Backlink"> | string
+    anchorText?: StringFilter<"Backlink"> | string
+    discoveredDate?: DateTimeFilter<"Backlink"> | Date | string
+    lastCheckedDate?: DateTimeFilter<"Backlink"> | Date | string
+    status?: StringFilter<"Backlink"> | string
+    domainAuthority?: IntNullableFilter<"Backlink"> | number | null
+    pageAuthority?: IntNullableFilter<"Backlink"> | number | null
+    traffic?: IntNullableFilter<"Backlink"> | number | null
+    clicks?: IntNullableFilter<"Backlink"> | number | null
+    outreachActivityId?: StringNullableFilter<"Backlink"> | string | null
+    outreachActivity?: XOR<OutreachActivityNullableScalarRelationFilter, OutreachActivityWhereInput> | null
+  }, "id">
+
+  export type BacklinkOrderByWithAggregationInput = {
+    id?: SortOrder
+    sourceUrl?: SortOrder
+    targetUrl?: SortOrder
+    anchorText?: SortOrder
+    discoveredDate?: SortOrder
+    lastCheckedDate?: SortOrder
+    status?: SortOrder
+    domainAuthority?: SortOrderInput | SortOrder
+    pageAuthority?: SortOrderInput | SortOrder
+    traffic?: SortOrderInput | SortOrder
+    clicks?: SortOrderInput | SortOrder
+    outreachActivityId?: SortOrderInput | SortOrder
+    _count?: BacklinkCountOrderByAggregateInput
+    _avg?: BacklinkAvgOrderByAggregateInput
+    _max?: BacklinkMaxOrderByAggregateInput
+    _min?: BacklinkMinOrderByAggregateInput
+    _sum?: BacklinkSumOrderByAggregateInput
+  }
+
+  export type BacklinkScalarWhereWithAggregatesInput = {
+    AND?: BacklinkScalarWhereWithAggregatesInput | BacklinkScalarWhereWithAggregatesInput[]
+    OR?: BacklinkScalarWhereWithAggregatesInput[]
+    NOT?: BacklinkScalarWhereWithAggregatesInput | BacklinkScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Backlink"> | string
+    sourceUrl?: StringWithAggregatesFilter<"Backlink"> | string
+    targetUrl?: StringWithAggregatesFilter<"Backlink"> | string
+    anchorText?: StringWithAggregatesFilter<"Backlink"> | string
+    discoveredDate?: DateTimeWithAggregatesFilter<"Backlink"> | Date | string
+    lastCheckedDate?: DateTimeWithAggregatesFilter<"Backlink"> | Date | string
+    status?: StringWithAggregatesFilter<"Backlink"> | string
+    domainAuthority?: IntNullableWithAggregatesFilter<"Backlink"> | number | null
+    pageAuthority?: IntNullableWithAggregatesFilter<"Backlink"> | number | null
+    traffic?: IntNullableWithAggregatesFilter<"Backlink"> | number | null
+    clicks?: IntNullableWithAggregatesFilter<"Backlink"> | number | null
+    outreachActivityId?: StringNullableWithAggregatesFilter<"Backlink"> | string | null
+  }
+
   export type UserCreateInput = {
     id?: string
     name?: string | null
@@ -14153,6 +19662,404 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type OutreachCampaignCreateInput = {
+    id?: string
+    name: string
+    type: string
+    template: string
+    scheduledDate: Date | string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    targets?: OutreachTargetCreateNestedManyWithoutCampaignInput
+  }
+
+  export type OutreachCampaignUncheckedCreateInput = {
+    id?: string
+    name: string
+    type: string
+    template: string
+    scheduledDate: Date | string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    targets?: OutreachTargetUncheckedCreateNestedManyWithoutCampaignInput
+  }
+
+  export type OutreachCampaignUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    template?: StringFieldUpdateOperationsInput | string
+    scheduledDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    targets?: OutreachTargetUpdateManyWithoutCampaignNestedInput
+  }
+
+  export type OutreachCampaignUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    template?: StringFieldUpdateOperationsInput | string
+    scheduledDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    targets?: OutreachTargetUncheckedUpdateManyWithoutCampaignNestedInput
+  }
+
+  export type OutreachCampaignCreateManyInput = {
+    id?: string
+    name: string
+    type: string
+    template: string
+    scheduledDate: Date | string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type OutreachCampaignUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    template?: StringFieldUpdateOperationsInput | string
+    scheduledDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OutreachCampaignUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    template?: StringFieldUpdateOperationsInput | string
+    scheduledDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OutreachTargetCreateInput = {
+    id?: string
+    domain: string
+    contactEmail?: string | null
+    type: string
+    authority: number
+    relevance: number
+    lastContactDate?: Date | string | null
+    status?: string
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    campaign: OutreachCampaignCreateNestedOneWithoutTargetsInput
+  }
+
+  export type OutreachTargetUncheckedCreateInput = {
+    id?: string
+    domain: string
+    contactEmail?: string | null
+    type: string
+    authority: number
+    relevance: number
+    lastContactDate?: Date | string | null
+    status?: string
+    notes?: string | null
+    campaignId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type OutreachTargetUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    domain?: StringFieldUpdateOperationsInput | string
+    contactEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    authority?: IntFieldUpdateOperationsInput | number
+    relevance?: IntFieldUpdateOperationsInput | number
+    lastContactDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    campaign?: OutreachCampaignUpdateOneRequiredWithoutTargetsNestedInput
+  }
+
+  export type OutreachTargetUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    domain?: StringFieldUpdateOperationsInput | string
+    contactEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    authority?: IntFieldUpdateOperationsInput | number
+    relevance?: IntFieldUpdateOperationsInput | number
+    lastContactDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    campaignId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OutreachTargetCreateManyInput = {
+    id?: string
+    domain: string
+    contactEmail?: string | null
+    type: string
+    authority: number
+    relevance: number
+    lastContactDate?: Date | string | null
+    status?: string
+    notes?: string | null
+    campaignId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type OutreachTargetUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    domain?: StringFieldUpdateOperationsInput | string
+    contactEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    authority?: IntFieldUpdateOperationsInput | number
+    relevance?: IntFieldUpdateOperationsInput | number
+    lastContactDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OutreachTargetUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    domain?: StringFieldUpdateOperationsInput | string
+    contactEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    authority?: IntFieldUpdateOperationsInput | number
+    relevance?: IntFieldUpdateOperationsInput | number
+    lastContactDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    campaignId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OutreachActivityCreateInput = {
+    id?: string
+    targetDomain: string
+    campaignId: string
+    type: string
+    status: string
+    emailSubject?: string | null
+    emailContent?: string | null
+    responseReceived?: boolean
+    responseContent?: string | null
+    linkAcquired?: boolean
+    linkUrl?: string | null
+    timestamp?: Date | string
+    backlinks?: BacklinkCreateNestedManyWithoutOutreachActivityInput
+  }
+
+  export type OutreachActivityUncheckedCreateInput = {
+    id?: string
+    targetDomain: string
+    campaignId: string
+    type: string
+    status: string
+    emailSubject?: string | null
+    emailContent?: string | null
+    responseReceived?: boolean
+    responseContent?: string | null
+    linkAcquired?: boolean
+    linkUrl?: string | null
+    timestamp?: Date | string
+    backlinks?: BacklinkUncheckedCreateNestedManyWithoutOutreachActivityInput
+  }
+
+  export type OutreachActivityUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    targetDomain?: StringFieldUpdateOperationsInput | string
+    campaignId?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    emailSubject?: NullableStringFieldUpdateOperationsInput | string | null
+    emailContent?: NullableStringFieldUpdateOperationsInput | string | null
+    responseReceived?: BoolFieldUpdateOperationsInput | boolean
+    responseContent?: NullableStringFieldUpdateOperationsInput | string | null
+    linkAcquired?: BoolFieldUpdateOperationsInput | boolean
+    linkUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    backlinks?: BacklinkUpdateManyWithoutOutreachActivityNestedInput
+  }
+
+  export type OutreachActivityUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    targetDomain?: StringFieldUpdateOperationsInput | string
+    campaignId?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    emailSubject?: NullableStringFieldUpdateOperationsInput | string | null
+    emailContent?: NullableStringFieldUpdateOperationsInput | string | null
+    responseReceived?: BoolFieldUpdateOperationsInput | boolean
+    responseContent?: NullableStringFieldUpdateOperationsInput | string | null
+    linkAcquired?: BoolFieldUpdateOperationsInput | boolean
+    linkUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    backlinks?: BacklinkUncheckedUpdateManyWithoutOutreachActivityNestedInput
+  }
+
+  export type OutreachActivityCreateManyInput = {
+    id?: string
+    targetDomain: string
+    campaignId: string
+    type: string
+    status: string
+    emailSubject?: string | null
+    emailContent?: string | null
+    responseReceived?: boolean
+    responseContent?: string | null
+    linkAcquired?: boolean
+    linkUrl?: string | null
+    timestamp?: Date | string
+  }
+
+  export type OutreachActivityUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    targetDomain?: StringFieldUpdateOperationsInput | string
+    campaignId?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    emailSubject?: NullableStringFieldUpdateOperationsInput | string | null
+    emailContent?: NullableStringFieldUpdateOperationsInput | string | null
+    responseReceived?: BoolFieldUpdateOperationsInput | boolean
+    responseContent?: NullableStringFieldUpdateOperationsInput | string | null
+    linkAcquired?: BoolFieldUpdateOperationsInput | boolean
+    linkUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OutreachActivityUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    targetDomain?: StringFieldUpdateOperationsInput | string
+    campaignId?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    emailSubject?: NullableStringFieldUpdateOperationsInput | string | null
+    emailContent?: NullableStringFieldUpdateOperationsInput | string | null
+    responseReceived?: BoolFieldUpdateOperationsInput | boolean
+    responseContent?: NullableStringFieldUpdateOperationsInput | string | null
+    linkAcquired?: BoolFieldUpdateOperationsInput | boolean
+    linkUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BacklinkCreateInput = {
+    id?: string
+    sourceUrl: string
+    targetUrl: string
+    anchorText: string
+    discoveredDate?: Date | string
+    lastCheckedDate?: Date | string
+    status?: string
+    domainAuthority?: number | null
+    pageAuthority?: number | null
+    traffic?: number | null
+    clicks?: number | null
+    outreachActivity?: OutreachActivityCreateNestedOneWithoutBacklinksInput
+  }
+
+  export type BacklinkUncheckedCreateInput = {
+    id?: string
+    sourceUrl: string
+    targetUrl: string
+    anchorText: string
+    discoveredDate?: Date | string
+    lastCheckedDate?: Date | string
+    status?: string
+    domainAuthority?: number | null
+    pageAuthority?: number | null
+    traffic?: number | null
+    clicks?: number | null
+    outreachActivityId?: string | null
+  }
+
+  export type BacklinkUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sourceUrl?: StringFieldUpdateOperationsInput | string
+    targetUrl?: StringFieldUpdateOperationsInput | string
+    anchorText?: StringFieldUpdateOperationsInput | string
+    discoveredDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastCheckedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: StringFieldUpdateOperationsInput | string
+    domainAuthority?: NullableIntFieldUpdateOperationsInput | number | null
+    pageAuthority?: NullableIntFieldUpdateOperationsInput | number | null
+    traffic?: NullableIntFieldUpdateOperationsInput | number | null
+    clicks?: NullableIntFieldUpdateOperationsInput | number | null
+    outreachActivity?: OutreachActivityUpdateOneWithoutBacklinksNestedInput
+  }
+
+  export type BacklinkUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sourceUrl?: StringFieldUpdateOperationsInput | string
+    targetUrl?: StringFieldUpdateOperationsInput | string
+    anchorText?: StringFieldUpdateOperationsInput | string
+    discoveredDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastCheckedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: StringFieldUpdateOperationsInput | string
+    domainAuthority?: NullableIntFieldUpdateOperationsInput | number | null
+    pageAuthority?: NullableIntFieldUpdateOperationsInput | number | null
+    traffic?: NullableIntFieldUpdateOperationsInput | number | null
+    clicks?: NullableIntFieldUpdateOperationsInput | number | null
+    outreachActivityId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type BacklinkCreateManyInput = {
+    id?: string
+    sourceUrl: string
+    targetUrl: string
+    anchorText: string
+    discoveredDate?: Date | string
+    lastCheckedDate?: Date | string
+    status?: string
+    domainAuthority?: number | null
+    pageAuthority?: number | null
+    traffic?: number | null
+    clicks?: number | null
+    outreachActivityId?: string | null
+  }
+
+  export type BacklinkUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sourceUrl?: StringFieldUpdateOperationsInput | string
+    targetUrl?: StringFieldUpdateOperationsInput | string
+    anchorText?: StringFieldUpdateOperationsInput | string
+    discoveredDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastCheckedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: StringFieldUpdateOperationsInput | string
+    domainAuthority?: NullableIntFieldUpdateOperationsInput | number | null
+    pageAuthority?: NullableIntFieldUpdateOperationsInput | number | null
+    traffic?: NullableIntFieldUpdateOperationsInput | number | null
+    clicks?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type BacklinkUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sourceUrl?: StringFieldUpdateOperationsInput | string
+    targetUrl?: StringFieldUpdateOperationsInput | string
+    anchorText?: StringFieldUpdateOperationsInput | string
+    discoveredDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastCheckedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: StringFieldUpdateOperationsInput | string
+    domainAuthority?: NullableIntFieldUpdateOperationsInput | number | null
+    pageAuthority?: NullableIntFieldUpdateOperationsInput | number | null
+    traffic?: NullableIntFieldUpdateOperationsInput | number | null
+    clicks?: NullableIntFieldUpdateOperationsInput | number | null
+    outreachActivityId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -14729,6 +20636,255 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type OutreachTargetListRelationFilter = {
+    every?: OutreachTargetWhereInput
+    some?: OutreachTargetWhereInput
+    none?: OutreachTargetWhereInput
+  }
+
+  export type OutreachTargetOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type OutreachCampaignCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    template?: SortOrder
+    scheduledDate?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type OutreachCampaignMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    template?: SortOrder
+    scheduledDate?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type OutreachCampaignMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    template?: SortOrder
+    scheduledDate?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type OutreachCampaignScalarRelationFilter = {
+    is?: OutreachCampaignWhereInput
+    isNot?: OutreachCampaignWhereInput
+  }
+
+  export type OutreachTargetCountOrderByAggregateInput = {
+    id?: SortOrder
+    domain?: SortOrder
+    contactEmail?: SortOrder
+    type?: SortOrder
+    authority?: SortOrder
+    relevance?: SortOrder
+    lastContactDate?: SortOrder
+    status?: SortOrder
+    notes?: SortOrder
+    campaignId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type OutreachTargetAvgOrderByAggregateInput = {
+    authority?: SortOrder
+    relevance?: SortOrder
+  }
+
+  export type OutreachTargetMaxOrderByAggregateInput = {
+    id?: SortOrder
+    domain?: SortOrder
+    contactEmail?: SortOrder
+    type?: SortOrder
+    authority?: SortOrder
+    relevance?: SortOrder
+    lastContactDate?: SortOrder
+    status?: SortOrder
+    notes?: SortOrder
+    campaignId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type OutreachTargetMinOrderByAggregateInput = {
+    id?: SortOrder
+    domain?: SortOrder
+    contactEmail?: SortOrder
+    type?: SortOrder
+    authority?: SortOrder
+    relevance?: SortOrder
+    lastContactDate?: SortOrder
+    status?: SortOrder
+    notes?: SortOrder
+    campaignId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type OutreachTargetSumOrderByAggregateInput = {
+    authority?: SortOrder
+    relevance?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type BacklinkListRelationFilter = {
+    every?: BacklinkWhereInput
+    some?: BacklinkWhereInput
+    none?: BacklinkWhereInput
+  }
+
+  export type BacklinkOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type OutreachActivityCountOrderByAggregateInput = {
+    id?: SortOrder
+    targetDomain?: SortOrder
+    campaignId?: SortOrder
+    type?: SortOrder
+    status?: SortOrder
+    emailSubject?: SortOrder
+    emailContent?: SortOrder
+    responseReceived?: SortOrder
+    responseContent?: SortOrder
+    linkAcquired?: SortOrder
+    linkUrl?: SortOrder
+    timestamp?: SortOrder
+  }
+
+  export type OutreachActivityMaxOrderByAggregateInput = {
+    id?: SortOrder
+    targetDomain?: SortOrder
+    campaignId?: SortOrder
+    type?: SortOrder
+    status?: SortOrder
+    emailSubject?: SortOrder
+    emailContent?: SortOrder
+    responseReceived?: SortOrder
+    responseContent?: SortOrder
+    linkAcquired?: SortOrder
+    linkUrl?: SortOrder
+    timestamp?: SortOrder
+  }
+
+  export type OutreachActivityMinOrderByAggregateInput = {
+    id?: SortOrder
+    targetDomain?: SortOrder
+    campaignId?: SortOrder
+    type?: SortOrder
+    status?: SortOrder
+    emailSubject?: SortOrder
+    emailContent?: SortOrder
+    responseReceived?: SortOrder
+    responseContent?: SortOrder
+    linkAcquired?: SortOrder
+    linkUrl?: SortOrder
+    timestamp?: SortOrder
+  }
+
+  export type OutreachActivityNullableScalarRelationFilter = {
+    is?: OutreachActivityWhereInput | null
+    isNot?: OutreachActivityWhereInput | null
+  }
+
+  export type BacklinkCountOrderByAggregateInput = {
+    id?: SortOrder
+    sourceUrl?: SortOrder
+    targetUrl?: SortOrder
+    anchorText?: SortOrder
+    discoveredDate?: SortOrder
+    lastCheckedDate?: SortOrder
+    status?: SortOrder
+    domainAuthority?: SortOrder
+    pageAuthority?: SortOrder
+    traffic?: SortOrder
+    clicks?: SortOrder
+    outreachActivityId?: SortOrder
+  }
+
+  export type BacklinkAvgOrderByAggregateInput = {
+    domainAuthority?: SortOrder
+    pageAuthority?: SortOrder
+    traffic?: SortOrder
+    clicks?: SortOrder
+  }
+
+  export type BacklinkMaxOrderByAggregateInput = {
+    id?: SortOrder
+    sourceUrl?: SortOrder
+    targetUrl?: SortOrder
+    anchorText?: SortOrder
+    discoveredDate?: SortOrder
+    lastCheckedDate?: SortOrder
+    status?: SortOrder
+    domainAuthority?: SortOrder
+    pageAuthority?: SortOrder
+    traffic?: SortOrder
+    clicks?: SortOrder
+    outreachActivityId?: SortOrder
+  }
+
+  export type BacklinkMinOrderByAggregateInput = {
+    id?: SortOrder
+    sourceUrl?: SortOrder
+    targetUrl?: SortOrder
+    anchorText?: SortOrder
+    discoveredDate?: SortOrder
+    lastCheckedDate?: SortOrder
+    status?: SortOrder
+    domainAuthority?: SortOrder
+    pageAuthority?: SortOrder
+    traffic?: SortOrder
+    clicks?: SortOrder
+    outreachActivityId?: SortOrder
+  }
+
+  export type BacklinkSumOrderByAggregateInput = {
+    domainAuthority?: SortOrder
+    pageAuthority?: SortOrder
+    traffic?: SortOrder
+    clicks?: SortOrder
+  }
+
   export type AccountCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -15149,6 +21305,128 @@ export namespace Prisma {
     update?: XOR<XOR<ConversationUpdateToOneWithWhereWithoutMessagesInput, ConversationUpdateWithoutMessagesInput>, ConversationUncheckedUpdateWithoutMessagesInput>
   }
 
+  export type OutreachTargetCreateNestedManyWithoutCampaignInput = {
+    create?: XOR<OutreachTargetCreateWithoutCampaignInput, OutreachTargetUncheckedCreateWithoutCampaignInput> | OutreachTargetCreateWithoutCampaignInput[] | OutreachTargetUncheckedCreateWithoutCampaignInput[]
+    connectOrCreate?: OutreachTargetCreateOrConnectWithoutCampaignInput | OutreachTargetCreateOrConnectWithoutCampaignInput[]
+    createMany?: OutreachTargetCreateManyCampaignInputEnvelope
+    connect?: OutreachTargetWhereUniqueInput | OutreachTargetWhereUniqueInput[]
+  }
+
+  export type OutreachTargetUncheckedCreateNestedManyWithoutCampaignInput = {
+    create?: XOR<OutreachTargetCreateWithoutCampaignInput, OutreachTargetUncheckedCreateWithoutCampaignInput> | OutreachTargetCreateWithoutCampaignInput[] | OutreachTargetUncheckedCreateWithoutCampaignInput[]
+    connectOrCreate?: OutreachTargetCreateOrConnectWithoutCampaignInput | OutreachTargetCreateOrConnectWithoutCampaignInput[]
+    createMany?: OutreachTargetCreateManyCampaignInputEnvelope
+    connect?: OutreachTargetWhereUniqueInput | OutreachTargetWhereUniqueInput[]
+  }
+
+  export type OutreachTargetUpdateManyWithoutCampaignNestedInput = {
+    create?: XOR<OutreachTargetCreateWithoutCampaignInput, OutreachTargetUncheckedCreateWithoutCampaignInput> | OutreachTargetCreateWithoutCampaignInput[] | OutreachTargetUncheckedCreateWithoutCampaignInput[]
+    connectOrCreate?: OutreachTargetCreateOrConnectWithoutCampaignInput | OutreachTargetCreateOrConnectWithoutCampaignInput[]
+    upsert?: OutreachTargetUpsertWithWhereUniqueWithoutCampaignInput | OutreachTargetUpsertWithWhereUniqueWithoutCampaignInput[]
+    createMany?: OutreachTargetCreateManyCampaignInputEnvelope
+    set?: OutreachTargetWhereUniqueInput | OutreachTargetWhereUniqueInput[]
+    disconnect?: OutreachTargetWhereUniqueInput | OutreachTargetWhereUniqueInput[]
+    delete?: OutreachTargetWhereUniqueInput | OutreachTargetWhereUniqueInput[]
+    connect?: OutreachTargetWhereUniqueInput | OutreachTargetWhereUniqueInput[]
+    update?: OutreachTargetUpdateWithWhereUniqueWithoutCampaignInput | OutreachTargetUpdateWithWhereUniqueWithoutCampaignInput[]
+    updateMany?: OutreachTargetUpdateManyWithWhereWithoutCampaignInput | OutreachTargetUpdateManyWithWhereWithoutCampaignInput[]
+    deleteMany?: OutreachTargetScalarWhereInput | OutreachTargetScalarWhereInput[]
+  }
+
+  export type OutreachTargetUncheckedUpdateManyWithoutCampaignNestedInput = {
+    create?: XOR<OutreachTargetCreateWithoutCampaignInput, OutreachTargetUncheckedCreateWithoutCampaignInput> | OutreachTargetCreateWithoutCampaignInput[] | OutreachTargetUncheckedCreateWithoutCampaignInput[]
+    connectOrCreate?: OutreachTargetCreateOrConnectWithoutCampaignInput | OutreachTargetCreateOrConnectWithoutCampaignInput[]
+    upsert?: OutreachTargetUpsertWithWhereUniqueWithoutCampaignInput | OutreachTargetUpsertWithWhereUniqueWithoutCampaignInput[]
+    createMany?: OutreachTargetCreateManyCampaignInputEnvelope
+    set?: OutreachTargetWhereUniqueInput | OutreachTargetWhereUniqueInput[]
+    disconnect?: OutreachTargetWhereUniqueInput | OutreachTargetWhereUniqueInput[]
+    delete?: OutreachTargetWhereUniqueInput | OutreachTargetWhereUniqueInput[]
+    connect?: OutreachTargetWhereUniqueInput | OutreachTargetWhereUniqueInput[]
+    update?: OutreachTargetUpdateWithWhereUniqueWithoutCampaignInput | OutreachTargetUpdateWithWhereUniqueWithoutCampaignInput[]
+    updateMany?: OutreachTargetUpdateManyWithWhereWithoutCampaignInput | OutreachTargetUpdateManyWithWhereWithoutCampaignInput[]
+    deleteMany?: OutreachTargetScalarWhereInput | OutreachTargetScalarWhereInput[]
+  }
+
+  export type OutreachCampaignCreateNestedOneWithoutTargetsInput = {
+    create?: XOR<OutreachCampaignCreateWithoutTargetsInput, OutreachCampaignUncheckedCreateWithoutTargetsInput>
+    connectOrCreate?: OutreachCampaignCreateOrConnectWithoutTargetsInput
+    connect?: OutreachCampaignWhereUniqueInput
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type OutreachCampaignUpdateOneRequiredWithoutTargetsNestedInput = {
+    create?: XOR<OutreachCampaignCreateWithoutTargetsInput, OutreachCampaignUncheckedCreateWithoutTargetsInput>
+    connectOrCreate?: OutreachCampaignCreateOrConnectWithoutTargetsInput
+    upsert?: OutreachCampaignUpsertWithoutTargetsInput
+    connect?: OutreachCampaignWhereUniqueInput
+    update?: XOR<XOR<OutreachCampaignUpdateToOneWithWhereWithoutTargetsInput, OutreachCampaignUpdateWithoutTargetsInput>, OutreachCampaignUncheckedUpdateWithoutTargetsInput>
+  }
+
+  export type BacklinkCreateNestedManyWithoutOutreachActivityInput = {
+    create?: XOR<BacklinkCreateWithoutOutreachActivityInput, BacklinkUncheckedCreateWithoutOutreachActivityInput> | BacklinkCreateWithoutOutreachActivityInput[] | BacklinkUncheckedCreateWithoutOutreachActivityInput[]
+    connectOrCreate?: BacklinkCreateOrConnectWithoutOutreachActivityInput | BacklinkCreateOrConnectWithoutOutreachActivityInput[]
+    createMany?: BacklinkCreateManyOutreachActivityInputEnvelope
+    connect?: BacklinkWhereUniqueInput | BacklinkWhereUniqueInput[]
+  }
+
+  export type BacklinkUncheckedCreateNestedManyWithoutOutreachActivityInput = {
+    create?: XOR<BacklinkCreateWithoutOutreachActivityInput, BacklinkUncheckedCreateWithoutOutreachActivityInput> | BacklinkCreateWithoutOutreachActivityInput[] | BacklinkUncheckedCreateWithoutOutreachActivityInput[]
+    connectOrCreate?: BacklinkCreateOrConnectWithoutOutreachActivityInput | BacklinkCreateOrConnectWithoutOutreachActivityInput[]
+    createMany?: BacklinkCreateManyOutreachActivityInputEnvelope
+    connect?: BacklinkWhereUniqueInput | BacklinkWhereUniqueInput[]
+  }
+
+  export type BacklinkUpdateManyWithoutOutreachActivityNestedInput = {
+    create?: XOR<BacklinkCreateWithoutOutreachActivityInput, BacklinkUncheckedCreateWithoutOutreachActivityInput> | BacklinkCreateWithoutOutreachActivityInput[] | BacklinkUncheckedCreateWithoutOutreachActivityInput[]
+    connectOrCreate?: BacklinkCreateOrConnectWithoutOutreachActivityInput | BacklinkCreateOrConnectWithoutOutreachActivityInput[]
+    upsert?: BacklinkUpsertWithWhereUniqueWithoutOutreachActivityInput | BacklinkUpsertWithWhereUniqueWithoutOutreachActivityInput[]
+    createMany?: BacklinkCreateManyOutreachActivityInputEnvelope
+    set?: BacklinkWhereUniqueInput | BacklinkWhereUniqueInput[]
+    disconnect?: BacklinkWhereUniqueInput | BacklinkWhereUniqueInput[]
+    delete?: BacklinkWhereUniqueInput | BacklinkWhereUniqueInput[]
+    connect?: BacklinkWhereUniqueInput | BacklinkWhereUniqueInput[]
+    update?: BacklinkUpdateWithWhereUniqueWithoutOutreachActivityInput | BacklinkUpdateWithWhereUniqueWithoutOutreachActivityInput[]
+    updateMany?: BacklinkUpdateManyWithWhereWithoutOutreachActivityInput | BacklinkUpdateManyWithWhereWithoutOutreachActivityInput[]
+    deleteMany?: BacklinkScalarWhereInput | BacklinkScalarWhereInput[]
+  }
+
+  export type BacklinkUncheckedUpdateManyWithoutOutreachActivityNestedInput = {
+    create?: XOR<BacklinkCreateWithoutOutreachActivityInput, BacklinkUncheckedCreateWithoutOutreachActivityInput> | BacklinkCreateWithoutOutreachActivityInput[] | BacklinkUncheckedCreateWithoutOutreachActivityInput[]
+    connectOrCreate?: BacklinkCreateOrConnectWithoutOutreachActivityInput | BacklinkCreateOrConnectWithoutOutreachActivityInput[]
+    upsert?: BacklinkUpsertWithWhereUniqueWithoutOutreachActivityInput | BacklinkUpsertWithWhereUniqueWithoutOutreachActivityInput[]
+    createMany?: BacklinkCreateManyOutreachActivityInputEnvelope
+    set?: BacklinkWhereUniqueInput | BacklinkWhereUniqueInput[]
+    disconnect?: BacklinkWhereUniqueInput | BacklinkWhereUniqueInput[]
+    delete?: BacklinkWhereUniqueInput | BacklinkWhereUniqueInput[]
+    connect?: BacklinkWhereUniqueInput | BacklinkWhereUniqueInput[]
+    update?: BacklinkUpdateWithWhereUniqueWithoutOutreachActivityInput | BacklinkUpdateWithWhereUniqueWithoutOutreachActivityInput[]
+    updateMany?: BacklinkUpdateManyWithWhereWithoutOutreachActivityInput | BacklinkUpdateManyWithWhereWithoutOutreachActivityInput[]
+    deleteMany?: BacklinkScalarWhereInput | BacklinkScalarWhereInput[]
+  }
+
+  export type OutreachActivityCreateNestedOneWithoutBacklinksInput = {
+    create?: XOR<OutreachActivityCreateWithoutBacklinksInput, OutreachActivityUncheckedCreateWithoutBacklinksInput>
+    connectOrCreate?: OutreachActivityCreateOrConnectWithoutBacklinksInput
+    connect?: OutreachActivityWhereUniqueInput
+  }
+
+  export type OutreachActivityUpdateOneWithoutBacklinksNestedInput = {
+    create?: XOR<OutreachActivityCreateWithoutBacklinksInput, OutreachActivityUncheckedCreateWithoutBacklinksInput>
+    connectOrCreate?: OutreachActivityCreateOrConnectWithoutBacklinksInput
+    upsert?: OutreachActivityUpsertWithoutBacklinksInput
+    disconnect?: OutreachActivityWhereInput | boolean
+    delete?: OutreachActivityWhereInput | boolean
+    connect?: OutreachActivityWhereUniqueInput
+    update?: XOR<XOR<OutreachActivityUpdateToOneWithWhereWithoutBacklinksInput, OutreachActivityUpdateWithoutBacklinksInput>, OutreachActivityUncheckedUpdateWithoutBacklinksInput>
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -15344,6 +21622,33 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type AccountCreateWithoutUserInput = {
@@ -16322,6 +22627,286 @@ export namespace Prisma {
     participants?: ConversationParticipantUncheckedUpdateManyWithoutConversationNestedInput
   }
 
+  export type OutreachTargetCreateWithoutCampaignInput = {
+    id?: string
+    domain: string
+    contactEmail?: string | null
+    type: string
+    authority: number
+    relevance: number
+    lastContactDate?: Date | string | null
+    status?: string
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type OutreachTargetUncheckedCreateWithoutCampaignInput = {
+    id?: string
+    domain: string
+    contactEmail?: string | null
+    type: string
+    authority: number
+    relevance: number
+    lastContactDate?: Date | string | null
+    status?: string
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type OutreachTargetCreateOrConnectWithoutCampaignInput = {
+    where: OutreachTargetWhereUniqueInput
+    create: XOR<OutreachTargetCreateWithoutCampaignInput, OutreachTargetUncheckedCreateWithoutCampaignInput>
+  }
+
+  export type OutreachTargetCreateManyCampaignInputEnvelope = {
+    data: OutreachTargetCreateManyCampaignInput | OutreachTargetCreateManyCampaignInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type OutreachTargetUpsertWithWhereUniqueWithoutCampaignInput = {
+    where: OutreachTargetWhereUniqueInput
+    update: XOR<OutreachTargetUpdateWithoutCampaignInput, OutreachTargetUncheckedUpdateWithoutCampaignInput>
+    create: XOR<OutreachTargetCreateWithoutCampaignInput, OutreachTargetUncheckedCreateWithoutCampaignInput>
+  }
+
+  export type OutreachTargetUpdateWithWhereUniqueWithoutCampaignInput = {
+    where: OutreachTargetWhereUniqueInput
+    data: XOR<OutreachTargetUpdateWithoutCampaignInput, OutreachTargetUncheckedUpdateWithoutCampaignInput>
+  }
+
+  export type OutreachTargetUpdateManyWithWhereWithoutCampaignInput = {
+    where: OutreachTargetScalarWhereInput
+    data: XOR<OutreachTargetUpdateManyMutationInput, OutreachTargetUncheckedUpdateManyWithoutCampaignInput>
+  }
+
+  export type OutreachTargetScalarWhereInput = {
+    AND?: OutreachTargetScalarWhereInput | OutreachTargetScalarWhereInput[]
+    OR?: OutreachTargetScalarWhereInput[]
+    NOT?: OutreachTargetScalarWhereInput | OutreachTargetScalarWhereInput[]
+    id?: StringFilter<"OutreachTarget"> | string
+    domain?: StringFilter<"OutreachTarget"> | string
+    contactEmail?: StringNullableFilter<"OutreachTarget"> | string | null
+    type?: StringFilter<"OutreachTarget"> | string
+    authority?: IntFilter<"OutreachTarget"> | number
+    relevance?: IntFilter<"OutreachTarget"> | number
+    lastContactDate?: DateTimeNullableFilter<"OutreachTarget"> | Date | string | null
+    status?: StringFilter<"OutreachTarget"> | string
+    notes?: StringNullableFilter<"OutreachTarget"> | string | null
+    campaignId?: StringFilter<"OutreachTarget"> | string
+    createdAt?: DateTimeFilter<"OutreachTarget"> | Date | string
+    updatedAt?: DateTimeFilter<"OutreachTarget"> | Date | string
+  }
+
+  export type OutreachCampaignCreateWithoutTargetsInput = {
+    id?: string
+    name: string
+    type: string
+    template: string
+    scheduledDate: Date | string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type OutreachCampaignUncheckedCreateWithoutTargetsInput = {
+    id?: string
+    name: string
+    type: string
+    template: string
+    scheduledDate: Date | string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type OutreachCampaignCreateOrConnectWithoutTargetsInput = {
+    where: OutreachCampaignWhereUniqueInput
+    create: XOR<OutreachCampaignCreateWithoutTargetsInput, OutreachCampaignUncheckedCreateWithoutTargetsInput>
+  }
+
+  export type OutreachCampaignUpsertWithoutTargetsInput = {
+    update: XOR<OutreachCampaignUpdateWithoutTargetsInput, OutreachCampaignUncheckedUpdateWithoutTargetsInput>
+    create: XOR<OutreachCampaignCreateWithoutTargetsInput, OutreachCampaignUncheckedCreateWithoutTargetsInput>
+    where?: OutreachCampaignWhereInput
+  }
+
+  export type OutreachCampaignUpdateToOneWithWhereWithoutTargetsInput = {
+    where?: OutreachCampaignWhereInput
+    data: XOR<OutreachCampaignUpdateWithoutTargetsInput, OutreachCampaignUncheckedUpdateWithoutTargetsInput>
+  }
+
+  export type OutreachCampaignUpdateWithoutTargetsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    template?: StringFieldUpdateOperationsInput | string
+    scheduledDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OutreachCampaignUncheckedUpdateWithoutTargetsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    template?: StringFieldUpdateOperationsInput | string
+    scheduledDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BacklinkCreateWithoutOutreachActivityInput = {
+    id?: string
+    sourceUrl: string
+    targetUrl: string
+    anchorText: string
+    discoveredDate?: Date | string
+    lastCheckedDate?: Date | string
+    status?: string
+    domainAuthority?: number | null
+    pageAuthority?: number | null
+    traffic?: number | null
+    clicks?: number | null
+  }
+
+  export type BacklinkUncheckedCreateWithoutOutreachActivityInput = {
+    id?: string
+    sourceUrl: string
+    targetUrl: string
+    anchorText: string
+    discoveredDate?: Date | string
+    lastCheckedDate?: Date | string
+    status?: string
+    domainAuthority?: number | null
+    pageAuthority?: number | null
+    traffic?: number | null
+    clicks?: number | null
+  }
+
+  export type BacklinkCreateOrConnectWithoutOutreachActivityInput = {
+    where: BacklinkWhereUniqueInput
+    create: XOR<BacklinkCreateWithoutOutreachActivityInput, BacklinkUncheckedCreateWithoutOutreachActivityInput>
+  }
+
+  export type BacklinkCreateManyOutreachActivityInputEnvelope = {
+    data: BacklinkCreateManyOutreachActivityInput | BacklinkCreateManyOutreachActivityInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type BacklinkUpsertWithWhereUniqueWithoutOutreachActivityInput = {
+    where: BacklinkWhereUniqueInput
+    update: XOR<BacklinkUpdateWithoutOutreachActivityInput, BacklinkUncheckedUpdateWithoutOutreachActivityInput>
+    create: XOR<BacklinkCreateWithoutOutreachActivityInput, BacklinkUncheckedCreateWithoutOutreachActivityInput>
+  }
+
+  export type BacklinkUpdateWithWhereUniqueWithoutOutreachActivityInput = {
+    where: BacklinkWhereUniqueInput
+    data: XOR<BacklinkUpdateWithoutOutreachActivityInput, BacklinkUncheckedUpdateWithoutOutreachActivityInput>
+  }
+
+  export type BacklinkUpdateManyWithWhereWithoutOutreachActivityInput = {
+    where: BacklinkScalarWhereInput
+    data: XOR<BacklinkUpdateManyMutationInput, BacklinkUncheckedUpdateManyWithoutOutreachActivityInput>
+  }
+
+  export type BacklinkScalarWhereInput = {
+    AND?: BacklinkScalarWhereInput | BacklinkScalarWhereInput[]
+    OR?: BacklinkScalarWhereInput[]
+    NOT?: BacklinkScalarWhereInput | BacklinkScalarWhereInput[]
+    id?: StringFilter<"Backlink"> | string
+    sourceUrl?: StringFilter<"Backlink"> | string
+    targetUrl?: StringFilter<"Backlink"> | string
+    anchorText?: StringFilter<"Backlink"> | string
+    discoveredDate?: DateTimeFilter<"Backlink"> | Date | string
+    lastCheckedDate?: DateTimeFilter<"Backlink"> | Date | string
+    status?: StringFilter<"Backlink"> | string
+    domainAuthority?: IntNullableFilter<"Backlink"> | number | null
+    pageAuthority?: IntNullableFilter<"Backlink"> | number | null
+    traffic?: IntNullableFilter<"Backlink"> | number | null
+    clicks?: IntNullableFilter<"Backlink"> | number | null
+    outreachActivityId?: StringNullableFilter<"Backlink"> | string | null
+  }
+
+  export type OutreachActivityCreateWithoutBacklinksInput = {
+    id?: string
+    targetDomain: string
+    campaignId: string
+    type: string
+    status: string
+    emailSubject?: string | null
+    emailContent?: string | null
+    responseReceived?: boolean
+    responseContent?: string | null
+    linkAcquired?: boolean
+    linkUrl?: string | null
+    timestamp?: Date | string
+  }
+
+  export type OutreachActivityUncheckedCreateWithoutBacklinksInput = {
+    id?: string
+    targetDomain: string
+    campaignId: string
+    type: string
+    status: string
+    emailSubject?: string | null
+    emailContent?: string | null
+    responseReceived?: boolean
+    responseContent?: string | null
+    linkAcquired?: boolean
+    linkUrl?: string | null
+    timestamp?: Date | string
+  }
+
+  export type OutreachActivityCreateOrConnectWithoutBacklinksInput = {
+    where: OutreachActivityWhereUniqueInput
+    create: XOR<OutreachActivityCreateWithoutBacklinksInput, OutreachActivityUncheckedCreateWithoutBacklinksInput>
+  }
+
+  export type OutreachActivityUpsertWithoutBacklinksInput = {
+    update: XOR<OutreachActivityUpdateWithoutBacklinksInput, OutreachActivityUncheckedUpdateWithoutBacklinksInput>
+    create: XOR<OutreachActivityCreateWithoutBacklinksInput, OutreachActivityUncheckedCreateWithoutBacklinksInput>
+    where?: OutreachActivityWhereInput
+  }
+
+  export type OutreachActivityUpdateToOneWithWhereWithoutBacklinksInput = {
+    where?: OutreachActivityWhereInput
+    data: XOR<OutreachActivityUpdateWithoutBacklinksInput, OutreachActivityUncheckedUpdateWithoutBacklinksInput>
+  }
+
+  export type OutreachActivityUpdateWithoutBacklinksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    targetDomain?: StringFieldUpdateOperationsInput | string
+    campaignId?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    emailSubject?: NullableStringFieldUpdateOperationsInput | string | null
+    emailContent?: NullableStringFieldUpdateOperationsInput | string | null
+    responseReceived?: BoolFieldUpdateOperationsInput | boolean
+    responseContent?: NullableStringFieldUpdateOperationsInput | string | null
+    linkAcquired?: BoolFieldUpdateOperationsInput | boolean
+    linkUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OutreachActivityUncheckedUpdateWithoutBacklinksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    targetDomain?: StringFieldUpdateOperationsInput | string
+    campaignId?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    emailSubject?: NullableStringFieldUpdateOperationsInput | string | null
+    emailContent?: NullableStringFieldUpdateOperationsInput | string | null
+    responseReceived?: BoolFieldUpdateOperationsInput | boolean
+    responseContent?: NullableStringFieldUpdateOperationsInput | string | null
+    linkAcquired?: BoolFieldUpdateOperationsInput | boolean
+    linkUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type AccountCreateManyUserInput = {
     id?: string
     type: string
@@ -16532,6 +23117,118 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     senderId?: StringFieldUpdateOperationsInput | string
     isRead?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type OutreachTargetCreateManyCampaignInput = {
+    id?: string
+    domain: string
+    contactEmail?: string | null
+    type: string
+    authority: number
+    relevance: number
+    lastContactDate?: Date | string | null
+    status?: string
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type OutreachTargetUpdateWithoutCampaignInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    domain?: StringFieldUpdateOperationsInput | string
+    contactEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    authority?: IntFieldUpdateOperationsInput | number
+    relevance?: IntFieldUpdateOperationsInput | number
+    lastContactDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OutreachTargetUncheckedUpdateWithoutCampaignInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    domain?: StringFieldUpdateOperationsInput | string
+    contactEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    authority?: IntFieldUpdateOperationsInput | number
+    relevance?: IntFieldUpdateOperationsInput | number
+    lastContactDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OutreachTargetUncheckedUpdateManyWithoutCampaignInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    domain?: StringFieldUpdateOperationsInput | string
+    contactEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    authority?: IntFieldUpdateOperationsInput | number
+    relevance?: IntFieldUpdateOperationsInput | number
+    lastContactDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BacklinkCreateManyOutreachActivityInput = {
+    id?: string
+    sourceUrl: string
+    targetUrl: string
+    anchorText: string
+    discoveredDate?: Date | string
+    lastCheckedDate?: Date | string
+    status?: string
+    domainAuthority?: number | null
+    pageAuthority?: number | null
+    traffic?: number | null
+    clicks?: number | null
+  }
+
+  export type BacklinkUpdateWithoutOutreachActivityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sourceUrl?: StringFieldUpdateOperationsInput | string
+    targetUrl?: StringFieldUpdateOperationsInput | string
+    anchorText?: StringFieldUpdateOperationsInput | string
+    discoveredDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastCheckedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: StringFieldUpdateOperationsInput | string
+    domainAuthority?: NullableIntFieldUpdateOperationsInput | number | null
+    pageAuthority?: NullableIntFieldUpdateOperationsInput | number | null
+    traffic?: NullableIntFieldUpdateOperationsInput | number | null
+    clicks?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type BacklinkUncheckedUpdateWithoutOutreachActivityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sourceUrl?: StringFieldUpdateOperationsInput | string
+    targetUrl?: StringFieldUpdateOperationsInput | string
+    anchorText?: StringFieldUpdateOperationsInput | string
+    discoveredDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastCheckedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: StringFieldUpdateOperationsInput | string
+    domainAuthority?: NullableIntFieldUpdateOperationsInput | number | null
+    pageAuthority?: NullableIntFieldUpdateOperationsInput | number | null
+    traffic?: NullableIntFieldUpdateOperationsInput | number | null
+    clicks?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type BacklinkUncheckedUpdateManyWithoutOutreachActivityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sourceUrl?: StringFieldUpdateOperationsInput | string
+    targetUrl?: StringFieldUpdateOperationsInput | string
+    anchorText?: StringFieldUpdateOperationsInput | string
+    discoveredDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastCheckedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: StringFieldUpdateOperationsInput | string
+    domainAuthority?: NullableIntFieldUpdateOperationsInput | number | null
+    pageAuthority?: NullableIntFieldUpdateOperationsInput | number | null
+    traffic?: NullableIntFieldUpdateOperationsInput | number | null
+    clicks?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
 

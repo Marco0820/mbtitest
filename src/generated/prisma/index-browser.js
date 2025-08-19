@@ -20,12 +20,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.11.0
- * Query Engine version: 9c30299f5a0ea26a96790e13f796dc6094db3173
+ * Prisma Client JS version: 6.11.1
+ * Query Engine version: f40f79ec31188888a2e33acda0ecc8fd10a853a9
  */
 Prisma.prismaVersion = {
-  client: "6.11.0",
-  engine: "9c30299f5a0ea26a96790e13f796dc6094db3173"
+  client: "6.11.1",
+  engine: "f40f79ec31188888a2e33acda0ecc8fd10a853a9"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -214,6 +214,62 @@ exports.Prisma.BlogScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.OutreachCampaignScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  type: 'type',
+  template: 'template',
+  scheduledDate: 'scheduledDate',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.OutreachTargetScalarFieldEnum = {
+  id: 'id',
+  domain: 'domain',
+  contactEmail: 'contactEmail',
+  type: 'type',
+  authority: 'authority',
+  relevance: 'relevance',
+  lastContactDate: 'lastContactDate',
+  status: 'status',
+  notes: 'notes',
+  campaignId: 'campaignId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.OutreachActivityScalarFieldEnum = {
+  id: 'id',
+  targetDomain: 'targetDomain',
+  campaignId: 'campaignId',
+  type: 'type',
+  status: 'status',
+  emailSubject: 'emailSubject',
+  emailContent: 'emailContent',
+  responseReceived: 'responseReceived',
+  responseContent: 'responseContent',
+  linkAcquired: 'linkAcquired',
+  linkUrl: 'linkUrl',
+  timestamp: 'timestamp'
+};
+
+exports.Prisma.BacklinkScalarFieldEnum = {
+  id: 'id',
+  sourceUrl: 'sourceUrl',
+  targetUrl: 'targetUrl',
+  anchorText: 'anchorText',
+  discoveredDate: 'discoveredDate',
+  lastCheckedDate: 'lastCheckedDate',
+  status: 'status',
+  domainAuthority: 'domainAuthority',
+  pageAuthority: 'pageAuthority',
+  traffic: 'traffic',
+  clicks: 'clicks',
+  outreachActivityId: 'outreachActivityId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -250,7 +306,11 @@ exports.Prisma.ModelName = {
   ConversationParticipant: 'ConversationParticipant',
   Message: 'Message',
   PersonalityDetails: 'PersonalityDetails',
-  Blog: 'Blog'
+  Blog: 'Blog',
+  OutreachCampaign: 'OutreachCampaign',
+  OutreachTarget: 'OutreachTarget',
+  OutreachActivity: 'OutreachActivity',
+  Backlink: 'Backlink'
 };
 
 /**

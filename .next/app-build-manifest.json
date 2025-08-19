@@ -11,25 +11,15 @@
       "static/css/app/[locale]/layout.css",
       "static/chunks/app/[locale]/layout.js"
     ],
-    "/[locale]/people/page": [
+    "/[locale]/terms/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/[locale]/people/page.js"
+      "static/chunks/app/[locale]/terms/page.js"
     ],
-    "/[locale]/test/page": [
+    "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/[locale]/test/page.js"
-    ],
-    "/[locale]/personalities/[type]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/[locale]/personalities/[type]/page.js"
-    ],
-    "/[locale]/blog/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/[locale]/blog/page.js"
+      "static/chunks/app/_not-found/page.js"
     ]
   }
 }

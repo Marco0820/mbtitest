@@ -1,10 +1,11 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Brain, Users, TrendingUp, Shield, Globe, Zap } from 'lucide-react';
 
 export function Features() {
   const t = useTranslations('home.features');
+  const locale = useLocale();
 
   const features = [
     {
@@ -51,7 +52,7 @@ export function Features() {
         <div className="text-center mb-16">
           <div className="mb-4">
             <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-purple-100 text-purple-800 mb-4">
-              🏆 精选特色功能
+              🏆 {locale === 'zh-CN' ? '精选特色功能' : 'Featured Functions'}
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
@@ -61,11 +62,11 @@ export function Features() {
             {t('subtitle')}
           </p>
           <div className="flex flex-wrap justify-center gap-2 text-sm text-gray-500">
-            <span className="px-3 py-1 bg-gray-100 rounded-full">#MBTI测试</span>
-            <span className="px-3 py-1 bg-gray-100 rounded-full">#16型人格</span>
-            <span className="px-3 py-1 bg-gray-100 rounded-full">#性格分析</span>
-            <span className="px-3 py-1 bg-gray-100 rounded-full">#心理测试</span>
-            <span className="px-3 py-1 bg-gray-100 rounded-full">#职业规划</span>
+            <span className="px-3 py-1 bg-gray-100 rounded-full">#{locale === 'zh-CN' ? 'MBTI测试' : 'MBTITest'}</span>
+            <span className="px-3 py-1 bg-gray-100 rounded-full">#{locale === 'zh-CN' ? '16型人格' : '16Personalities'}</span>
+            <span className="px-3 py-1 bg-gray-100 rounded-full">#{locale === 'zh-CN' ? '性格分析' : 'PersonalityAnalysis'}</span>
+            <span className="px-3 py-1 bg-gray-100 rounded-full">#{locale === 'zh-CN' ? '心理测试' : 'PsychologyTest'}</span>
+            <span className="px-3 py-1 bg-gray-100 rounded-full">#{locale === 'zh-CN' ? '职业规划' : 'CareerPlanning'}</span>
           </div>
         </div>
 

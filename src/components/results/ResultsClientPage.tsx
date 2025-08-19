@@ -123,8 +123,12 @@ export default function ResultsClientPage({ type: initialType }: { type: string 
     ? `${window.location.origin}/${locale}/personalities/${fourLetterType}`
     : `https://mbti16personalities.online/${locale}/personalities/${fourLetterType}`;
   
-  const shareTitle = `我的性格类型是 ${type} - ${t_personalities(`${fourLetterType}.name`)}`;
-  const shareDescription = `我刚刚完成了MBTI性格测试，结果是${type}！快来看看你的性格类型吧。`;
+  const shareTitle = locale === 'zh-CN' 
+    ? `我的性格类型是 ${type} - ${t_personalities(`${fourLetterType}.name`)}`
+    : `My personality type is ${type} - ${t_personalities(`${fourLetterType}.name`)}`;
+  const shareDescription = locale === 'zh-CN'
+    ? `我刚刚完成了MBTI性格测试，结果是${type}！快来看看你的性格类型吧。`
+    : `I just completed the MBTI personality test and my result is ${type}! Come discover your personality type too.`;
 
   return (
     <div className="bg-gray-50 min-h-screen">

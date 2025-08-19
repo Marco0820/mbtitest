@@ -11,7 +11,7 @@ export class EmailService {
   private transporter: nodemailer.Transporter;
 
   constructor() {
-    this.transporter = nodemailer.createTransporter({
+    this.transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: parseInt(process.env.SMTP_PORT || '587'),
       secure: false,
@@ -23,11 +23,11 @@ export class EmailService {
   }
 
   /**
-   * 发送外链建设邮件
+   * Send outreach email
    */
   async sendOutreachEmail(email: EmailContent): Promise<boolean> {
     try {
-      // 验证配置
+      // Verify configuration
       if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
         console.warn('SMTP configuration not complete, email sending skipped');
         return false;
@@ -50,7 +50,7 @@ export class EmailService {
   }
 
   /**
-   * 批量发送邮件（带延迟）
+   * Send batch emails (with delay)
    */
   async sendBatchEmails(emails: EmailContent[], delayMs: number = 5000): Promise<number> {
     let successCount = 0;
@@ -60,7 +60,7 @@ export class EmailService {
         const success = await this.sendOutreachEmail(email);
         if (success) successCount++;
         
-        // 添加延迟避免被标记为垃圾邮件
+        // Add delay to avoid being marked as spam
         if (delayMs > 0) {
           await this.delay(delayMs);
         }
@@ -73,7 +73,7 @@ export class EmailService {
   }
 
   /**
-   * 格式化邮件HTML内容
+   * Format email HTML content
    */
   private formatEmailHtml(content: string): string {
     return `
@@ -82,7 +82,7 @@ export class EmailService {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MBTI TEST - 外链合作</title>
+    <title>MBTI TEST - Outreach Collaboration</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -134,7 +134,7 @@ export class EmailService {
 <body>
     <div class="header">
         <div class="logo">MBTI TEST</div>
-        <p>专业16型人格测试平台</p>
+        <p>Professional 16 Personality Types Test Platform</p>
     </div>
     
     <div class="content">
@@ -144,11 +144,11 @@ export class EmailService {
     <div class="footer">
         <p>
             <strong>MBTI TEST</strong><br>
-            网站：<a href="https://www.mbti16personalities.online">www.mbti16personalities.online</a><br>
-            服务全球1000万+用户的专业性格测试平台
+            Website: <a href="https://www.mbti16personalities.online">www.mbti16personalities.online</a><br>
+            Professional personality test platform serving 10+ million users worldwide
         </p>
         <p style="font-size: 12px; margin-top: 20px;">
-            如果您不希望收到此类邮件，请回复"取消订阅"。
+            If you do not wish to receive such emails, please reply "Unsubscribe".
         </p>
     </div>
 </body>
@@ -157,11 +157,11 @@ export class EmailService {
   }
 
   /**
-   * 将HTML转换为纯文本
+   * Convert HTML to plain text
    */
   private htmlToText(html: string): string {
     return html
-      .replace(/<[^>]*>/g, '') // 移除HTML标签
+      .replace(/<[^>]*>/g, '') // Remove HTML tags
       .replace(/&nbsp;/g, ' ')
       .replace(/&amp;/g, '&')
       .replace(/&lt;/g, '<')
@@ -172,14 +172,14 @@ export class EmailService {
   }
 
   /**
-   * 延迟函数
+   * Delay function
    */
   private delay(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   /**
-   * 验证邮件配置
+   * Verify email configuration
    */
   async verifyConfiguration(): Promise<boolean> {
     try {

@@ -21,10 +21,10 @@ export function StructuredData({ type, data }: StructuredDataProps) {
         return {
           ...baseData,
           '@type': 'WebSite',
-          name: 'MBTI TEST - 16型人格专业测评',
-          alternateName: ['MBTI测试', '16型人格测试', '性格测试'],
+          name: locale === 'zh-CN' ? 'MBTI TEST - 16型人格专业测评' : 'MBTI TEST - Professional 16 Personality Assessment',
+          alternateName: locale === 'zh-CN' ? ['MBTI测试', '16型人格测试', '性格测试'] : ['MBTI Test', '16 Personality Test', 'Personality Test'],
           url: siteUrl,
-          description: '专业的MBTI性格测试平台，基于权威心理学理论，提供16型人格深度分析。免费测试，即时结果，准确率95%以上。',
+          description: locale === 'zh-CN' ? '专业的MBTI性格测试平台，基于权威心理学理论，提供16型人格深度分析。免费测试，即时结果，准确率95%以上。' : 'Professional MBTI personality test platform based on authoritative psychological theory, providing in-depth analysis of 16 personality types. Free test, instant results, over 95% accuracy.',
           inLanguage: locale,
           potentialAction: {
             '@type': 'SearchAction',
@@ -46,9 +46,9 @@ export function StructuredData({ type, data }: StructuredDataProps) {
           name: 'MBTI TEST',
           url: siteUrl,
           logo: `${siteUrl}/logo.png`,
-          description: '全球领先的16型人格测评平台，为超过1000万用户提供精准的MBTI测评服务。',
+          description: locale === 'zh-CN' ? '全球领先的16型人格测评平台，为超过1000万用户提供精准的MBTI测评服务。' : 'World-leading 16 personality assessment platform providing accurate MBTI assessment services to over 10 million users.',
           foundingDate: '2024',
-          knowsAbout: [
+          knowsAbout: locale === 'zh-CN' ? [
             'MBTI测试',
             '16型人格',
             '性格分析',
@@ -56,16 +56,29 @@ export function StructuredData({ type, data }: StructuredDataProps) {
             '职业规划',
             '人际关系',
             '个人发展'
+          ] : [
+            'MBTI Test',
+            '16 Personality Types',
+            'Personality Analysis',
+            'Psychological Assessment',
+            'Career Planning',
+            'Interpersonal Relationships',
+            'Personal Development'
           ],
           areaServed: {
             '@type': 'Place',
             name: 'Worldwide'
           },
-          serviceType: [
+          serviceType: locale === 'zh-CN' ? [
             '性格测试服务',
             '心理评估',
             '个人发展咨询',
             '职业规划指导'
+          ] : [
+            'Personality Testing Service',
+            'Psychological Assessment',
+            'Personal Development Consulting',
+            'Career Planning Guidance'
           ]
         };
 
