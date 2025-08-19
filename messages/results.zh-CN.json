@@ -23,6 +23,10 @@
     "assertive_high": "Assertive (A)",
     "extreme_response_pattern": "倾向于只选择极端答案。",
     "excessive_neutral_responses": "中性答案过多。",
-    "too_fast_completion": "测试完成速度异常快。"
+    "too_fast_completion": "测试完成速度异常快。",
+    "page_title": "{type} 人格类型结果 - {name}",
+    "page_description": "您的MBTI人格测试结果显示您是 {type} ({name})。探索您的优势、职业道路和关系兼容性。",
+    "congratulations": "恭喜！您是 {type}",
+    "share_encouragement": "与朋友分享您的人格类型，发现您的兼容性！"
   }
 } 

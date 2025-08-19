@@ -23,6 +23,10 @@
     "assertive_high": "Assertive",
     "extreme_response_pattern": "Tendency to choose only extreme answers.",
     "excessive_neutral_responses": "High number of neutral answers.",
-    "too_fast_completion": "Test completed unusually fast."
+    "too_fast_completion": "Test completed unusually fast.",
+    "page_title": "{type} Personality Type Results - {name}",
+    "page_description": "Your MBTI personality test results show you are {type} ({name}). Discover your strengths, career paths, and relationship compatibility.",
+    "congratulations": "Congratulations! You are {type}",
+    "share_encouragement": "Share your personality type with friends and discover your compatibility!"
   }
 } 

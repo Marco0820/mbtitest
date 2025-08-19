@@ -4,6 +4,9 @@ export const dynamicParams = false;
 
 import { routing } from '@/routing';
 import BlogPostClient from '@/components/blog/BlogPostClient';
+import { getMessages } from 'next-intl/server';
+import { createTranslator } from 'next-intl';
+import type { Metadata } from 'next';
 
 interface Blog {
   id: string;
@@ -85,6 +88,57 @@ export function generateStaticParams() {
   });
 
   return params;
+}
+
+export async function generateMetadata({ params }: { params: { id: string; locale: string } }): Promise<Metadata> {
+  const { id, locale } = params;
+  const messages = await getMessages({ locale });
+  const t = createTranslator({ locale, messages });
+  
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://mbti16personalities.online';
+  const canonicalUrl = `${siteUrl}/${locale}/blog/${id}`;
+  
+  const blogData = blogDatabase[id];
+  const title = blogData ? blogData.title : t('Layout.title');
+  const description = blogData ? 
+    `${blogData.title} - ${t('Layout.description')}` : 
+    t('Layout.description');
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonicalUrl,
+      siteName: 'MBTI TEST - 16型人格专业测评',
+      images: blogData?.imageUrl ? [
+        {
+          url: blogData.imageUrl,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ] : [
+        {
+          url: `${siteUrl}/logo.png`,
+          width: 1200,
+          height: 630,
+          alt: 'MBTI性格测试 - 16型人格测评',
+        },
+      ],
+      type: 'article',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: blogData?.imageUrl ? [blogData.imageUrl] : [`${siteUrl}/logo.png`],
+    },
+  };
 }
 
 // This is now a Server Component
