@@ -124,7 +124,6 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       ],
       locale: locale,
       type: 'website',
-      tags: ['MBTI测试', '性格测试', '16型人格', '心理测试'],
     },
     twitter: {
       card: 'summary_large_image',
