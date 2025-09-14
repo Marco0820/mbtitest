@@ -49,9 +49,21 @@ export async function generateMetadata({ params }: { params: { id: string; local
   
   let blogData: Blog | null = null;
   try {
-    blogData = await prisma.blog.findUnique({
+    const blogFromPrisma = await prisma.blog.findUnique({
       where: { id }
     });
+
+    if (blogFromPrisma) {
+      blogData = {
+        id: blogFromPrisma.id,
+        trendingKeyword: blogFromPrisma.trendingKeyword,
+        title: blogFromPrisma.title,
+        content: blogFromPrisma.content,
+        sourceUrl: blogFromPrisma.sourceUrl,
+        imageUrl: blogFromPrisma.imageUrl,
+        createdAt: blogFromPrisma.createdAt.toISOString(),
+      };
+    }
   } catch (error) {
     console.error('Error fetching blog data:', error);
   }
@@ -104,9 +116,20 @@ export default async function BlogPostPage({ params }: { params: { id: string } 
   
   let blogData: Blog | null = null;
   try {
-    blogData = await prisma.blog.findUnique({
+    const blogFromPrisma = await prisma.blog.findUnique({
       where: { id }
     });
+    if (blogFromPrisma) {
+      blogData = {
+        id: blogFromPrisma.id,
+        trendingKeyword: blogFromPrisma.trendingKeyword,
+        title: blogFromPrisma.title,
+        content: blogFromPrisma.content,
+        sourceUrl: blogFromPrisma.sourceUrl,
+        imageUrl: blogFromPrisma.imageUrl,
+        createdAt: blogFromPrisma.createdAt.toISOString(),
+      };
+    }
   } catch (error) {
     console.error('Error fetching blog data:', error);
   }
