@@ -16,6 +16,7 @@ interface Blog {
   content: string;
   sourceUrl: string;
   imageUrl: string | null;
+  createdAt: string;
 }
 
 export async function generateStaticParams() {
