@@ -26,18 +26,25 @@ export default async function AboutPage({ params: { locale } }: { params: { loca
           </h1>
 
           <div className="prose lg:prose-xl max-w-none dark:prose-invert rtl:text-right" dir={locale === 'ar' || locale === 'fa' || locale === 'ur' ? 'rtl' : 'ltr'}>
-            <p className="text-lg leading-relaxed mb-6">
+            <p className="text-xl leading-relaxed mb-6 bg-gray-100 dark:bg-gray-800 p-6 rounded-lg">
               {t('intro')}
             </p>
 
-            <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mt-12 mb-4">
+            <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mt-12 mb-4 border-b-2 border-blue-500 pb-2">
               {t('mission_title')}
             </h2>
             <p>
               {t('mission_content')}
             </p>
 
-            <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mt-12 mb-4">
+            <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mt-12 mb-4 border-b-2 border-blue-500 pb-2">
+              {t('vision_title')}
+            </h2>
+            <p>
+              {t('vision_content')}
+            </p>
+
+            <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mt-12 mb-4 border-b-2 border-blue-500 pb-2">
               {t('community_title')}
             </h2>
             <p>
@@ -58,7 +65,14 @@ export default async function AboutPage({ params: { locale } }: { params: { loca
               {t('community_conclusion')}
             </p>
 
-            <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mt-12 mb-4">
+            <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mt-12 mb-4 border-b-2 border-blue-500 pb-2">
+              {t('team_title')}
+            </h2>
+            <p>
+              {t('team_content')}
+            </p>
+
+            <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mt-12 mb-4 border-b-2 border-blue-500 pb-2">
               {t('journey_title')}
             </h2>
             <p>
@@ -66,7 +80,7 @@ export default async function AboutPage({ params: { locale } }: { params: { loca
             </p>
           </div>
 
-          <div className="text-center mt-12">
+          <div className="text-center mt-16">
             <Link 
               href={`/${locale}/test`} 
               className="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition-all text-lg"

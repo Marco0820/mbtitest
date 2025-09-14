@@ -20,8 +20,14 @@ export const config = {
     // all requests that have a locale prefix
     '/(en|zh|zh-CN|zh-TW|es|ar|pt|ja|ru|fr|de|ko|hi|tr|vi|th|it|ur|pl|id|nl|fa)/:path*',
 
-    // Enable redirects that add a locale prefix
-    // (e.g. `/pathnames` -> `/en/pathnames`)
-    '/((?!_next|api|.*\\..*).*)'
+    // Match specific paths that need locale handling
+    '/about',
+    '/personalities',
+    '/blog',
+    '/contact',
+    '/privacy',
+    '/terms',
+    '/career',
+    '/psychology'
   ]
 };

@@ -135,7 +135,7 @@ export default function OutreachManagementPage() {
       <div className="container mx-auto px-4 py-8">
         <div className="flex items-center justify-center h-64">
           <RefreshCw className="w-8 h-8 animate-spin text-blue-500" />
-          <span className="ml-2 text-lg">加载中...</span>
+          <span className="ml-2 text-lg">Loading...</span>
         </div>
       </div>
     );
