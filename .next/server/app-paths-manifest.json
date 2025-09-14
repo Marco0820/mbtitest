@@ -1,7 +1,8 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
-  "/api/personalities/[type]/route": "app/api/personalities/[type]/route.js",
+  "/api/blogs/route": "app/api/blogs/route.js",
   "/[locale]/page": "app/[locale]/page.js",
-  "/[locale]/personalities/[type]/page": "app/[locale]/personalities/[type]/page.js"
+  "/[locale]/personalities/[type]/page": "app/[locale]/personalities/[type]/page.js",
+  "/[locale]/blog/page": "app/[locale]/blog/page.js",
+  "/[locale]/blog/[id]/page": "app/[locale]/blog/[id]/page.js"
 }
